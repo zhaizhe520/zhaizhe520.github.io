@@ -19,13 +19,15 @@
   <meta name="author" content="翟哲">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="你打开自己看吧，markdown怎么注释不了,拿代碼塊注釋 标题  123456# 一级标题## 二级标题### 三级标题#### 四级标题##### 五级标题###### 六级标题   文字样式  123456**粗体***斜体****粗斜体***~~删除线~~&#x3D;&#x3D;高亮&#x3D;&#x3D;&lt;u&gt;下划线&lt;&#x2F;u&gt;   文字样式   *序列表： - 列表1 - 列表2   - 子列表 ----">
+<meta property="og:type" content="article">
 <meta property="og:title" content="詳細的makrdowen語言的學習">
 <meta property="og:url" content="http://example.com/2026/04/11/%E8%A9%B3%E7%B4%B0%E7%9A%84makrdowen%E8%AA%9E%E8%A8%80%E7%9A%84%E5%AD%B8%E7%BF%92/index.html">
 <meta property="og:site_name">
+<meta property="og:description" content="你打开自己看吧，markdown怎么注释不了,拿代碼塊注釋 标题  123456# 一级标题## 二级标题### 三级标题#### 四级标题##### 五级标题###### 六级标题   文字样式  123456**粗体***斜体****粗斜体***~~删除线~~&#x3D;&#x3D;高亮&#x3D;&#x3D;&lt;u&gt;下划线&lt;&#x2F;u&gt;   文字样式   *序列表： - 列表1 - 列表2   - 子列表 ----">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-11T05:41:03.000Z">
-<meta property="article:modified_time" content="2026-04-11T05:41:03.650Z">
+<meta property="article:modified_time" content="2026-04-11T15:37:29.210Z">
 <meta property="article:author" content="翟哲">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -349,7 +351,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          791 字
         
       </span>
     
@@ -360,7 +362,7 @@
         
         
         
-          1 分钟
+          7 分钟
         
       </span>
     
@@ -404,7 +406,140 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="你打开自己看吧，markdown怎么注释不了-拿代碼塊注釋"><a href="#你打开自己看吧，markdown怎么注释不了-拿代碼塊注釋" class="headerlink" title="你打开自己看吧，markdown怎么注释不了,拿代碼塊注釋"></a>你打开自己看吧，markdown怎么注释不了,拿代碼塊注釋</h1><ol>
+<li>标题</li>
+</ol>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs clean"># 一级标题<br>## 二级标题<br>### 三级标题<br>#### 四级标题<br>##### 五级标题<br>###### 六级标题<br></code></pre></td></tr></table></figure>
+<hr>
+<ol start="2">
+<li>文字样式</li>
+</ol>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-strong">**粗体**</span><br><span class="hljs-emphasis">*斜体*</span><br><span class="hljs-strong">**<span class="hljs-emphasis">*粗斜体*</span>**</span><br>~~删除线~~<br>==高亮==<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">u</span>&gt;</span></span>下划线<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">u</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<hr>
+<ol start="3">
+<li>文字样式</li>
+</ol>
+<pre style="background:#fff;color:#000;padding:10px;border:1px solid #ccc;">
+*序列表：
+- 列表1
+- 列表2
+  - 子列表
+--------------------
+*有序列表：
+1. 第一项
+2. 第二项
+   1. 子项
+-----------------
+*任务列表：
+- [x] 已完成
+- [ ] 未完成
+</pre>
+<p>*序列表：</p>
+<ul>
+<li>列表1</li>
+<li>列表2<ul>
+<li>子列表</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>*有序列表：</p>
+<ol>
+<li>第一项</li>
+<li>第二项<ol>
+<li>子项</li>
+</ol>
+</li>
+</ol>
+<hr>
+<p>   *任务列表：</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 已完成</li>
+<li><input disabled="" type="checkbox"> 未完成</li>
+</ul>
+<hr>
+<ol start="4">
+<li>引用</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">&gt; </span><span class="language-bash">一级引用</span><br><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">&gt; 二级引用</span><br><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; 三级引用</span><br><br></code></pre></td></tr></table></figure>
+<hr>
+<ol start="5">
+<li>代码</li>
+</ol>
+<pre style="background:#fff;color:#000;padding:10px;border:1px solid #ccc;">
+行内代码：
+`    ***     `
+</pre>
+<pre style="background:#fff;color:#000;padding:10px;border:1px solid #ccc;">
+代码块：
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-comment">****</span><br><span class="hljs-comment">***</span><br><span class="hljs-comment">***</span><br></code></pre></td></tr></table></figure>
+</pre>
+
+<hr>
+<ol start="6">
+<li>表格</li>
+</ol>
+<pre style="background:#fff;color:#000;padding:10px;border:1px solid #ccc;">
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">|<span class="hljs-string"> 姓名 </span>|<span class="hljs-string"> 年龄 </span>|<span class="hljs-string"> 性别 </span>|<br>|<span class="hljs-string"> ---- </span>|<span class="hljs-string"> ---- </span>|<span class="hljs-string"> ---- </span>|<br>|<span class="hljs-string"> 张三 </span>|<span class="hljs-string"> 20   </span>|<span class="hljs-string"> 男   </span>|<br><br>居中 / 右对齐：<br>|<span class="hljs-string"> 左对齐 </span>|<span class="hljs-string"> 居中 </span>|<span class="hljs-string"> 右对齐 </span>|<br>|<span class="hljs-string">:-------</span>|<span class="hljs-string">:----:</span>|<span class="hljs-string">-------:</span>|<br>|<span class="hljs-string"> 内容   </span>|<span class="hljs-string"> 内容 </span>|<span class="hljs-string"> 内容   </span>|<br></code></pre></td></tr></table></figure>
+</pre>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>年龄</th>
+<th>性别</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>张三</td>
+<td>20</td>
+<td>男</td>
+</tr>
+</tbody></table>
+<p>居中 &#x2F; 右对齐：</p>
+<table>
+<thead>
+<tr>
+<th align="left">左对齐</th>
+<th align="center">居中</th>
+<th align="right">右对齐</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">内容</td>
+<td align="center">内容</td>
+<td align="right">内容</td>
+</tr>
+</tbody></table>
+<hr>
+<ol start="7">
+<li>分割线</li>
+</ol>
+<pre style="background:#fff;color:#000;padding:10px;border:1px solid #ccc;">
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-comment">-------------------------</span><br></code></pre></td></tr></table></figure>
+</pre>
+<hr>
+<ol start="8">
+<li>换行 &amp; 段落</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">段落之间：空一行<br>强制换行：行尾加 两个空格 再回车<br></code></pre></td></tr></table></figure>
+<hr>
+<ol start="9">
+<li>数学公式（常用）</li>
+</ol>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-meta"><span class="hljs-keyword">$E</span>=mc^2$</span><br><br><span class="hljs-symbol">$</span><span class="hljs-symbol">$</span><br>\sum_&#123;i=<span class="hljs-number">1</span>&#125;^n i = \<span class="hljs-built_in">frac</span>&#123;n(n+<span class="hljs-number">1</span>)&#125;&#123;<span class="hljs-number">2</span>&#125;<br><span class="hljs-symbol">$</span><span class="hljs-symbol">$</span><br></code></pre></td></tr></table></figure>
+<hr>
+<ol start="10">
+<li>链接 &amp; 图片</li>
+</ol>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs less">链接：<br><span class="hljs-selector-attr">[B站]</span>(<span class="hljs-attribute">https</span>:<span class="hljs-comment">//www.bilibili.com/)</span><br>图片：<br>![图片描述](<span class="hljs-attribute">https</span>:<span class="hljs-comment">//xxx.com/xxx.jpg)</span><br></code></pre></td></tr></table></figure>
+<hr>
+<ol start="11">
+<li>pre html的使用</li>
+</ol>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-symbol">&lt;pre&gt;</span><br><br>給<span class="hljs-keyword">pre</span>添加行內樣式<br>實現markdown不渲染從而實現說明效果<br><br>&lt;/<span class="hljs-keyword">pre</span>&gt;<br></code></pre></td></tr></table></figure>
+<hr>
+
                 
               </div>
             
