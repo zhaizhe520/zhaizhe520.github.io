@@ -19,13 +19,15 @@
   <meta name="author" content="翟哲">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="123456789101.Vue 基础指令（v-model &#x2F; v-if &#x2F; v-for &#x2F; @click）2.数据与方法（data &#x2F; methods）3.计算属性 computed4.侦听器 watch5.组件 Component（Vue 核心）6.生命周期7.Vue 路由 vue-router（页面跳转）8.状态管理 pinia（全局数据）9.网络请求 axios（调用接口）10.项目打包部">
+<meta property="og:type" content="article">
 <meta property="og:title" content="vue框架學習">
-<meta property="og:url" content="http://example.com/2026/04/15/vue%E6%A1%86%E6%9E%B6%E9%A0%85%E7%9B%AE/index.html">
+<meta property="og:url" content="http://example.com/2026/04/15/vue%E6%A1%86%E6%9E%B6%E5%AD%B8%E7%BF%92/index.html">
 <meta property="og:site_name">
+<meta property="og:description" content="123456789101.Vue 基础指令（v-model &#x2F; v-if &#x2F; v-for &#x2F; @click）2.数据与方法（data &#x2F; methods）3.计算属性 computed4.侦听器 watch5.组件 Component（Vue 核心）6.生命周期7.Vue 路由 vue-router（页面跳转）8.状态管理 pinia（全局数据）9.网络请求 axios（调用接口）10.项目打包部">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-15T11:53:34.000Z">
-<meta property="article:modified_time" content="2026-04-15T11:55:07.568Z">
+<meta property="article:modified_time" content="2026-04-16T10:10:17.310Z">
 <meta property="article:author" content="翟哲">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -349,7 +351,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.4k 字
         
       </span>
     
@@ -360,7 +362,7 @@
         
         
         
-          1 分钟
+          12 分钟
         
       </span>
     
@@ -404,7 +406,22 @@
             
               <div class="markdown-body">
                 
-                
+                <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-number">1</span>.Vue 基础指令（v-model <span class="hljs-symbol">/</span> v-<span class="hljs-keyword">if</span> <span class="hljs-symbol">/</span> v-for <span class="hljs-symbol">/</span> @click）<br><span class="hljs-number">2</span>.数据与方法（data <span class="hljs-symbol">/</span> methods）<br><span class="hljs-number">3</span>.计算属性 computed<br><span class="hljs-number">4</span>.侦听器 watch<br><span class="hljs-number">5</span>.组件 Component（Vue 核心）<br><span class="hljs-number">6</span>.生命周期<br><span class="hljs-number">7</span>.Vue 路由 vue-router（页面跳转）<br><span class="hljs-number">8</span>.状态管理 pinia（全局数据）<br><span class="hljs-number">9</span>.网络请求 axios（调用接口）<br><span class="hljs-number">10</span>.项目打包部署<br></code></pre></td></tr></table></figure>
+
+# 實現響應式變化的例子
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;zh-CN&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>我的第一个 Vue 程序<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-comment">&lt;!-- 引入 Vue --&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/vue@3/dist/vue.global.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">message</span> &#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;message&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;输入文字试试&quot;</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">// 创建 Vue 应用</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> &#123; createApp &#125; = <span class="hljs-title class_">Vue</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">createApp</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// 数据</span></span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;你好，Vue！&quot;</span></span></span><br><span class="language-javascript"><span class="language-xml">        &#125;</span></span><br><span class="language-javascript"><span class="language-xml">      &#125;</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;).<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#x27;#app&#x27;</span>) <span class="hljs-comment">// 挂载到页面</span></span></span><br><span class="language-javascript"><span class="language-xml">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+# 基礎語法
+## 1. 插值表达式 {{ }}
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">把数据显示在页面上</span><br><span class="language-xml">html</span><br><span class="language-xml">预览</span><br><span class="language-xml">`<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">变量名</span> &#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>`</span><br></code></pre></td></tr></table></figure>
+## 2. 双向绑定 v-model
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">输入框 ↔ 数据 自动同步<br>html<br>预览<br>&lt;input <span class="hljs-attribute">v-model</span>=<span class="hljs-string">&quot;message&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+## 3. 条件渲染 v-if
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml">控制显示 / 隐藏<br>html<br>预览<br><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;isShow&quot;</span>&gt;</span>我显示了<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
+## 4. 循环渲染 v-for
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">遍历数组生成列表（最常用！）</span><br><span class="language-xml">html</span><br><span class="language-xml">预览</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(item, index) in list&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;index&quot;</span>&gt;</span></span><br><span class="language-xml">    </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">item</span> &#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+## 5. 点击事件 @click
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">html</span><br><span class="language-xml">预览</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;count++&quot;</span>&gt;</span>点击 +1<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>计数：</span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">count</span> &#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -450,7 +467,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>vue框架學習</div>
-      <div>http://example.com/2026/04/15/vue框架項目/</div>
+      <div>http://example.com/2026/04/15/vue框架學習/</div>
     </div>
     <div class="license-meta">
       
