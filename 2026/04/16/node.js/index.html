@@ -19,19 +19,21 @@
   <meta name="author" content="翟哲">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title">
-<meta property="og:url" content="http://example.com/2026/04/12/B%E7%AB%99%E5%A4%96%E8%AA%9E%E7%B2%BE%E8%81%BD%E5%AD%B8%E7%BF%92%E5%8A%A9%E6%89%8B%20-%20%E5%AE%8C%E6%95%B4%E9%A0%85%E7%9B%AE%E6%9E%B6%E6%A7%8B%E6%96%87%E6%AA%94/index.html">
+    <meta name="description" content="Node.js 详细介绍（）1. 官方定义Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时（runtime）让 JavaScript 可以脱离浏览器，在服务器 &#x2F; 电脑本地直接运行。2. 核心本质浏览器里的 JS：只能操作网页、DOMNode.js 里的 JS：可以操作文件、网络、数据库、启动服务它不是：不是编程语言（语言还是 JS）不是框架不是库不是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js介紹與安裝">
+<meta property="og:url" content="http://example.com/2026/04/16/node.js/index.html">
 <meta property="og:site_name">
+<meta property="og:description" content="Node.js 详细介绍（）1. 官方定义Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时（runtime）让 JavaScript 可以脱离浏览器，在服务器 &#x2F; 电脑本地直接运行。2. 核心本质浏览器里的 JS：只能操作网页、DOMNode.js 里的 JS：可以操作文件、网络、数据库、启动服务它不是：不是编程语言（语言还是 JS）不是框架不是库不是">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-04-12T11:11:58.560Z">
-<meta property="article:modified_time" content="2026-04-12T11:45:08.157Z">
+<meta property="article:published_time" content="2026-04-16T09:54:43.000Z">
+<meta property="article:modified_time" content="2026-04-16T11:21:28.985Z">
 <meta property="article:author" content="翟哲">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title></title>
+  <title>Node.js介紹與安裝 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -326,7 +328,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="Node.js介紹與安裝"></span>
           
         </div>
 
@@ -337,8 +339,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-04-12 19:11" pubdate>
-          2026年4月12日 晚上
+        <time datetime="2026-04-16 17:54" pubdate>
+          2026年4月16日 下午
         </time>
       </span>
     
@@ -349,7 +351,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          2k 字
         
       </span>
     
@@ -360,7 +362,7 @@
         
         
         
-          1 分钟
+          18 分钟
         
       </span>
     
@@ -399,18 +401,88 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header"></h1>
+            <h1 id="seo-header">Node.js介紹與安裝</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h1 id="Node-js-详细介绍（）"><a href="#Node-js-详细介绍（）" class="headerlink" title="Node.js 详细介绍（）"></a>Node.js 详细介绍（）</h1><h2 id="1-官方定义"><a href="#1-官方定义" class="headerlink" title="1. 官方定义"></a>1. 官方定义</h2><h2 id="Node-js-是一个基于-Chrome-V8-引擎的-JavaScript-运行时（runtime）让-JavaScript-可以脱离浏览器，在服务器-电脑本地直接运行。"><a href="#Node-js-是一个基于-Chrome-V8-引擎的-JavaScript-运行时（runtime）让-JavaScript-可以脱离浏览器，在服务器-电脑本地直接运行。" class="headerlink" title="Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时（runtime）让 JavaScript 可以脱离浏览器，在服务器 &#x2F; 电脑本地直接运行。"></a>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时（runtime）让 JavaScript 可以脱离浏览器，在服务器 &#x2F; 电脑本地直接运行。</h2><h2 id="2-核心本质"><a href="#2-核心本质" class="headerlink" title="2. 核心本质"></a>2. 核心本质</h2><h2 id="浏览器里的-JS：只能操作网页、DOMNode-js-里的-JS：可以操作文件、网络、数据库、启动服务它不是：不是编程语言（语言还是-JS）不是框架不是库不是后端语言（但可以用来写后端）"><a href="#浏览器里的-JS：只能操作网页、DOMNode-js-里的-JS：可以操作文件、网络、数据库、启动服务它不是：不是编程语言（语言还是-JS）不是框架不是库不是后端语言（但可以用来写后端）" class="headerlink" title="浏览器里的 JS：只能操作网页、DOMNode.js 里的 JS：可以操作文件、网络、数据库、启动服务它不是：不是编程语言（语言还是 JS）不是框架不是库不是后端语言（但可以用来写后端）"></a>浏览器里的 JS：只能操作网页、DOM<br>Node.js 里的 JS：可以操作文件、网络、数据库、启动服务<br>它不是：<br>不是编程语言（语言还是 JS）<br>不是框架<br>不是库<br>不是后端语言（但可以用来写后端）</h2><h2 id="3-为什么能运行-JS？"><a href="#3-为什么能运行-JS？" class="headerlink" title="3. 为什么能运行 JS？"></a>3. 为什么能运行 JS？</h2><h2 id="因为内置了-Chrome-V8-引擎，就是谷歌浏览器用来解析-JS-的引擎。"><a href="#因为内置了-Chrome-V8-引擎，就是谷歌浏览器用来解析-JS-的引擎。" class="headerlink" title="因为内置了 Chrome V8 引擎，就是谷歌浏览器用来解析 JS 的引擎。"></a>因为内置了 Chrome V8 引擎，就是谷歌浏览器用来解析 JS 的引擎。</h2><h2 id="4-两大自带神器"><a href="#4-两大自带神器" class="headerlink" title="4. 两大自带神器"></a>4. 两大自带神器</h2><h2 id="npm（包管理器）用来下载第三方库：Vue、React、Axios、jQuery-等命令：npm-install-包名npx直接运行某个包比如快速创建-Vue-项目：npm-create-vue-latest"><a href="#npm（包管理器）用来下载第三方库：Vue、React、Axios、jQuery-等命令：npm-install-包名npx直接运行某个包比如快速创建-Vue-项目：npm-create-vue-latest" class="headerlink" title="npm（包管理器）用来下载第三方库：Vue、React、Axios、jQuery 等命令：npm install 包名npx直接运行某个包比如快速创建 Vue 项目：npm create vue@latest"></a>npm（包管理器）<br>用来下载第三方库：Vue、React、Axios、jQuery 等<br>命令：npm install 包名<br>npx<br>直接运行某个包<br>比如快速创建 Vue 项目：npm create vue@latest</h2><h2 id="5-能做什么？"><a href="#5-能做什么？" class="headerlink" title="5. 能做什么？"></a>5. 能做什么？</h2><h2 id="前端开发相关（你学-Vue-会用到的）启动本地开发服务（npm-run-dev）打包编译项目（npm-run-build）处理-ES6-、TypeScript、Sass、-vue-文件热更新、代码压缩、优化后端开发写接口-API操作数据库（MySQL、MongoDB）做网站服务器、聊天室、小程序后端工具脚本批量重命名文件爬取网页数据自动化构建"><a href="#前端开发相关（你学-Vue-会用到的）启动本地开发服务（npm-run-dev）打包编译项目（npm-run-build）处理-ES6-、TypeScript、Sass、-vue-文件热更新、代码压缩、优化后端开发写接口-API操作数据库（MySQL、MongoDB）做网站服务器、聊天室、小程序后端工具脚本批量重命名文件爬取网页数据自动化构建" class="headerlink" title="前端开发相关（你学 Vue 会用到的）启动本地开发服务（npm run dev）打包编译项目（npm run build）处理 ES6+、TypeScript、Sass、.vue 文件热更新、代码压缩、优化后端开发写接口 API操作数据库（MySQL、MongoDB）做网站服务器、聊天室、小程序后端工具脚本批量重命名文件爬取网页数据自动化构建"></a>前端开发相关（你学 Vue 会用到的）<br>启动本地开发服务（npm run dev）<br>打包编译项目（npm run build）<br>处理 ES6+、TypeScript、Sass、.vue 文件<br>热更新、代码压缩、优化<br>后端开发<br>写接口 API<br>操作数据库（MySQL、MongoDB）<br>做网站服务器、聊天室、小程序后端<br>工具脚本<br>批量重命名文件<br>爬取网页数据<br>自动化构建</h2><h2 id="6-特点"><a href="#6-特点" class="headerlink" title="6. 特点"></a>6. 特点</h2><h2 id="非阻塞、异步-I-O高并发性能好前端后端统一用-JS生态极庞大（npm-包世界第一多）"><a href="#非阻塞、异步-I-O高并发性能好前端后端统一用-JS生态极庞大（npm-包世界第一多）" class="headerlink" title="非阻塞、异步 I&#x2F;O高并发性能好前端后端统一用 JS生态极庞大（npm 包世界第一多）"></a>非阻塞、异步 I&#x2F;O<br>高并发性能好<br>前端后端统一用 JS<br>生态极庞大（npm 包世界第一多）</h2><h2 id="7-和-Vue-的关系"><a href="#7-和-Vue-的关系" class="headerlink" title="7. 和 Vue 的关系"></a>7. 和 Vue 的关系</h2><h2 id="Vue-是前端框架，运行在浏览器Node-js-是运行环境，用来开发、构建-Vue-项目浏览器里运行-Vue-不需要-Node-js开发大型-Vue-项目必须用-Node-js"><a href="#Vue-是前端框架，运行在浏览器Node-js-是运行环境，用来开发、构建-Vue-项目浏览器里运行-Vue-不需要-Node-js开发大型-Vue-项目必须用-Node-js" class="headerlink" title="Vue 是前端框架，运行在浏览器Node.js 是运行环境，用来开发、构建 Vue 项目浏览器里运行 Vue 不需要 Node.js开发大型 Vue 项目必须用 Node.js"></a>Vue 是前端框架，运行在浏览器<br>Node.js 是运行环境，用来开发、构建 Vue 项目<br>浏览器里运行 Vue 不需要 Node.js<br>开发大型 Vue 项目必须用 Node.js</h2><h1 id="最简总结"><a href="#最简总结" class="headerlink" title="最简总结"></a>最简总结</h1><p>Node.js &#x3D; 让 JS 能在电脑本地跑的环境 + 包管理工具前端工程化（Vue&#x2F;React）离不开它，但写简单 HTML 页面可以完全不用。</p>
+<h1 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h1><ol>
+<li>下载 Node.js<br>打开官网：<a target="_blank" rel="noopener" href="https://nodejs.org/">https://nodejs.org/</a><br>直接下载左边的 LTS 版本（稳定版）</li>
+</ol>
+<hr>
+<ol start="2">
+<li>安装（全程下一步）<br>打开下载好的文件一路 Next → Next → Install<br>不需要改任何设置！不需要勾乱七八糟的东西！</li>
+</ol>
+<hr>
+<ol start="3">
+<li>检查是否安装成功<br>按 Win + R → 输入 cmd → 回车</li>
+</ol>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">在黑色窗口里输入：<br>bash<br>运行<br><span class="hljs-keyword">node</span> <span class="hljs-title">-v</span><br>bash<br>运行<br>npm -v<br><br>如果出现版本号，比如：<br>plaintext<br>v20.<span class="hljs-number">18.0</span><br><span class="hljs-number">10.8</span>.<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<p>✅ 恭喜！Node.js 环境安装成功！<br>试试你的第一个命令（）<br>你可以先运行一个简单的命令，感受一下：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">bash</span><br><span class="hljs-keyword"></span>运行<br>node -e <span class="hljs-string">&quot;console.log(&#x27;Hello, Node.js!&#x27;)&quot;</span><br>如果终端输出了 Hello, Node.<span class="hljs-keyword">js!，说明 </span>Node.<span class="hljs-keyword">js </span>能正常运行 <span class="hljs-keyword">JavaScript </span>代码了！<br></code></pre></td></tr></table></figure>
+<h1 id="第一个vue项目"><a href="#第一个vue项目" class="headerlink" title="第一个vue项目"></a>第一个vue项目</h1><ol>
+<li>创建 Vue 项目（官方命令，一键创建）<br>打开你的终端（CMD&#x2F;PowerShell&#x2F;VS Code 终端都可以），输入下面的命令：</li>
+</ol>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs applescript">bash<br>运行<br>npm create vue@latest <span class="hljs-keyword">my</span>-<span class="hljs-keyword">first</span>-vue-project<br>这里 <span class="hljs-keyword">my</span>-<span class="hljs-keyword">first</span>-vue-project 是项目名，你可以改成自己喜欢的名字，比如 vue-study<br>接下来会有几个选项，全部直接回车就行（默认配置最省事）<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>进入项目文件夹</li>
+</ol>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs applescript">bash<br>运行<br>cd <span class="hljs-keyword">my</span>-<span class="hljs-keyword">first</span>-vue-project （你的項目名字文件夾進入）<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>安装依赖（项目需要的所有工具包）</li>
+</ol>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cmake">bash<br>运行<br>npm <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>启动开发服务器（跑起来！）</li>
+</ol>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">bash<br>运行<br>npm <span class="hljs-built_in">run</span> dev<br></code></pre></td></tr></table></figure>
+<ol start="5">
+<li>项目结构简单说明（）</li>
+</ol>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs nix">plaintext<br>my-first-vue-project<span class="hljs-symbol">/</span><br>├── src<span class="hljs-symbol">/</span><br>│   ├── App.vue          <span class="hljs-comment"># 主组件</span><br>│   ├── main.js          <span class="hljs-comment"># 入口文件</span><br>│   └── components<span class="hljs-symbol">/</span>      <span class="hljs-comment"># 放你的 Vue 组件（比如按钮、卡片）</span><br>├── index.html           <span class="hljs-comment"># 页面入口</span><br>└── package.json         <span class="hljs-comment"># 项目配置和依赖</span><br></code></pre></td></tr></table></figure>
+<ol start="6">
+<li>怎么开始写你的第一个 Vue 代码？<br>打开 src&#x2F;App.vue，把默认内容删掉開始寫</li>
+</ol>
+<h1 id="訪問-每次打開"><a href="#訪問-每次打開" class="headerlink" title="訪問 每次打開"></a>訪問 每次打開</h1><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs q">cd my-<span class="hljs-built_in">first</span>-vue-project（你的項目名字文件夾進入）<br>npm run <span class="hljs-built_in">dev</span>  （執行項目）<br>http:<span class="hljs-comment">//localhost:5173/</span><br></code></pre></td></tr></table></figure>
+<h1 id="項目打包"><a href="#項目打包" class="headerlink" title="項目打包"></a>項目打包</h1><p>進入項目<br><code>npm run build</code></p>
+<h2 id="打包之後可能出現問題"><a href="#打包之後可能出現問題" class="headerlink" title="打包之後可能出現問題"></a>打包之後可能出現問題</h2><p>直接双击 index.html 时，浏览器会以 file:&#x2F;&#x2F; 协议打开，很多现代浏览器出于安全限制，会阻止 JS、CSS 等资源加载，导致页面空白。<br>用本地服务器（Live Server &#x2F; Python 服务）打开时，是 http:&#x2F;&#x2F; 协议，浏览器没有安全限制，资源都能正常加载。</p>
+<h1 id="打包之後會給你壓縮"><a href="#打包之後會給你壓縮" class="headerlink" title="打包之後會給你壓縮"></a>打包之後會給你壓縮</h1><p>为什么打包后看不到你的 Vue 代码？<br>因为 npm run build &#x3D; 编译 + 压缩</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xml">它把你写的：<br>.vue 文件<br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br>所有变量、函数<br>全部变成了浏览器能看懂的：<br>压缩后的 js<br>压缩后的 css<br>index.html<br></code></pre></td></tr></table></figure>
                 
               </div>
             
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/HTML/" class="category-chain-item">HTML</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/HTML/Vue%E6%A1%86%E6%9E%B6/" class="category-chain-item">Vue框架</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
 </div>
@@ -421,8 +493,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
-      <div>http://example.com/2026/04/12/B站外語精聽學習助手 - 完整項目架構文檔/</div>
+      <div>Node.js介紹與安裝</div>
+      <div>http://example.com/2026/04/16/node.js/</div>
     </div>
     <div class="license-meta">
       
@@ -434,7 +506,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年4月12日</div>
+          <div>2026年4月16日</div>
         </div>
       
       
@@ -466,18 +538,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/12/AI%E4%BC%81%E5%8A%83%E6%9B%B8/" title="AI企劃書">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">AI企劃書</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/11/%E4%B8%80%E5%80%8B%E9%A0%85%E7%9B%AE%E9%97%9C%E6%96%BC%E7%B4%A2%E5%8F%96b%E7%AB%99%E9%9F%B3%E6%A8%82%E8%87%AA%E5%8B%95%E5%88%86%E6%9E%90%E5%8F%A5%E5%AD%90%E5%96%AE%E8%A9%9E%E6%88%90%E5%88%86%E7%9A%84%E8%BB%9F%E4%BB%B6/" title="一個項目關於索取b站音樂自動分析句子單詞成分的軟件">
-                        <span class="hidden-mobile">一個項目關於索取b站音樂自動分析句子單詞成分的軟件</span>
+                      <a href="/2026/04/15/DOM%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F/" title="DOM是什麼？">
+                        <span class="hidden-mobile">DOM是什麼？</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
