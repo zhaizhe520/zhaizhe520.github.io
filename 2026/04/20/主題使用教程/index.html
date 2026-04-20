@@ -19,21 +19,19 @@
   <meta name="author" content="翟哲">
   <meta name="keywords" content="">
   
-    <meta name="description" content="wordpress今天用學用wordpress本地开发 WordPress 最简架构（后端标配）  Nginx：网站的「大门 + 快递员」本质：高性能 Web 服务器 &#x2F; 反向代理服务器作用：接收你浏览器发的请求（比如访问 localhost）把静态资源（HTML、CSS、JS、图片）直接返回给浏览器把动态请求（.php 文件）转发给 PHP 处理做负载均衡、缓存、安全防护等对你来说：就">
-<meta property="og:type" content="article">
-<meta property="og:title" content="第一次配置WordPress">
-<meta property="og:url" content="http://example.com/2026/04/09/%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%85%8D%E7%BD%AE%E6%9C%AC%E5%9C%B0Wordpress/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="主題使用教程">
+<meta property="og:url" content="http://example.com/2026/04/20/%E4%B8%BB%E9%A1%8C%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="wordpress今天用學用wordpress本地开发 WordPress 最简架构（后端标配）  Nginx：网站的「大门 + 快递员」本质：高性能 Web 服务器 &#x2F; 反向代理服务器作用：接收你浏览器发的请求（比如访问 localhost）把静态资源（HTML、CSS、JS、图片）直接返回给浏览器把动态请求（.php 文件）转发给 PHP 处理做负载均衡、缓存、安全防护等对你来说：就">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-04-09T09:03:38.000Z">
-<meta property="article:modified_time" content="2026-04-12T11:37:14.317Z">
+<meta property="article:published_time" content="2026-04-20T12:37:39.000Z">
+<meta property="article:modified_time" content="2026-04-20T12:37:39.633Z">
 <meta property="article:author" content="翟哲">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>第一次配置WordPress - </title>
+  <title>主題使用教程 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -328,7 +326,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="第一次配置WordPress"></span>
+            <span id="subtitle" data-typed-text="主題使用教程"></span>
           
         </div>
 
@@ -339,8 +337,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-04-09 17:03" pubdate>
-          2026年4月9日 下午
+        <time datetime="2026-04-20 20:37" pubdate>
+          2026年4月20日 晚上
         </time>
       </span>
     
@@ -351,7 +349,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k 字
+          0 字
         
       </span>
     
@@ -362,7 +360,7 @@
         
         
         
-          31 分钟
+          1 分钟
         
       </span>
     
@@ -401,118 +399,18 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">第一次配置WordPress</h1>
+            <h1 id="seo-header">主題使用教程</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="wordpress"><a href="#wordpress" class="headerlink" title="wordpress"></a>wordpress</h1><p>今天用學用wordpress<br>本地开发 WordPress 最简架构（后端标配）</p>
-<ol>
-<li>Nginx：网站的「大门 + 快递员」<br>本质：高性能 Web 服务器 &#x2F; 反向代理服务器<br>作用：<br>接收你浏览器发的请求（比如访问 localhost）<br>把静态资源（HTML、CSS、JS、图片）直接返回给浏览器<br>把动态请求（.php 文件）转发给 PHP 处理<br>做负载均衡、缓存、安全防护等<br>对你来说：就是 WordPress 网站的「入口」，所有访问都要经过它</li>
-<li>MySQL 8.0：网站的「仓库 + 账本」<br>本质：关系型数据库<br>作用：<br>存储 WordPress 所有数据：文章、页面、用户、配置、评论等<br>用表结构存数据，PHP 来读写<br>保证数据的持久化、安全、高效查询<br>对你来说：就是 WordPress 的「数据库」，存你写的所有内容和配置</li>
-<li>PHP 8.x：网站的「大脑 + 处理器」<br>本质：服务器端脚本语言<br>作用：<br>解析 WordPress 的 PHP 代码，动态生成 HTML 页面<br>连接 MySQL 数据库，读写数据<br>处理业务逻辑（比如用户登录、文章发布、自定义功能）<br>把处理结果返回给 Nginx，再给浏览器<br>对你来说：就是 WordPress 的「运行引擎」，没有它 PHP 代码跑不起来<br>🚀 三者的协作流程（你一看就懂）<br>你在浏览器输入 localhost → 发送请求给 Nginx<br>Nginx 发现是 .php 请求 → 转发给 PHP 处理<br>PHP 执行 WordPress 代码 → 连接 MySQL 读取文章数据<br>PHP 把数据拼成完整的 HTML → 返回给 Nginx<br>Nginx 把 HTML 发给你的浏览器 → 你看到网站页面</li>
-</ol>
-<p>🎯 为什么必须这三个？<br>缺 Nginx：没有入口，浏览器访问不了网站<br>缺 MySQL：没有数据库，WordPress 存不了数据，直接报错<br>缺 PHP：没有引擎，WordPress 代码跑不起来，页面空白<br>这三个就是 WordPress 运行的最低要求，也是后端开发 Web 项目的标准环境。</p>
-<h1 id="進入庫"><a href="#進入庫" class="headerlink" title="進入庫"></a>進入庫</h1><p>先切换到 MySQL 安装的 bin 目录：<br>bash<br>运行<br>cd C:\Program Files\MySQL\MySQL Server 8.0\bin<br>再执行连接命令：<br>bash<br>运行<br>mysql -u root -p<br>输入密码，进入命令行。</p>
-<h1 id="执行建库-SQL"><a href="#执行建库-SQL" class="headerlink" title="执行建库 SQL"></a>执行建库 SQL</h1><ol>
-<li>执行建库 SQL（在 mysql&gt; 提示符后输入）<br>sql<br>CREATE DATABASE wp_local CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;<br>回车执行，看到 Query OK, 1 row affected 就代表创建成功。<br>这个 wp_local 就是后续安装 WordPress 要用的数据库。</li>
-<li>验证数据库（可选）<br>sql<br>SHOW DATABASES;<br>执行后会列出所有数据库，能看到 wp_local 就说明没问题。</li>
-<li>退出 MySQL<br>sql<br>exit;<br>回车即可回到 CMD 命令行，接下来就可以配置 Nginx + PHP，启动服务安装 WordPress 了。</li>
-</ol>
-<h1 id="PHP-环境配置（关键步骤）"><a href="#PHP-环境配置（关键步骤）" class="headerlink" title="PHP 环境配置（关键步骤）"></a>PHP 环境配置（关键步骤）</h1><ol>
-<li>进入 PHP 解压目录（比如 D:\env\php-8.5.5-nts）</li>
-<li>复制配置文件<br>把 php.ini-development 复制一份，重命名为 php.ini，用编辑器打开，修改以下配置：<br>ini<br>; 1. 设置扩展目录（改成你自己的 PHP 路径）<br>extension_dir &#x3D; “D:\env\php-8.5.5-nts\ext”</li>
-</ol>
-<p>; 2. 开启 WordPress 必需的扩展（去掉前面的分号 <code>;</code>）<br>extension&#x3D;mysqli<br>extension&#x3D;pdo_mysql<br>extension&#x3D;curl<br>extension&#x3D;gd<br>extension&#x3D;mbstring<br>extension&#x3D;fileinfo<br>curl：网络请求<br>fileinfo：文件信息处理<br>gd：图片处理<br>mbstring：多字节字符串（中文支持）<br>mysqli &#x2F; pdo_mysql：MySQL 数据库连接</p>
-<p>; 3. 设置时区（避免 WordPress 时间错误）<br>date.timezone &#x3D; Asia&#x2F;Shanghai<br>除了时区，cgi.fix_pathinfo&#x3D;0 也必须配置，否则 Nginx 会存在路径遍历安全风险，同时可能导致 WordPress 伪静态失效、页面 404。<br>3. 启动 PHP-FPM（CMD 执行）<br>bash<br>运行<br>cd D:\env\php-8.5.5-nts<br>php-cgi.exe -b 127.0.0.1:9000<br>这个窗口不要关，关了 PHP 服务就停了<br>后续可以做成开机自启服务，先本地测试用这个方式</p>
-<h1 id="Nginx-完整配置"><a href="#Nginx-完整配置" class="headerlink" title="Nginx 完整配置"></a>Nginx 完整配置</h1><p>Nginx 完整配置文件（直接替换）</p>
-<ol>
-<li>找到 Nginx 配置文件<br>路径：D:\PhpStudy\nginx-1.28.3\conf\nginx.conf（你的 Nginx 解压目录）</li>
-<li>完全替换成下面的配置（注意修改 WordPress 路径）<br>nginx</li>
-</ol>
-<p>#user  nobody;<br>worker_processes  1;</p>
-<p>#error_log  logs&#x2F;error.log;<br>#error_log  logs&#x2F;error.log  notice;<br>#error_log  logs&#x2F;error.log  info;</p>
-<p>#pid        logs&#x2F;nginx.pid;</p>
-<p>events {<br>    worker_connections  1024;<br>}</p>
-<p>http {<br>    include       mime.types;<br>    default_type  application&#x2F;octet-stream;</p>
-<pre><code class="hljs">#log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
-#                  &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
-#                  &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
-
-#access_log  logs/access.log  main;
-
-sendfile        on;
-#tcp_nopush     on;
-
-#keepalive_timeout  0;
-keepalive_timeout  65;
-
-#gzip  on;
-
-server {
-    listen       80;
-    server_name  localhost;
-
-    # 👇 这里改成你自己的 WordPress 解压目录！
-    root   D:\PhpStudy\wordpress;
-    index  index.php index.html;
-
-    # WordPress 伪静态规则（必须，否则文章页 404）
-    location / {
-        try_files $uri $uri/ /index.php?$args;
-    }
-
-    # 转发 PHP 请求给 PHP-CGI（9000 端口，和 PHP 启动命令一致）
-    location ~ \.php$ {
-        fastcgi_pass   127.0.0.1:9000;
-        fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME  $realpath_root$fastcgi_script_name;
-        include        fastcgi.conf;
-    }
-
-    # 禁止访问隐藏文件（安全配置）
-    location ~ /\. {
-        deny all;
-    }
-}
-</code></pre>
-<p>}<br>3. 关键修改说明<br>只需要改 root D:\PhpStudy\wordpress; 这一行，换成你自己的 WordPress 文件夹路径<br>其他配置完全不用改，直接保存即可<br>二、启动 Nginx（CMD 操作）</p>
-<ol>
-<li>先关闭旧 Nginx 进程（如果之前启动过）<br>bash<br>运行<br>taskkill &#x2F;F &#x2F;IM nginx.exe</li>
-<li>进入 Nginx 目录，启动服务<br>bash<br>运行<br>cd D:\PhpStudy\nginx-1.28.3<br>start nginx.exe<br>启动后无任何提示就是成功，Nginx 会后台运行，不用保持 CMD 窗口打开<br>验证：浏览器访问 <a target="_blank" rel="noopener" href="http://localhost,如果出现/">http://localhost，如果出现</a> WordPress 安装页，说明 Nginx 配置生效<br>三、WordPress 浏览器安装步骤（5 分钟完成）</li>
-<li>访问安装页<br>打开浏览器，输入 <a target="_blank" rel="noopener" href="http://localhost,自动跳转到/">http://localhost，自动跳转到</a> WordPress 安装引导页<br>选择语言：简体中文 → 点击「继续」</li>
-<li>数据库配置（关键，填错连不上）<br>表格<br>配置项	填写内容</li>
-</ol>
-<p>数据库名	wp_local（之前 MySQL 创建的数据库）<br>用户名	root（MySQL 超级管理员账号）<br>密码	你之前设置的 MySQL root 密码<br>数据库主机	localhost（默认，不用改）<br>表前缀	wp_（默认，不用改）<br>点击「提交」→「运行安装程序」<br>3. 网站信息配置<br>站点标题：你的网站名称（比如「我的 ACG 博客」）<br>用户名：WordPress 后台管理员账号（自己设，比如 admin）<br>密码：后台管理员密码（自己设，务必记住！）<br>你的邮箱：本地开发可随便填，比如 <a href="mailto:&#116;&#x65;&#x73;&#116;&#64;&#116;&#101;&#x73;&#x74;&#46;&#x63;&#x6f;&#x6d;">test@test.com</a><br>勾选「建议搜索引擎不索引本站点」（本地环境用）<br>点击「安装 WordPress」→ 完成后点击「登录」，进入后台</p>
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>行第一次卡主了，要不再來一次？</p>
-
+                
                 
               </div>
             
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E9%85%8D%E7%BD%AE%E6%9C%AC%E5%9C%B0%E7%9A%84WordPress/" class="category-chain-item">配置本地的WordPress</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
 </div>
@@ -523,8 +421,8 @@ server {
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>第一次配置WordPress</div>
-      <div>http://example.com/2026/04/09/第一次配置本地Wordpress/</div>
+      <div>主題使用教程</div>
+      <div>http://example.com/2026/04/20/主題使用教程/</div>
     </div>
     <div class="license-meta">
       
@@ -536,7 +434,7 @@ server {
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年4月9日</div>
+          <div>2026年4月20日</div>
         </div>
       
       
@@ -568,18 +466,12 @@ server {
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/09/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E9%85%8D%E7%BD%AE%E6%9C%AC%E5%9C%B0Wordpress/" title="第二次配置wordpress">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">第二次配置wordpress</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/08/3%E5%B9%B4%E4%B9%8B%E5%BE%8C%E7%B6%B2%E7%AB%99%E8%83%BD%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%BC%8F%E4%B8%8A%E7%B7%9A%E9%97%9C%E6%96%BC%E5%A5%B9%E7%9A%84%E9%80%99%E4%B8%80%E4%BB%B6%E4%BA%8B-1/" title="3年之後網站能不能正式上線關於她的這一件事">
-                        <span class="hidden-mobile">3年之後網站能不能正式上線關於她的這一件事</span>
+                      <a href="/2026/04/20/Vue%E7%B5%84%E4%BB%B6WEB/" title="Vue組件WEB具體學習">
+                        <span class="hidden-mobile">Vue組件WEB具體學習</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
