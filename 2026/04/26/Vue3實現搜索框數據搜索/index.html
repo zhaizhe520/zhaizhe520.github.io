@@ -19,21 +19,21 @@
   <meta name="author" content="翟哲">
   <meta name="keywords" content="">
   
-    <meta name="description" content="給组件来赋予动态页面值，實現大量一樣頁面的組件的印刷">
+    <meta name="description" content="準備一份本地寫死的陣列數據，不用請求後端。綁定輸入框內容，拿到你輸入的關鍵字。用篩選邏輯：遍歷全部數據判斷標題 &#x2F; 文字有沒有包含輸入的關鍵字不分大小寫、模糊匹配，包含就顯示，不包含隱藏。輸入空內容時，自動還原顯示全部列表。 實現流程123456789101112131415161718192021222324252627282930313233343536373839404142434">
 <meta property="og:type" content="article">
-<meta property="og:title" content="父組件控制頁面切換並寫數據，子組件來接收數據來實現頁面印刷">
-<meta property="og:url" content="http://example.com/2026/04/25/%E7%88%B6%E7%B5%84%E4%BB%B6%E6%8E%A7%E5%88%B6%E9%A0%81%E9%9D%A2%E5%88%87%E6%8F%9B%E4%B8%A6%E5%AF%AB%E6%95%B8%E6%93%9A%EF%BC%8C%E5%AD%90%E7%B5%84%E4%BB%B6%E4%BE%86%E6%8E%A5%E6%94%B6%E6%95%B8%E6%93%9A%E4%BE%86%E5%AF%A6%E7%8F%BE%E9%A0%81%E9%9D%A2%E5%8D%B0%E5%88%B7/index.html">
+<meta property="og:title" content="Vue3實現搜索框數據搜索">
+<meta property="og:url" content="http://example.com/2026/04/26/Vue3%E5%AF%A6%E7%8F%BE%E6%90%9C%E7%B4%A2%E6%A1%86%E6%95%B8%E6%93%9A%E6%90%9C%E7%B4%A2/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="給组件来赋予动态页面值，實現大量一樣頁面的組件的印刷">
+<meta property="og:description" content="準備一份本地寫死的陣列數據，不用請求後端。綁定輸入框內容，拿到你輸入的關鍵字。用篩選邏輯：遍歷全部數據判斷標題 &#x2F; 文字有沒有包含輸入的關鍵字不分大小寫、模糊匹配，包含就顯示，不包含隱藏。輸入空內容時，自動還原顯示全部列表。 實現流程123456789101112131415161718192021222324252627282930313233343536373839404142434">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-04-25T10:45:12.000Z">
-<meta property="article:modified_time" content="2026-04-26T10:29:58.188Z">
+<meta property="article:published_time" content="2026-04-26T11:53:38.000Z">
+<meta property="article:modified_time" content="2026-04-26T12:39:49.876Z">
 <meta property="article:author" content="翟哲">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>父組件控制頁面切換並寫數據，子組件來接收數據來實現頁面印刷 - </title>
+  <title>Vue3實現搜索框數據搜索 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -328,7 +328,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="父組件控制頁面切換並寫數據，子組件來接收數據來實現頁面印刷"></span>
+            <span id="subtitle" data-typed-text="Vue3實現搜索框數據搜索"></span>
           
         </div>
 
@@ -339,8 +339,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-04-25 18:45" pubdate>
-          2026年4月25日 晚上
+        <time datetime="2026-04-26 19:53" pubdate>
+          2026年4月26日 晚上
         </time>
       </span>
     
@@ -351,7 +351,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.8k 字
         
       </span>
     
@@ -362,7 +362,7 @@
         
         
         
-          11 分钟
+          15 分钟
         
       </span>
     
@@ -401,24 +401,20 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">父組件控制頁面切換並寫數據，子組件來接收數據來實現頁面印刷</h1>
+            <h1 id="seo-header">Vue3實現搜索框數據搜索</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="父组件"><a href="#父组件" class="headerlink" title="父组件"></a><div style="color:red">父组件</div></h1><div style="color:red">給组件来赋予动态页面值，實現大量一樣頁面的組件的印刷</div>
-
-<div style="color:pink">组件的属性绑定</div>
-
-<p><code>&lt;组件 :pageData=&quot;pageAllData[currentPage]&quot; /&gt;</code></p>
-<div style="color:pink">按鈕實現頁面切換</div>
-
-<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bottom-buttons&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;prevPage&quot;</span> <span class="hljs-attr">:disabled</span>=<span class="hljs-string">&quot;currentPage === 1&quot;</span>&gt;</span>←<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">      </span><br><span class="language-xml">      <span class="hljs-comment">&lt;!-- 中間數字：當前頁 / 總頁數 --&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-num&quot;</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">currentPage</span> &#125;&#125;</span><span class="language-xml"> / 4<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;nextPage&quot;</span> <span class="hljs-attr">:disabled</span>=<span class="hljs-string">&quot;currentPage === 4&quot;</span>&gt;</span>→<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"></span><br></code></pre></td></tr></table></figure>
-
-<div style="color:pink">script裡面來實現數據寫入和函数调用</div>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">components</span>:&#123;<br>    組件,<br>  &#125;,<br><br>  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> &#123;<br>    <span class="hljs-comment">//當前頁碼</span><br>    <span class="hljs-attr">currentPage</span>: <span class="hljs-number">1</span><br>    <span class="hljs-comment">// 所有分页数据</span><br>    <span class="hljs-attr">pageAllData</span>: &#123;<br>        <span class="hljs-comment">//頁面1</span><br>        <span class="hljs-number">1</span>:&#123;<br>            box1&#123;<br><br>            &#125;<br>            box2&#123;<br><br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">//頁面2</span><br>        <span class="hljs-number">2</span>:&#123;<br>            box1&#123;<br><br>            &#125;<br>            <span class="hljs-attr">box2</span>:&#123;<br><br>            &#125;<br>        &#125;<br>    &#125;<br>   &#125;<br> &#125; <br>&#125;<br><span class="hljs-comment">//按钮切换</span><br><span class="hljs-attr">methods</span>: &#123;<br>  <span class="hljs-title function_">prevPage</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">currentPage</span> &gt; <span class="hljs-number">1</span>) &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentPage</span>--<br>    &#125;<br>  &#125;,<br>  <span class="hljs-title function_">nextPage</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">currentPage</span> &lt; <span class="hljs-number">4</span>) &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentPage</span>++<br>    &#125;<br>  &#125;<br>&#125;,<br></code></pre></td></tr></table></figure>
-<h1 id="子组件接收数据"><a href="#子组件接收数据" class="headerlink" title="子组件接收数据"></a><div style="color:red">子组件接收数据</div></h1><p>export default {<br>  data() {},       &#x2F;&#x2F; 数据、变量、开关<br>  methods: {},     &#x2F;&#x2F; 点击事件、函数<br>  components: {},  &#x2F;&#x2F; 子组件<br>  &#x2F;&#x2F;傳值<br>  props: {<br>  &#x2F;&#x2F; 接收父组件传过来的、当前这一整页的全部数据<br>  pageData: {<br>    type: Object, &#x2F;&#x2F;對象類型<br>    &#x2F;&#x2F; 默认空对象，防止报错<br>    default: () &#x3D;&gt; ({})<br>  }<br> },<br>}</p>
+                <p>準備一份本地寫死的陣列數據，不用請求後端。<br>綁定輸入框內容，拿到你輸入的關鍵字。<br>用篩選邏輯：<br>遍歷全部數據<br>判斷標題 &#x2F; 文字有沒有包含輸入的關鍵字<br>不分大小寫、模糊匹配，包含就顯示，不包含隱藏。<br>輸入空內容時，自動還原顯示全部列表。</p>
+<h1 id="實現流程"><a href="#實現流程" class="headerlink" title="實現流程"></a>實現流程</h1><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;search-container&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-comment">&lt;!-- 搜索输入框 --&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">input</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;keyword&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;搜索内容...&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;search-input&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">    /&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">    <span class="hljs-comment">&lt;!-- 搜索结果列表 --&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in filteredList&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item.id&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span></span><br><span class="language-xml">        </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">item.name</span> &#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; ref, computed &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-comment">// 本地模拟数据（代替后端）</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> dataList = <span class="hljs-title function_">ref</span>([</span></span><br><span class="language-javascript"><span class="language-xml">  &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Vue3 前端开发&#x27;</span> &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;React 框架学习&#x27;</span> &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;CSS 渐变背景&#x27;</span> &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;JavaScript 基础&#x27;</span> &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">5</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;无后端搜索功能&#x27;</span> &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">])</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-comment">// 搜索关键词</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> keyword = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>)</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-comment">// 计算属性：自动过滤结果（核心搜索逻辑）</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> filteredList = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-comment">// 没有关键词时返回全部</span></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-keyword">if</span> (!keyword.<span class="hljs-property">value</span>) <span class="hljs-keyword">return</span> dataList.<span class="hljs-property">value</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-comment">// 有搜索词 → 模糊匹配过滤</span></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-keyword">return</span> dataList.<span class="hljs-property">value</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span></span></span><br><span class="language-javascript"><span class="language-xml">    item.<span class="hljs-property">name</span>.<span class="hljs-title function_">toLowerCase</span>().<span class="hljs-title function_">includes</span>(keyword.<span class="hljs-property">value</span>.<span class="hljs-title function_">toLowerCase</span>())</span></span><br><span class="language-javascript"><span class="language-xml">  )</span></span><br><span class="language-javascript"><span class="language-xml">&#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"></span><br></code></pre></td></tr></table></figure>
+<h1 id="建立-Pinia-倉庫（放共用數據）"><a href="#建立-Pinia-倉庫（放共用數據）" class="headerlink" title="建立 Pinia 倉庫（放共用數據）"></a>建立 Pinia 倉庫（放共用數據）</h1><h2 id="第一步：先確認專案有安裝-Pinia"><a href="#第一步：先確認專案有安裝-Pinia" class="headerlink" title="第一步：先確認專案有安裝 Pinia"></a>第一步：先確認專案有安裝 Pinia</h2><p>Vue3 專案一般預設自帶。沒有的話只裝一次：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cmake">plaintext<br>npm <span class="hljs-keyword">install</span> pinia<br><br></code></pre></td></tr></table></figure>
+<h2 id="第二步：建立-Pinia-倉庫（放共用數據）"><a href="#第二步：建立-Pinia-倉庫（放共用數據）" class="headerlink" title="第二步：建立 Pinia 倉庫（放共用數據）"></a>第二步：建立 Pinia 倉庫（放共用數據）</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><br>在 <span class="hljs-attribute">src</span> 裡新建資料夾：stores<br>裡面新建檔案：listStore<span class="hljs-selector-class">.js</span><br><br></code></pre></td></tr></table></figure>
+<p>把原本寫在別的組件 data 裡的全部數據，整個搬來這裡<br>👉 意思：原本數據藏在單一組件 → 現在拿出來放「公共數據庫」所有組件都能讀、都能搜。</p>
+<h2 id="第三步：把原始數據搬進-Pinia"><a href="#第三步：把原始數據搬進-Pinia" class="headerlink" title="第三步：把原始數據搬進 Pinia"></a>第三步：把原始數據搬進 Pinia</h2><p>原本某個組件私有的列表數據，全部剪下來，貼進 Pinia 的 state 裡。這份數據就變成：全域共用、任何頁面 &#x2F; 組件都能直接取用。</p>
+<h2 id="第四步：搜索框組件引入-Pinia-倉庫"><a href="#第四步：搜索框組件引入-Pinia-倉庫" class="headerlink" title="第四步：搜索框組件引入 Pinia 倉庫"></a>第四步：搜索框組件引入 Pinia 倉庫</h2><p>在搜索框那個 vue 組件<br>引入你剛才建立的 listStore<br>直接拿到完整原始數據<br>不用跨組件傳值、不用 props、不用事件。<br>第五步：你的搜索邏輯直接用<br>輸入框：v-model&#x3D;”keyword”<br>過濾的來源數據：直接抓 Pinia 裡的公共列表<br>輸入文字 → 過濾 Pinia 的數據 → 顯示結果</p>
+<h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><p>把別組件的私有數據 → 搬到 Pinia（公共倉庫）<br>搜索組件引入 Pinia<br>拿 Pinia 的數據 + v-model關鍵字 做本地過濾<br>完成跨組件搜索，永久好用</p>
 
                 
               </div>
@@ -457,8 +453,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>父組件控制頁面切換並寫數據，子組件來接收數據來實現頁面印刷</div>
-      <div>http://example.com/2026/04/25/父組件控制頁面切換並寫數據，子組件來接收數據來實現頁面印刷/</div>
+      <div>Vue3實現搜索框數據搜索</div>
+      <div>http://example.com/2026/04/26/Vue3實現搜索框數據搜索/</div>
     </div>
     <div class="license-meta">
       
@@ -470,7 +466,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年4月25日</div>
+          <div>2026年4月26日</div>
         </div>
       
       
@@ -502,18 +498,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/25/Vue3%E7%B5%84%E4%BB%B6%E6%8E%92%E7%89%88/" title="vue組件排版">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vue組件排版</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/25/%E5%AF%A6%E7%8F%BE%E8%B7%AF%E7%94%B1-vue-router-%E8%B7%B3%E8%BD%89/" title="實現路由(vue-router)跳轉">
-                        <span class="hidden-mobile">實現路由(vue-router)跳轉</span>
+                      <a href="/2026/04/25/Vue3%E7%B5%84%E4%BB%B6%E6%8E%92%E7%89%88/" title="vue組件排版">
+                        <span class="hidden-mobile">vue組件排版</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

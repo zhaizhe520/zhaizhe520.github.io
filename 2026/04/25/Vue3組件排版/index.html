@@ -19,15 +19,15 @@
   <meta name="author" content="翟哲">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基本不會亂的組件排班123456789101112131415161718src&#x2F; ├─ components&#x2F;       ✅ 所有小組件 │   ├─ layout&#x2F;       ✅ 布局：導航、底部、側欄 │   ├─ common&#x2F;       ✅ 通用：按鈕、卡片、列表 │   ├─ home&#x2F;         ✅ 首頁專用組件 │   └─ user&#x2F;         ✅ 會員專用組件">
+    <meta name="description" content="組件基本排版">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue組件排版">
 <meta property="og:url" content="http://example.com/2026/04/25/Vue3%E7%B5%84%E4%BB%B6%E6%8E%92%E7%89%88/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="基本不會亂的組件排班123456789101112131415161718src&#x2F; ├─ components&#x2F;       ✅ 所有小組件 │   ├─ layout&#x2F;       ✅ 布局：導航、底部、側欄 │   ├─ common&#x2F;       ✅ 通用：按鈕、卡片、列表 │   ├─ home&#x2F;         ✅ 首頁專用組件 │   └─ user&#x2F;         ✅ 會員專用組件">
+<meta property="og:description" content="組件基本排版">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-25T10:54:55.000Z">
-<meta property="article:modified_time" content="2026-04-25T10:58:30.658Z">
+<meta property="article:modified_time" content="2026-04-26T12:36:15.299Z">
 <meta property="article:author" content="翟哲">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -351,7 +351,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          243 字
+          454 字
         
       </span>
     
@@ -362,7 +362,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -406,7 +406,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="基本不會亂的組件排班"><a href="#基本不會亂的組件排班" class="headerlink" title="基本不會亂的組件排班"></a>基本不會亂的組件排班</h1><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs nix"><br>src<span class="hljs-symbol">/</span><br> ├─ components<span class="hljs-symbol">/</span>       ✅ 所有小組件<br> │   ├─ layout<span class="hljs-symbol">/</span>       ✅ 布局：導航、底部、側欄<br> │   ├─ common<span class="hljs-symbol">/</span>       ✅ 通用：按鈕、卡片、列表<br> │   ├─ home<span class="hljs-symbol">/</span>         ✅ 首頁專用組件<br> │   └─ user<span class="hljs-symbol">/</span>         ✅ 會員專用組件<br> │<br> ├─ views<span class="hljs-symbol">/</span>            ✅ 所有頁面<br> │   ├─ Home.vue<br> │   ├─ Works.vue<br> │   ├─ About.vue<br> │   └─ user<span class="hljs-symbol">/</span><br> │       ├─ Login.vue<br> │       └─ Info.vue<br> │<br> ├─ router<span class="hljs-symbol">/</span>           ✅ 路由<br> └─ assets<span class="hljs-symbol">/</span>           ✅ 圖片、CSS<br></code></pre></td></tr></table></figure>
+                <h1 id="Vue3組件基本排版"><a href="#Vue3組件基本排版" class="headerlink" title="Vue3組件基本排版"></a>Vue3組件基本排版</h1><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs nix"><br>src<span class="hljs-symbol">/</span><br> ├─ components<span class="hljs-symbol">/</span>       ✅ 所有小组件<br> │   ├─ layout<span class="hljs-symbol">/</span>       ✅ 布局：导航、底部、侧边栏<br> │   ├─ common<span class="hljs-symbol">/</span>       ✅ 通用：按钮、卡片、列表、输入框<br> │   ├─ home<span class="hljs-symbol">/</span>         ✅ 首页专用组件<br> │   └─ user<span class="hljs-symbol">/</span>         ✅ 会员专用组件<br> │<br> ├─ views<span class="hljs-symbol">/</span>            ✅ 所有页面（路由页面）<br> │   ├─ Home.vue<br> │   ├─ Works.vue     ✅ 作品列表页<br> │   ├─ About.vue<br> │   └─ user<span class="hljs-symbol">/</span><br> │       ├─ Login.vue<br> │       └─ Info.vue<br> │<br> ├─ stores<span class="hljs-symbol">/</span>           ✅ Pinia 全局数据仓库（重点！）<br> │   └─ useWorkStore.js   ✅ 存放你的所有作品数据、搜索数据<br> │<br> ├─ router<span class="hljs-symbol">/</span>           ✅ 路由<br> ├─ assets<span class="hljs-symbol">/</span>           ✅ 图片、CSS、字体、静态资源<br> │<br> ├─ utils<span class="hljs-symbol">/</span>            ✅ 工具函数（时间、格式化、通用方法）<br> ├─ api<span class="hljs-symbol">/</span>              ✅ 接口请求（未来接后端用）<br> ├─ styles<span class="hljs-symbol">/</span>           ✅ 全局 CSS、主题、渐变、变量<br> ├─ constants<span class="hljs-symbol">/</span>        ✅ 常量、枚举、固定数据<br> └─ main.js           ✅ 入口文件<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -488,6 +488,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2026/04/26/Vue3%E5%AF%A6%E7%8F%BE%E6%90%9C%E7%B4%A2%E6%A1%86%E6%95%B8%E6%93%9A%E6%90%9C%E7%B4%A2/" title="Vue3實現搜索框數據搜索">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Vue3實現搜索框數據搜索</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
