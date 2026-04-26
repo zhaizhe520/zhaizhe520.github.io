@@ -19,21 +19,21 @@
   <meta name="author" content="翟哲">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基本不會亂的組件排班123456789101112131415161718src&#x2F; ├─ components&#x2F;       ✅ 所有小組件 │   ├─ layout&#x2F;       ✅ 布局：導航、底部、側欄 │   ├─ common&#x2F;       ✅ 通用：按鈕、卡片、列表 │   ├─ home&#x2F;         ✅ 首頁專用組件 │   └─ user&#x2F;         ✅ 會員專用組件">
+    <meta name="description" content="vue-router">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue組件WEB具體學習">
-<meta property="og:url" content="http://example.com/2026/04/20/Vue%E7%B5%84%E4%BB%B6WEB/index.html">
+<meta property="og:title" content="路由跳轉">
+<meta property="og:url" content="http://example.com/2026/04/20/Vue%E5%AF%A6%E7%8F%BE%E8%B7%AF%E7%94%B1%E3%80%90vue-router%E3%80%91%E8%B7%B3%E8%BD%89/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="基本不會亂的組件排班123456789101112131415161718src&#x2F; ├─ components&#x2F;       ✅ 所有小組件 │   ├─ layout&#x2F;       ✅ 布局：導航、底部、側欄 │   ├─ common&#x2F;       ✅ 通用：按鈕、卡片、列表 │   ├─ home&#x2F;         ✅ 首頁專用組件 │   └─ user&#x2F;         ✅ 會員專用組件">
+<meta property="og:description" content="vue-router">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-20T08:25:05.000Z">
-<meta property="article:modified_time" content="2026-04-21T10:53:45.767Z">
+<meta property="article:modified_time" content="2026-04-25T11:04:22.921Z">
 <meta property="article:author" content="翟哲">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Vue組件WEB具體學習 - </title>
+  <title>路由跳轉 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -328,7 +328,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vue組件WEB具體學習"></span>
+            <span id="subtitle" data-typed-text="路由跳轉"></span>
           
         </div>
 
@@ -351,7 +351,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4k 字
+          3.7k 字
         
       </span>
     
@@ -362,7 +362,7 @@
         
         
         
-          33 分钟
+          31 分钟
         
       </span>
     
@@ -401,13 +401,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Vue組件WEB具體學習</h1>
+            <h1 id="seo-header">路由跳轉</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="基本不會亂的組件排班"><a href="#基本不會亂的組件排班" class="headerlink" title="基本不會亂的組件排班"></a>基本不會亂的組件排班</h1><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs nix"><br>src<span class="hljs-symbol">/</span><br> ├─ components<span class="hljs-symbol">/</span>       ✅ 所有小組件<br> │   ├─ layout<span class="hljs-symbol">/</span>       ✅ 布局：導航、底部、側欄<br> │   ├─ common<span class="hljs-symbol">/</span>       ✅ 通用：按鈕、卡片、列表<br> │   ├─ home<span class="hljs-symbol">/</span>         ✅ 首頁專用組件<br> │   └─ user<span class="hljs-symbol">/</span>         ✅ 會員專用組件<br> │<br> ├─ views<span class="hljs-symbol">/</span>            ✅ 所有頁面<br> │   ├─ Home.vue<br> │   ├─ Works.vue<br> │   ├─ About.vue<br> │   └─ user<span class="hljs-symbol">/</span><br> │       ├─ Login.vue<br> │       └─ Info.vue<br> │<br> ├─ router<span class="hljs-symbol">/</span>           ✅ 路由<br> └─ assets<span class="hljs-symbol">/</span>           ✅ 圖片、CSS<br></code></pre></td></tr></table></figure>
-<h1 id="項目-導航欄跳轉原理"><a href="#項目-導航欄跳轉原理" class="headerlink" title="項目 導航欄跳轉原理"></a>項目 導航欄跳轉原理</h1><mark style="background:#fff192; color:#000; padding:2px 4px; border-radius:3px;">
+                <h1 id="項目-導航欄跳轉原理"><a href="#項目-導航欄跳轉原理" class="headerlink" title="項目 導航欄跳轉原理"></a>項目 導航欄跳轉原理</h1><mark style="background:#fff192; color:#000; padding:2px 4px; border-radius:3px;">
 页面 = 一个个 .vue 组件
 跳转 = 路由（Vue Router）
 导航栏 = 用 router-link 实现跳转
@@ -512,8 +511,8 @@ component = 你要顯示哪個頁面（.vue 文件）
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vue組件WEB具體學習</div>
-      <div>http://example.com/2026/04/20/Vue組件WEB/</div>
+      <div>路由跳轉</div>
+      <div>http://example.com/2026/04/20/Vue實現路由【vue-router】跳轉/</div>
     </div>
     <div class="license-meta">
       
