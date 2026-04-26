@@ -27,7 +27,7 @@
 <meta property="og:description" content="組件基本排版">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-25T10:54:55.000Z">
-<meta property="article:modified_time" content="2026-04-26T12:36:15.299Z">
+<meta property="article:modified_time" content="2026-04-26T14:39:21.002Z">
 <meta property="article:author" content="翟哲">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -351,7 +351,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          454 字
+          973 字
         
       </span>
     
@@ -362,7 +362,7 @@
         
         
         
-          4 分钟
+          9 分钟
         
       </span>
     
@@ -407,6 +407,7 @@
               <div class="markdown-body">
                 
                 <h1 id="Vue3組件基本排版"><a href="#Vue3組件基本排版" class="headerlink" title="Vue3組件基本排版"></a>Vue3組件基本排版</h1><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs nix"><br>src<span class="hljs-symbol">/</span><br> ├─ components<span class="hljs-symbol">/</span>       ✅ 所有小组件<br> │   ├─ layout<span class="hljs-symbol">/</span>       ✅ 布局：导航、底部、侧边栏<br> │   ├─ common<span class="hljs-symbol">/</span>       ✅ 通用：按钮、卡片、列表、输入框<br> │   ├─ home<span class="hljs-symbol">/</span>         ✅ 首页专用组件<br> │   └─ user<span class="hljs-symbol">/</span>         ✅ 会员专用组件<br> │<br> ├─ views<span class="hljs-symbol">/</span>            ✅ 所有页面（路由页面）<br> │   ├─ Home.vue<br> │   ├─ Works.vue     ✅ 作品列表页<br> │   ├─ About.vue<br> │   └─ user<span class="hljs-symbol">/</span><br> │       ├─ Login.vue<br> │       └─ Info.vue<br> │<br> ├─ stores<span class="hljs-symbol">/</span>           ✅ Pinia 全局数据仓库（重点！）<br> │   └─ useWorkStore.js   ✅ 存放你的所有作品数据、搜索数据<br> │<br> ├─ router<span class="hljs-symbol">/</span>           ✅ 路由<br> ├─ assets<span class="hljs-symbol">/</span>           ✅ 图片、CSS、字体、静态资源<br> │<br> ├─ utils<span class="hljs-symbol">/</span>            ✅ 工具函数（时间、格式化、通用方法）<br> ├─ api<span class="hljs-symbol">/</span>              ✅ 接口请求（未来接后端用）<br> ├─ styles<span class="hljs-symbol">/</span>           ✅ 全局 CSS、主题、渐变、变量<br> ├─ constants<span class="hljs-symbol">/</span>        ✅ 常量、枚举、固定数据<br> └─ main.js           ✅ 入口文件<br></code></pre></td></tr></table></figure>
+<h1 id="Vue3-选项式-API"><a href="#Vue3-选项式-API" class="headerlink" title="Vue3 选项式 API"></a>Vue3 选项式 API</h1> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs javascript"> <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-comment">// 组件名</span><br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Demo&quot;</span>,<br><br>  <span class="hljs-comment">// 子组件注册</span><br>  <span class="hljs-attr">components</span>: &#123;&#125;,<br><br>  <span class="hljs-comment">// 父向子传参</span><br>  <span class="hljs-attr">props</span>: &#123;<br>    <span class="hljs-attr">title</span>: &#123;<br>      <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,<br>      <span class="hljs-attr">default</span>: <span class="hljs-string">&quot;&quot;</span><br>    &#125;<br>  &#125;,<br><br>  <span class="hljs-comment">// 数据、变量、开关</span><br>  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> &#123;<br>      <span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;hello vue3&quot;</span>,<br>      <span class="hljs-attr">flag</span>: <span class="hljs-literal">false</span>,<br>      <span class="hljs-attr">list</span>: []<br>    &#125;;<br>  &#125;,<br><br>  <span class="hljs-comment">// 计算属性</span><br>  <span class="hljs-attr">computed</span>: &#123;&#125;,<br><br>  <span class="hljs-comment">// 监听</span><br>  <span class="hljs-attr">watch</span>: &#123;&#125;,<br><br>  <span class="hljs-comment">// 方法、点击事件、函数</span><br>  <span class="hljs-attr">methods</span>: &#123;<br>    <span class="hljs-title function_">handleClick</span>(<span class="hljs-params"></span>) &#123;<br>      <br>    &#125;<br>  &#125;,<br><br>  <span class="hljs-comment">// 生命周期</span><br>  <span class="hljs-title function_">created</span>(<span class="hljs-params"></span>) &#123;&#125;,<br>  <span class="hljs-title function_">mounted</span>(<span class="hljs-params"></span>) &#123;&#125;,<br>  <span class="hljs-title function_">unmounted</span>(<span class="hljs-params"></span>) &#123;&#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
