@@ -1,0 +1,890 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="翟哲">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Galgame 引擎架構">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Galgame 引擎架構">
+<meta property="og:url" content="http://example.com/2026/05/07/Galgame-%E5%BC%95%E6%93%8E%E6%9E%B6%E6%A7%8B/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Galgame 引擎架構">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-07T02:11:44.000Z">
+<meta property="article:modified_time" content="2026-05-09T01:15:59.892Z">
+<meta property="article:author" content="翟哲">
+<meta property="article:tag" content="vue3組件插入Galgame">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Galgame 引擎架構 - </title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>我不是二次元</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/zhaizhe520" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/%E8%BC%95%E5%B0%8F%E8%AA%AA" target="_self">
+                <i class="iconfont icon-file-fill"></i>
+                <span>輕小說</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="https://github.com/zhaizhe520" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/%E8%BC%95%E5%B0%8F%E8%AA%AA" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-file-fill"></i>
+                  <span>輕小說</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Galgame 引擎架構"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-05-07 10:11" pubdate>
+          2026年5月7日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          29 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Galgame 引擎架構</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="數據結構設計-Schema"><a href="#數據結構設計-Schema" class="headerlink" title="數據結構設計 (Schema)"></a>數據結構設計 (Schema)</h1><p>首先定義劇本格式，建議將劇本抽離成 JSON 檔案，方便後續擴充。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs css">// <span class="hljs-attribute">src</span>/data/chapter1<span class="hljs-selector-class">.json</span><br>&#123;<br>  &quot;scenes&quot;: [<br>    &#123;<br>      &quot;id&quot;: <span class="hljs-string">&quot;start&quot;</span>,<br>      <span class="hljs-string">&quot;background&quot;</span>: <span class="hljs-string">&quot;/bg/classroom.jpg&quot;</span>,<br>      <span class="hljs-string">&quot;character&quot;</span>: &#123; &quot;name&quot;: <span class="hljs-string">&quot;艾莉絲&quot;</span>, <span class="hljs-string">&quot;image&quot;</span>: <span class="hljs-string">&quot;/char/alice_happy.png&quot;</span> &#125;,<br>      &quot;dialogue&quot;: <span class="hljs-string">&quot;今天天氣真好，要一起去圖書館嗎？&quot;</span>,<br>      <span class="hljs-string">&quot;sound&quot;</span>: <span class="hljs-string">&quot;/se/click.mp3&quot;</span>,<br>      <span class="hljs-string">&quot;nextId&quot;</span>: <span class="hljs-string">&quot;choice_1&quot;</span><br>    &#125;,<br>    &#123;<br>      &quot;id&quot;: <span class="hljs-string">&quot;choice_1&quot;</span>,<br>      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;choice&quot;</span>,<br>      <span class="hljs-string">&quot;dialogue&quot;</span>: <span class="hljs-string">&quot;該怎麼回答她呢？&quot;</span>,<br>      <span class="hljs-string">&quot;options&quot;</span>: [<br>        &#123; &quot;<span class="hljs-selector-tag">text</span>&quot;: <span class="hljs-string">&quot;好啊，走吧！&quot;</span>, <span class="hljs-string">&quot;targetId&quot;</span>: <span class="hljs-string">&quot;path_a&quot;</span>, <span class="hljs-string">&quot;points&quot;</span>: &#123; &quot;alice&quot;: <span class="hljs-number">10</span> &#125; &#125;,<br>        &#123; &quot;<span class="hljs-selector-tag">text</span>&quot;: <span class="hljs-string">&quot;抱歉，我要回去打遊戲。&quot;</span>, <span class="hljs-string">&quot;targetId&quot;</span>: <span class="hljs-string">&quot;path_b&quot;</span>, <span class="hljs-string">&quot;points&quot;</span>: &#123; &quot;alice&quot;: -<span class="hljs-number">5</span> &#125; &#125;<br>      ]<br>    &#125;<br>  ]<br>&#125;S<br></code></pre></td></tr></table></figure>
+<h1 id="狀態管理-Pinia-Store"><a href="#狀態管理-Pinia-Store" class="headerlink" title="狀態管理 (Pinia Store)"></a>狀態管理 (Pinia Store)</h1><p>使用 Pinia 來管理遊戲狀態（存檔、好感度、目前進度），這樣你在任何組件都能存取。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br><span class="hljs-comment">// src/stores/game.js</span><br><span class="hljs-keyword">import</span> &#123; defineStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;pinia&#x27;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> useGameStore = <span class="hljs-title function_">defineStore</span>(<span class="hljs-string">&#x27;game&#x27;</span>, &#123;<br>  <span class="hljs-attr">state</span>: <span class="hljs-function">() =&gt;</span> (&#123;<br>    <span class="hljs-attr">currentSceneId</span>: <span class="hljs-string">&#x27;start&#x27;</span>,<br>    <span class="hljs-attr">history</span>: [], <span class="hljs-comment">// 用於回看對話紀錄 (Backlog)</span><br>    <span class="hljs-attr">stats</span>: &#123; <span class="hljs-attr">alice</span>: <span class="hljs-number">0</span> &#125;, <span class="hljs-comment">// 好感度數值</span><br>    <span class="hljs-attr">isAuto</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 自動播放</span><br>    <span class="hljs-attr">isTyping</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// 是否正在打字機動畫中</span><br>  &#125;),<br>  <span class="hljs-attr">actions</span>: &#123;<br>    <span class="hljs-title function_">moveTo</span>(<span class="hljs-params">id</span>) &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentSceneId</span> = id;<br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+<h1 id="核心組件開發：打字機效果-Typewriter"><a href="#核心組件開發：打字機效果-Typewriter" class="headerlink" title="核心組件開發：打字機效果 (Typewriter)"></a>核心組件開發：打字機效果 (Typewriter)</h1><p>Galgame 的靈魂在於文字逐字出現。我們可以用一個 Composable 來處理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// src/composables/useTypewriter.js</span><br><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">useTypewriter</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> displayedText = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>);<br>  <span class="hljs-keyword">let</span> timer = <span class="hljs-literal">null</span>;<br><br>  <span class="hljs-keyword">const</span> <span class="hljs-title function_">type</span> = (<span class="hljs-params">fullText, speed = <span class="hljs-number">50</span></span>) =&gt; &#123;<br>    displayedText.<span class="hljs-property">value</span> = <span class="hljs-string">&#x27;&#x27;</span>;<br>    <span class="hljs-built_in">clearInterval</span>(timer);<br>    <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br>    timer = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span> (i &lt; fullText.<span class="hljs-property">length</span>) &#123;<br>        displayedText.<span class="hljs-property">value</span> += fullText.<span class="hljs-title function_">charAt</span>(i);<br>        i++;<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-built_in">clearInterval</span>(timer);<br>      &#125;<br>    &#125;, speed);<br>  &#125;;<br><br>  <span class="hljs-keyword">const</span> <span class="hljs-title function_">skip</span> = (<span class="hljs-params">fullText</span>) =&gt; &#123;<br>    <span class="hljs-built_in">clearInterval</span>(timer);<br>    displayedText.<span class="hljs-property">value</span> = fullText;<br>  &#125;;<br><br>  <span class="hljs-keyword">return</span> &#123; displayedText, type, skip &#125;;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h1 id="畫面佈局架構-App-vue-GameView-vue"><a href="#畫面佈局架構-App-vue-GameView-vue" class="headerlink" title="畫面佈局架構 (App.vue &#x2F; GameView.vue)"></a>畫面佈局架構 (App.vue &#x2F; GameView.vue)</h1><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;stage&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-comment">&lt;!-- 背景層 --&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">transition</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;fade&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;currentScene.background&quot;</span> <span class="hljs-attr">:src</span>=<span class="hljs-string">&quot;currentScene.background&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bg&quot;</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">transition</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">    <span class="hljs-comment">&lt;!-- 立繪層 --&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">transition</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;slide-fade&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;currentScene.character&quot;</span> </span></span><br><span class="hljs-tag"><span class="language-xml">           <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;currentScene.character.image&quot;</span> </span></span><br><span class="hljs-tag"><span class="language-xml">           <span class="hljs-attr">:src</span>=<span class="hljs-string">&quot;currentScene.character.image&quot;</span> </span></span><br><span class="hljs-tag"><span class="language-xml">           <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;character-sprite&quot;</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">transition</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">    <span class="hljs-comment">&lt;!-- 對話框區域 --&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ui-layer&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;handleScreenClick&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;currentScene.type === &#x27;choice&#x27;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;choices&quot;</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;opt in currentScene.options&quot;</span> </span></span><br><span class="hljs-tag"><span class="language-xml">                @<span class="hljs-attr">click.stop</span>=<span class="hljs-string">&quot;makeChoice(opt)&quot;</span>&gt;</span></span><br><span class="language-xml">          </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">opt.text</span> &#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;message-box&quot;</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;name-tag&quot;</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">currentScene.character.name</span> &#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">displayedText</span> &#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h1 id="立项开发清单-Roadmap"><a href="#立项开发清单-Roadmap" class="headerlink" title="立项开发清单 (Roadmap)"></a>立项开发清单 (Roadmap)</h1><table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>阶段重点</th>
+<th>核心任务</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一阶段</td>
+<td>核心渲染实现</td>
+<td>点击切换、背景&#x2F;立绘显示、打字机文字效果</td>
+</tr>
+<tr>
+<td>第二阶段</td>
+<td>分支系统实作</td>
+<td>「选项按钮」与跳转逻辑</td>
+</tr>
+<tr>
+<td>第三阶段</td>
+<td>资源管理</td>
+<td>预加载图片与音频，防止切换时出现白屏或延迟</td>
+</tr>
+<tr>
+<td>第四阶段</td>
+<td>UI&#x2F;UX</td>
+<td>增加 Log（回看）、Skip（快进）、Save&#x2F;Load（存档）功能</td>
+</tr>
+<tr>
+<td>第五阶段</td>
+<td>特效</td>
+<td>画面震动（遇到冲击）、淡入淡出、BGM 循环播放</td>
+</tr>
+</tbody></table>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A0%85%E7%9B%AE/" class="category-chain-item">項目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E9%A0%85%E7%9B%AE/%E7%B5%84%E4%BB%B6/" class="category-chain-item">組件</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/vue3%E7%B5%84%E4%BB%B6%E6%8F%92%E5%85%A5Galgame/" class="print-no-link">#vue3組件插入Galgame</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Galgame 引擎架構</div>
+      <div>http://example.com/2026/05/07/Galgame-引擎架構/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>翟哲</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年5月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/05/07/vue%E9%A0%85%E7%9B%AE%E5%90%88%E4%BD%B5/" title="vue項目合併">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">vue項目合併</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/05/06/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%89%8D%E7%AB%AF%E6%89%93%E5%8C%85%E5%87%BA%E6%9D%A5%E7%9A%84%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E5%90%8D%E5%AD%97%E6%98%AF%E4%B8%80%E4%B8%B2Hash%E5%80%BC/" title="为什么前端打包出来的静态文件名字是一串Hash值?">
+                        <span class="hidden-mobile">为什么前端打包出来的静态文件名字是一串Hash值?</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

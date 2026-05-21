@@ -1,0 +1,864 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="翟哲">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="準備一份本地寫死的陣列數據，不用請求後端。綁定輸入框內容，拿到你輸入的關鍵字。用篩選邏輯：遍歷全部數據判斷標題 &#x2F; 文字有沒有包含輸入的關鍵字不分大小寫、模糊匹配，包含就顯示，不包含隱藏。輸入空內容時，自動還原顯示全部列表。 實現流程123456789101112131415161718192021222324252627282930313233343536373839404142434">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue3實現搜索框數據搜索">
+<meta property="og:url" content="http://example.com/2026/04/26/Vue3%E5%AF%A6%E7%8F%BE%E6%90%9C%E7%B4%A2%E6%A1%86%E6%95%B8%E6%93%9A%E6%90%9C%E7%B4%A2/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="準備一份本地寫死的陣列數據，不用請求後端。綁定輸入框內容，拿到你輸入的關鍵字。用篩選邏輯：遍歷全部數據判斷標題 &#x2F; 文字有沒有包含輸入的關鍵字不分大小寫、模糊匹配，包含就顯示，不包含隱藏。輸入空內容時，自動還原顯示全部列表。 實現流程123456789101112131415161718192021222324252627282930313233343536373839404142434">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-26T11:53:38.000Z">
+<meta property="article:modified_time" content="2026-05-05T00:46:23.385Z">
+<meta property="article:author" content="翟哲">
+<meta property="article:tag" content="搜索框數據搜索">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Vue3實現搜索框數據搜索 - </title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>我不是二次元</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/zhaizhe520" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/%E8%BC%95%E5%B0%8F%E8%AA%AA" target="_self">
+                <i class="iconfont icon-file-fill"></i>
+                <span>輕小說</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="https://github.com/zhaizhe520" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/%E8%BC%95%E5%B0%8F%E8%AA%AA" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-file-fill"></i>
+                  <span>輕小說</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Vue3實現搜索框數據搜索"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-04-26 19:53" pubdate>
+          2026年4月26日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          26 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Vue3實現搜索框數據搜索</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>準備一份本地寫死的陣列數據，不用請求後端。<br>綁定輸入框內容，拿到你輸入的關鍵字。<br>用篩選邏輯：<br>遍歷全部數據<br>判斷標題 &#x2F; 文字有沒有包含輸入的關鍵字<br>不分大小寫、模糊匹配，包含就顯示，不包含隱藏。<br>輸入空內容時，自動還原顯示全部列表。</p>
+<h1 id="實現流程"><a href="#實現流程" class="headerlink" title="實現流程"></a>實現流程</h1><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;search-container&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-comment">&lt;!-- 搜索输入框 --&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">input</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;keyword&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;搜索内容...&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;search-input&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">    /&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">    <span class="hljs-comment">&lt;!-- 搜索结果列表 --&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in filteredList&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item.id&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span></span><br><span class="language-xml">        </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">item.name</span> &#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; ref, computed &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-comment">// 本地模拟数据（代替后端）</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> dataList = <span class="hljs-title function_">ref</span>([</span></span><br><span class="language-javascript"><span class="language-xml">  &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Vue3 前端开发&#x27;</span> &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;React 框架学习&#x27;</span> &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;CSS 渐变背景&#x27;</span> &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;JavaScript 基础&#x27;</span> &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">5</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;无后端搜索功能&#x27;</span> &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">])</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-comment">// 搜索关键词</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> keyword = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>)</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-comment">// 计算属性：自动过滤结果（核心搜索逻辑）</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> filteredList = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-comment">// 没有关键词时返回全部</span></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-keyword">if</span> (!keyword.<span class="hljs-property">value</span>) <span class="hljs-keyword">return</span> dataList.<span class="hljs-property">value</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-comment">// 有搜索词 → 模糊匹配过滤</span></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-keyword">return</span> dataList.<span class="hljs-property">value</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span></span></span><br><span class="language-javascript"><span class="language-xml">    item.<span class="hljs-property">name</span>.<span class="hljs-title function_">toLowerCase</span>().<span class="hljs-title function_">includes</span>(keyword.<span class="hljs-property">value</span>.<span class="hljs-title function_">toLowerCase</span>())</span></span><br><span class="language-javascript"><span class="language-xml">  )</span></span><br><span class="language-javascript"><span class="language-xml">&#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"></span><br></code></pre></td></tr></table></figure>
+<h1 id="建立-Pinia-倉庫（放共用數據）"><a href="#建立-Pinia-倉庫（放共用數據）" class="headerlink" title="建立 Pinia 倉庫（放共用數據）"></a>建立 Pinia 倉庫（放共用數據）</h1><h2 id="第一步：先確認專案有安裝-Pinia"><a href="#第一步：先確認專案有安裝-Pinia" class="headerlink" title="第一步：先確認專案有安裝 Pinia"></a>第一步：先確認專案有安裝 Pinia</h2><p>Vue3 專案一般預設自帶。沒有的話只裝一次：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cmake">plaintext<br>npm <span class="hljs-keyword">install</span> pinia<br><br></code></pre></td></tr></table></figure>
+<h2 id="第二步：建立-Pinia-倉庫（放共用數據）"><a href="#第二步：建立-Pinia-倉庫（放共用數據）" class="headerlink" title="第二步：建立 Pinia 倉庫（放共用數據）"></a>第二步：建立 Pinia 倉庫（放共用數據）</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><br>在 <span class="hljs-attribute">src</span> 裡新建資料夾：stores<br>裡面新建檔案：listStore<span class="hljs-selector-class">.js</span><br><br></code></pre></td></tr></table></figure>
+<p>把原本寫在別的組件 data 裡的全部數據，整個搬來這裡<br>👉 意思：原本數據藏在單一組件 → 現在拿出來放「公共數據庫」所有組件都能讀、都能搜。</p>
+<h2 id="第三步：把原始數據搬進-Pinia"><a href="#第三步：把原始數據搬進-Pinia" class="headerlink" title="第三步：把原始數據搬進 Pinia"></a>第三步：把原始數據搬進 Pinia</h2><p>原本某個組件私有的列表數據，全部剪下來，貼進 Pinia 的 state 裡。這份數據就變成：全域共用、任何頁面 &#x2F; 組件都能直接取用。</p>
+<h2 id="第四步：搜索框組件引入-Pinia-倉庫"><a href="#第四步：搜索框組件引入-Pinia-倉庫" class="headerlink" title="第四步：搜索框組件引入 Pinia 倉庫"></a>第四步：搜索框組件引入 Pinia 倉庫</h2><p>在搜索框那個 vue 組件<br>引入你剛才建立的 listStore<br>直接拿到完整原始數據<br>不用跨組件傳值、不用 props、不用事件。<br>第五步：你的搜索邏輯直接用<br>輸入框：v-model&#x3D;”keyword”<br>過濾的來源數據：直接抓 Pinia 裡的公共列表<br>輸入文字 → 過濾 Pinia 的數據 → 顯示結果</p>
+<h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><p>把別組件的私有數據 → 搬到 Pinia（公共倉庫）<br>搜索組件引入 Pinia<br>拿 Pinia 的數據 + v-model關鍵字 做本地過濾<br>完成跨組件搜索，永久好用</p>
+<h1 id="好難我不會，什麼關鍵詞的懶搜索的"><a href="#好難我不會，什麼關鍵詞的懶搜索的" class="headerlink" title="好難我不會，什麼關鍵詞的懶搜索的"></a>好難我不會，什麼關鍵詞的懶搜索的</h1><p>搞不名白aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+<h1 id="第二次部署"><a href="#第二次部署" class="headerlink" title="第二次部署"></a>第二次部署</h1><p>這是一個非常經典的開發場景！針對你的問題「需要前後端結合還是前端就行了？」，答案通常取決於你的數據量：</p>
+<p>數據量小（例如 &lt; 500 條卡片）： 只要前端處理就行。一次性從 WordPress (WP) 抓取所有數據存入 Pinia，然後用 computed 進行過濾。這樣搜尋起來「秒出結果」，體驗最好。</p>
+<p>數據量極大（例如幾千幾萬條）： 需要前後端結合。透過 API 發送關鍵字給 WP，由後端過濾後只回傳匹配的結果。</p>
+<p>既然是個人作品集或一般展示頁（從你的代碼看來），「前端過濾」 是最推薦的做法。</p>
+<p>這是一個非常經典的開發場景！針對你的問題「需要前後端結合還是前端就行了？」，答案通常取決於你的數據量：</p>
+<p>數據量小（例如 &lt; 500 條卡片）： 只要前端處理就行。一次性從 WordPress (WP) 抓取所有數據存入 Pinia，然後用 computed 進行過濾。這樣搜尋起來「秒出結果」，體驗最好。</p>
+<p>數據量極大（例如幾千幾萬條）： 需要前後端結合。透過 API 發送關鍵字給 WP，由後端過濾後只回傳匹配的結果。</p>
+<p>既然是個人作品集或一般展示頁（從你的代碼看來），「前端過濾」 是最推薦的做法。</p>
+<h2 id="🛠️-實作步驟"><a href="#🛠️-實作步驟" class="headerlink" title="🛠️ 實作步驟"></a>🛠️ 實作步驟</h2><p>我們要利用 Vue 3 的 Computed (計算屬性)。它的邏輯是：當搜尋框的文字變動時，自動計算出一組「新的陣列」給頁面渲染。</p>
+<ol>
+<li>修改 Pinia Store (useWorkStore)<br>在 Store 裡面增加一個 searchQuery 來存放搜尋關鍵字。</li>
+</ol>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs pf">export <span class="hljs-keyword">const</span> useWorkStore = defineStore(&#x27;work&#x27;, &#123;<br>  <span class="hljs-keyword">state</span>: () =&gt; (&#123;<br>    searchQuery: &#x27;&#x27;, // 新增：存放搜尋文字<br>    pageAllData: &#123;<br>      <span class="hljs-number">1</span>: [&#123; textName: &#x27;Vue 專案&#x27;, imgSrc: &#x27;...&#x27; &#125;, &#123; textName: &#x27;React 專案&#x27;, imgSrc: &#x27;...&#x27; &#125;],<br>      <span class="hljs-number">2</span>: [], <br>      <span class="hljs-number">3</span>: [], <br>      <span class="hljs-number">4</span>: []<br>    &#125;<br>  &#125;),<br>  getters: &#123;<br>    // 新增：過濾後的數據<br>    filteredData(<span class="hljs-keyword">state</span>) &#123;<br>      // <span class="hljs-number">1</span>. 先把物件裡所有的陣列攤平（Flatten）成一個大陣列<br>      <span class="hljs-keyword">const</span> <span class="hljs-literal">all</span>Items = Object.values(<span class="hljs-keyword">state</span>.pageAllData).flat();<br>      <br>      // <span class="hljs-number">2</span>. 根據關鍵字過濾<br>      if (!<span class="hljs-keyword">state</span>.searchQuery) return <span class="hljs-literal">all</span>Items; // 沒搜尋時顯示全部<br>      <br>      return <span class="hljs-literal">all</span>Items.filter(item =&gt; <br>        item.textName.<span class="hljs-keyword">to</span>LowerCase().includes(<span class="hljs-keyword">state</span>.searchQuery.<span class="hljs-keyword">to</span>LowerCase())<br>      );<br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Vue%E6%A1%86%E6%9E%B6/" class="category-chain-item">Vue框架</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%90%9C%E7%B4%A2%E6%A1%86%E6%95%B8%E6%93%9A%E6%90%9C%E7%B4%A2/" class="print-no-link">#搜索框數據搜索</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Vue3實現搜索框數據搜索</div>
+      <div>http://example.com/2026/04/26/Vue3實現搜索框數據搜索/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>翟哲</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年4月26日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/04/27/pinia%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/" title="Pinia从入门到入土">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Pinia从入门到入土</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/04/25/Vue3%E7%B5%84%E4%BB%B6%E6%8E%92%E7%89%88/" title="vue組件排版">
+                        <span class="hidden-mobile">vue組件排版</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

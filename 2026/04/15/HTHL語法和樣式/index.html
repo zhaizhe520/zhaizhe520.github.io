@@ -1,0 +1,920 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="翟哲">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="HTML項目集成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML语法和样式">
+<meta property="og:url" content="http://example.com/2026/04/15/HTHL%E8%AA%9E%E6%B3%95%E5%92%8C%E6%A8%A3%E5%BC%8F/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="HTML項目集成">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-15T10:47:38.000Z">
+<meta property="article:modified_time" content="2026-05-17T09:45:52.858Z">
+<meta property="article:author" content="翟哲">
+<meta property="article:tag" content="HTML項目集成">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>HTML语法和样式 - </title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>我不是二次元</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/zhaizhe520" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/%E8%BC%95%E5%B0%8F%E8%AA%AA" target="_self">
+                <i class="iconfont icon-file-fill"></i>
+                <span>輕小說</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="https://github.com/zhaizhe520" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/%E8%BC%95%E5%B0%8F%E8%AA%AA" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-file-fill"></i>
+                  <span>輕小說</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="HTML语法和样式"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-04-15 18:47" pubdate>
+          2026年4月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          41 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">HTML语法和样式</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="兄弟選擇器"><a href="#兄弟選擇器" class="headerlink" title="兄弟選擇器"></a>兄弟選擇器</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css">父子 → 用 空格<br>css<br>.盒子<span class="hljs-selector-pseudo">:hover</span> .文字 &#123; &#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs 1c">兄弟 → 用 <span class="hljs-symbol">~</span><br><span class="hljs-symbol">css</span><br><span class="hljs-symbol">.盒子</span>:hover <span class="hljs-symbol">~ .文字 &#123; &#125;</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="不透明度-一般搭配-hover"><a href="#不透明度-一般搭配-hover" class="headerlink" title="不透明度  一般搭配 :hover"></a>不透明度  一般搭配 :hover</h1><p><code>opacity:0;</code><br><code>opacity:1;</code></p>
+<h1 id="移動"><a href="#移動" class="headerlink" title="移動"></a>移動</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs css">上下:transform: <span class="hljs-built_in">translateY</span>(<span class="hljs-number">0</span>); <span class="hljs-comment">/* 初始位置 */</span><br>左右:transform: <span class="hljs-built_in">translateX</span>(<span class="hljs-number">0</span>); <span class="hljs-comment">/* 初始位置 */</span><br>倾斜:transform: <span class="hljs-built_in">translate</span>(左右, 上下);<br>放大縮小:transform: <span class="hljs-built_in">scale</span>(数字);<br>旋轉:transform: <span class="hljs-built_in">rotate</span>(角度deg);<br><span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(<span class="hljs-number">0px</span>, <span class="hljs-number">0px</span>) <span class="hljs-built_in">scale</span>(<span class="hljs-number">0</span>) <span class="hljs-built_in">rotate</span>(<span class="hljs-number">0deg</span>);<br></code></pre></td></tr></table></figure>
+<h1 id="flex佈局"><a href="#flex佈局" class="headerlink" title="flex佈局"></a>flex佈局</h1><h2 id="父容器"><a href="#父容器" class="headerlink" title="父容器"></a>父容器</h2><ol>
+<li>方向：flex-direction<br>决定横着排还是竖着排</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs css">css<br><span class="hljs-attribute">flex-direction</span>: row;           <span class="hljs-comment">/* 默认 → 横着排（左到右）*/</span><br><span class="hljs-attribute">flex-direction</span>: column;         <span class="hljs-comment">/* 竖着排（上到下）*/</span><br><span class="hljs-attribute">flex-direction</span>: row-reverse;    <span class="hljs-comment">/* 横着反过来排 */</span><br><span class="hljs-attribute">flex-direction</span>: column-reverse; <span class="hljs-comment">/* 竖着反过来排 */</span><br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>换行：flex-wrap</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css">css<br><span class="hljs-attribute">flex-wrap</span>: nowrap;   <span class="hljs-comment">/* 默认，不换行，挤在一起 */</span><br><span class="hljs-attribute">flex-wrap</span>: wrap;     <span class="hljs-comment">/* 自动换行（最常用！）*/</span><br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>水平对齐：justify-content</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css">css<br><span class="hljs-attribute">justify-content</span>: flex-start;    <span class="hljs-comment">/* 左对齐（默认）*/</span><br><span class="hljs-attribute">justify-content</span>: flex-end;      <span class="hljs-comment">/* 右对齐 */</span><br><span class="hljs-attribute">justify-content</span>: center;        <span class="hljs-comment">/* 水平居中（最常用）*/</span><br><span class="hljs-attribute">justify-content</span>: space-between; <span class="hljs-comment">/* 两端对齐，中间自动分 */</span><br><span class="hljs-attribute">justify-content</span>: space-around;  <span class="hljs-comment">/* 每个子元素左右有间距 */</span><br><span class="hljs-attribute">justify-content</span>: space-evenly;  <span class="hljs-comment">/* 间距全部相等（最好看）*/</span><br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>垂直对齐：align-items</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs css">css<br><span class="hljs-attribute">align-items</span>: flex-start;   <span class="hljs-comment">/* 顶部对齐 */</span><br><span class="hljs-attribute">align-items</span>: flex-end;     <span class="hljs-comment">/* 底部对齐 */</span><br><span class="hljs-attribute">align-items</span>: center;       <span class="hljs-comment">/* 垂直居中（最常用！）*/</span><br><span class="hljs-attribute">align-items</span>: stretch;      <span class="hljs-comment">/* 拉伸填满高度 */</span><br></code></pre></td></tr></table></figure>
+<ol start="5">
+<li>多行垂直对齐：align-content<br>换行后才用</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css">css<br><span class="hljs-attribute">align-content</span>: center; <span class="hljs-comment">/* 多行垂直居中 */</span><br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>主轴方向切换（几乎不用）</li>
+</ol>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">flex-flow</span> = 方向 + 换行<br>css<br>flex-flow: row wrap;<br></code></pre></td></tr></table></figure>
+<h2 id="子容器"><a href="#子容器" class="headerlink" title="子容器"></a>子容器</h2><p>子元素 3 个常用属性</p>
+<ol>
+<li>flex: 1<br>占满剩余空间！<br>css<br><code>flex: 1;</code><br>两个子元素都写 flex:1 → 自动 50% 宽度</li>
+<li>align-self<br>单独控制某个子元素垂直对齐<br>css<br><code>align-self: center;</code></li>
+<li>order<br>调整顺序<br>css<br><code>order: -1; /* 排最前面 */</code></li>
+</ol>
+<h1 id="class-”名字-名字-“"><a href="#class-”名字-名字-“" class="headerlink" title="class&#x3D;”名字 名字  “"></a>class&#x3D;”名字 名字  “</h1><p><code>同時用2個css</code></p>
+<h1 id="邊框"><a href="#邊框" class="headerlink" title="邊框"></a>邊框</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">border</span>: 寬度 樣式 顏色;<br><span class="hljs-attribute">border-radius</span>: <span class="hljs-number">0px</span>; 圓角<br>    樣式<br>    <span class="hljs-comment">/* 1. 無邊框 */</span><br>    <span class="hljs-attribute">border-style</span>: none; <br>    <span class="hljs-comment">/* 2. 實線 */</span><br>    <span class="hljs-attribute">border-style</span>: solid; <br>    <span class="hljs-comment">/* 3. 短虛線 */</span><br>    <span class="hljs-attribute">border-style</span>: dashed; <br>    <span class="hljs-comment">/* 4. 點狀虛線 */</span><br>    <span class="hljs-attribute">border-style</span>: dotted; <br>    <span class="hljs-comment">/* 5. 雙線 */</span><br>    <span class="hljs-attribute">border-style</span>: double; <br>    <span class="hljs-comment">/* 6. 凹槽立體 */</span><br>    <span class="hljs-attribute">border-style</span>: groove; <br>    <span class="hljs-comment">/* 7. 凸脊立體 */</span><br>    <span class="hljs-attribute">border-style</span>: ridge; <br>    <span class="hljs-comment">/* 8. 內凹 */</span><br>    <span class="hljs-attribute">border-style</span>: inset; <br>    <span class="hljs-comment">/* 9. 外凸 */</span><br>    <span class="hljs-attribute">border-style</span>: outset; <br>    <span class="hljs-comment">/* 10. 隱藏邊框 */</span><br>    <span class="hljs-attribute">border-style</span>: hidden; <br><br><br></code></pre></td></tr></table></figure>
+
+<h1 id="圖片導入與填充"><a href="#圖片導入與填充" class="headerlink" title="圖片導入與填充"></a>圖片導入與填充</h1><h2 id="圖片在容器裡面"><a href="#圖片在容器裡面" class="headerlink" title="圖片在容器裡面"></a>圖片在容器裡面</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.box</span> <span class="hljs-selector-tag">img</span>&#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">object-fit</span>: cover;<br>    <span class="hljs-attribute">object-position</span>: center; <span class="hljs-comment">/* 圖片居中裁切 */</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="背景圖片-background-全套（盒子背景圖）"><a href="#背景圖片-background-全套（盒子背景圖）" class="headerlink" title="背景圖片 background 全套（盒子背景圖）"></a>背景圖片 background 全套（盒子背景圖）</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.box</span>&#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">400px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;<br>    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;圖片.jpg&quot;</span>);<br><br>    <span class="hljs-comment">/* 圖片是否重複 */</span><br>    <span class="hljs-attribute">background-repeat</span>: no-repeat; <span class="hljs-comment">/* 不重複（預設會平鋪） */</span><br><br>    <span class="hljs-comment">/* 圖片位置 水平 垂直 */</span><br>    <span class="hljs-attribute">background-position</span>: center; <span class="hljs-comment">/* 居中 */</span><br><br>    <span class="hljs-comment">/* 圖片縮放 填滿容器（最重要！） */</span><br>    <span class="hljs-attribute">background-size</span>: cover; <span class="hljs-comment">/* 填滿、不變形、裁切 */</span><br>    <span class="hljs-attribute">background-size</span>: contain;<span class="hljs-comment">/*完整显示、不变形、不裁切*/</span><br>   	<span class="hljs-attribute">background-size</span>: <span class="hljs-number">200px</span> <span class="hljs-number">100px</span>;<span class="hljs-comment">/* 自定义宽高（固定尺寸）*/</span><br>    <span class="hljs-attribute">background-size</span>: <span class="hljs-number">100%</span> <span class="hljs-number">100%</span>;<span class="hljs-comment">/*相对容器百分比*/</span><br>    <span class="hljs-attribute">background-size</span>: auto;<span class="hljs-comment">/*原始大小*/</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="字體"><a href="#字體" class="headerlink" title="字體"></a>字體</h1><div style="color:pink">基础字体设置</div>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 字体族（优先顺序） */</span><br><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Microsoft YaHei&quot;</span>, Arial, sans-serif;<br><br><span class="hljs-comment">/* 字体大小 */</span><br><span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;<br><span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.2em</span>;<br><span class="hljs-attribute">font-size</span>: <span class="hljs-number">1rem</span>;<br><span class="hljs-attribute">font-size</span>: larger;<br><br><span class="hljs-comment">/* 字体粗细 */</span><br><span class="hljs-attribute">font-weight</span>: normal;   <span class="hljs-comment">/* 400 */</span><br><span class="hljs-attribute">font-weight</span>: bold;     <span class="hljs-comment">/* 700 */</span><br><span class="hljs-attribute">font-weight</span>: lighter;<br><span class="hljs-attribute">font-weight</span>: bolder;<br><span class="hljs-attribute">font-weight</span>: <span class="hljs-number">100</span>~<span class="hljs-number">900</span>;  <span class="hljs-comment">/* 细→粗 */</span><br><br><span class="hljs-comment">/* 字体风格（斜体） */</span><br><span class="hljs-attribute">font-style</span>: normal;<br><span class="hljs-attribute">font-style</span>: italic;    <span class="hljs-comment">/* 斜体 */</span><br><span class="hljs-attribute">font-style</span>: oblique;   <span class="hljs-comment">/* 强制倾斜 */</span><br></code></pre></td></tr></table></figure>
+<div style="color:pink">文字外观与颜色</div>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;<br><span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">51</span>,<span class="hljs-number">51</span>,<span class="hljs-number">51</span>);<br><span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.5</span>);<br><br><span class="hljs-comment">/* 行高（行间距） */</span><br><span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.5</span>;<br><span class="hljs-attribute">line-height</span>: <span class="hljs-number">24px</span>;<br><span class="hljs-attribute">line-height</span>: <span class="hljs-number">150%</span>;<br><br><span class="hljs-comment">/* 字体变体（小型大写） */</span><br><span class="hljs-attribute">font-variant</span>: normal;<br><span class="hljs-attribute">font-variant</span>: small-caps;<br><br></code></pre></td></tr></table></figure>
+
+<div style="color:pink">文字对齐与换行</div>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 水平对齐 */</span><br><span class="hljs-attribute">text-align</span>: left;<br><span class="hljs-attribute">text-align</span>: center;<br><span class="hljs-attribute">text-align</span>: right;<br><span class="hljs-attribute">text-align</span>: justify;  <span class="hljs-comment">/* 两端对齐 */</span><br><br><span class="hljs-comment">/* 垂直对齐 */</span><br><span class="hljs-attribute">vertical-align</span>: top;<br><span class="hljs-attribute">vertical-align</span>: middle;<br><span class="hljs-attribute">vertical-align</span>: bottom;<br><span class="hljs-attribute">vertical-align</span>: baseline;<br><br><span class="hljs-comment">/* 自动换行 */</span><br><span class="hljs-attribute">white-space</span>: normal;   <span class="hljs-comment">/* 正常换行 */</span><br><span class="hljs-attribute">white-space</span>: nowrap;   <span class="hljs-comment">/* 不换行 */</span><br><span class="hljs-attribute">white-space</span>: pre;      <span class="hljs-comment">/* 保留空格换行 */</span><br><span class="hljs-attribute">white-space</span>: pre-wrap; <span class="hljs-comment">/* 保留换行自动换行 */</span><br><br><span class="hljs-comment">/* 文字溢出省略号 */</span><br><span class="hljs-attribute">overflow</span>: hidden;<br><span class="hljs-attribute">text-overflow</span>: ellipsis;<br><span class="hljs-attribute">white-space</span>: nowrap;<br><br></code></pre></td></tr></table></figure>
+
+<div style="color:pink">文字装饰（下划线、删除线）</div>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 文字装饰线 */</span><br><span class="hljs-attribute">text-decoration</span>: none;               <span class="hljs-comment">/* 无 */</span><br><span class="hljs-attribute">text-decoration</span>: underline;          <span class="hljs-comment">/* 下划线 */</span><br><span class="hljs-attribute">text-decoration</span>: line-through;       <span class="hljs-comment">/* 删除线 */</span><br><span class="hljs-attribute">text-decoration</span>: overline;           <span class="hljs-comment">/* 上划线 */</span><br><br><span class="hljs-comment">/* 完整写法 */</span><br><span class="hljs-attribute">text-decoration</span>: underline dotted red <span class="hljs-number">2px</span>;<br><br></code></pre></td></tr></table></figure>
+
+<div style="color:pink">文字间距</div>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">text-indent</span>: <span class="hljs-number">2em</span>; <span class="hljs-comment">/* 自动开头空 2 个汉字宽度 */</span><br><span class="hljs-comment">/* 字间距（字母/汉字间距） */</span><br><span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">1px</span>;<br><span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.1em</span>;<br><br><span class="hljs-comment">/* 词间距（英文单词） */</span><br><span class="hljs-attribute">word-spacing</span>: <span class="hljs-number">4px</span>;<br><br></code></pre></td></tr></table></figure>
+
+<div style="color:pink">文字阴影</div>
+
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">text</span>-shadow: 水平偏移 垂直偏移 模糊 颜色;<br><span class="hljs-attribute">text</span>-shadow: <span class="hljs-number">1</span>px <span class="hljs-number">1</span>px <span class="hljs-number">2</span>px rgba(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>.<span class="hljs-number">3</span>);<br><span class="hljs-attribute">text</span>-shadow: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5</span>px #ff0000; /* 发光效果 */<br><br></code></pre></td></tr></table></figure>
+
+<div style="color:pink">高级排版样式</div>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 大小写转换 */</span><br><span class="hljs-attribute">text-transform</span>: none;<br><span class="hljs-attribute">text-transform</span>: uppercase;   <span class="hljs-comment">/* 全大写 */</span><br><span class="hljs-attribute">text-transform</span>: lowercase;   <span class="hljs-comment">/* 全小写 */</span><br><span class="hljs-attribute">text-transform</span>: capitalize;  <span class="hljs-comment">/* 首字母大写 */</span><br><br><span class="hljs-comment">/* 首行缩进 */</span><br><span class="hljs-attribute">text-indent</span>: <span class="hljs-number">2em</span>;<br><br><span class="hljs-comment">/* 字符方向 */</span><br><span class="hljs-attribute">direction</span>: ltr; <span class="hljs-comment">/* 左到右 */</span><br><span class="hljs-attribute">direction</span>: rtl; <span class="hljs-comment">/* 右到左 */</span><br><br></code></pre></td></tr></table></figure>
+
+<div style="color:pink">CSS3 高级字体属性</div>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 字体拉伸（宽窄） */</span><br><span class="hljs-attribute">font-stretch</span>: normal;<br><span class="hljs-attribute">font-stretch</span>: condensed; <span class="hljs-comment">/* 窄体 */</span><br><span class="hljs-attribute">font-stretch</span>: expanded;  <span class="hljs-comment">/* 宽体 */</span><br><br><span class="hljs-comment">/* 字体平滑（抗锯齿） */</span><br>-webkit-<span class="hljs-attribute">font-smoothing</span>: antialiased;<br>-moz-osx-<span class="hljs-attribute">font-smoothing</span>: grayscale;<br><br></code></pre></td></tr></table></figure>
+<h1 id="好看的顏色"><a href="#好看的顏色" class="headerlink" title="好看的顏色"></a>好看的顏色</h1><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-comment"># 虛假圖片,不能是background-color</span><br>白色-淡藍<span class="hljs-symbol">:background</span><span class="hljs-symbol">:linear-gradient</span>(<span class="hljs-number">120</span>deg, <span class="hljs-comment">#fff 60%, #dff9fb 60%);\</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs css">#  傾斜切分容器左邊顏色，右邊透明，下面圖片覆蓋右邊,讓圖片重心靠右<br>圖片要設計<br><span class="hljs-selector-class">.xxx-container</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">1000px</span>;<br>  <span class="hljs-attribute">position</span>: absolute;<br>  <span class="hljs-attribute">z-index</span>: -<span class="hljs-number">1</span>;<br><br>  <span class="hljs-comment">/* 多層背景處理 */</span><br>  <span class="hljs-attribute">background</span>: <br>    <span class="hljs-comment">/* 第一層：上方的遮罩（左邊白色，右邊透明） */</span><br>    <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">120deg</span>, <span class="hljs-number">#fff</span> <span class="hljs-number">60%</span>, transparent <span class="hljs-number">60%</span>),<br>    <span class="hljs-comment">/* 第二層：下方的圖片（會從透明處露出來） */</span><br>    <span class="hljs-built_in">url</span>(<span class="hljs-string">&#x27;你的圖片網址.jpg&#x27;</span>);<br><br>  <span class="hljs-comment">/* 確保圖片正確顯示的設定 */</span><br>  <span class="hljs-attribute">background-size</span>: cover;      <span class="hljs-comment">/* 讓圖片鋪滿容器 */</span><br>  <span class="hljs-attribute">background-position</span>: right;  <span class="hljs-comment">/* 讓圖片重心靠右，避免被左邊白色擋住重要部分 */</span><br>  <span class="hljs-attribute">background-repeat</span>: no-repeat;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="滚动条"><a href="#滚动条" class="headerlink" title="滚动条"></a>滚动条</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs css">关键：允许单独滚动的区域 */<br><span class="hljs-selector-class">.xxx</span>&#123;<br>    <span class="hljs-attribute">overflow-y</span>: auto;    <span class="hljs-comment">/* 核心：垂直方向超出时自动显示滚动条 */</span><br>&#125;<br><br><br><span class="hljs-selector-class">.xxx</span>::-webkit-scrollbar &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">6px</span>; <span class="hljs-comment">/* 纵向滚动条宽度 */</span><br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">6px</span>; <span class="hljs-comment">/* 横向滚动条高度 */</span><br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#f1f1f1</span>;<br>    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">10px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css">防止链式滚动（Overscroll Behavior）： 当局部滚动到底部时，继续滚鼠标往往会带动整个网页一起滚。<br><span class="hljs-selector-class">.xxx</span>&#123;<br><span class="hljs-attribute">overscroll-behavior</span>: contain;<br>&#125;<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/HTML/" class="category-chain-item">HTML</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/HTML%E9%A0%85%E7%9B%AE%E9%9B%86%E6%88%90/" class="print-no-link">#HTML項目集成</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>HTML语法和样式</div>
+      <div>http://example.com/2026/04/15/HTHL語法和樣式/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>翟哲</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年4月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/04/15/%E5%A6%82%E4%BD%95%E5%81%9A%E4%B8%80%E5%80%8B%E5%A5%BD%E7%9C%8B%E7%9A%84%E5%89%8D%E7%AB%AF/" title="如何做一個好看的前端">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">如何做一個好看的前端</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/04/13/WSL-2%E6%98%AF%E4%BB%80%E9%BA%BC/" title="WSL 2是什麼?">
+                        <span class="hidden-mobile">WSL 2是什麼?</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

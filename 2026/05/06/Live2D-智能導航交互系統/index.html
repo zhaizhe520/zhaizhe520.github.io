@@ -1,0 +1,931 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="翟哲">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Live2D 智能導航交互系統">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Live2D 智能導航交互系統">
+<meta property="og:url" content="http://example.com/2026/05/06/Live2D-%E6%99%BA%E8%83%BD%E5%B0%8E%E8%88%AA%E4%BA%A4%E4%BA%92%E7%B3%BB%E7%B5%B1/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Live2D 智能導航交互系統">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-06T13:12:35.000Z">
+<meta property="article:modified_time" content="2026-05-07T07:51:27.749Z">
+<meta property="article:author" content="翟哲">
+<meta property="article:tag" content="Live2D 智能導航交互系統">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Live2D 智能導航交互系統 - </title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>我不是二次元</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/zhaizhe520" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/%E8%BC%95%E5%B0%8F%E8%AA%AA" target="_self">
+                <i class="iconfont icon-file-fill"></i>
+                <span>輕小說</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="https://github.com/zhaizhe520" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/%E8%BC%95%E5%B0%8F%E8%AA%AA" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-file-fill"></i>
+                  <span>輕小說</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Live2D 智能導航交互系統"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-05-06 21:12" pubdate>
+          2026年5月6日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          57 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Live2D 智能導航交互系統</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arduino">交互細節：除了顯示文字，是否需要 Live2D 模型執行特定的 Motion（動作） 或 Expression（表情）？（例如：滑鼠移入「檔案下載」時，模型做出「驚訝」的動作）。<br>語音/音效：是否需要同步觸發語音播放？<br>自動消失：是否需要設置 setTimeout 讓對話在一段時間後自動關閉，而不僅僅依賴 mouseleave？<br>優先級系統：如果同時有多個事件觸發（例如背景系統通知 vs 導航列 Hover），誰的權限更高？<br></code></pre></td></tr></table></figure>
+<h1 id="實現邏輯"><a href="#實現邏輯" class="headerlink" title="實現邏輯"></a>實現邏輯</h1><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs applescript">&lt;<span class="hljs-keyword">div</span> <br>  <span class="hljs-built_in">class</span>=<span class="hljs-string">&quot;nav-item&quot;</span><br>  @mouseenter=<span class="hljs-string">&quot;petStore.showPet(&#x27;回到首頁查看最新消息！&#x27;, componentId)&quot;</span><br>  @mouseleave=<span class="hljs-string">&quot;petStore.hidePet(componentId)&quot;</span><br>&gt;<br>  首頁<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="技術棧建議"><a href="#技術棧建議" class="headerlink" title="技術棧建議"></a>技術棧建議</h2><p>框架: Vue 3 (Composition API)</p>
+<p>狀態管理: Pinia (推薦，適合管理全局的對話內容) 或 mitt (輕量級事件工具)</p>
+<p>動畫庫: GSAP 或 CSS Transition (用於氣泡的淡入淡出)</p>
+<p>字體打字邏輯: 自定義 Composable (Hook)</p>
+<h2 id="核心邏輯架構"><a href="#核心邏輯架構" class="headerlink" title="核心邏輯架構"></a>核心邏輯架構</h2><p>A. 全局對話調度中心 (Pinia Store)<br>不要讓文字組件直接去控制 Live2D 組件，而是透過一個「中介者」。</p>
+<p>State: 儲存當前對話文字 currentText、氣泡可見性 isVisible。</p>
+<p>Actions: showMessage(text) 和 hideMessage()。</p>
+<p>B. 觸發組件 (你的文字或 Div)<br>在這些組件上綁定 @mouseenter 事件：</p>
+<p>滑鼠移入時，調用 Store 的 showMessage(‘這是對應的說明文字’)。</p>
+<p>滑鼠移出時 (@mouseleave)，調用 hideMessage()。</p>
+<p>C. Live2D 氣泡組件 (接收端)<br>這是最關鍵的部分，它需要監聽 Store 的變化：</p>
+<p>監聽變化: 使用 watch 監聽 Store 中的 currentText。</p>
+<p>打字機效果: 當 currentText 改變時，觸發一個迴圈函數，逐字將字串填入一個本地的 displayingText 響應式變數中。</p>
+<p>氣泡定位: 氣泡組件使用 position: absolute 定位在 Live2D 看板娘的頭部附近。</p>
+<h2 id="關鍵代碼邏輯示意"><a href="#關鍵代碼邏輯示意" class="headerlink" title="關鍵代碼邏輯示意"></a>關鍵代碼邏輯示意</h2><p>打字機核心邏輯 (useTypewriter.js):</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">useTypewriter</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> output = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>);<br>  <span class="hljs-keyword">let</span> timer = <span class="hljs-literal">null</span>;<br><br>  <span class="hljs-keyword">const</span> <span class="hljs-title function_">type</span> = (<span class="hljs-params">text, speed = <span class="hljs-number">60</span></span>) =&gt; &#123;<br>    output.<span class="hljs-property">value</span> = <span class="hljs-string">&#x27;&#x27;</span>; <span class="hljs-comment">// 清空舊文字</span><br>    <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">clearInterval</span>(timer);<br>    timer = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span> (i &lt; text.<span class="hljs-property">length</span>) &#123;<br>        output.<span class="hljs-property">value</span> += text.<span class="hljs-title function_">charAt</span>(i);<br>        i++;<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-built_in">clearInterval</span>(timer);<br>      &#125;<br>    &#125;, speed);<br>  &#125;;<br><br>  <span class="hljs-keyword">return</span> &#123; output, type &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>要實現這種「跨組件通訊」並觸發「打字機氣泡」的效果，在 Vue 3 中最優雅的方式是使用 事件匯流排 (Event Bus) 或 全局狀態管理 (Pinia)。</p>
+<p>這裡我為你拆解具體的技術棧與邏輯架構：</p>
+<ol>
+<li>技術棧建議<br>框架: Vue 3 (Composition API)</li>
+</ol>
+<p>狀態管理: Pinia (推薦，適合管理全局的對話內容) 或 mitt (輕量級事件工具)</p>
+<p>動畫庫: GSAP 或 CSS Transition (用於氣泡的淡入淡出)</p>
+<p>字體打字邏輯: 自定義 Composable (Hook)</p>
+<p>核心邏輯架構<br>1.全局對話調度中心 (Pinia Store)<br>不要讓文字組件直接去控制 Live2D 組件，而是透過一個「中介者」。</p>
+<p>State: 儲存當前對話文字 currentText、氣泡可見性 isVisible。</p>
+<p>Actions: showMessage(text) 和 hideMessage()。</p>
+<p>2.觸發組件 (你的文字或 Div)<br>在這些組件上綁定 @mouseenter 事件：</p>
+<p>滑鼠移入時，調用 Store 的 showMessage(‘這是對應的說明文字’)。</p>
+<p>滑鼠移出時 (@mouseleave)，調用 hideMessage()。</p>
+<p>3.Live2D 氣泡組件 (接收端)<br>這是最關鍵的部分，它需要監聽 Store 的變化：</p>
+<p>監聽變化: 使用 watch 監聽 Store 中的 currentText。</p>
+<p>打字機效果: 當 currentText 改變時，觸發一個迴圈函數，逐字將字串填入一個本地的 displayingText 響應式變數中。</p>
+<p>氣泡定位: 氣泡組件使用 position: absolute 定位在 Live2D 看板娘的頭部附近。</p>
+<p>關鍵代碼邏輯示意</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs javascript">打字機核心邏輯 (useTypewriter.<span class="hljs-property">js</span>):<br><br><span class="hljs-title class_">JavaScript</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">useTypewriter</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> output = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>);<br>  <span class="hljs-keyword">let</span> timer = <span class="hljs-literal">null</span>;<br><br>  <span class="hljs-keyword">const</span> <span class="hljs-title function_">type</span> = (<span class="hljs-params">text, speed = <span class="hljs-number">60</span></span>) =&gt; &#123;<br>    output.<span class="hljs-property">value</span> = <span class="hljs-string">&#x27;&#x27;</span>; <span class="hljs-comment">// 清空舊文字</span><br>    <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">clearInterval</span>(timer);<br>    timer = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span> (i &lt; text.<span class="hljs-property">length</span>) &#123;<br>        output.<span class="hljs-property">value</span> += text.<span class="hljs-title function_">charAt</span>(i);<br>        i++;<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-built_in">clearInterval</span>(timer);<br>      &#125;<br>    &#125;, speed);<br>  &#125;;<br><br>  <span class="hljs-keyword">return</span> &#123; output, type &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="氣泡組件佈局-Bubble-vue"><a href="#氣泡組件佈局-Bubble-vue" class="headerlink" title="氣泡組件佈局 (Bubble.vue):"></a>氣泡組件佈局 (Bubble.vue):</h2><p>使用 CSS 三角形技巧 或 SVG 製作氣泡的小尾巴。</p>
+<p>使用 <code>&lt;Transition&gt; </code>包裹氣泡，實現 opacity 和 transform: translateY 的流暢切換</p>
+<h1 id="開始實現"><a href="#開始實現" class="headerlink" title="開始實現"></a>開始實現</h1><p>pinia基本框架</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br><span class="hljs-comment">// store/petStore.js</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> usePetStore = <span class="hljs-title function_">defineStore</span>(<span class="hljs-string">&#x27;pet&#x27;</span>, &#123;<br>  <span class="hljs-attr">state</span>: <span class="hljs-function">() =&gt;</span> (&#123;<br>    <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>    <span class="hljs-attr">isVisible</span>: <span class="hljs-literal">false</span><br>  &#125;),<br>  <span class="hljs-attr">actions</span>: &#123;<br>    <span class="hljs-comment">// 封裝一個統一的進入方法</span><br>    <span class="hljs-title function_">onHover</span>(<span class="hljs-params">text</span>) &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">message</span> = text;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">isVisible</span> = <span class="hljs-literal">true</span>;<br>    &#125;,<br>    <span class="hljs-comment">// 封裝一個統一的離開方法</span><br>    <span class="hljs-title function_">onLeave</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">isVisible</span> = <span class="hljs-literal">false</span>;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">message</span> = <span class="hljs-string">&#x27;&#x27;</span>;<br>    &#125;<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// src/composables/useTypewriter.js</span><br><span class="hljs-comment">//實現打字效果單獨js</span><br><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">useTypewriter</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> displayText = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>)<br>  <span class="hljs-keyword">let</span> timer = <span class="hljs-literal">null</span><br><br>  <span class="hljs-keyword">const</span> <span class="hljs-title function_">startTyping</span> = (<span class="hljs-params">text, speed = <span class="hljs-number">50</span></span>) =&gt; &#123;<br>    displayText.<span class="hljs-property">value</span> = <span class="hljs-string">&#x27;&#x27;</span><br>    <span class="hljs-built_in">clearInterval</span>(timer)<br>    <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span><br>    timer = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span> (i &lt; text.<span class="hljs-property">length</span>) &#123;<br>        displayText.<span class="hljs-property">value</span> += text.<span class="hljs-title function_">charAt</span>(i)<br>        i++<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-built_in">clearInterval</span>(timer)<br>      &#125;<br>    &#125;, speed)<br>  &#125;<br><br>  <span class="hljs-keyword">return</span> &#123; displayText, startTyping &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<div style="color:pink">pet組件打字效果</div>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 1. 引入你的打字機 js</span><br><span class="hljs-keyword">import</span> &#123; useTypewriter &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../composables/useTypewriter&#x27;</span><br><br><span class="hljs-keyword">const</span> petStore = <span class="hljs-title function_">usePetStore</span>()<br><span class="hljs-keyword">const</span> &#123; message, isVisible &#125; = <span class="hljs-title function_">storeToRefs</span>(petStore)<br><br><span class="hljs-comment">// 2. 初始化打字機功能</span><br><span class="hljs-keyword">const</span> &#123; displayText, startTyping &#125; = <span class="hljs-title function_">useTypewriter</span>()<br><span class="hljs-keyword">import</span> &#123; watch &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span><br><span class="hljs-comment">// 3. 核心邏輯：監聽 Pinia 裡的文字變化</span><br><span class="hljs-title function_">watch</span>(message, <span class="hljs-function">(<span class="hljs-params">newText</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (newText) &#123;<br>    <span class="hljs-comment">// 當 Pinia 收到新文字時，啟動打字效果</span><br>    <span class="hljs-title function_">startTyping</span>(newText, <span class="hljs-number">60</span>) <span class="hljs-comment">// 60ms 是打字速度</span><br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// 如果文字被清空，也可以同步清空顯示內容</span><br>    <span class="hljs-comment">// displayText.value = &#x27;&#x27; </span><br>  &#125;<br>&#125;)<br><br></code></pre></td></tr></table></figure>
+<h1 id="解構會弄丟響應性"><a href="#解構會弄丟響應性" class="headerlink" title="解構會弄丟響應性"></a>解構會弄丟響應性</h1><p><code>import { storeToRefs } from &#39;pinia&#39;</code></p>
+<p>它不是你定義的，是 Pinia 附贈的工具。</p>
+<p>只要你想從 Store 中解構 (Destructure) 出數據來用，就請記得帶上它。</p>
+<p>如果是 Store 裡的 Actions (函式)，則不需要它，直接解構即可。</p>
+<div style="color:red">為什麼 Pinia 要提供這個東西？</div>
+
+<p>這跟 Vue 3 的響應式原理有關。</p>
+<p>Store 本質上是一個 Reactive 物件：Pinia 的 Store 就像是一個巨大的 reactive() 物件。</p>
+<p>解構會破壞響應式：在 JavaScript 中，如果你對一個物件進行解構（例如 const { message } &#x3D; store），你拿到的只是一個普通的字串或數值。這就像是把一張活的照片印成了紙本，照片裡的人之後怎麼動，你手上的那張紙都不會變。</p>
+<p>storeToRefs 的作用：它會幫你把 Store 裡的數據重新包裝成 ref。這樣你解構出來的變數就變成了「活的」連接點，Store 裡的值一變，你的變數也會跟著變。</p>
+<div style="color:red">為什麼解構會「弄丟」響應性？</div> 
+在 Vue 3 的底層邏輯中，state 是一個被 reactive 包裹的物件。
+
+<p>錯誤操作： 如果你在組件裡寫 const { message } &#x3D; usePetStore()，這就像是把 message 的當前值（例如空字串）複製給了一個新變數。</p>
+<p>後果： 之後當你在導航欄 hover，讓 Store 裡的 message 變成「你好」時，你組件裡那個變數還停留在「空字串」，因為它已經跟原始物件斷開連結了。</p>
+<h1 id="3种方法實現mouse交互"><a href="#3种方法實現mouse交互" class="headerlink" title="3种方法實現mouse交互"></a>3种方法實現mouse交互</h1><p>每個導航項或按鈕都要手動寫 mouseenter、mouseleave 以及傳入 componentId，代碼確實會變得很冗長且難以維護。</p>
+<h2 id="方法一：封裝成自定義指令-Directive-——-最推薦"><a href="#方法一：封裝成自定義指令-Directive-——-最推薦" class="headerlink" title="方法一：封裝成自定義指令 (Directive) —— 最推薦"></a>方法一：封裝成自定義指令 (Directive) —— 最推薦</h2><p>你可以創建一個 v-pet-tip 指令，這樣你只需要在元素上寫一句話，剩下的邏輯（包含自動生成 ID）都交給指令處理。</p>
+<p>定義指令 (例如在 main.js 或單獨的檔案)：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">// v-pet-tip 指令</span><br>const vPetTip = &#123;<br>  <span class="hljs-built_in">mounted</span>(el, binding) &#123;<br>    const petStore = <span class="hljs-built_in">usePetStore</span>()<br>    <span class="hljs-comment">// 使用元素的文本或隨機數作為唯一 ID</span><br>    const instanceId = Math<span class="hljs-selector-class">.random</span>()<span class="hljs-selector-class">.toString</span>(<span class="hljs-number">36</span>)<span class="hljs-selector-class">.substring</span>(<span class="hljs-number">2</span>, <span class="hljs-number">9</span>)<br>    <br>    el._handleEnter = () =&gt; petStore<span class="hljs-selector-class">.showPet</span>(binding<span class="hljs-selector-class">.value</span>, instanceId)<br>    el._handleLeave = () =&gt; petStore<span class="hljs-selector-class">.hidePet</span>(instanceId)<br><br>    el<span class="hljs-selector-class">.addEventListener</span>(<span class="hljs-string">&#x27;mouseenter&#x27;</span>, el._handleEnter)<br>    el<span class="hljs-selector-class">.addEventListener</span>(<span class="hljs-string">&#x27;mouseleave&#x27;</span>, el._handleLeave)<br>  &#125;,<br>  <span class="hljs-built_in">unmounted</span>(el) &#123;<br>    el<span class="hljs-selector-class">.removeEventListener</span>(<span class="hljs-string">&#x27;mouseenter&#x27;</span>, el._handleEnter)<br>    el<span class="hljs-selector-class">.removeEventListener</span>(<span class="hljs-string">&#x27;mouseleave&#x27;</span>, el._handleLeave)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在組件中使用：<br>現在你只需要一行代碼，不需要管理 ID，也不需要寫兩個事件：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs applescript">&lt;<span class="hljs-keyword">div</span> v-pet-tip=<span class="hljs-string">&quot;&#x27;回到首頁查看最新消息！&#x27;&quot;</span>&gt;首頁&lt;/<span class="hljs-keyword">div</span>&gt;<br>&lt;<span class="hljs-keyword">div</span> v-pet-tip=<span class="hljs-string">&quot;&#x27;看看我的個人作品集&#x27;&quot;</span>&gt;關於我&lt;/<span class="hljs-keyword">div</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="方法二：封裝成通用的「交互組件」"><a href="#方法二：封裝成通用的「交互組件」" class="headerlink" title="方法二：封裝成通用的「交互組件」"></a>方法二：封裝成通用的「交互組件」</h2><p>如果你不習慣用指令，可以寫一個封裝組件 PetTooltip.vue，把 div 包起來。</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> </span></span><span class="hljs-template-variable">&#123; usePetStore &#125;</span><span class="language-xml"><span class="language-javascript"> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/store/petStore&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> props = <span class="hljs-title function_">defineProps</span>([<span class="hljs-string">&#x27;text&#x27;</span>])</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> petStore = <span class="hljs-title function_">usePetStore</span>()</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> id = <span class="hljs-title class_">Symbol</span>(<span class="hljs-string">&#x27;pet-tip&#x27;</span>) <span class="hljs-comment">// 使用 Symbol 產生絕對唯一的 ID</span></span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> @<span class="hljs-attr">mouseenter</span>=<span class="hljs-string">&quot;petStore.showPet(text, id)&quot;</span> @<span class="hljs-attr">mouseleave</span>=<span class="hljs-string">&quot;petStore.hidePet(id)&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span> <span class="hljs-comment">&lt;!-- 這裡放原本的導航內容 --&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"></span><br></code></pre></td></tr></table></figure>
+<p>使用方法：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs applescript">&lt;PetTooltip <span class="hljs-built_in">text</span>=<span class="hljs-string">&quot;回到首頁！&quot;</span>&gt;<br>  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">&quot;nav-item&quot;</span>&gt;首頁&lt;/<span class="hljs-keyword">div</span>&gt;<br>&lt;/PetTooltip&gt;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="方法三：利用事件委託-Event-Delegation"><a href="#方法三：利用事件委託-Event-Delegation" class="headerlink" title="方法三：利用事件委託 (Event Delegation)"></a>方法三：利用事件委託 (Event Delegation)</h2><p>如果你所有的導航項都在同一個父容器下，你可以把監聽器綁在父層，透過 data-attribute 來獲取文字。</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs applescript">&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">&quot;nav-container&quot;</span> @mouseenter.capture=<span class="hljs-string">&quot;handleNavHover&quot;</span> @mouseleave.capture=<span class="hljs-string">&quot;handleNavLeave&quot;</span>&gt;<br>  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">&quot;nav-item&quot;</span> data-tip=<span class="hljs-string">&quot;回到首頁！&quot;</span>&gt;首頁&lt;/<span class="hljs-keyword">div</span>&gt;<br>  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">&quot;nav-item&quot;</span> data-tip=<span class="hljs-string">&quot;了解更多細節&quot;</span>&gt;關於&lt;/<span class="hljs-keyword">div</span>&gt;<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<p>JS:</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs aspectj"><span class="hljs-keyword">const</span> handleNavHover = (e) =&gt; &#123;<br>  <span class="hljs-keyword">const</span> tip = e.<span class="hljs-keyword">target</span>.getAttribute(<span class="hljs-string">&#x27;data-tip&#x27;</span>)<br>  <span class="hljs-keyword">if</span> (tip) &#123;<br>    <span class="hljs-comment">// 這裡可以使用 e.target 作為唯一的 ID 參考</span><br>    petStore.showPet(tip, e.<span class="hljs-keyword">target</span>)<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> handleNavLeave = (e) =&gt; &#123;<br>  petStore.hidePet(e.<span class="hljs-keyword">target</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A0%85%E7%9B%AE/" class="category-chain-item">項目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E9%A0%85%E7%9B%AE/%E7%B3%BB%E7%B5%B1/" class="category-chain-item">系統</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Live2D-%E6%99%BA%E8%83%BD%E5%B0%8E%E8%88%AA%E4%BA%A4%E4%BA%92%E7%B3%BB%E7%B5%B1/" class="print-no-link">#Live2D 智能導航交互系統</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Live2D 智能導航交互系統</div>
+      <div>http://example.com/2026/05/06/Live2D-智能導航交互系統/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>翟哲</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年5月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/05/06/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%89%8D%E7%AB%AF%E6%89%93%E5%8C%85%E5%87%BA%E6%9D%A5%E7%9A%84%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E5%90%8D%E5%AD%97%E6%98%AF%E4%B8%80%E4%B8%B2Hash%E5%80%BC/" title="为什么前端打包出来的静态文件名字是一串Hash值?">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">为什么前端打包出来的静态文件名字是一串Hash值?</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/05/05/Vue3-Live2D-%E5%8F%AF%E4%BA%92%E5%8B%95%E7%AB%99%E5%A8%98/" title="Vue3 + Live2D 站娘">
+                        <span class="hidden-mobile">Vue3 + Live2D 站娘</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

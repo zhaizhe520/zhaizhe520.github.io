@@ -1,0 +1,905 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="翟哲">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前端显示vue3框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实现wp前端顯示vue3框架">
+<meta property="og:url" content="http://example.com/2026/05/05/%E5%AF%A6%E7%8F%BE%E8%A8%AA%E5%95%8Fwp%E5%BE%8C%E5%8F%B0%E9%A1%AF%E7%A4%BAvue3%E6%A1%86%E6%9E%B6/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="前端显示vue3框架">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-04T16:07:47.000Z">
+<meta property="article:modified_time" content="2026-05-09T01:29:03.163Z">
+<meta property="article:author" content="翟哲">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>实现wp前端顯示vue3框架 - </title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>我不是二次元</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/zhaizhe520" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/%E8%BC%95%E5%B0%8F%E8%AA%AA" target="_self">
+                <i class="iconfont icon-file-fill"></i>
+                <span>輕小說</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="https://github.com/zhaizhe520" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/%E8%BC%95%E5%B0%8F%E8%AA%AA" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-file-fill"></i>
+                  <span>輕小說</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="实现wp前端顯示vue3框架"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-05-05 00:07" pubdate>
+          2026年5月5日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          42 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">实现wp前端顯示vue3框架</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="方案一：Nginx-反向代理分流（工程師思維，最推薦）"><a href="#方案一：Nginx-反向代理分流（工程師思維，最推薦）" class="headerlink" title="方案一：Nginx 反向代理分流（工程師思維，最推薦）"></a>方案一：Nginx 反向代理分流（工程師思維，最推薦）</h1><p>這是你提到的方法，直接在 Nginx 決定誰來處理請求。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs vim">實作方式：<br>將網域根目錄 / 指向 Vue 的 <span class="hljs-built_in">index</span>.html。<br><br>將 /<span class="hljs-keyword">wp</span>-json、/<span class="hljs-keyword">wp</span>-admin、/<span class="hljs-keyword">wp</span>-content 等路徑代理（Proxy）或跳轉至 WordPress 的目錄。<br><br>優點：<br><br>效能最高：Vue 靜態資源由 Nginx 直接吐給用戶，不經過 PHP。<br><br>徹底分離：前端掛了 WordPress 還在，WordPress 壞了前端（靜態頁）還能開。<br><br>缺點：<br><br>需要 VPS 權限（修改 Nginx Config）。<br><br>配置不當容易產生 <span class="hljs-number">404</span>（例如 Vue Router 的 History <span class="hljs-keyword">mode</span> 與 WP 路徑衝突）。<br><br></code></pre></td></tr></table></figure>
+<h1 id="方案二：WordPress-主題化（省事思維，最簡單）"><a href="#方案二：WordPress-主題化（省事思維，最簡單）" class="headerlink" title="方案二：WordPress 主題化（省事思維，最簡單）"></a>方案二：WordPress 主題化（省事思維，最簡單）</h1><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs applescript">把 Vue 當成一個「超級外殼」套在 WordPress 身上。<br><br>實作方式：<br><br>將 Vue npm <span class="hljs-built_in">run</span> build 出來的檔案丟進 WP 的主題資料夾。<br><br>修改主題的 index.php，只留一個 &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt; 並載入 Vue 的 JS/CSS。<br><br>優點：<br><br>SEO 友善：可以利用 WP 的外掛（如 Yoast SEO）處理 Meta Data，再傳給 Vue。<br><br>部署簡單：只要能上傳主題就能用，適用於普通的 PHP 虛擬主機。<br><br>缺點：<br><br>效能損耗：每次訪問都要經過 WP 核心加載，明明是看 Vue 卻啟動了整個 PHP 引擎。<br></code></pre></td></tr></table></figure>
+
+<h1 id="方案三：子網域完全分離（架構思維，最專業）"><a href="#方案三：子網域完全分離（架構思維，最專業）" class="headerlink" title="方案三：子網域完全分離（架構思維，最專業）"></a>方案三：子網域完全分離（架構思維，最專業）</h1><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs scss">這是大型專案最常見的做法。<br><br>實作方式：<br><br>前端：<span class="hljs-selector-attr">[www.yourdomain.com]</span>(https://www.yourdomain.com) (部署在 Vercel / Nginx / CDN)。<br><br>後端：api<span class="hljs-selector-class">.yourdomain</span><span class="hljs-selector-class">.com</span> (純 WordPress)。<br><br>優點：<br><br>擴充性強：前後端完全獨立，甚至可以放在不同的伺服器。<br><br>管理方便：開發前端時不需要啟動 PHP 環境，只需對接 API。<br><br>缺點：<br><br>CORS 跨域問題：需要額外處理 WP 的跨域 <span class="hljs-selector-tag">Header</span> 授權。<br><br>SEO 挑戰：需要 Vue 端做 SSR（如 Nuxt<span class="hljs-selector-class">.js</span>）或預渲染（Prerender），否則搜尋引擎爬不到內容。<br><br></code></pre></td></tr></table></figure>
+
+<h1 id="Nginx-（nginx-s-reload重載配置）"><a href="#Nginx-（nginx-s-reload重載配置）" class="headerlink" title="Nginx （nginx -s reload重載配置）"></a>Nginx （nginx -s reload重載配置）</h1><p>&#x2F;&#x2F; 直接寫相對路徑即可<br>這樣瀏覽器會認為請求是發給當前域名的，Nginx 會在背後悄悄把請求轉給 WordPress，完美避開跨域 (CORS) 問題。</p>
+<p>-在服務器上git倉庫，再安裝node.js，再npm install,再npm run build。服務器垃圾幹不了</p>
+<p>-本地打包dist上傳到服務器</p>
+<h2 id="服務器部署（本地參考）"><a href="#服務器部署（本地參考）" class="headerlink" title="服務器部署（本地參考）"></a>服務器部署（本地參考）</h2><p>ssh<br>cd 命令進入 nginx</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs vim">創建nginx-&gt;新<span class="hljs-built_in">index</span>.html就是dist裡面的，不是<span class="hljs-keyword">wp</span>裡面的<br><span class="hljs-built_in">mkdir</span> -<span class="hljs-keyword">p</span> /www/wwwroot/my-<span class="hljs-keyword">first</span>-vue-project<br>進入這個文件夾放dist文件<br><span class="hljs-keyword">ls</span> -d /xxx/xxx/my-<span class="hljs-keyword">first</span>-vue-project<br>查看<br></code></pre></td></tr></table></figure>
+<hr>
+<p>回去找到nginx.conf<br>cd &#x2F;www&#x2F;server&#x2F;nginx&#x2F;conf&#x2F;nginx.conf<br>修改 Nginx 實現「無頭分流」<br>vi &#x2F;www&#x2F;server&#x2F;nginx&#x2F;conf&#x2F;nginx.conf</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs awk">server &#123;<br>    listen <span class="hljs-number">80</span>;<br>    server_name your_domain_or_ip; <span class="hljs-comment"># 填入你的域名或 IP</span><br><br>    <span class="hljs-comment"># 1. 處理 Vue 3 前端界面</span><br>    location / &#123;<br>        root <span class="hljs-regexp">/xxx/</span>xxx<span class="hljs-regexp">/my-first-vue-project/</span>dist; <span class="hljs-comment"># 指向你剛剛上傳的 dist</span><br>        index index.html;<br>        try_files <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span><span class="hljs-regexp">/ /i</span>ndex.html; <span class="hljs-comment"># 這是 Vue Router 必備設定</span><br>    &#125;<br><br>    <span class="hljs-comment"># 2. 處理 WordPress API 請求 (反向代理)</span><br>    location <span class="hljs-regexp">/wp-json/</span> &#123;<br>        proxy_pass http:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">8080</span>; <span class="hljs-comment"># 假設 WP 跑在 8080 端口</span><br>        proxy_set_header Host <span class="hljs-variable">$host</span>;<br>        proxy_set_header X-Real-IP <span class="hljs-variable">$remote_addr</span>;<br>        proxy_set_header X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;<br>        proxy_set_header X-Forwarded-Proto <span class="hljs-variable">$scheme</span>;<br>    &#125;<br><br>    <span class="hljs-comment"># 3. 讓 WordPress 的管理後台與檔案可正常訪問</span><br>    location ~ ^/(wp-admin|wp-login\.php|wp-content|wp-includes) &#123;<br>        proxy_pass http:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">8080</span>;<br>        proxy_set_header Host <span class="hljs-variable">$host</span>;<br>    &#125;<br>&#125;<br>-----------------------------------------<br>如果nginx.conf 已經幫你「預留」了擴展空間<br>請在 SSH 輸入這行指令（這會用 vi 編輯器建立一個新檔案）：<br>vi <span class="hljs-regexp">/www/</span>server<span class="hljs-regexp">/panel/</span>vhost<span class="hljs-regexp">/nginx/my</span>_project.conf<br><br>server &#123;<br>    listen <span class="hljs-number">80</span>;<br>    server_name 你的伺服器IP; <span class="hljs-comment"># 這裡填入你的 IP</span><br><br>    <span class="hljs-comment"># --- 1. 給 Vue 3 前端用的門面 ---</span><br>    location / &#123;<br>        <span class="hljs-comment"># 這裡就是你剛才上傳 dist 的地方</span><br>        root <span class="hljs-regexp">/acg/</span>noacgroot<span class="hljs-regexp">/my-first-vue-project/</span>dist;<br>        index index.html;<br>        <span class="hljs-comment"># 這是為了讓 Vue 的路由（router）正常運作</span><br>        try_files <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span><span class="hljs-regexp">/ /i</span>ndex.html;<br>    &#125;<br><br>    <span class="hljs-comment"># --- 2. 給 WordPress API 用的後門 ---</span><br>    <span class="hljs-comment"># 當 Vue 需要抓文章數據（請求包含 /wp-json/）時，轉發給 WP</span><br>    location <span class="hljs-regexp">/wp-json/</span> &#123;<br>        <span class="hljs-comment"># 這裡先暫定 8080，如果 WP 跑在別的地方我們要再改</span><br>        proxy_pass http:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">8080</span>; <br>        proxy_set_header Host <span class="hljs-variable">$host</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment"># 先檢查地圖有沒有畫錯（有沒有打錯字）</span><br><span class="hljs-regexp">/www/</span>server<span class="hljs-regexp">/nginx/</span>sbin/nginx -t<br><br><span class="hljs-comment"># 如果最後一行出現 &quot;test is successful&quot;，就執行重啟</span><br><span class="hljs-regexp">/www/</span>server<span class="hljs-regexp">/nginx/</span>sbin/nginx -s reload<br><br>💡 為什麼要分開建立檔案？<br>安全：萬一寫錯了，你只需要刪掉 my_project.conf，原本的 WordPress 和 phpMyAdmin 都不會壞掉。<br><br>乾淨：你的 nginx.conf 保持原樣，專案設定分門別類。<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 1. 檢查語法有無錯誤</span><br><span class="hljs-regexp">/www/</span>server<span class="hljs-regexp">/nginx/</span>sbin/nginx -t<br><br><span class="hljs-comment"># 2. 如果顯示 test is successful，重啟 Nginx</span><br><span class="hljs-regexp">/www/</span>server<span class="hljs-regexp">/nginx/</span>sbin/nginx -s reload<br><br></code></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> -R 755 /XXX/xxxroot修正權限<br></code></pre></td></tr></table></figure>
+<hr>
+<p>查到wp端口<br>netstat -ntlp | grep php</p>
+<p>cat &#x2F;www&#x2F;server&#x2F;panel&#x2F;vhost&#x2F;nginx&#x2F;你的域名.conf</p>
+<p>改<br><code>vi /www/server/panel/vhost/nginx/wordpress.local.conf</code></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">listen</span> <span class="hljs-number">8080</span> default_server;<br><span class="hljs-attribute">listen</span><span class="hljs-meta"> [::]:8080 default_server;</span><br></code></pre></td></tr></table></figure>
+
+<div style="color:pink">8080上防火墻</div>
+
+<hr>
+<div style="color:pink">404 Not Found 解決辦法</div>
+
+<ol>
+<li>檢查 Vue 的 dist 目錄權限<br>如果 Nginx 沒有權限進入你的資料夾，它會報 404 或 403。<br>請執行這行指令，把你的專案目錄權限開放給 Nginx 讀取：</li>
+</ol>
+<p>Bash<br>chmod -R 755 &#x2F;xxx&#x2F;xxxroot<br>2. 檢查 root 路徑是否寫對<br>請再次確認你的 my_project.conf 檔案內容。<br>執行：cat &#x2F;www&#x2F;server&#x2F;panel&#x2F;vhost&#x2F;nginx&#x2F;my_project.conf</p>
+<p>重點檢查這幾行：</p>
+<p><code>root /xxx/xxxroot/my-first-vue-project/dist;</code></p>
+<p>👉 請確認你的 index.html 真的就在這個 dist 資料夾裡。</p>
+<p>👉 你可以輸入<code>ls /acg/noacgroot/my-first-vue-project/dist</code>看看有沒有看到檔案。</p>
+<p><code>index index.html;</code></p>
+<p>👉 是否有漏寫這行？</p>
+<ol start="3">
+<li>檢查「預設頁面」的衝突<br>很有可能你的伺服器還有另一個「預設設定檔」佔用了 80 端口。<br>請執行這個指令，看看除了你的檔案，還有誰在用 80 端口：</li>
+</ol>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gradle">Bash<br><span class="hljs-keyword">grep</span> -r <span class="hljs-string">&quot;listen 80&quot;</span> <span class="hljs-regexp">/www/</span>server<span class="hljs-regexp">/panel/</span>vhost<span class="hljs-regexp">/nginx/</span><br>如果看到 <span class="hljs-number">0</span>.<span class="hljs-keyword">default</span>.conf 或是 wordpress.local.conf 也還在 listen <span class="hljs-number">80</span>：<br></code></pre></td></tr></table></figure>
+
+<p>請回去把它們的 80 改成 8080。</p>
+<p>因為 Nginx 如果看到兩個 80 端口的設定，它通常會優先讀取「字母順序靠前」的那一個（例如 0.default.conf），而那個檔案裡的路徑可能是錯的，所以噴出 404。</p>
+<ol start="4">
+<li>你的 Vue 是用什麼路由模式？<br>如果你在 Vue 3 專案裡用了 History Mode（網址沒有 # 號的那種），那麼 try_files 這一行絕對不能寫錯：</li>
+</ol>
+<p>Nginx<br>location &#x2F; {<br>    …<br>    try_files $uri $uri&#x2F; &#x2F;index.html;<br>}</p>
+<h2 id="這行的意思是：如果找不到檔案，就通通丟給-index-html-處理。如果沒寫這行，刷新頁面時一定會-404。"><a href="#這行的意思是：如果找不到檔案，就通通丟給-index-html-處理。如果沒寫這行，刷新頁面時一定會-404。" class="headerlink" title="這行的意思是：如果找不到檔案，就通通丟給 index.html 處理。如果沒寫這行，刷新頁面時一定會 404。"></a>這行的意思是：如果找不到檔案，就通通丟給 index.html 處理。如果沒寫這行，刷新頁面時一定會 404。</h2><div style="color:pink">「端口衝突」</div>
+改端口
+
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 1. 再次給予資料夾權限 (保險起見)</span><br>chmod -R <span class="hljs-number">755</span> <span class="hljs-regexp">/xxx/</span>xxxroot<br><br><span class="hljs-comment"># 2. 測試配置是否乾淨了</span><br><span class="hljs-regexp">/www/</span>server<span class="hljs-regexp">/nginx/</span>sbin/nginx -t<br><br><span class="hljs-comment"># 3. 重新加載</span><br><span class="hljs-regexp">/www/</span>server<span class="hljs-regexp">/nginx/</span>sbin/nginx -s reload<br><br></code></pre></td></tr></table></figure>
+
+<p>只要避開以下幾個「釘子戶」端口，就不會有問題：</p>
+<p>22：SSH 連線（如果你改了這個又沒設好，你就連不進伺服器了）。</p>
+<p>3306：MySQL 資料庫。</p>
+<p>8888 &#x2F; 888 &#x2F; 21：通常是寶塔面板、phpMyAdmin 或 FTP 在用的。</p>
+<p>你剛才看到的 netstat -ntlp 截圖已經確認了這些重要位置，我們選的 8080、8881、8882 都是安全的「空房間」。</p>
+<p><code>http://xxxx:8080/wp-admin/</code></p>
+<div style="color:pink">可能出現的問題</div>
+之前進不去是因為少了最後那個 斜槓 /。在 Web 伺服器的邏輯裡，wp-admin 是一個資料夾，如果不加斜槓，Nginx 有時候會試著做一次「修正跳轉」，而這個跳轉往往會因為端口改動（從 80 變成 8080）而失敗。現在手動補上斜槓，就直接定位到了後台。
+既然 WordPress 後台穩了，我們現在來確認最後一步：你的 Vue 3 專案與 WordPress 的連動。
+
+<ol>
+<li>不打斜槓（wp-admin）：伺服器以為你在找「檔案」</li>
+<li>加了斜槓（wp-admin&#x2F;）：伺服器知道你在找「房間」</li>
+</ol>
+<p>平常我們在 80 端口（預設端口）時，Nginx 的「自動跳轉」功能很聰明，會自動幫你補上斜槓。<br>當 Nginx 試圖幫你補斜槓並跳轉時，如果配置沒有處理好，它有時會漏掉 :8080 這個端口資訊，把你丟回原本的 <a target="_blank" rel="noopener" href="http://ip/wp-admin/%EF%BC%8880">http://IP/wp-admin/（80</a> 端口）。</p>
+<p>因為 80 端口現在住的是 Vue 專案，Vue 不認得 WordPress 的路徑，所以你就看到了空白或者是錯誤畫面。<br>手動加上那個 &#x2F;，等於是直接給了伺服器「精確座標」，讓它跳過那個「可能會出錯的自動跳轉步驟」。這是在處理非標準端口（如 8080）時，最穩妥的做法。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Vue%E6%A1%86%E6%9E%B6/" class="category-chain-item">Vue框架</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>实现wp前端顯示vue3框架</div>
+      <div>http://example.com/2026/05/05/實現訪問wp後台顯示vue3框架/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>翟哲</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年5月5日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/05/05/Vue3%E8%99%95%E7%90%86%E8%B7%A8%E5%9F%9F%E5%95%8F%E9%A1%8C/" title="Vue3處理跨域問題">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Vue3處理跨域問題</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/05/04/Vue3%E9%87%8CAPP-vue%E8%A3%A1%E9%9D%A2%E7%B5%84%E4%BB%B6%E7%9A%84%E5%AD%90%E7%B5%84%E4%BB%B6%E4%B8%8D%E9%A1%AF%E7%A4%BA%E6%96%B9%E6%B3%95/" title="Vue3里APP.vue裡面組件的子組件不顯示方法">
+                        <span class="hidden-mobile">Vue3里APP.vue裡面組件的子組件不顯示方法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

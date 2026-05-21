@@ -1,0 +1,879 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="翟哲">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="loading动画">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pinia+router守卫+axios封装+骨架屏实现loading动画">
+<meta property="og:url" content="http://example.com/2026/05/18/Pinia-router%E5%AE%88%E5%8D%AB-axios%E5%B0%81%E8%A3%85-%E9%AA%A8%E6%9E%B6%E5%B1%8F%E5%AE%9E%E7%8E%B0loading%E5%8A%A8%E7%94%BB/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="loading动画">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-18T02:18:46.000Z">
+<meta property="article:modified_time" content="2026-05-20T02:30:19.589Z">
+<meta property="article:author" content="翟哲">
+<meta property="article:tag" content="loading动画">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Pinia+router守卫+axios封装+骨架屏实现loading动画 - </title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>我不是二次元</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/zhaizhe520" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/%E8%BC%95%E5%B0%8F%E8%AA%AA" target="_self">
+                <i class="iconfont icon-file-fill"></i>
+                <span>輕小說</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="https://github.com/zhaizhe520" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/%E8%BC%95%E5%B0%8F%E8%AA%AA" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-file-fill"></i>
+                  <span>輕小說</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Pinia+router守卫+axios封装+骨架屏实现loading动画"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-05-18 10:18" pubdate>
+          2026年5月18日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          54 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Pinia+router守卫+axios封装+骨架屏实现loading动画</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>📌 项目立项书：Vite-WP-Blog<br>项目名称：Vite-WP-Blog（基于Vue3 + WP）</p>
+<p>核心亮点：</p>
+<p>全站异步组件延迟加载。</p>
+<p>Axios 拦截器自动吞吐 Loading 状态。</p>
+<p>Pinia 统一管理文章状态。</p>
+<p>页面局部“骨架屏”占位，拒绝死板的全屏转圈。css动画闹嘛了</p>
+<div style="color:pink">技术栈：Vue 3 (Setup) + Vite + Vue Router + Pinia + Axios + CSS 动画（或 Element Plus 骨架屏）。</div>
+
+<p>🛠️ 第一阶段：初始化项目与环境准备<br>现在我们开始第一步：搭架子。请在你的电脑终端（Terminal）执行以下命令：</p>
+<p>Bash</p>
+<h1 id="1-创建-Vue-3-项目（按提示选择：支持-Router、支持-Pinia）"><a href="#1-创建-Vue-3-项目（按提示选择：支持-Router、支持-Pinia）" class="headerlink" title="1. 创建 Vue 3 项目（按提示选择：支持 Router、支持 Pinia）"></a>1. 创建 Vue 3 项目（按提示选择：支持 Router、支持 Pinia）</h1><p>npm create vue@latest</p>
+<h1 id="2-进入项目目录（假设你起名叫-wp-blog）"><a href="#2-进入项目目录（假设你起名叫-wp-blog）" class="headerlink" title="2. 进入项目目录（假设你起名叫 wp-blog）"></a>2. 进入项目目录（假设你起名叫 wp-blog）</h1><p>cd wp-blog</p>
+<h1 id="3-安装-axios-依赖"><a href="#3-安装-axios-依赖" class="headerlink" title="3. 安装 axios 依赖"></a>3. 安装 axios 依赖</h1><p>npm install axios<br>🧱 第二阶段：核心代码编写目录<br>项目建好后，我们只需要聚焦在 4 个核心文件上。你可以按照下面的结构去创建和编写代码：</p>
+<h2 id="状态大脑：src-stores-wp-js"><a href="#状态大脑：src-stores-wp-js" class="headerlink" title="状态大脑：src&#x2F;stores&#x2F;wp.js"></a>状态大脑：src&#x2F;stores&#x2F;wp.js</h2><p>职责：封装专用的 Axios，并拦截请求，控制 isLoading 状态。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">JavaScript</span><br><span class="hljs-keyword">import</span> &#123; defineStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;pinia&#x27;</span><br><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> useWpStore = <span class="hljs-title function_">defineStore</span>(<span class="hljs-string">&#x27;wp&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> posts = <span class="hljs-title function_">ref</span>([])         <span class="hljs-comment">// 文章列表</span><br>  <span class="hljs-keyword">const</span> currentPost = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">null</span>) <span class="hljs-comment">// 当前文章详情</span><br>  <span class="hljs-keyword">const</span> isLoading = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">false</span>)  <span class="hljs-comment">// 全局骨架屏开关</span><br><br>  <span class="hljs-comment">// 创建 WP 专属请求实例</span><br>  <span class="hljs-keyword">const</span> wpApi = axios.<span class="hljs-title function_">create</span>(&#123;<br>    <span class="hljs-comment">// 💡 提示：换成你自己的 WP 网址，或者先用官方演示地址测试</span><br>    <span class="hljs-attr">baseURL</span>: <span class="hljs-string">&#x27;https://techcrunch.com/wp-json/wp/v2&#x27;</span> <br>  &#125;)<br><br>  <span class="hljs-comment">// 核心：拦截器控制开灯、关灯</span><br>  wpApi.<span class="hljs-property">interceptors</span>.<span class="hljs-property">request</span>.<span class="hljs-title function_">use</span>(<span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;<br>    isLoading.<span class="hljs-property">value</span> = <span class="hljs-literal">true</span><br>    <span class="hljs-keyword">return</span> config<br>  &#125;)<br>  wpApi.<span class="hljs-property">interceptors</span>.<span class="hljs-property">response</span>.<span class="hljs-title function_">use</span>(<br>    <span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123; isLoading.<span class="hljs-property">value</span> = <span class="hljs-literal">false</span>; <span class="hljs-keyword">return</span> res.<span class="hljs-property">data</span> &#125;,<br>    <span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123; isLoading.<span class="hljs-property">value</span> = <span class="hljs-literal">false</span>; <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(err) &#125;<br>  )<br><br>  <span class="hljs-comment">// 异步获取文章列表</span><br>  <span class="hljs-keyword">const</span> <span class="hljs-title function_">getPosts</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; &#123;<br>    posts.<span class="hljs-property">value</span> = <span class="hljs-keyword">await</span> wpApi.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/posts?per_page=6&amp;_embed&#x27;</span>) <span class="hljs-comment">// _embed 可以顺便带出特色图片</span><br>  &#125;<br><br>  <span class="hljs-comment">// 异步获取单篇文章详情</span><br>  <span class="hljs-keyword">const</span> <span class="hljs-title function_">getPostDetail</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params">id</span>) =&gt; &#123;<br>    currentPost.<span class="hljs-property">value</span> = <span class="hljs-keyword">await</span> wpApi.<span class="hljs-title function_">get</span>(<span class="hljs-string">`/posts/<span class="hljs-subst">$&#123;id&#125;</span>`</span>)<br>  &#125;<br><br>  <span class="hljs-keyword">return</span> &#123; posts, currentPost, isLoading, getPosts, getPostDetail &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h2 id="列表页：src-views-BlogList-vue"><a href="#列表页：src-views-BlogList-vue" class="headerlink" title="列表页：src&#x2F;views&#x2F;BlogList.vue"></a>列表页：src&#x2F;views&#x2F;BlogList.vue</h2><p>职责：利用 v-if 实现骨架屏占位与真实文章的切换。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable constant_">HTML</span><br>&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blog-list&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>📝 最新文章<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">    <span class="hljs-comment">&lt;!-- 骨架屏占位（数据加载时显示） --&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;wpStore.isLoading&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;skeleton-container&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;i in 3&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;i&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;skeleton-card&quot;</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;skeleton-title&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;skeleton-text&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">    <span class="hljs-comment">&lt;!-- 真实文章列表（数据加载完显示） --&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-else</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;post-grid&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">article</span> </span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;post in wpStore.posts&quot;</span> </span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;post.id&quot;</span> </span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;post-card&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;goToDetail(post.id)&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">      &gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">v-html</span>=<span class="hljs-string">&quot;post.title.rendered&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-html</span>=<span class="hljs-string">&quot;post.excerpt.rendered&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;excerpt&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; onMounted &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; useRouter &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-router&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; useWpStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/stores/wp&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> wpStore = <span class="hljs-title function_">useWpStore</span>()</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> router = <span class="hljs-title function_">useRouter</span>()</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-title function_">onMounted</span>(<span class="hljs-title function_">async</span> () =&gt; &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-keyword">await</span> wpStore.<span class="hljs-title function_">getPosts</span>() <span class="hljs-comment">// 触发异步请求</span></span></span><br><span class="language-javascript"><span class="language-xml">&#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> <span class="hljs-title function_">goToDetail</span> = (<span class="hljs-params">id</span>) =&gt; &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  router.<span class="hljs-title function_">push</span>(<span class="hljs-string">`/post/<span class="hljs-subst">$&#123;id&#125;</span>`</span>)</span></span><br><span class="language-javascript"><span class="language-xml">&#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="language-css"></span></span><br><span class="language-css"><span class="language-xml"><span class="hljs-comment">/* 真实卡片样式 */</span></span></span><br><span class="language-css"><span class="language-xml"><span class="hljs-selector-class">.post-card</span> &#123; <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#eee</span>; <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>; <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>; <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">15px</span>; <span class="hljs-attribute">cursor</span>: pointer; <span class="hljs-attribute">transition</span>: <span class="hljs-number">0.3s</span>; &#125;</span></span><br><span class="language-css"><span class="language-xml"><span class="hljs-selector-class">.post-card</span><span class="hljs-selector-pseudo">:hover</span> &#123; <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(-<span class="hljs-number">3px</span>); <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">4px</span> <span class="hljs-number">12px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.1</span>); &#125;</span></span><br><span class="language-css"><span class="language-xml"></span></span><br><span class="language-css"><span class="language-xml"><span class="hljs-comment">/* 骨架屏灰色闪烁占位样式 */</span></span></span><br><span class="language-css"><span class="language-xml"><span class="hljs-selector-class">.skeleton-card</span> &#123; <span class="hljs-attribute">background</span>: <span class="hljs-number">#f5f5f5</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">120px</span>; <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>; <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>; <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">15px</span>; <span class="hljs-attribute">animation</span>: pulse <span class="hljs-number">1.5s</span> infinite; &#125;</span></span><br><span class="language-css"><span class="language-xml"><span class="hljs-selector-class">.skeleton-title</span> &#123; <span class="hljs-attribute">background</span>: <span class="hljs-number">#e0e0e0</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">24px</span>; <span class="hljs-attribute">width</span>: <span class="hljs-number">40%</span>; <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">15px</span>; &#125;</span></span><br><span class="language-css"><span class="language-xml"><span class="hljs-selector-class">.skeleton-text</span> &#123; <span class="hljs-attribute">background</span>: <span class="hljs-number">#e0e0e0</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">16px</span>; <span class="hljs-attribute">width</span>: <span class="hljs-number">80%</span>; &#125;</span></span><br><span class="language-css"><span class="language-xml"><span class="hljs-keyword">@keyframes</span> pulse &#123; <span class="hljs-number">0%</span> &#123; <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.6</span>; &#125; <span class="hljs-number">50%</span> &#123; <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>; &#125; <span class="hljs-number">100%</span> &#123; <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.6</span>; &#125; &#125;</span></span><br><span class="language-css"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br><span class="hljs-number">3.</span> 详情页：src/views/<span class="hljs-title class_">BlogDetail</span>.<span class="hljs-property">vue</span><br>职责：点进去看文章大图和正文，同样自带骨架屏。<br><br><span class="hljs-variable constant_">HTML</span><br>&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blog-detail&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;$router.back()&quot;</span>&gt;</span>⬅️ 返回列表<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">    <span class="hljs-comment">&lt;!-- 详情页骨架屏 --&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;wpStore.isLoading&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;skeleton-detail&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;skeleton-title&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;skeleton-content&quot;</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;i in 4&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;i&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">    <span class="hljs-comment">&lt;!-- 真实文章正文 --&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">v-else-if</span>=<span class="hljs-string">&quot;wpStore.currentPost&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">v-html</span>=<span class="hljs-string">&quot;wpStore.currentPost.title.rendered&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-html</span>=<span class="hljs-string">&quot;wpStore.currentPost.content.rendered&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; onMounted &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; useRoute &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-router&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; useWpStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/stores/wp&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> wpStore = <span class="hljs-title function_">useWpStore</span>()</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> route = <span class="hljs-title function_">useRoute</span>()</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-title function_">onMounted</span>(<span class="hljs-title function_">async</span> () =&gt; &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-comment">// 根据路由传过来的文章 ID 去抓取详情</span></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-keyword">await</span> wpStore.<span class="hljs-title function_">getPostDetail</span>(route.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>) </span></span><br><span class="language-javascript"><span class="language-xml">&#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="language-css"></span></span><br><span class="language-css"><span class="language-xml"><span class="hljs-selector-class">.skeleton-detail</span> &#123; <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">30px</span>; <span class="hljs-attribute">animation</span>: pulse <span class="hljs-number">1.5s</span> infinite; &#125;</span></span><br><span class="language-css"><span class="language-xml"><span class="hljs-selector-class">.skeleton-title</span> &#123; <span class="hljs-attribute">background</span>: <span class="hljs-number">#e0e0e0</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">40px</span>; <span class="hljs-attribute">width</span>: <span class="hljs-number">60%</span>; <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">30px</span>; &#125;</span></span><br><span class="language-css"><span class="language-xml"><span class="hljs-selector-class">.skeleton-content</span> &#123; <span class="hljs-attribute">background</span>: <span class="hljs-number">#e0e0e0</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">18px</span>; <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">12px</span>; &#125;</span></span><br><span class="language-css"><span class="language-xml"><span class="hljs-keyword">@keyframes</span> pulse &#123; <span class="hljs-number">0%</span> &#123; <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.6</span>; &#125; <span class="hljs-number">50%</span> &#123; <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>; &#125; <span class="hljs-number">100%</span> &#123; <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.6</span>; &#125; &#125;</span></span><br><span class="language-css"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br><span class="hljs-number">4.</span> 路由配置：src/router/index.<span class="hljs-property">js</span><br>职责：配置成异步路由组件，让打包体积更小。<br><br><span class="hljs-title class_">JavaScript</span><br><span class="hljs-keyword">import</span> &#123; createRouter, createWebHistory &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-router&#x27;</span><br><br><span class="hljs-keyword">const</span> router = <span class="hljs-title function_">createRouter</span>(&#123;<br>  <span class="hljs-attr">history</span>: <span class="hljs-title function_">createWebHistory</span>(),<br>  <span class="hljs-attr">routes</span>: [<br>    &#123;<br>      <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/&#x27;</span>,<br>      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;home&#x27;</span>,<br>      <span class="hljs-attr">component</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@/views/BlogList.vue&#x27;</span>) <span class="hljs-comment">// 异步组件</span><br>    &#125;,<br>    &#123;<br>      <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/post/:id&#x27;</span>,<br>      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>      <span class="hljs-attr">component</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@/views/BlogDetail.vue&#x27;</span>) <span class="hljs-comment">// 异步组件</span><br>    &#125;<br>  ]<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>export default router</p>
+<h1 id="🚀-项目启动！"><a href="#🚀-项目启动！" class="headerlink" title="🚀 项目启动！"></a>🚀 项目启动！</h1><p>把代码保存后，在终端运行：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">Bash<br>npm <span class="hljs-built_in">run</span> dev<br></code></pre></td></tr></table></figure>
+
+<h1 id="Axios-的拦截器（Interceptors）控制loading"><a href="#Axios-的拦截器（Interceptors）控制loading" class="headerlink" title="Axios 的拦截器（Interceptors）控制loading"></a>Axios 的拦截器（Interceptors）控制loading</h1><p>如果没有拦截器，你的项目会变成这样：</p>
+<p>写 100 个接口，你就得手动在 100 个地方写代码去加 Token。</p>
+<p>后端一旦改了身份验证的方式，你需要苦哈哈地去修改 100 个地方。</p>
+<p>每个页面都要自己写 loading &#x3D; true 和 loading &#x3D; false。</p>
+<p>而有了拦截器，你把这些“与核心业务无关、但每个接口都要做的重复体力活”全部抽离到了一个统一的文件里。页面只负责“要数据”和“渲染数据”，整个项目的架构变得极其干净和标准。</p>
+<h1 id="前置守卫（beforeEach）："><a href="#前置守卫（beforeEach）：" class="headerlink" title="前置守卫（beforeEach）："></a>前置守卫（beforeEach）：</h1><p>用户点击跳转，在进入新页面之前，路由守卫立刻通知 Pinia：“把 isLoading 设为 true”。这样用户还没看清接口请求，骨架屏就已经提前在下一页准备好了。</p>
+<h1 id="后置守卫（afterEach）："><a href="#后置守卫（afterEach）：" class="headerlink" title="后置守卫（afterEach）："></a>后置守卫（afterEach）：</h1><p>当新页面组件加载完毕、路由跳转彻底完成时，路由守卫再通知 Pinia：“把 isLoading 设为 false”（或者交给页面内随之发起的 Axios 请求来决定何时关闭）。</p>
+<p>网络请求和路由跳转自动开关。</p>
+<h1 id="大致方式"><a href="#大致方式" class="headerlink" title="大致方式"></a>大致方式</h1><p>把你代码里的 axios.get(…) 换成你封装好、带有拦截器的那个专属请求工具（比如叫 request.get(…)）。</p>
+<p>request .封装axios request控制globle.js全局显示loading显示状态管理<br>本质拦截器？</p>
+<p>v-if 单个元素挂载</p>
+<p>v-show 会，标签在 DOM 里，浏览器照常下载图片</p>
+<h1 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h1><p>无法提前取消： 如果这 3 秒内用户突然不想看了，想点去别的页面，由于前一个路由被 setTimeout 锁死了，整个路由系统可能会陷入一种非常诡异的交替卡顿状态。</p>
+<p>不想看也要看</p>
+<p>封装过axios</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Vue%E6%A1%86%E6%9E%B6/" class="category-chain-item">Vue框架</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/loading%E5%8A%A8%E7%94%BB/" class="print-no-link">#loading动画</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Pinia+router守卫+axios封装+骨架屏实现loading动画</div>
+      <div>http://example.com/2026/05/18/Pinia-router守卫-axios封装-骨架屏实现loading动画/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>翟哲</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年5月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/05/18/AISkills/" title="AISkills">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">AISkills</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/05/17/Wordpress%E5%A4%87%E4%BB%BD/" title="Wordpress备份">
+                        <span class="hidden-mobile">Wordpress备份</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

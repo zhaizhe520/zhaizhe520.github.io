@@ -1,0 +1,898 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="翟哲">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基于 Vue 3 + WebGAL 的跨媒介交互式 Live2D 系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于 Vue 3 + WebGAL 的跨媒介交互式 Live2D 系统">
+<meta property="og:url" content="http://example.com/2026/05/09/WebGL-vue3%E5%9C%A8%E7%BB%84%E4%BB%B6%E6%B8%B2%E6%9F%93%E5%AE%9E%E7%8E%B0Galame%E6%BC%94%E7%A4%BA%E6%95%88%E6%9E%9C/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="基于 Vue 3 + WebGAL 的跨媒介交互式 Live2D 系统">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-09T13:58:21.000Z">
+<meta property="article:modified_time" content="2026-05-12T12:58:36.991Z">
+<meta property="article:author" content="翟哲">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>基于 Vue 3 + WebGAL 的跨媒介交互式 Live2D 系统 - </title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>我不是二次元</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/zhaizhe520" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/%E8%BC%95%E5%B0%8F%E8%AA%AA" target="_self">
+                <i class="iconfont icon-file-fill"></i>
+                <span>輕小說</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="https://github.com/zhaizhe520" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/%E8%BC%95%E5%B0%8F%E8%AA%AA" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-file-fill"></i>
+                  <span>輕小說</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="基于 Vue 3 + WebGAL 的跨媒介交互式 Live2D 系统"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-05-09 21:58" pubdate>
+          2026年5月9日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          29 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">基于 Vue 3 + WebGAL 的跨媒介交互式 Live2D 系统</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>是的，WebGAL 确实可以将 Galgame 集成到 Vue 3 项目中。由于 WebGAL 本身就是基于 Web 技术（HTML&#x2F;JS）开发的引擎，它与 Vue 3 的兼容性非常好，非常适合用来制作你提到的那种 Live2D 网页交互项目。</p>
+<p>通常有两种主流的集成方式，你可以根据项目的复杂度来选择：</p>
+<h1 id="使用-Iframe-快速嵌入（最简单）"><a href="#使用-Iframe-快速嵌入（最简单）" class="headerlink" title="使用 Iframe 快速嵌入（最简单）"></a>使用 Iframe 快速嵌入（最简单）</h1><p>如果你已经使用 WebGAL 的编辑器打包好了游戏，最快的方法是将生成的静态资源放在 Vue 项目的 public 文件夹下，然后在组件中通过 <code>&lt;iframe&gt; </code>引用。</p>
+<p>优点：环境隔离，Vue 的样式和逻辑不会干扰到游戏引擎。</p>
+<p>缺点：Vue 与游戏之间的数据通信（比如点击游戏角色触发 Vue 组件的变化）需要通过 postMessage 处理，稍微有点麻烦。</p>
+<h1 id="postMessage是什么？"><a href="#postMessage是什么？" class="headerlink" title="postMessage是什么？"></a>postMessage是什么？</h1><h1 id="作为-NPM-包-组件集成（更深度）"><a href="#作为-NPM-包-组件集成（更深度）" class="headerlink" title="作为 NPM 包&#x2F;组件集成（更深度）"></a>作为 NPM 包&#x2F;组件集成（更深度）</h1><p>WebGAL 提供了核心渲染库（WebGAL Framework），你可以尝试将其作为依赖项引入。</p>
+<p>基本步骤如下：</p>
+<p>安装依赖：在 Vue 3 项目根目录执行：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-title class_">Bash</span><br>npm install <span class="hljs-meta">@webgal</span>/framework<br><span class="hljs-string">``</span><span class="hljs-string">`</span><br><span class="hljs-string"></span><br><span class="hljs-string">创建游戏容器组件：</span><br><span class="hljs-string">在 Vue 组件中挂载渲染区域。</span><br><span class="hljs-string">`</span><span class="hljs-string">``</span><br>&lt;template&gt;<br>      <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;webgal-container&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;gameCanvas&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>    &lt;/template&gt;<br><br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">import</span> &#123; onMounted, ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">// 引入 WebGAL 相关逻辑</span></span></span><br><span class="language-javascript"><span class="language-xml">    </span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> gameCanvas = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">null</span>);</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">onMounted</span>(<span class="hljs-function">() =&gt;</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// 在这里初始化 WebGAL 引擎，绑定到 gameCanvas 元素</span></span></span><br><span class="language-javascript"><span class="language-xml">    &#125;);</span></span><br><span class="language-javascript"><span class="language-xml">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br><span class="hljs-string">``</span><span class="hljs-string">`</span><br><span class="hljs-string">因为 WebGAL 涉及大量的静态资源（图片、音频、Live2D 模型），你需要在 `</span>vite.<span class="hljs-property">config</span>.<span class="hljs-property">ts</span><span class="hljs-string">` 中处理好资源的路径映射，确保打包后能正常加载。</span><br><span class="hljs-string"></span><br><span class="hljs-string">针对你的项目建议</span><br><span class="hljs-string">既然你正在开发基于 **PixiJS** 的 Live2D 项目并使用了 **Pinia**，WebGAL 的优势在于：</span><br><span class="hljs-string"></span><br><span class="hljs-string">*   **资源管理**：它有一套成熟的脚本解析系统，可以帮你省去手动写 PixiJS 渲染逻辑的麻烦。</span><br><span class="hljs-string">*   **Live2D 支持**：WebGAL 对 Live2D（如你使用的村雨模型）有很好的原生支持，可以通过简单的文本脚本控制动作和表情。</span><br><span class="hljs-string">*   **结合 Pinia**：你可以通过 Vue 的生命周期钩子，将 WebGAL 的播放状态（如剧情进度）同步到 Pinia 中，从而实现“对话结束后解锁 Vue 页面上的某个功能”。</span><br><span class="hljs-string"></span><br><span class="hljs-string">### 注意事项</span><br><span class="hljs-string">*   **性能消耗**：Live2D 模型加上 Vue 3 的响应式系统，如果同时运行多个实例，注意移动端的性能表现。</span><br><span class="hljs-string">*   **静态路径**：Vue 3 项目打包后路径容易出错，建议始终将游戏素材放在 `</span><span class="hljs-keyword">public</span>/game/<span class="hljs-string">` 这种绝对路径下。</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="基于-Vue-3-WebGAL-的跨媒介交互式-Live2D-系统"><a href="#基于-Vue-3-WebGAL-的跨媒介交互式-Live2D-系统" class="headerlink" title="基于 Vue 3 + WebGAL 的跨媒介交互式 Live2D 系统"></a>基于 Vue 3 + WebGAL 的跨媒介交互式 Live2D 系统</h1><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>技术栈</th>
+<th>核心职责</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主控容器 (Shell)</td>
+<td>Vue 3 (Vite)</td>
+<td>负责整体 UI 布局、侧边栏、导航以及生命周期管理。</td>
+</tr>
+<tr>
+<td>交互引擎 (Engine)</td>
+<td>WebGAL (Iframe)</td>
+<td>运行剧情脚本、处理对话选项、播放 Galgame 素材。</td>
+</tr>
+<tr>
+<td>宠物模块 (Pet)</td>
+<td>PixiJS + Live2D</td>
+<td>渲染村雨模型，接收来自 Vue 或游戏的信号并做出动作反馈。</td>
+</tr>
+<tr>
+<td>数据中枢 (State)</td>
+<td>Pinia</td>
+<td>存储好感度、宠物心情、当前提示词（Tip）等全局状态。</td>
+</tr>
+</tbody></table>
+<h1 id="第一阶段任务清单（本周目标）"><a href="#第一阶段任务清单（本周目标）" class="headerlink" title="第一阶段任务清单（本周目标）"></a>第一阶段任务清单（本周目标）</h1><p>既然要参加实习，我们需要先攻克最核心的通信链路：</p>
+<p>[ ] 环境搭建：在 Vue 3 项目的 public 文件夹下成功运行 WebGAL 导出的 Demo。</p>
+<p>[ ] Iframe 引入：在 Vue 页面中通过<code>&lt;iframe&gt;</code>标签显示游戏画面。</p>
+<p>[ ] 通信桥梁测试：</p>
+<p>在 WebGAL 脚本里写一个 postMessage 脚本。</p>
+<p>在 Vue 组件里用 addEventListener 接收并 console.log 打印出来。</p>
+<p>[ ] 状态联动：当监听到游戏信号时，成功修改 Pinia 中的一个变量。</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="异步解耦："><a href="#异步解耦：" class="headerlink" title="异步解耦："></a>异步解耦：</h1><p>资源预加载系统：针对 Galgame 大量的图片和 Live2D 模型，做一个统一的 Loading 进度条，解决“白屏”等待问题。</p>
+<p>异步解耦：确保即使 WebGAL 还没加载完，Vue 的主界面和live 2d基本功能（比如点击触摸）也能正常使用。</p>
+<h1 id="如何联动"><a href="#如何联动" class="headerlink" title="如何联动"></a>如何联动</h1><p>这是一个非常硬核且具有实操性的问题！答案是肯定的。如果你使用 iframe 嵌入 WebGAL，你可以通过 窗口间通信（Window Messaging） 让游戏里的“选项”实时控制 Vue 3 里的 Live2D 提示。</p>
+<p>这正是展现你工程能力的最佳场景：让两个独立的系统（Vue 和 WebGAL）产生联动。</p>
+<h2 id="实现逻辑图"><a href="#实现逻辑图" class="headerlink" title="实现逻辑图"></a>实现逻辑图</h2><p>WebGAL 端（发送者）：当用户点击“选项”时，发送一个特殊的“信号”出去。</p>
+<p>Vue 3 端（接收者）：通过监听器捕捉这个“信号”，然后去修改你 Pinia 里的状态或直接改变 Live2D 的提示词。</p>
+<h3 id="WebGAL-端的设置"><a href="#WebGAL-端的设置" class="headerlink" title="WebGAL 端的设置"></a>WebGAL 端的设置</h3><p>在 WebGAL 的剧情脚本里，你需要执行一段自定义的 JavaScript 代码。</p>
+<p>指令：在“选项”的分支里，添加一个“执行脚本”指令。</p>
+<p>代码内容：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-comment">// 通知父窗口（Vue）</span><br>window.<span class="hljs-built_in">parent</span>.<span class="hljs-title function_ invoke__">postMessage</span>(&#123;<br>  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;GAL_OPTION_SELECTED&#x27;</span>,<br>  <span class="hljs-attr">data</span>: &#123; <span class="hljs-attr">tip</span>: <span class="hljs-string">&#x27;你好&#x27;</span>, <span class="hljs-attr">action</span>: <span class="hljs-string">&#x27;wave&#x27;</span> &#125; // 你想传给 Vue 的任何数据<br>&#125;, <span class="hljs-string">&#x27;*&#x27;</span>);<br><br></code></pre></td></tr></table></figure>
+<h3 id="Vue-3-端的设置"><a href="#Vue-3-端的设置" class="headerlink" title="Vue 3 端的设置"></a>Vue 3 端的设置</h3><p>在你的 Vue 组件（例如挂载 Live2D 的那个页面）中，添加监听逻辑：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; onMounted, onUnmounted &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;<br><br><span class="hljs-comment">// 假设你有一个控制 Live2D 提示的 ref 或 Pinia 状态</span><br><span class="hljs-keyword">const</span> live2dTip = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;等待中...&#x27;</span>);<br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">handleMessage</span> = (<span class="hljs-params">event</span>) =&gt; &#123;<br>  <span class="hljs-comment">// 过滤信号，确保只处理来自 WebGAL 的信息</span><br>  <span class="hljs-keyword">if</span> (event.<span class="hljs-property">data</span>.<span class="hljs-property">type</span> === <span class="hljs-string">&#x27;GAL_OPTION_SELECTED&#x27;</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;收到了来自游戏的选项信号:&#x27;</span>, event.<span class="hljs-property">data</span>.<span class="hljs-property">data</span>);<br>    <br>    <span class="hljs-comment">// 核心逻辑：控制 Vue 里的 Live2D 提示内容</span><br>    live2dTip.<span class="hljs-property">value</span> = event.<span class="hljs-property">data</span>.<span class="hljs-property">data</span>.<span class="hljs-property">tip</span>; <span class="hljs-comment">// 这里就会变成 &quot;你好&quot;</span><br>  &#125;<br>&#125;;<br><br><span class="hljs-title function_">onMounted</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;message&#x27;</span>, handleMessage);<br>&#125;);<br><br><span class="hljs-title function_">onUnmounted</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;message&#x27;</span>, handleMessage);<br>&#125;);<br><br><br></code></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>跨文档通信：你掌握了 postMessage 这种处理不同窗口&#x2F;框架间数据交换的高级技巧。</p>
+<p>解耦设计：游戏逻辑归游戏，UI 逻辑归 Vue，但它们又能通过“信号驱动”达成一致。</p>
+<p>状态管理：如果你把收到的“你好”存入 Pinia，那整个 Vue 应用（包括其他的侧边栏或导航栏）都能知道用户在游戏里选了什么。</p>
+<h1 id="找不到资源-先扒文件吧"><a href="#找不到资源-先扒文件吧" class="headerlink" title="找不到资源 先扒文件吧"></a>找不到资源 先扒文件吧</h1><h2 id="GarBro-推荐"><a href="#GarBro-推荐" class="headerlink" title="GarBro (推荐)"></a>GarBro (推荐)</h2><p>特点：开源、强大，支持绝大多数 Galgame 引擎。</p>
+<p>操作：直接把 .xp3 文件拖进去，它就能像解压软件一样显示里面的内容。你可以直接提取出图片（通常是 .tlg 或 .png）。<br>强大<br><code>https://github.com/morkt/GARbro</code></p>
+<p>这些 .xp3 文件本质上是加密或压缩过的资源包，里面藏着你想要的 Live2D 模型、立绘（fgimage）、背景图（evimage）、脚本（scn）以及音频。</p>
+<h1 id="KiriKiri-Z"><a href="#KiriKiri-Z" class="headerlink" title="KiriKiri Z+"></a>KiriKiri Z+</h1><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/xmoezzz/</span>KrkrExtract<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A0%85%E7%9B%AE/" class="category-chain-item">項目</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>基于 Vue 3 + WebGAL 的跨媒介交互式 Live2D 系统</div>
+      <div>http://example.com/2026/05/09/WebGL-vue3在组件渲染实现Galame演示效果/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>翟哲</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年5月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/05/10/vue3%E6%89%93%E5%8C%85%E6%97%B6%E8%87%AA%E5%8A%A8%E5%8E%8B%E7%BC%A9%E5%9B%BE%E7%89%87/" title="vue3打包时自动压缩图片">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">vue3打包时自动压缩图片</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/05/09/vue3%E9%87%8C%E9%9D%A2%E4%B8%8D%E7%94%A8%E8%B7%AF%E7%94%B1%E5%AE%9E%E7%8E%B0%E6%8C%89%E9%92%AE%E5%AF%B9%E5%BA%94%E7%BB%84%E4%BB%B6%E5%88%87%E6%8D%A2/" title="vue3里面不用路由实现按钮对应组件切换">
+                        <span class="hidden-mobile">vue3里面不用路由实现按钮对应组件切换</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
