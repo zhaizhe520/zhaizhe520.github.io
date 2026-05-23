@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="全栈">
+    <meta name="description" content="部署后端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue3 + Axios + Pinia + Node.js 极简后端 + MySQL">
-<meta property="og:url" content="http://example.com/2026/05/18/Vue3-Axios-Pinia-Node-js-%E6%9E%81%E7%AE%80%E5%90%8E%E7%AB%AF-MySQL/index.html">
+<meta property="og:title" content="线上部署server.js">
+<meta property="og:url" content="http://example.com/2026/05/23/%E7%BA%BF%E4%B8%8A%E9%83%A8%E7%BD%B2server-js/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="全栈">
+<meta property="og:description" content="部署后端">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-05-18T10:33:42.000Z">
-<meta property="article:modified_time" content="2026-05-23T09:59:22.608Z">
+<meta property="article:published_time" content="2026-05-23T09:55:43.000Z">
+<meta property="article:modified_time" content="2026-05-23T12:48:04.195Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="全栈">
+<meta property="article:tag" content="部署后端">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Vue3 + Axios + Pinia + Node.js 极简后端 + MySQL - </title>
+  <title>线上部署server.js - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vue3 + Axios + Pinia + Node.js 极简后端 + MySQL"></span>
+            <span id="subtitle" data-typed-text="线上部署server.js"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-05-18 18:33" pubdate>
-          2026年5月18日 晚上
+        <time datetime="2026-05-23 17:55" pubdate>
+          2026年5月23日 下午
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          1.1k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          18 分钟
+          10 分钟
         
       </span>
     
@@ -376,37 +376,31 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Vue3 + Axios + Pinia + Node.js 极简后端 + MySQL</h1>
+            <h1 id="seo-header">线上部署server.js</h1>
             
             
               <div class="markdown-body">
                 
-                <p>技术栈：Vue3 + Axios + Pinia + Node.js 极简后端 + MySQL</p>
-<p>请求进来  →  接待员（Express）  →  办事员（API 路由）  →  仓库（MariaDB）<br>   ↓              ↓                      ↓                    ↓<br>浏览器访问    app.use(cors())       app.get(‘&#x2F;api&#x2F;…’)    mysql.createConnection()</p>
-<h1 id="nodo-js简易后端"><a href="#nodo-js简易后端" class="headerlink" title="nodo.js简易后端"></a>nodo.js简易后端</h1><p>真简易后端接口都不接</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs dart">前端: axios.<span class="hljs-keyword">get</span>(<span class="hljs-string">&#x27;http://localhost:3000/api/hello&#x27;</span>)<br>         ↓<br>后端: app.<span class="hljs-keyword">get</span>(<span class="hljs-string">&#x27;/api/hello&#x27;</span>, <span class="hljs-keyword">async</span> (req, res) =&gt; &#123;<br>         <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> db.query(<span class="hljs-string">&#x27;SELECT &quot;你好，全栈冒险者&quot; AS msg&#x27;</span>)<br>         res.json(result)<br>       &#125;)<br>         ↓<br>前端收到: &#123; msg: <span class="hljs-string">&quot;你好，全栈冒险者&quot;</span> &#125;<br><br></code></pre></td></tr></table></figure>
-<h1 id="第一步：装包。"><a href="#第一步：装包。" class="headerlink" title="第一步：装包。"></a>第一步：装包。</h1><p>npm install express mysql2 cors</p>
-<h1 id="创建-server-js"><a href="#创建-server-js" class="headerlink" title="创建 server.js"></a>创建 server.js</h1><p>import express from ‘express’<br>import cors from ‘cors’<br>import mysql from ‘mysql2&#x2F;promise’<br>mysql2&#x2F;promise 这个包帮你在 Node.js 和 MariaDB 之间建立一条持续连接。promise 版本用 await 而不用回调函数，代码读起来更顺畅。</p>
-<p>const app &#x3D; express()<br>const PORT &#x3D; 3000</p>
-<p>&#x2F;&#x2F; 中间件<br>app.use(cors()) &#x2F;&#x2F; 允许前端跨域访问<br>app.use(express.json())  &#x2F;&#x2F; 能解析前端发来的 JSON 数据</p>
-<h1 id="第二层：仓库钥匙（数据库连接）"><a href="#第二层：仓库钥匙（数据库连接）" class="headerlink" title="第二层：仓库钥匙（数据库连接）"></a>第二层：仓库钥匙（数据库连接）</h1><p>const dbConfig &#x3D; {<br>  host: ‘xxx.xxx.xxx.x’,<br>  port: 3306,<br>  user: ‘root’,<br>  password: ‘xxx’,<br>  database: ‘xxx’<br>}</p>
-<p>req &#x3D; 前端发来的请求（谁在敲门）<br>res &#x3D; 你要返回的响应（开门、给东西）<br>await db.query(…) &#x3D; 对仓库管理员说”帮我查个东西”<br>res.json(…) &#x3D; 把查询结果打包递回去</p>
-<p>axios	把 JS 请求翻译成 HTTP 协议</p>
-<p>mysql2	把 JS 查询翻译成 MySQL 协议</p>
-<p>vue	把 .vue 文件翻译成 HTML&#x2F;CSS&#x2F;JS</p>
-<p>npm run server	启动后端 API（端口 3000）	调数据库时</p>
-<h1 id="3306上防火墙"><a href="#3306上防火墙" class="headerlink" title="3306上防火墙"></a>3306上防火墙</h1><h1 id="ssh放行"><a href="#ssh放行" class="headerlink" title="ssh放行"></a>ssh放行</h1><p>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root‘@’%’ IDENTIFIED BY ‘470803581wW!’;<br>FLUSH PRIVILEGES;<br>解释：</p>
-<p>‘root‘@’%’ —— 允许 root 从任何 IP 登录（% &#x3D; 通配符）<br>GRANT ALL PRIVILEGES ON <em>.</em> —— 授予所有数据库的所有权限<br>FLUSH PRIVILEGES —— 让权限立刻生效，不重启</p>
-<div style="color:pink">更好的做法：建一个专用账号，只给必要权限</div>
+                <h1 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程"></a>具体流程</h1><p>第一步：服务器装 Node.js<br>远程桌面登上 xxxx，终端敲：</p>
+<p>node -v<br>没装的话，去 <a target="_blank" rel="noopener" href="https://nodejs.org/">https://nodejs.org</a> 下载 LTS 版，Windows 安装包双击。装完再敲 node -v 确认。</p>
+<p>linux:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -fsSL https://deb.nodesource.com/setup_20.x | <span class="hljs-built_in">sudo</span> -E bash -<br><span class="hljs-built_in">sudo</span> apt-get install -y nodejs<br></code></pre></td></tr></table></figure>
 
-<p>– 创建一个专用用户，只允许从你的 IP 登录<br>CREATE USER ‘noacg_user‘@’60.173.217.191’ IDENTIFIED BY ‘你的另一个密码’;</p>
-<p>– 只授予 Galgame 这个数据库的增删改查权限（不给 DROP、ALTER 等危险权限）<br>GRANT SELECT, INSERT, UPDATE, DELETE ON Galgame.* TO ‘noacg_user‘@’60.173.217.191’;</p>
-<p>FLUSH PRIVILEGES;<br>然后 server.js 里改用这个账号：</p>
-<p>const dbConfig &#x3D; {<br>  host: ‘110.42.248.8’,<br>  port: 3306,<br>  user: ‘noacg_user’,          &#x2F;&#x2F; ← 专用账号，不是 root<br>  password: ‘你的另一个密码’,   &#x2F;&#x2F; ← 独立密码<br>  database: ‘Galgame’<br>}<br>三层防护对比<br>做法	风险<br>‘root‘@’%’ + 全部权限	高危，任何人都能用 root 密码爆破<br>‘noacg_user‘@’%’ + 单个库权限	中等，密码泄露也只影响一个库<br>‘noacg_user‘@’60.173.217.191’ + 单个库权限	推荐，只有你的电脑能连，且只能动一个库</p>
-<p>最坏情况外面的人拿到了密码——他也只能在你的 IP 上才能连，而你家里的电脑就是他过不去的那道墙。</p>
-<h2 id="‘专用账户‘-’-’-单个库权限"><a href="#‘专用账户‘-’-’-单个库权限" class="headerlink" title="‘专用账户‘@’%’ + 单个库权限"></a>‘专用账户‘@’%’ + 单个库权限</h2><p>建专用账号<br>CREATE USER ‘xxx_user‘@’%’ IDENTIFIED BY ‘你的强密码’;、</p>
-<p>第二步：只给 xxx 数据库增删改查权限</p>
-<p>GRANT SELECT, INSERT, UPDATE, DELETE ON Galgame.* TO ‘noacg_user‘@’%’;<br>FLUSH PRIVILEGES; 111</p>
+
+<p>第二步：上传 server.js + 装包<br>在服务器上建个文件夹，比如 C:\backend，把本地的 server.js 拖进去。然后在服务器终端：</p>
+<p>cd C:\backend<br>npm init -y<br>npm install express mysql2 cors<br>同时改 host——server.js 里 host: ‘110.42.248.8’ 改成 host: ‘127.0.0.1’。数据库和后端在同一台机器上，走内环，不绕公网。</p>
+<p>第三步：安全组开 3000 端口<br>在云服务器控制台加一条：</p>
+<p>描述	来源	协议	端口	动作<br>Node后端	全部IPv4地址	TCP	3000	允许<br>第四步：启动 + 验证</p>
+<h1 id="服务器终端"><a href="#服务器终端" class="headerlink" title="服务器终端"></a>服务器终端</h1><p>node server.js<br>浏览器打开 <a target="_blank" rel="noopener" href="http://110.42.248.8:3000/api/companies%EF%BC%8C%E7%9C%8B%E5%88%B0">http://110.42.248.8:3000/api/companies，看到</a> JSON 就通了。</p>
+<p>然后在你本地项目新建 .env 文件：</p>
+<p>VITE_API_BASE&#x3D;<a target="_blank" rel="noopener" href="http://110.42.248.8:3000/">http://110.42.248.8:3000</a></p>
+<h1 id="env-文件"><a href="#env-文件" class="headerlink" title=".env 文件"></a>.env 文件</h1><p>.env 文件你放那，Vite 启动时会悄悄读它。但不是所有变量都传进来——只有以 VITE_ 开头的才会被暴露给前端代码。这是安全设计：</p>
+<p>.env 里写的                    Vite 处理后                前端能读到<br>VITE_API_BASE&#x3D;xxx    ──→    暴露给 import.meta.env    ──→  能<br>DB_PASSWORD&#x3D;xxx      ──→    过滤掉，不暴露            ──→  不能<br>如果没有 VITE_ 这个前缀过滤，你写在 .env 里的数据库密码就会被前端打包进去，用户打开浏览器看源码就能看到。</p>
+<h1 id="本地没问题——是服务器上-node-进程死了。SSH-终端一关，node-server-js-就跟着停了。"><a href="#本地没问题——是服务器上-node-进程死了。SSH-终端一关，node-server-js-就跟着停了。" class="headerlink" title="本地没问题——是服务器上 node 进程死了。SSH 终端一关，node server.js 就跟着停了。"></a>本地没问题——是服务器上 node 进程死了。SSH 终端一关，node server.js 就跟着停了。</h1><p>nvm 只在安装时那个会话里有效，新会话里没加载。先激活 nvm：<br>source &#x2F;root&#x2F;.nvm&#x2F;nvm.sh<br>node server.js &amp;</p>
+<p>如果每次都要手动 source 嫌麻烦，加到 ~&#x2F;.bashrc 里一步到位：</p>
+<p>echo ‘source &#x2F;root&#x2F;.nvm&#x2F;nvm.sh’ &gt;&gt; ~&#x2F;.bashrc</p>
+<p>装 Node.js 的工具——Node Version Manager。</p>
+<p>~&#x2F;.bashrc 是每次登录自动执行的文件，加那一行就是让 nvm 自动激活，以后不用手动 source。</p>
 
                 
               </div>
@@ -440,7 +434,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%85%A8%E6%A0%88/" class="print-no-link">#全栈</a>
+        <a href="/tags/%E9%83%A8%E7%BD%B2%E5%90%8E%E7%AB%AF/" class="print-no-link">#部署后端</a>
       
     </div>
   
@@ -452,8 +446,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vue3 + Axios + Pinia + Node.js 极简后端 + MySQL</div>
-      <div>http://example.com/2026/05/18/Vue3-Axios-Pinia-Node-js-极简后端-MySQL/</div>
+      <div>线上部署server.js</div>
+      <div>http://example.com/2026/05/23/线上部署server-js/</div>
     </div>
     <div class="license-meta">
       
@@ -465,7 +459,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年5月18日</div>
+          <div>2026年5月23日</div>
         </div>
       
       
@@ -497,18 +491,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/05/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%87%8C%E5%8D%95%E7%8B%AC%E5%AD%98%E4%B8%80%E4%B8%AA%E2%80%9C%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D%E6%88%96%E8%80%85%E2%80%9C%E5%9B%BE%E7%89%87%E9%AB%98%E5%AE%BD%E6%AF%94%E2%80%9D%E6%9D%A5%E4%BC%98%E5%8C%96%EF%BC%9F/" title="数据库里单独存一个“缩略图”或者“图片高宽比”来优化">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据库里单独存一个“缩略图”或者“图片高宽比”来优化</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/05/18/AISkills/" title="AISkills">
-                        <span class="hidden-mobile">AISkills</span>
+                      <a href="/2026/05/20/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%87%8C%E5%8D%95%E7%8B%AC%E5%AD%98%E4%B8%80%E4%B8%AA%E2%80%9C%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D%E6%88%96%E8%80%85%E2%80%9C%E5%9B%BE%E7%89%87%E9%AB%98%E5%AE%BD%E6%AF%94%E2%80%9D%E6%9D%A5%E4%BC%98%E5%8C%96%EF%BC%9F/" title="数据库里单独存一个“缩略图”或者“图片高宽比”来优化">
+                        <span class="hidden-mobile">数据库里单独存一个“缩略图”或者“图片高宽比”来优化</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
