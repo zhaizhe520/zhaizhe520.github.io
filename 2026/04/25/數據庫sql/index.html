@@ -27,7 +27,7 @@
 <meta property="og:description" content="數據庫MySQL">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-25T08:54:17.000Z">
-<meta property="article:modified_time" content="2026-05-24T02:00:31.122Z">
+<meta property="article:modified_time" content="2026-05-24T14:11:17.368Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          519 字
+          1.6k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          5 分钟
+          14 分钟
         
       </span>
     
@@ -384,15 +384,59 @@
                 <h1 id="mysql-u-root-p"><a href="#mysql-u-root-p" class="headerlink" title="mysql -u root -p"></a>mysql -u root -p</h1><p>密码:xxx</p>
 <p>SHOW DATABASES;<br>USE XXX;<br>SHOW TABLES;</p>
 <h1 id="新建数据库"><a href="#新建数据库" class="headerlink" title="新建数据库"></a>新建数据库</h1><p>CREATE DATABASE xxxx CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;<br>create database xxxx character set(字符集) utf8mb4 collate (校对规则)utf8mb4_unicode_ci(不区分大小写);</p>
+<h1 id="新建数据表"><a href="#新建数据表" class="headerlink" title="新建数据表"></a>新建数据表</h1><p>create table 名字(<br>    id INT AUTO_INCREMENT PRIMARY KEY,<br>    title VARCHAR(255) NOT NULL,<br>    release_date DATE,<br>    xx</p>
+<p>);</p>
 <h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><p>show databases; 查库</p>
 <p>use xxx;  用表</p>
 <p>show tables;  查表</p>
 <p>desc xxxx;  描述表</p>
 <p>select 字段 from 表  limit 10; 查数据</p>
-<h1 id="增"><a href="#增" class="headerlink" title="增"></a>增</h1><p>单增： insert into 表 (字段) values (‘数据’);<br>多增： insert into 表（字段）values (‘数据’),(‘数据’),(‘数据’),(‘数据’);</p>
+<h1 id="增"><a href="#增" class="headerlink" title="增"></a>增</h1><h2 id="增数据"><a href="#增数据" class="headerlink" title="增数据"></a>增数据</h2><p>单增： insert into 表 (字段) values (‘数据’);<br>多增： insert into 表（字段, 字段，字段,字段）values (‘数据’),(‘数据’),(‘数据’),(‘数据’);</p>
+<h2 id="增字段"><a href="#增字段" class="headerlink" title="增字段"></a>增字段</h2><p>– 给 xxx 表增加一个叫 introduction 的格子，类型是 TEXT（可以存好几万字）<br>ALTER TABLE xxxx ADD COLUMN introduction TEXT;</p>
 <h1 id="删"><a href="#删" class="headerlink" title="删"></a>删</h1><p>单删： DELETE FROM 表 WHERE 字段 &#x3D; ‘数据’;<br>多删:  DELETE FROM 表 WHERE 字段 IN (‘数据1’, ‘数据2’);</p>
 <h1 id="换"><a href="#换" class="headerlink" title="换"></a>换</h1><p>UPDATE 表 SET 字段 &#x3D; ‘新数据’ WHERE 字段 &#x3D; ‘旧数据’;</p>
 <p>调头写法，都是从表到字段 select 字段 from 表 limit xx;(不是)读取顺序是的</p>
+<h1 id="二个关系型数据表"><a href="#二个关系型数据表" class="headerlink" title="二个关系型数据表"></a>二个关系型数据表</h1><p>一对多关系（One-to-Many）—— 最常见 “主从表结构”（或叫 父子表结构）。</p>
+<p>多对多关系（Many-to-Many）多对多，建中间表</p>
+<p>建立外键约束，关联到 companies 表的 id</p>
+<p>脏数据<br>孤儿数据</p>
+<h2 id="一对多关系"><a href="#一对多关系" class="headerlink" title="一对多关系"></a>一对多关系</h2><p>外键（Foreign Key）</p>
+<p>CREATE TABLE works (<br>    id INT AUTO_INCREMENT PRIMARY KEY,   – 1. 给每个作品一个独立的编号，它自己会自动往上加（1,2,3…）<br>    title VARCHAR(255) NOT NULL,        – 2. 存作品的名字（比如”千恋＊万花”），不能为空<br>    company_id INT NOT NULL,            – 3. 核心：用来存“公司暗号”的格子</p>
+<pre><code class="hljs">下面这三行是告诉数据库一个“铁律”：
+CONSTRAINT fk_work_company 
+FOREIGN KEY (company_id) REFERENCES companies(id)
+ON DELETE CASCADE
+</code></pre>
+<p>) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8mb4;<br>FOREIGN KEY (company_id) REFERENCES companies(id)<br>这是外键约束。意思是：“数据库你帮我盯着点！以后往作品表里填 company_id 的时候，这个数字必须在公司表的 id 里能找到。要是输入一个不存在的数字（比如填个 999），直接报错拒绝，不让存！” 防止你粗心录错数据。</p>
+<p>ON DELETE CASCADE（级连删除）<br>意思是：“如果有一天我把‘柚子社’（id: 1）从公司表删除了，你（数据库）懂事点，自动把作品表里所有 company_id 是 1 的作品（千恋万花、魔女的夜宴）全部一起删掉。” 省得你手动去一个个删。</p>
+<h1 id="数据库里的三大-Key-状态（对照看就懂了）"><a href="#数据库里的三大-Key-状态（对照看就懂了）" class="headerlink" title="数据库里的三大 Key 状态（对照看就懂了）"></a>数据库里的三大 Key 状态（对照看就懂了）</h1><table>
+<thead>
+<tr>
+<th>缩写</th>
+<th>全称</th>
+<th>大白话含义</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PRI</td>
+<td>Primary Key 主键</td>
+<td>数值唯一不重复，且不能为空，一张表仅能设置一个</td>
+<td>作品表的唯一编号id</td>
+</tr>
+<tr>
+<td>UNI</td>
+<td>Unique Key 唯一索引</td>
+<td>数值不能重复，允许为空值</td>
+<td>用户表的手机号、邮箱</td>
+</tr>
+<tr>
+<td>MUL</td>
+<td>Multiple 普通索引&#x2F;外键</td>
+<td>数值可重复出现，无唯一性限制</td>
+<td>作品表的所属公司编号company_id</td>
+</tr>
+</tbody></table>
 
                 
               </div>
