@@ -27,7 +27,7 @@
 <meta property="og:description" content="數據庫MySQL">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-25T08:54:17.000Z">
-<meta property="article:modified_time" content="2026-05-25T03:25:41.232Z">
+<meta property="article:modified_time" content="2026-05-25T08:48:30.247Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k 字
+          3.1k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          25 分钟
+          26 分钟
         
       </span>
     
@@ -392,20 +392,27 @@
 <p>desc xxxx;  描述表</p>
 <p>select 字段 from 表  limit 10; 查数据</p>
 <h1 id="增"><a href="#增" class="headerlink" title="增"></a>增</h1><div style="color:pink">避免数据串线不能增自增的id</div>
-## 增数据
-单增： insert into 表 (字段) values ('数据');
-多增： insert into 表（字段, 字段，字段,字段）values ('数据'),('数据'),('数据'),('数据');
-## 增字段
--- 给 xxx 表增加一个叫 introduction 的格子，类型是 TEXT（可以存好几万字）
-ALTER TABLE xxxx ADD COLUMN introduction TEXT;
 
+<h2 id="增数据"><a href="#增数据" class="headerlink" title="增数据"></a>增数据</h2><p>单增： insert into 表 (字段) values (‘数据’);</p>
+<p>多增： insert into 表（字段, 字段，字段,字段）values (‘数据’),(‘数据’),(‘数据’),(‘数据’);</p>
+<h2 id="增字段"><a href="#增字段" class="headerlink" title="增字段"></a>增字段</h2><div style="color:pink">给 xxx 表增加一个叫 xxx 的字段，类型是 TEXT（可以存好几万字）</div>
 
+<p>ALTER TABLE xxxx ADD COLUMN 名字 类型 null;可以为空</p>
+<p>alter table 表 add  column  名字 类型 null; 可以为空 </p>
 <h1 id="删"><a href="#删" class="headerlink" title="删"></a>删</h1><div style="color:pink">避免数据串线不能删自增的id</div>
-单删： DELETE FROM 表 WHERE 字段 = '数据';
-多删:  DELETE FROM 表 WHERE 字段 IN ('数据1', '数据2');
 
+<p>单删： DELETE FROM 表 WHERE 字段 &#x3D; ‘数据’;</p>
+<p>多删:  DELETE FROM 表 WHERE 字段 IN (‘数据1’, ‘数据2’);</p>
+<div style="color:pink">清空数据,自增重新开始</div>没有外键的情况下
 
-<h1 id="换-gengxian"><a href="#换-gengxian" class="headerlink" title="换 gengxian"></a>换 gengxian</h1><p>UPDATE 表 SET 字段 &#x3D; ‘新数据’ WHERE 字段 &#x3D; ‘旧数据’;</p>
+<p>TRUNCATE TABLE 表;</p>
+<p>truncate table 表;</p>
+<div style="color:red">清空数据,自增继续</div>
+
+<p>DELETE FROM 表;</p>
+<p>删字段</p>
+<p>ALTER TABLE 表 DROP COLUMN 字段;</p>
+<h1 id="换"><a href="#换" class="headerlink" title="换"></a>换</h1><p>UPDATE 表 SET 字段 &#x3D; ‘新数据’ WHERE 字段 &#x3D; ‘旧数据’;</p>
 <p>调头写法，都是从表到字段 select 字段 from 表 limit xx;(不是)读取顺序是的</p>
 <h1 id="二个关系型数据表"><a href="#二个关系型数据表" class="headerlink" title="二个关系型数据表"></a>二个关系型数据表</h1><p>一对多关系（One-to-Many）—— 最常见 “主从表结构”（或叫 父子表结构）。</p>
 <p>多对多关系（Many-to-Many）多对多，建中间表</p>
@@ -422,8 +429,12 @@ foreing key  (company_id) peferences companies(id)
 ON DELETE CASCADE
 on delete cascade
 </code></pre>
-<p>) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8mb4;<br>FOREIGN KEY (company_id) REFERENCES companies(id)<br>这是外键约束。意思是：“数据库你帮我盯着点！以后往作品表里填 company_id 的时候，这个数字必须在公司表的 id 里能找到。要是输入一个不存在的数字（比如填个 999），直接报错拒绝，不让存！” 防止你粗心录错数据。</p>
-<p>ON DELETE CASCADE（级连删除）<br>on delete cascade<br>意思是：“如果有一天我把‘柚子社’（id: 1）从公司表删除了，你（数据库）懂事点，自动把作品表里所有 company_id 是 1 的作品（千恋万花、魔女的夜宴）全部一起删掉。” 省得你手动去一个个删。</p>
+<p>) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8mb4;<br>FOREIGN KEY (company_id) REFERENCES companies(id)</p>
+<p>这是外键约束。</p>
+<p>意思是：“数据库你帮我盯着点！以后往作品表里填 company_id 的时候，这个数字必须在公司表的 id 里能找到。</p>
+<p>要是输入一个不存在的数字（比如填个 999），直接报错拒绝，不让存！” 防止你粗心录错数据。</p>
+<p>ON DELETE CASCADE（级连删除）<br>on delete cascade</p>
+<p>意思是：“如果有一天我把‘柚子社’（id: 1）从公司表删除了，你（数据库）懂事点，自动把作品表里所有 company_id 是 1 的作品（千恋万花、魔女的夜宴）全部一起删掉。” 省得你手动去一个个删。</p>
 <h1 id="数据库里的三大-Key-状态（对照看就懂了）"><a href="#数据库里的三大-Key-状态（对照看就懂了）" class="headerlink" title="数据库里的三大 Key 状态（对照看就懂了）"></a>数据库里的三大 Key 状态（对照看就懂了）</h1><table>
 <thead>
 <tr>
