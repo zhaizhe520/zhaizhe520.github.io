@@ -27,7 +27,7 @@
 <meta property="og:description" content="后端接口">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-05-26T03:34:36.000Z">
-<meta property="article:modified_time" content="2026-05-27T03:41:35.663Z">
+<meta property="article:modified_time" content="2026-05-27T14:08:45.481Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="后端接口">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          202 字
+          1.3k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          2 分钟
+          11 分钟
         
       </span>
     
@@ -383,6 +383,24 @@
                 
                 <p>[前端请求]<br>   │<br>   ▼<br>Router (路由层)     –&gt; 解析 URL (如 &#x2F;api&#x2F;posts&#x2F;1)<br>   │<br>   ▼<br>Controller (控制器) –&gt; 校验前端传过来的参数 (如验证 ID 是否为数字)<br>   │<br>   ▼<br>Service (业务逻辑)   –&gt; 核心逻辑，处理父子表的关联<br>   │<br>   ▼<br>Model&#x2F;DAO (数据层)  –&gt; 执行 SQL 语句 (如 JOIN 查询)</p>
 <h1 id="数据库要json联合查询"><a href="#数据库要json联合查询" class="headerlink" title="数据库要json联合查询"></a>数据库要json联合查询</h1><p>“面向前端的数据库设计”</p>
+<p>npm install dotenv</p>
+<p>dotenv  这个库 </p>
+<p>会自动从 .env 里读 DB_HOST、DB_USER、DB_PASSWORD、DB_NAME，不用手动设环境变量了。</p>
+<p>server.js</p>
+<p>单连接（createConnection）需要 if (!db) 检查</p>
+<p>连接池（createPool</p>
+<p>routes&#x2F; 是 Express 后端专用的路由文件夹——管 API 地址的。</p>
+<p>axios.get(‘&#x2F;api&#x2F;表’) 不用写完整地址，不用配 CORS，不用 .env 里记 IP。浏览器眼里只有一个域名，Nginx 在背后悄悄分流。</p>
+<p>这就是 &#x2F;api&#x2F; 前缀真正的价值。</p>
+<p>MariaDB 表 → mysql2 → JavaScript 对象 → res.json() → 网络传输 → axios → Pinia → Vue 模板</p>
+<p>把外键 ID 当参数传进去实现父子表之前的数据筛选</p>
+<h1 id="req与res"><a href="#req与res" class="headerlink" title="req与res"></a>req与res</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash">req = 前端发给你的那封信。里面装着三样东西：<br><br><br>app.get(<span class="hljs-string">&#x27;/api/companies/:id/works&#x27;</span>, async (req, res) =&gt; &#123;<br>  // req.params  = URL 里的变量         /api/companies/1/works  →  &#123; <span class="hljs-built_in">id</span>: <span class="hljs-string">&#x27;1&#x27;</span> &#125;<br>  // req.query   = URL 问号后面的       ?<span class="hljs-built_in">sort</span>=<span class="hljs-built_in">date</span>&amp;order=desc   →  &#123; <span class="hljs-built_in">sort</span>: <span class="hljs-string">&#x27;date&#x27;</span>, order: <span class="hljs-string">&#x27;desc&#x27;</span> &#125;<br>  // req.body    = POST 请求体里的数据   &#123; title: <span class="hljs-string">&#x27;新作品&#x27;</span> &#125;<br>&#125;)<br>一个请求长这样：<br><br><br>GET http://localhost:3000/api/companies/1/works?<span class="hljs-built_in">sort</span>=<span class="hljs-built_in">date</span><br><br>req.params.id    →  1       ← 路由里 :<span class="hljs-built_in">id</span> 占的坑<br><br>req.query.sort   →  <span class="hljs-string">&#x27;date&#x27;</span>  ← 问号后面的<br><br>res 就是你写的回信。res.json(rows) = 把查到的数据装进信封寄回去。<br><br>就这么简单。前端发请求，req 是拆开的信封，res 是你回信的笔。<br></code></pre></td></tr></table></figure>
+
+<p> API 翻译</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">npm <span class="hljs-keyword">install </span>-g pm2<br>pm2 start server.<span class="hljs-keyword">js </span>--name <span class="hljs-keyword">backend</span><br><span class="hljs-keyword"></span>pm2 save<br>pm2 startup          <span class="hljs-comment"># 服务器重启后自动拉起</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="env"><a href="#env" class="headerlink" title="env"></a>env</h1><p>代码和环境分离。</p>
+<p>企业<br>.env                   ← 本地开发用<br>.env.staging           ← 预发布环境<br>.env.production        ← 生产环境</p>
 
                 
               </div>
@@ -472,6 +490,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2026/05/27/Vue3%E9%87%8Cid-%E2%86%92-%E7%BB%84%E4%BB%B6-%E6%98%A0%E5%B0%84/" title="Vue3里id → 组件 映射">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Vue3里id → 组件 映射</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
