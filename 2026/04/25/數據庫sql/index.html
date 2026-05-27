@@ -27,7 +27,7 @@
 <meta property="og:description" content="數據庫MySQL">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-25T08:54:17.000Z">
-<meta property="article:modified_time" content="2026-05-26T10:24:30.949Z">
+<meta property="article:modified_time" content="2026-05-26T15:13:30.449Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k 字
+          3.5k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          31 分钟
+          30 分钟
         
       </span>
     
@@ -426,6 +426,7 @@
 <p>孤儿数据</p>
 <p>僵尸数据</p>
 <h2 id="一对多关系"><a href="#一对多关系" class="headerlink" title="一对多关系"></a>一对多关系</h2><p>外键（Foreign Key）</p>
+<p>fk_子表_父表</p>
 <p>CREATE TABLE works (<br>    id INT AUTO_INCREMENT PRIMARY KEY,   – 1. 给每个作品一个独立的编号，它自己会自动往上加（1,2,3…）<br>    title VARCHAR(255) NOT NULL,        – 2. 存作品的名字（比如”千恋＊万花”），不能为空<br>    company_id INT NOT NULL,            – 3. 核心：用来存“公司暗号”的格子</p>
 <pre><code class="hljs">下面这三行是告诉数据库一个“铁律”：
 CONSTRAINT fk_work_company 
@@ -504,13 +505,11 @@ on delete cascade
 <td>🟢 安全（不会影响任何已有数据）</td>
 </tr>
 </tbody></table>
-<h1 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h1><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">SELECT</span> <br>    父表别名.父表字段, <br>    父表别名.父表字段, <br>    子表别名.子表字段, <br>    子表别名.子表字段<br><span class="hljs-keyword">FROM</span> <br>    父表名 父表别名<br><span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> (关键词：交集)<br>    子表名 子表别名 <br><span class="hljs-number">0</span>N <br>    父表别名.父表主键 = 子表别名.子表外键<br><span class="hljs-keyword">WHERE</span> <br>    筛选条件(id=<span class="hljs-string">&#x27;1&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<h1 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h1><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">SELECT</span> <br>    父表别名.父表字段, <br>    父表别名.父表字段, <br>    子表别名.子表字段, <br>    子表别名.子表字段<br><span class="hljs-keyword">FROM</span> <br>    父表名 父表别名<br><span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> (关键词：交集)<br>    子表名 子表别名 <br><span class="hljs-number">0</span>N <br>    父表别名.父表主键 = 子表别名.子表外键<br><span class="hljs-keyword">WHERE</span> <br>    筛选条件(id=<span class="hljs-string">&#x27;1&#x27;</span>);<br><br></code></pre></td></tr></table></figure>
 
 <h1 id="返回JOIN数据方便axios查"><a href="#返回JOIN数据方便axios查" class="headerlink" title="返回JOIN数据方便axios查"></a>返回JOIN数据方便axios查</h1><p>在 MariaDB 和 MySQL 中，如果你想把两张有关联的表做联合查询（JOIN），同时又想让输出的结果直接变成 JSON 格式（方便前端 API 调用或者存入非关系型数据库），数据库提供了几个非常强大的内置 JSON 函数。</p>
 <h2 id="方案一：把每一行数据转成一个-JSON-对象（最常用）"><a href="#方案一：把每一行数据转成一个-JSON-对象（最常用）" class="headerlink" title="方案一：把每一行数据转成一个 JSON 对象（最常用）"></a>方案一：把每一行数据转成一个 JSON 对象（最常用）</h2><p>如果你希望查询结果的每一行都是一个独立的 JSON 对象，包含游戏信息和它所属的公司名称，可以使用 JSON_OBJECT。</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">SELECT</span> JSON_OBJECT(<br>    <span class="hljs-string">&#x27;key1&#x27;</span>, 列名<span class="hljs-number">1</span>, <br>    <span class="hljs-string">&#x27;key2&#x27;</span>, 列名<span class="hljs-number">2</span>, <br>    <span class="hljs-string">&#x27;key3&#x27;</span>, 列名<span class="hljs-number">3</span><br>) <span class="hljs-keyword">AS</span> 别名<br><span class="hljs-keyword">FROM</span> 表A<br><span class="hljs-keyword">JOIN</span> 表B <span class="hljs-keyword">ON</span> 表A.关联列 = 表B.关联列;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">SELECT</span> JSON_OBJECT(<br>    <span class="hljs-string">&#x27;id&#x27;</span>, w.id,<br>    <span class="hljs-string">&#x27;game_title&#x27;</span>, w.<span class="hljs-built_in">title</span>,<br>    <span class="hljs-string">&#x27;company&#x27;</span>, c.company_name<br>) <span class="hljs-keyword">AS</span> json_data<br><span class="hljs-keyword">FROM</span> works w<br><span class="hljs-keyword">JOIN</span> companies c <span class="hljs-keyword">ON</span> w.company_id = c.id;<br><br></code></pre></td></tr></table></figure>
+<h1 id="json包裹输入"><a href="#json包裹输入" class="headerlink" title="json包裹输入"></a>json包裹输入</h1><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">SELECT</span> JSON_OBJECT(<br>    <span class="hljs-string">&#x27;id&#x27;</span>, w.id,<br>    <span class="hljs-string">&#x27;game_title&#x27;</span>, w.<span class="hljs-built_in">title</span>,<br>    <span class="hljs-string">&#x27;company&#x27;</span>, c.company_name<br>) <span class="hljs-keyword">AS</span> json_data<br><span class="hljs-keyword">FROM</span> works w<br><span class="hljs-keyword">JOIN</span> companies c <span class="hljs-keyword">ON</span> w.company_id = c.id;<br><br></code></pre></td></tr></table></figure>
 <p>JSON_OBJECT(…) 负责把一行的字段拼成 {}。</p>
 <p>JSON_ARRAYAGG(…) 负责把多行 {} 聚合成一个 []。</p>
 <p><code>JSON_OBJECT(&#39;键1&#39;, 值1, &#39;键2&#39;, 值2, &#39;键3&#39;, 值3, ...)</code></p>
