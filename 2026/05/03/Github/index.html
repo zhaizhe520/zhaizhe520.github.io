@@ -22,12 +22,12 @@
     <meta name="description" content="vue3項目傳到github庫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="項目傳到github庫">
-<meta property="og:url" content="http://example.com/2026/05/03/%E9%A0%85%E7%9B%AE%E5%82%B3%E5%88%B0github%E5%BA%AB/index.html">
+<meta property="og:url" content="http://example.com/2026/05/03/Github/index.html">
 <meta property="og:site_name">
 <meta property="og:description" content="vue3項目傳到github庫">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-05-03T14:06:00.000Z">
-<meta property="article:modified_time" content="2026-05-23T12:43:52.558Z">
+<meta property="article:modified_time" content="2026-06-01T15:19:08.388Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="Github">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          2k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          13 分钟
+          17 分钟
         
       </span>
     
@@ -437,6 +437,28 @@
 
 <h1 id="合并，解决冲突"><a href="#合并，解决冲突" class="headerlink" title="合并，解决冲突"></a>合并，解决冲突</h1><p>git rm –cached server.js	只取消跟踪，保留文件<br>git rm server.js	取消跟踪 且删除文件</p>
 <p>等下次合并分支的时候在说</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">你的电脑（私钥）          GitHub（公钥）<br>    ↓                        ↓<br>  ssh-keygen 生成  →  <span class="hljs-built_in">cat</span> 复制  →  Settings 粘贴<br>    ↓                        ↓<br>          连接时自动握手验证<br>          → 对上了 → 推送成功<br><br></code></pre></td></tr></table></figure>
+<h1 id="ssh推送"><a href="#ssh推送" class="headerlink" title="ssh推送"></a>ssh推送</h1><p>SSH 是比 HTTPS 更老、更稳的远程通信协议。你刚生成的两把钥匙就放在：</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">C:\Users\Yasina\.ssh\<br>├── id<span class="hljs-emphasis">_rsa       ← 私钥，永远不给人看</span><br><span class="hljs-emphasis">└── id_</span>rsa.pub   ← 公钥，可以到处贴<br></code></pre></td></tr></table></figure>
+
+
+<p>内部原理就是你电脑的密钥和 GitHub 上的锁自动加密握手</p>
+<ol>
+<li>生成钥匙</li>
+</ol>
+<p>ssh-keygen -t rsa -b 4096 -C “你的GitHub邮箱@qq.com” -f ~&#x2F;.ssh&#x2F;id_rsa -N “”</p>
+<ol start="2">
+<li>查看公钥</li>
+</ol>
+<p>cat ~&#x2F;.ssh&#x2F;id_rsa.pub<br>输出长这样：ssh-rsa AAAAB3NzaC1yc2EAAA… 全选复制。</p>
+<ol start="3">
+<li><p>粘贴到 GitHub<br>浏览器打开 <a target="_blank" rel="noopener" href="https://github.com/settings/keys">https://github.com/settings/keys</a> → New SSH key → 标题随便写”我的电脑”，Key 里粘贴刚才复制的内容 → Add SSH key。</p>
+</li>
+<li><p>切远程地址</p>
+</li>
+</ol>
+<p>git remote set-url origin <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#109;">git@github.com</a>:zhaizhe520&#x2F;项目名字.git<br>5. 推送</p>
+<p>git push</p>
 
                 
               </div>
@@ -483,7 +505,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>項目傳到github庫</div>
-      <div>http://example.com/2026/05/03/項目傳到github庫/</div>
+      <div>http://example.com/2026/05/03/Github/</div>
     </div>
     <div class="license-meta">
       
