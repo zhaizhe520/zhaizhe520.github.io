@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="抓wp特色圖片">
+    <meta name="description" content="Tree Shaking（摇树优化)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2中方法抓wp的特色圖片">
-<meta property="og:url" content="http://example.com/2026/05/03/2%E4%B8%AD%E6%96%B9%E6%B3%95%E6%8A%93wp%E7%9A%84%E7%89%B9%E8%89%B2%E5%9C%96%E7%89%87/index.html">
+<meta property="og:title" content="Tree Shaking（摇树优化)">
+<meta property="og:url" content="http://example.com/2026/06/02/Tree-Shaking%EF%BC%88%E6%91%87%E6%A0%91%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="抓wp特色圖片">
+<meta property="og:description" content="Tree Shaking（摇树优化)">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-05-03T11:32:29.000Z">
-<meta property="article:modified_time" content="2026-05-04T00:03:50.444Z">
+<meta property="article:published_time" content="2026-06-02T13:44:40.000Z">
+<meta property="article:modified_time" content="2026-06-02T13:50:27.240Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="2種方法抓wp特色圖片">
+<meta property="article:tag" content="Tree Shaking（摇树优化)">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>2中方法抓wp的特色圖片 - </title>
+  <title>Tree Shaking（摇树优化) - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="2中方法抓wp的特色圖片"></span>
+            <span id="subtitle" data-typed-text="Tree Shaking（摇树优化)"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-05-03 19:32" pubdate>
-          2026年5月3日 晚上
+        <time datetime="2026-06-02 21:44" pubdate>
+          2026年6月2日 晚上
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          2.4k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          10 分钟
+          21 分钟
         
       </span>
     
@@ -376,13 +376,41 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">2中方法抓wp的特色圖片</h1>
+            <h1 id="seo-header">Tree Shaking（摇树优化)</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="第一種"><a href="#第一種" class="headerlink" title="第一種"></a>第一種</h1><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">// 在 useWorkStore.js 的 fetchWpPosts Action 中</span><br><span class="hljs-keyword">const</span> res = await axios.<span class="hljs-keyword">get</span>(<span class="hljs-string">&#x27;http://110.42.248.8/wp-json/wp/v2/posts?_embed&#x27;</span>)<br><br><span class="hljs-keyword">this</span>.pageAllData[<span class="hljs-number">1</span>] = res.<span class="hljs-keyword">data</span>.map(post =&gt; &#123;<br>  <span class="hljs-comment">// 安全地抓取特色圖片地址</span><br>  let featuredImg = <span class="hljs-string">&#x27;&#x27;</span>;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-comment">// 路徑通常是：_embedded -&gt; wp:featuredmedia -&gt; [0] -&gt; source_url</span><br>    featuredImg = post._embedded[<span class="hljs-string">&#x27;wp:featuredmedia&#x27;</span>][<span class="hljs-number">0</span>].source_url;<br>  &#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>    featuredImg = <span class="hljs-string">&#x27;默認圖片地址&#x27;</span>; <span class="hljs-comment">// 如果沒設置特色圖片，給個備用圖</span><br>  &#125;<br><br>  <span class="hljs-keyword">return</span> &#123;<br>    imgSrc: featuredImg,<br>    textName: post.title.rendered,<br>    <span class="hljs-comment">// ...其餘字段</span><br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
-<h1 id="第二種-修改-WordPress-的-functions-php-後端方案"><a href="#第二種-修改-WordPress-的-functions-php-後端方案" class="headerlink" title="第二種 修改 WordPress 的 functions.php (後端方案)"></a>第二種 修改 WordPress 的 functions.php (後端方案)</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title function_ invoke__">add_action</span>(<span class="hljs-string">&#x27;rest_api_init&#x27;</span>, <span class="hljs-string">&#x27;register_rest_images&#x27;</span> );<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register_rest_images</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-title function_ invoke__">register_rest_field</span>( <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;post&#x27;</span>),<br>        <span class="hljs-string">&#x27;fimg_url&#x27;</span>, <span class="hljs-comment">// 前端看到的字段名</span><br>        <span class="hljs-keyword">array</span>(<br>            <span class="hljs-string">&#x27;get_callback&#x27;</span>    =&gt; <span class="hljs-string">&#x27;get_rest_featured_image&#x27;</span>,<br>            <span class="hljs-string">&#x27;update_callback&#x27;</span> =&gt; <span class="hljs-literal">null</span>,<br>            <span class="hljs-string">&#x27;schema&#x27;</span>          =&gt; <span class="hljs-literal">null</span>,<br>        )<br>    );<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get_rest_featured_image</span>(<span class="hljs-params"> <span class="hljs-variable">$object</span>, <span class="hljs-variable">$field_name</span>, <span class="hljs-variable">$request</span> </span>) </span>&#123;<br>    <span class="hljs-keyword">if</span>( <span class="hljs-variable">$object</span>[<span class="hljs-string">&#x27;featured_media&#x27;</span>] )&#123;<br>        <span class="hljs-variable">$img</span> = <span class="hljs-title function_ invoke__">wp_get_attachment_image_src</span>( <span class="hljs-variable">$object</span>[<span class="hljs-string">&#x27;featured_media&#x27;</span>], <span class="hljs-string">&#x27;app-thumb&#x27;</span> );<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable">$img</span>[<span class="hljs-number">0</span>]; <span class="hljs-comment">// 返回圖片 URL</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="🪵-为什么需要-Tree-Shaking？（背景）"><a href="#🪵-为什么需要-Tree-Shaking？（背景）" class="headerlink" title="🪵 为什么需要 Tree Shaking？（背景）"></a>🪵 为什么需要 Tree Shaking？（背景）</h1><p>在现代软件开发中（无论是 Vue &#x2F; React 还是 Android），我们极度依赖 模块化。</p>
+<p>比如你为了用一个“计算日期相差几天”的功能，引入了一个叫 utils.js 或者一个第三方的 DateLib 依赖库。这个库里可能包含了 100 个函数（算农历、算星座、算时区……），但你其实只用了其中的 1 个函数。</p>
+<p>如果不做处理，打包工具会把整套 100 个函数全部打包进最终的 App 里。这就导致用户下载的文件体积臃肿。Tree Shaking 就是为了消灭这些“占着茅坑不拉屎”的僵尸代码（Dead Code）。</p>
+<h1 id="⚙️-Tree-Shaking-是怎么工作的？"><a href="#⚙️-Tree-Shaking-是怎么工作的？" class="headerlink" title="⚙️ Tree Shaking 是怎么工作的？"></a>⚙️ Tree Shaking 是怎么工作的？</h1><p>无论是前端的 Vite &#x2F; Rollup &#x2F; Webpack，还是安卓里的 R8 &#x2F; ProGuard，它们搞 Tree Shaking 的核心思想可以分为三步：</p>
+<h2 id="静态分析（Static-Analysis）"><a href="#静态分析（Static-Analysis）" class="headerlink" title="静态分析（Static Analysis）"></a>静态分析（Static Analysis）</h2><p>这是 Tree Shaking 的前置条件。编译器在不运行代码的情况下，只靠阅读你的源码，来梳理代码之间的引用关系。</p>
+<p>前端（JavaScript）： 必须依赖 ES Modules (ESM)，也就是你天天写的 import 和 export。因为 ESM 的依赖关系是静态的、固定的。</p>
+<p>(反例：老旧的 CommonJS require() 可以写在 if 判断里动态加载，编译器在打包时根本猜不到你到底要不要加载，所以 CommonJS 很难做 Tree Shaking。)</p>
+<h2 id="构建“依赖图”（Dependency-Graph）"><a href="#构建“依赖图”（Dependency-Graph）" class="headerlink" title="构建“依赖图”（Dependency Graph）"></a>构建“依赖图”（Dependency Graph）</h2><p>编译器会从你的入口文件（比如 Vue 的 main.js，或者安卓的 MainActivity.kt）开始，像侦探顺藤摸瓜一样去数：</p>
+<p>main.js 引用了 A组件。</p>
+<p>A组件 内部调用了 utils.js 里的 formatDate 函数。</p>
+<p>所有被“点名”调用过的代码，都会被贴上一个标签：【Alive（活着的）】。</p>
+<p>摇树（Shaking）</p>
+<p>当整棵依赖树梳理完毕后，编译器会把目光投向那些从未被贴上标签的孤立函数或组件。</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs livescript">Plaintext<br>【你的项目依赖树】<br>   ├── main.js (入口)<br>   │    └── <span class="hljs-keyword">import</span> &#123; format &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./utils.js&#x27;</span> (被使用 -&gt; 保留)<br>   │<br>   └── utils.js 内部未被引用的代码<br>        ├── <span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> calculateMoonPhase() &#123;&#125; ──❌ (无人引用 -&gt; 摇掉！)<br>        └── <span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> getZodiacSign() &#123;&#125;     ──❌ (无人引用 -&gt; 摇掉！)<br>在最终生成生产环境代码（.js 文件或 .apk 包）时，编译器直接闭着眼把这些无人引用的代码行全部抹除。<br></code></pre></td></tr></table></figure>
+
+<p>⚠️ 前端开发中的 Tree Shaking “大坑”：副作用（Side Effects）</p>
+<p>在实际写代码（特别是写 Vue 组件或发布 npm 包）时，Tree Shaking 经常会遇到一个让它不敢下手的克星——副作用（Side Effects）。</p>
+<p>什么叫副作用？就是某行代码即使没有被别的人显式调用，但它一旦在文件中执行，就会对外界产生影响。</p>
+<p>举个例子 🌰<br>假设你写了一个 analytics.js 文件，里面没有任何 export：</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs arcade">JavaScript<br><span class="hljs-comment">// analytics.js</span><br>window.globalTracker = <span class="hljs-string">&quot;Yasina&quot;</span>; <span class="hljs-comment">// 修改了全局变量！</span><br><span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&quot;偷偷在后台发送了一个埋点日志&quot;</span>);<br>然后你在 main.js 里只是简单地：<br></code></pre></td></tr></table></figure>
+<p>JavaScript<br>import ‘.&#x2F;analytics.js’;<br>这时候，打包工具（如 Vite）会非常纠结：“这个文件里没有任何函数被别人调用，按理说我可以把它整棵树摇掉。但是！它居然悄悄修改了全局的 window 对象，还打印了日志！如果我把它摇掉了，程序运行结果就会发生改变！”</p>
+<p>为了安全起见，打包工具会放弃对它的 Tree Shaking，只能把它完完整整地打包进去。</p>
+<p>💡 怎么解决？<br>作为前端开发者，如果你在写一个公共组件库，你可以在 package.json 里显式地告诉打包工具：</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">JSON</span><br>&#123;<br>  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;my-vue-components&quot;</span>,<br>  <span class="hljs-string">&quot;sideEffects&quot;</span>: <span class="hljs-literal">false</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这等于向打包工具打包票：“放心摇！我这个库里的代码非常干净，没有任何偷摸修改全局变量的副作用，谁没被 import 谁就是没用，你丫放心大胆地把它们剪掉！”</p>
+<h1 id="🤖-移动端（Android-R8）的-Tree-Shaking-有何不同？"><a href="#🤖-移动端（Android-R8）的-Tree-Shaking-有何不同？" class="headerlink" title="🤖 移动端（Android R8）的 Tree Shaking 有何不同？"></a>🤖 移动端（Android R8）的 Tree Shaking 有何不同？</h1><p>你在 Android Studio 里正在经历的，是比前端更严苛的字节码级别的 Tree Shaking。</p>
+<p>不仅摇代码，还摇资源： 安卓的 R8 编译器不仅能把没用到的 Kotlin&#x2F;Java 类和方法剪掉（Shrinking），还能通过 shrinkResources 把你放进 res 文件夹里、但代码里从未调用过的图片（PNG&#x2F;JPG）、布局（XML）文件全部自动删掉或者替换成 1 字节的空文件！</p>
+<p>反射（Reflection）是它的天敌： 在安卓里，如果有些代码是通过字符串反射动态调用的（比如通过反射去寻找叫 “Murasame” 的类），R8 在静态分析时也是看不出来的。为了防止 R8 把这些类误当成“垃圾”摇掉，安卓工程师必须写一个 proguard-rules.pro 文件，写上 -keep class …，手动告诉编译器：“大侠手下留情，这几根树枝看着是枯的，其实后面有用，千万别摇！”</p>
+<h1 id="🎯-总结"><a href="#🎯-总结" class="headerlink" title="🎯 总结"></a>🎯 总结</h1><p>Tree Shaking 是现代软件工程“既要开发爽，又要体积小”的完美解决方案。<br>它允许你像今天这样，在开发时漫山遍野地下载几十兆的依赖、尽情享受庞大生态带来的便利，却在最终交付给用户时，通过极其硬核的数学图论算法，把体积压缩到极致。</p>
+
                 
               </div>
             
@@ -400,7 +428,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Vue%E6%A1%86%E6%9E%B6/" class="category-chain-item">Vue框架</a>
+  <a href="/categories/%E4%BC%98%E5%8C%96/" class="category-chain-item">优化</a>
   
   
 
@@ -415,7 +443,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/2%E7%A8%AE%E6%96%B9%E6%B3%95%E6%8A%93wp%E7%89%B9%E8%89%B2%E5%9C%96%E7%89%87/" class="print-no-link">#2種方法抓wp特色圖片</a>
+        <a href="/tags/Tree-Shaking%EF%BC%88%E6%91%87%E6%A0%91%E4%BC%98%E5%8C%96/" class="print-no-link">#Tree Shaking（摇树优化)</a>
       
     </div>
   
@@ -427,8 +455,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>2中方法抓wp的特色圖片</div>
-      <div>http://example.com/2026/05/03/2中方法抓wp的特色圖片/</div>
+      <div>Tree Shaking（摇树优化)</div>
+      <div>http://example.com/2026/06/02/Tree-Shaking（摇树优化/</div>
     </div>
     <div class="license-meta">
       
@@ -440,7 +468,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年5月3日</div>
+          <div>2026年6月2日</div>
         </div>
       
       
@@ -472,18 +500,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/05/03/Git%E5%BA%94%E7%94%A8/" title="Git应用">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Git应用</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/05/03/%E6%88%91%E5%A5%BD%E7%84%A6%E6%85%AE/" title="我好焦慮与迷茫">
-                        <span class="hidden-mobile">我好焦慮与迷茫</span>
+                      <a href="/2026/06/02/Kotlin%E8%AF%AD%E8%A8%80/" title="kotlin语言">
+                        <span class="hidden-mobile">kotlin语言</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
