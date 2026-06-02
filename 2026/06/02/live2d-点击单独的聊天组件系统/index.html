@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="數據庫MySQL">
+    <meta name="description" content="live2d 点击单独的聊天组件系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="數據庫MySQL">
-<meta property="og:url" content="http://example.com/2026/04/25/MySQL%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/index.html">
+<meta property="og:title" content="live2d 点击单独的聊天组件系统">
+<meta property="og:url" content="http://example.com/2026/06/02/live2d-%E7%82%B9%E5%87%BB%E5%8D%95%E7%8B%AC%E7%9A%84%E8%81%8A%E5%A4%A9%E7%BB%84%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="數據庫MySQL">
+<meta property="og:description" content="live2d 点击单独的聊天组件系统">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-04-25T08:54:17.000Z">
-<meta property="article:modified_time" content="2026-06-02T03:03:10.255Z">
+<meta property="article:published_time" content="2026-06-01T16:02:22.000Z">
+<meta property="article:modified_time" content="2026-06-02T02:01:58.955Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="live2d 点击单独的聊天组件系统">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>數據庫MySQL - </title>
+  <title>live2d 点击单独的聊天组件系统 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="數據庫MySQL"></span>
+            <span id="subtitle" data-typed-text="live2d 点击单独的聊天组件系统"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-04-25 16:54" pubdate>
-          2026年4月25日 下午
+        <time datetime="2026-06-02 00:02" pubdate>
+          2026年6月2日 凌晨
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.1k 字
+          2k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          35 分钟
+          18 分钟
         
       </span>
     
@@ -376,163 +376,44 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">數據庫MySQL</h1>
+            <h1 id="seo-header">live2d 点击单独的聊天组件系统</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="mysql-u-root-p"><a href="#mysql-u-root-p" class="headerlink" title="mysql -u root -p"></a>mysql -u root -p</h1><p>密码:xxx</p>
-<p>SHOW DATABASES;<br>USE XXX;<br>SHOW TABLES;</p>
-<h1 id="新建数据库"><a href="#新建数据库" class="headerlink" title="新建数据库"></a>新建数据库</h1><p>CREATE DATABASE xxxx CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;<br>create database xxxx character set(字符集) utf8mb4 collate (校对规则)utf8mb4_unicode_ci(不区分大小写);</p>
-<h1 id="新建数据表"><a href="#新建数据表" class="headerlink" title="新建数据表"></a>新建数据表</h1><p>create table 名字(<br>    id INT AUTO_INCREMENT PRIMARY KEY,<br>    title VARCHAR(255) NOT NULL,<br>    release_date DATE,<br>    xx</p>
-<p>);</p>
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><p>show databases; 查库</p>
-<p>use xxx;  用表</p>
-<p>show tables;  查表</p>
-<p>desc xxxx;  描述表</p>
-<p>select 字段 from 表  limit 10; 查数据</p>
-<h1 id="增"><a href="#增" class="headerlink" title="增"></a>增</h1><div style="color:pink">避免数据串线不能增自增的id</div>
+                <h1 id="🛠️-技术选型推荐"><a href="#🛠️-技术选型推荐" class="headerlink" title="🛠️ 技术选型推荐"></a>🛠️ 技术选型推荐</h1><p>前端框架：Vue 3 (Composition API) + Vite (构建速度快，对现代 JS 支持好)</p>
+<p>渲染引擎：PixiJS v7&#x2F;v8</p>
+<p>Live2D 插件：pixi-live2d-display (目前社区整合 Live2D 和 PixiJS 最成熟的库，支持 Cubism 2.1 和 4.x)</p>
+<p>状态管理：Pinia (用于管理全局的聊天状态、看板娘状态)</p>
+<p>样式库：Tailwind CSS (快速搞定聊天气泡和弹窗 UI)</p>
+<h1 id="📐-核心架构与核心逻辑"><a href="#📐-核心架构与核心逻辑" class="headerlink" title="📐 核心架构与核心逻辑"></a>📐 核心架构与核心逻辑</h1><p>要实现“点击 Live2D 进入独立聊天组件”，核心在于 PixiJS 的事件监听 与 Vue 组件的状态通信。</p>
+<p>核心步骤拆解<br>挂载 PixiJS 画布：在 Vue 的 onMounted 钩子中初始化 Pixi 应用，并加载 Live2D 模型。</p>
+<p>监听点击事件：利用 pixi-live2d-display 自带的命中检测（Hit Test），当用户点击模型的特定区域（如身体、头部）或任意位置时触发事件。</p>
+<p>触发 Vue 状态变更：点击后，通过 Pinia 或 emit 修改一个布尔值（例如 isChatOpen &#x3D; true）。</p>
+<p>遮罩与动画过渡：Vue 监听到 isChatOpen 变为 true，弹出聊天组件（可以通过 <Transition> 组件做个丝滑的淡入或抽屉效果）。</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs nix">src<span class="hljs-symbol">/</span><br>├── components<span class="hljs-symbol">/</span><br>│   ├── Live2dStage.vue   <span class="hljs-comment"># 负责 PixiJS 和 Live2D 的渲染</span><br>│   └── ChatWindow.vue    <span class="hljs-comment"># 独立的聊天 Vue 组件</span><br>├── store<span class="hljs-symbol">/</span><br>│   └── appStore.js       <span class="hljs-comment"># 存放聊天窗口打开状态、对话记录等</span><br>└── App.vue               <span class="hljs-comment"># 主入口</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="增数据"><a href="#增数据" class="headerlink" title="增数据"></a>增数据</h2><p>单增： insert into 表 (字段) values (‘数据’);</p>
-<p>多增： insert into 表（字段, 字段，字段,字段）values (‘数据’),(‘数据’),(‘数据’),(‘数据’);</p>
-<h2 id="增字段"><a href="#增字段" class="headerlink" title="增字段"></a>增字段</h2><div style="color:pink">给 xxx 表增加一个叫 xxx 的字段，类型是 TEXT（可以存好几万字）</div>
+<p>版本兼容问题（重点）：pixi-live2d-display 对 PixiJS 的版本要求比较严格。如果你使用的是 PixiJS v7 或 v8，请务必查看该插件的官方文档，安装对应分支&#x2F;版本的 npm 包，否则会报各种找不到 Namespace 的错误。</p>
+<p>资源跨域与路径：Live2D 模型包含大量的 .json, .moc3, .png 贴图。在本地开发时，建议把模型文件夹放在 Vue 的 public&#x2F; 目录下，用绝对路径（如 &#x2F;live2d&#x2F;model.model3.json）去请求，避免打包后路径找不到。</p>
+<p>性能优化：如果聊天组件打开后不需要看到看板娘，可以在打开聊天时，把 PixiJS 的 app.stop() 掉，或者让渲染层 display: none，关闭 Canvas 的实时渲染，释放手机或低配电脑的 GPU 压力。</p>
+<p>业务流水线：大模型接入的三步循环<br>当用户在你的 Vue 聊天组件里输入一句话并发送时，后端&#x2F;API 实际上在经历这样一个循环：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">Plaintext<br><span class="hljs-string">[用户输入文本]</span> <br>      │<br>      ▼<br><span class="hljs-string">[1. 组装请求：加上 Prompt(提示词) 和历史记录]</span> <br>      │<br>      ▼<br><span class="hljs-string">[2. 调用大模型 API (如 DeepSeek、OpenAI)]</span> <br>      │<br>      ▼<br><span class="hljs-string">[3. 解析返回：提取文本给聊天框，提取表情动作给 Live2D]</span><br><br></code></pre></td></tr></table></figure>
 
-<p>ALTER TABLE xxxx ADD COLUMN 名字 类型 null;可以为空</p>
-<p>alter table 表 add  column  名字 类型 null; 可以为空 </p>
-<h1 id="删"><a href="#删" class="headerlink" title="删"></a>删</h1><div style="color:pink">避免数据串线不能删自增的id</div>
-
-<p>单删： DELETE FROM 表 WHERE 字段 &#x3D; ‘数据’;</p>
-<p>多删:  DELETE FROM 表 WHERE 字段 IN (‘数据1’, ‘数据2’);</p>
-<div style="color:pink">清空数据,自增重新开始</div>没有外键的情况下
-
-<p>TRUNCATE TABLE 表;</p>
-<p>truncate table 表;</p>
-<div style="color:red">清空数据,自增继续</div>
-
-<p>DELETE FROM 表;</p>
-<p>删完如果有自增就让从1开始就是了<br>ALTER TABLE 表 AUTO_INCREMENT &#x3D; 1;<br>alter table 表 auto_increment &#x3D; 1;<br>删字段</p>
-<p>ALTER TABLE 表 DROP COLUMN 字段;</p>
-<h1 id="换-补"><a href="#换-补" class="headerlink" title="换 补"></a>换 补</h1><p>UPDATE 表 SET 字段 &#x3D; ‘新数据’ WHERE 字段 &#x3D; ‘旧数据’;</p>
-<p>调头写法，都是从表到字段 select 字段 from 表 limit xx;(不是)读取顺序是的</p>
-<div style="color:pink">补</div>
-
-<p>UPDATE 表 </p>
-<p>SET  空的字段 &#x3D; ‘xxxx’ </p>
-<p>WHERE 字段（一般是id） &#x3D; ‘xxxx’;</p>
-<h1 id="二个关系型数据表"><a href="#二个关系型数据表" class="headerlink" title="二个关系型数据表"></a>二个关系型数据表</h1><p>一对多关系（One-to-Many）—— 最常见 “主从表结构”（或叫 父子表结构）。</p>
-<p>多对多关系（Many-to-Many）多对多，建中间表</p>
-<p>建立外键约束，关联到 companies 表的 id</p>
-<p>脏数据 </p>
-<p>孤儿数据</p>
-<p>僵尸数据</p>
-<h2 id="一对多关系"><a href="#一对多关系" class="headerlink" title="一对多关系"></a>一对多关系</h2><p>外键（Foreign Key）</p>
-<p>fk_子表_父表</p>
-<p>CREATE TABLE works (<br>    id INT AUTO_INCREMENT PRIMARY KEY,   – 1. 给每个作品一个独立的编号，它自己会自动往上加（1,2,3…）<br>    title VARCHAR(255) NOT NULL,        – 2. 存作品的名字（比如”千恋＊万花”），不能为空<br>    company_id INT NOT NULL,            – 3. 核心：用来存“公司暗号”的格子</p>
-<pre><code class="hljs">下面这三行是告诉数据库一个“铁律”：
-CONSTRAINT fk_work_company 
-constraint fk_work_company 
-FOREIGN KEY (company_id) REFERENCES companies(id)
-foreing key  (company_id) peferences companies(id)
-ON DELETE CASCADE
-on delete cascade
-</code></pre>
-<p>) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8mb4;<br>FOREIGN KEY (company_id) REFERENCES companies(id)</p>
-<p>这是外键约束。</p>
-<p>意思是：“数据库你帮我盯着点！以后往作品表里填 company_id 的时候，这个数字必须在公司表的 id 里能找到。</p>
-<p>要是输入一个不存在的数字（比如填个 999），直接报错拒绝，不让存！” 防止你粗心录错数据。</p>
-<p>ON DELETE CASCADE（级连删除）<br>on delete cascade</p>
-<p>意思是：“如果有一天我把‘柚子社’（id: 1）从公司表删除了，你（数据库）懂事点，自动把作品表里所有 company_id 是 1 的作品（千恋万花、魔女的夜宴）全部一起删掉。” 省得你手动去一个个删。</p>
-<h1 id="数据库里的三大-Key-状态（对照看就懂了）"><a href="#数据库里的三大-Key-状态（对照看就懂了）" class="headerlink" title="数据库里的三大 Key 状态（对照看就懂了）"></a>数据库里的三大 Key 状态（对照看就懂了）</h1><table>
-<thead>
-<tr>
-<th>缩写</th>
-<th>全称</th>
-<th>大白话含义</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>PRI</td>
-<td>Primary Key 主键</td>
-<td>数值唯一不重复，且不能为空，一张表仅能设置一个</td>
-<td>作品表的唯一编号id</td>
-</tr>
-<tr>
-<td>UNI</td>
-<td>Unique Key 唯一索引</td>
-<td>数值不能重复，允许为空值</td>
-<td>用户表的手机号、邮箱</td>
-</tr>
-<tr>
-<td>MUL</td>
-<td>Multiple 普通索引&#x2F;外键</td>
-<td>数值可重复出现，无唯一性限制</td>
-<td>作品表的所属公司编号company_id</td>
-</tr>
-</tbody></table>
-<h1 id="表自增重置（重置自增计数器。）"><a href="#表自增重置（重置自增计数器。）" class="headerlink" title="表自增重置（重置自增计数器。）"></a>表自增重置（重置自增计数器。）</h1><p>– 1. 移除现有的自增主键属性<br>ALTER TABLE 表 MODIFY id INT;<br>ALTER TABLE 表 DROP PRIMARY KEY;</p>
-<p>– 2. 清空 id 字段的值（全部变成 0）<br>UPDATE 表 SET id &#x3D; 0;</p>
-<p>– 3. 重新添加自增主键，MariaDB 会自动从 1 开始重新按顺序填充所有 id<br>ALTER TABLE 表 MODIFY id INT AUTO_INCREMENT PRIMARY KEY;</p>
-<h2 id="清空表（如果你想彻底重新开始）"><a href="#清空表（如果你想彻底重新开始）" class="headerlink" title="清空表（如果你想彻底重新开始）"></a>清空表（如果你想彻底重新开始）</h2><p>TRUNCATE TABLE 表;<br>truncate table  表;</p>
-<h2 id="删除最大的重新开始排序"><a href="#删除最大的重新开始排序" class="headerlink" title="删除最大的重新开始排序"></a>删除最大的重新开始排序</h2><p>ALTER TABLE 表名 AUTO_INCREMENT &#x3D; 新的起始数字;<br>下一次你执行不带 id 的 INSERT 时，数据库就会乖乖地从 新的起始数字 开始往下排。</p>
-<h2 id="数据串线"><a href="#数据串线" class="headerlink" title="数据串线"></a>数据串线</h2><p>不能是手动去补id？破坏自增？</p>
-<h2 id="空缺”本身就是一种非常重要的历史记录。"><a href="#空缺”本身就是一种非常重要的历史记录。" class="headerlink" title="空缺”本身就是一种非常重要的历史记录。"></a>空缺”本身就是一种非常重要的历史记录。</h2><p>空缺”帮你保留了数据的“作废标记<br>在关系型数据库的世界里，残缺的 ID 序列，才是最完美、最健康的艺术品。</p>
-<table>
-<thead>
-<tr>
-<th>方式</th>
-<th>核心命令</th>
-<th>适用场景</th>
-<th>危险程度</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1. 强制重排 (全变)</td>
-<td>ALTER TABLE … DROP PRIMARY KEY</td>
-<td>只有几条测试数据，强迫症发作，非要让所有老数据的 ID 变成连续的 1, 2, 3。</td>
-<td>🔴 极高（会把子表的关联全部破坏掉）</td>
-</tr>
-<tr>
-<td>2. 摧毁重建 (全清)</td>
-<td>TRUNCATE TABLE 表名;</td>
-<td>彻底不要这表里的数据了，想一键清空，并且让新数据从 1 开始。</td>
-<td>🔴 极高（数据全没了，有外键时会报错）</td>
-</tr>
-<tr>
-<td>3. 修改计数器 (只改未来)</td>
-<td>ALTER TABLE … AUTO_INCREMENT &#x3D; X</td>
-<td>最正规的做法。老数据不动，只规定下一条新数据从几开始。</td>
-<td>🟢 安全（不会影响任何已有数据）</td>
-</tr>
-</tbody></table>
-<h1 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h1><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">SELECT</span> <br>    父表别名.父表字段, <br>    父表别名.父表字段, <br>    子表别名.子表字段, <br>    子表别名.子表字段<br><span class="hljs-keyword">FROM</span> <br>    父表名 父表别名<br><span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> (关键词：交集)<br>    子表名 子表别名 <br><span class="hljs-number">0</span>N <br>    父表别名.父表主键 = 子表别名.子表外键<br><span class="hljs-keyword">WHERE</span> <br>    别名.id=<span class="hljs-string">&#x27;xxx&#x27;</span>;<br><br></code></pre></td></tr></table></figure>
-
-<h1 id="返回JOIN数据方便axios查"><a href="#返回JOIN数据方便axios查" class="headerlink" title="返回JOIN数据方便axios查"></a>返回JOIN数据方便axios查</h1><p>在 MariaDB 和 MySQL 中，如果你想把两张有关联的表做联合查询（JOIN），同时又想让输出的结果直接变成 JSON 格式（方便前端 API 调用或者存入非关系型数据库），数据库提供了几个非常强大的内置 JSON 函数。</p>
-<h2 id="方案一：把每一行数据转成一个-JSON-对象（最常用）"><a href="#方案一：把每一行数据转成一个-JSON-对象（最常用）" class="headerlink" title="方案一：把每一行数据转成一个 JSON 对象（最常用）"></a>方案一：把每一行数据转成一个 JSON 对象（最常用）</h2><p>如果你希望查询结果的每一行都是一个独立的 JSON 对象，包含游戏信息和它所属的公司名称，可以使用 JSON_OBJECT。</p>
-<h1 id="json包裹输入"><a href="#json包裹输入" class="headerlink" title="json包裹输入"></a>json包裹输入</h1><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">SELECT</span> JSON_OBJECT(<br>    <span class="hljs-string">&#x27;id&#x27;</span>, w.id,<br>    <span class="hljs-string">&#x27;game_title&#x27;</span>, w.<span class="hljs-built_in">title</span>,<br>    <span class="hljs-string">&#x27;company&#x27;</span>, c.company_name<br>) <span class="hljs-keyword">AS</span> json_data<br><span class="hljs-keyword">FROM</span> works w<br><span class="hljs-keyword">JOIN</span> companies c <span class="hljs-keyword">ON</span> w.company_id = c.id;<br><br></code></pre></td></tr></table></figure>
-<p>JSON_OBJECT(…) 负责把一行的字段拼成 {}。</p>
-<p>JSON_ARRAYAGG(…) 负责把多行 {} 聚合成一个 []。</p>
-<p><code>JSON_OBJECT(&#39;键1&#39;, 值1, &#39;键2&#39;, 值2, &#39;键3&#39;, 值3, ...)</code></p>
-<p>奇数参数（第 1, 3, 5… 个）：必须是字符串，代表将来 JSON 里的 key（键名）。</p>
-<p>偶数参数（第 2, 4, 6… 个）：可以是列名、常量、或者表达式，代表 JSON 里的 value（值）。</p>
-<h2 id="JSON-OBJECT-的内部，还可以再塞一个-JSON-OBJECT！这就是为什么它能完美处理父子表的原因。"><a href="#JSON-OBJECT-的内部，还可以再塞一个-JSON-OBJECT！这就是为什么它能完美处理父子表的原因。" class="headerlink" title="JSON_OBJECT 的内部，还可以再塞一个 JSON_OBJECT！这就是为什么它能完美处理父子表的原因。"></a>JSON_OBJECT 的内部，还可以再塞一个 JSON_OBJECT！这就是为什么它能完美处理父子表的原因。</h2><h1 id="日期格式"><a href="#日期格式" class="headerlink" title="日期格式"></a>日期格式</h1><p>YYYY-MM-DD</p>
-<h1 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h1><h1 id="“软删除”（Soft-Delete）或状态控制"><a href="#“软删除”（Soft-Delete）或状态控制" class="headerlink" title="“软删除”（Soft Delete）或状态控制"></a>“软删除”（Soft Delete）或状态控制</h1><h2 id="添加-is-deleted字段（删除标记）状态列（最推荐）"><a href="#添加-is-deleted字段（删除标记）状态列（最推荐）" class="headerlink" title="添加 is_deleted字段（删除标记）状态列（最推荐）"></a>添加 is_deleted字段（删除标记）状态列（最推荐）</h2><p>修改表结构（添加字段）：</p>
-<p>ALTER TABLE 表 ADD COLUMN is_deleted TINYINT(1) DEFAULT 0;</p>
-<p>0 表示有效（默认）。</p>
-<p>1 表示已删除&#x2F;无效。</p>
-<p>让xxx行数据“无效”：</p>
-<p>UPDATE 表 SET is_deleted &#x3D; 1 WHERE id &#x3D; xx;</p>
-<p>业务查询时过滤：</p>
-<p>以后你在前台或者 API 查询数据时，永远加上一个条件：WHERE is_deleted &#x3D; 0。</p>
-<h2 id="方案二：添加-status字段（状态）状态列"><a href="#方案二：添加-status字段（状态）状态列" class="headerlink" title="方案二：添加 status字段（状态）状态列"></a>方案二：添加 status字段（状态）状态列</h2><p>修改表结构（添加状态字段）：</p>
-<p>ALTER TABLE 表 ADD COLUMN status VARCHAR(20) DEFAULT ‘active’;</p>
-<p>将第 xx 行改为下架&#x2F;无效状态：</p>
-<p>UPDATE 表 SET status &#x3D; ‘disabled’ WHERE id &#x3D; xxx;</p>
-<p>查询时只查有效状态：</p>
-<p>SELECT * FROM your_table_name WHERE status &#x3D; ‘active’;</p>
-<h1 id="临时绝招（如果你现在无法修改表结构）前端过滤-时间戳写法？"><a href="#临时绝招（如果你现在无法修改表结构）前端过滤-时间戳写法？" class="headerlink" title="临时绝招（如果你现在无法修改表结构）前端过滤 时间戳写法？"></a>临时绝招（如果你现在无法修改表结构）前端过滤 时间戳写法？</h1><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">UPDATE</span> 表<br><span class="hljs-keyword">SET</span> <br>    字段 = <span class="hljs-string">&#x27;[已失效/已隐藏]&#x27;</span>, <br>    delete_time <span class="hljs-keyword">IS</span> <span class="hljs-literal">NULL</span><br><span class="hljs-keyword">WHERE</span> id = xxx;<br></code></pre></td></tr></table></figure>
-
-<p>然后在代码里判断：如果 title 包含 [已失效]，就不在界面上渲染这一行。</p>
+<h1 id="🧩-接入大模型的核心要素"><a href="#🧩-接入大模型的核心要素" class="headerlink" title="🧩 接入大模型的核心要素"></a>🧩 接入大模型的核心要素</h1><h2 id="API-Key（通行证）"><a href="#API-Key（通行证）" class="headerlink" title="API Key（通行证）"></a>API Key（通行证）</h2><p>是什么：你在大模型官方平台（如 OpenAI、DeepSeek、Minimax 等）注册账号后申请的一串密钥。</p>
+<p>干嘛用：每次你的程序去找大模型聊天，都要带上这个密钥，证明你是注册用户，大模型才会理你，并从你的账户里扣除相应的 Token 费用。</p>
+<h2 id="Prompt（系统提示词-赋予人设）本质skill"><a href="#Prompt（系统提示词-赋予人设）本质skill" class="headerlink" title="Prompt（系统提示词 &#x2F; 赋予人设）本质skill"></a>Prompt（系统提示词 &#x2F; 赋予人设）本质skill</h2><p>这是让你的 Live2D 活过来的关键！大模型默认是一个冷冰冰的 AI，你需要通过 System Prompt 强制给它“洗脑”。</p>
+<p>例子：你可以告诉大模型：“你现在是一个傲娇的猫娘，名字叫小咪。你正在和主人聊天。请用傲娇、可爱的语气回答，每句话结尾都要带上’喵’。”</p>
+<p>作用：大模型接收到这个设定后，吐出来的文本就会完全符合你 Live2D 看板娘的形象。</p>
+<h2 id="Context（上下文-记忆力）"><a href="#Context（上下文-记忆力）" class="headerlink" title="Context（上下文 &#x2F; 记忆力）"></a>Context（上下文 &#x2F; 记忆力）</h2><p>大模型本身是没有记忆的。你对它说“你好”，它回“你好”；你下一句问“我刚才说了什么？”，它就懵了。</p>
+<p>怎么解决：每次用户发送新消息时，你的聊天组件需要把之前的聊天历史记录（比如前 5 轮对话），打包和新消息一起发给大模型。这样大模型才能“记住”上文。</p>
+<h2 id="Stream（流式传输-打字机效果）"><a href="#Stream（流式传输-打字机效果）" class="headerlink" title="Stream（流式传输 &#x2F; 打字机效果）"></a>Stream（流式传输 &#x2F; 打字机效果）</h2><p>如果不用流式传输：大模型在后台想了 5 秒钟，这 5 秒聊天框一片死寂，5 秒后突然蹦出一整段话。体验很差。</p>
+<p>流式传输的效果：大模型想好一个字就吐出一个字，前端聊天框就会像打字机一样一个字一个字地蹦出来。这对于聊天体验至关重要。</p>
+<p>🎨 进阶：如何让大模型操控 Live2D？</p>
+<p>光是文字聊天不够高级，既然引入了 Live2D，我们要让大模型一边说话，Live2D 一边做动作和表情。</p>
+<p>这里常用的高级手法叫做 “结构化输出” 或 “情感标签”。</p>
+<p>做法：让大模型在回答的同时，顺便吐出动作指令<br>你在系统提示词（Prompt）里对大模型做如下规定：</p>
+<p>“你在回答时，除了文本，还要根据你当时的心情，在回复前加上 [高兴], [生气], [害羞] 等标签。”</p>
+<p>fetch 向大模型的网址发送一个包含 messages 的请求。</p>
 
                 
               </div>
@@ -551,8 +432,15 @@ on delete cascade
     
       <span class="category-chain">
         
-  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
+  <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E9%A1%B9%E7%9B%AE/%E7%B3%BB%E7%BB%9F/" class="category-chain-item">系统</a>
+  
+  
+
   
 
       </span>
@@ -566,7 +454,7 @@ on delete cascade
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/MySQL/" class="print-no-link">#MySQL</a>
+        <a href="/tags/live2d-%E7%82%B9%E5%87%BB%E5%8D%95%E7%8B%AC%E7%9A%84%E8%81%8A%E5%A4%A9%E7%BB%84%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="print-no-link">#live2d 点击单独的聊天组件系统</a>
       
     </div>
   
@@ -578,8 +466,8 @@ on delete cascade
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>數據庫MySQL</div>
-      <div>http://example.com/2026/04/25/MySQL增删改查/</div>
+      <div>live2d 点击单独的聊天组件系统</div>
+      <div>http://example.com/2026/06/02/live2d-点击单独的聊天组件系统/</div>
     </div>
     <div class="license-meta">
       
@@ -591,7 +479,7 @@ on delete cascade
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年4月25日</div>
+          <div>2026年6月2日</div>
         </div>
       
       
@@ -623,9 +511,9 @@ on delete cascade
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/25/%E7%88%B6%E7%B5%84%E4%BB%B6%E6%8E%A7%E5%88%B6%E9%A0%81%E9%9D%A2%E5%88%87%E6%8F%9B%E4%B8%A6%E5%AF%AB%E6%95%B8%E6%93%9A%EF%BC%8C%E5%AD%90%E7%B5%84%E4%BB%B6%E4%BE%86%E6%8E%A5%E6%94%B6%E6%95%B8%E6%93%9A%E4%BE%86%E5%AF%A6%E7%8F%BE%E9%A0%81%E9%9D%A2%E5%8D%B0%E5%88%B7/" title="父組件控制頁面切換並寫數據，子組件來接收數據來實現頁面印刷">
+                      <a href="/2026/06/02/HTML%E7%94%BB%E5%B8%83/" title="HTML画布">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">父組件控制頁面切換並寫數據，子組件來接收數據來實現頁面印刷</span>
+                        <span class="hidden-mobile">HTML画布</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -633,8 +521,8 @@ on delete cascade
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/21/Vue%E7%B5%84%E4%BB%B6%E7%9A%84%E6%87%89%E7%94%A8/" title="Vue組件的應用">
-                        <span class="hidden-mobile">Vue組件的應用</span>
+                      <a href="/2026/05/31/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87/" title="毕业论文">
+                        <span class="hidden-mobile">毕业论文</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
