@@ -21,20 +21,20 @@
   
     <meta name="description" content="kotlin语言">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kotlin语言">
-<meta property="og:url" content="http://example.com/2026/06/02/Kotlin%E8%AF%AD%E8%A8%80/index.html">
+<meta property="og:title" content="掌握现代安卓的“全家桶”（UI 与架构）">
+<meta property="og:url" content="http://example.com/2026/06/02/%E6%8E%8C%E6%8F%A1%E7%8E%B0%E4%BB%A3%E5%AE%89%E5%8D%93%E7%9A%84%E2%80%9C%E5%85%A8%E5%AE%B6%E6%A1%B6%E2%80%9D%EF%BC%88UI%20%E4%B8%8E%E6%9E%B6%E6%9E%84%EF%BC%89/index.html">
 <meta property="og:site_name">
 <meta property="og:description" content="kotlin语言">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-02T13:14:57.000Z">
-<meta property="article:modified_time" content="2026-06-02T13:52:03.742Z">
+<meta property="article:modified_time" content="2026-06-02T15:34:46.409Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="kotlin语言">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>kotlin语言 - </title>
+  <title>掌握现代安卓的“全家桶”（UI 与架构） - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="kotlin语言"></span>
+            <span id="subtitle" data-typed-text="掌握现代安卓的“全家桶”（UI 与架构）"></span>
           
         </div>
 
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.1k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          1 分钟
+          10 分钟
         
       </span>
     
@@ -376,12 +376,32 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">kotlin语言</h1>
+            <h1 id="seo-header">掌握现代安卓的“全家桶”（UI 与架构）</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <p>掌握现代安卓的“全家桶”（UI 与架构）</p>
+<p>你现在用的是最前沿的开发方式，千万别跑去学十几年前的陈旧安卓教程。你需要学的是：</p>
+<h1 id="Kotlin-语言（基础语法）"><a href="#Kotlin-语言（基础语法）" class="headerlink" title="Kotlin 语言（基础语法）"></a>Kotlin 语言（基础语法）</h1><p>不用去啃整本厚书，重点看这几个和 JavaScript&#x2F;TypeScript 极其相似的特性：</p>
+<p>声明变量： val（相当于 const）和 var（相当于 let）。</p>
+<p>高阶函数与 Lambda： 它的箭头函数长这样 { x -&gt; x + 1 }，你在 Vue 里天天写。</p>
+<p>空安全（Null Safety）： Kotlin 自带防崩溃机制，它的 ? 操作符（如 name?.length）和前端的可选链（Optional Chaining） name?.length 一模一样！</p>
+<h1 id="Jetpack-Compose（声明式-UI-框架）"><a href="#Jetpack-Compose（声明式-UI-框架）" class="headerlink" title="Jetpack Compose（声明式 UI 框架）"></a>Jetpack Compose（声明式 UI 框架）</h1><p>这是你的核心主战场！ 它是 Google 推出的现代 UI 框架，用来彻底干掉 XML。</p>
+<p>怎么学： 去看官方的 Compose 基础教程，重点学 Column（垂直排列，相当于 flex-direction: column）、Row（水平排列）、Text、Button 和 Image。</p>
+<p>状态管理： 学会用 mutableStateOf。你会发现，这玩意儿在安卓里叫状态，但在你眼里，它就是 Vue 3 的 ref()！数据一变，界面自动刷新（Recomposition）。</p>
+<p>🔌 第二阶段：让 App 会动、会联网（数据交互）<br>App 不能只有壳，还得能和后端服务器通信、或者在本地存数据。</p>
+<h1 id="联网请求：Ktor-或-Retrofit"><a href="#联网请求：Ktor-或-Retrofit" class="headerlink" title="联网请求：Ktor 或 Retrofit"></a>联网请求：Ktor 或 Retrofit</h1><p>前端对齐： 相当于安卓版的 Axios。</p>
+<p>怎么学： 学会怎么用它们发送一个 GET 或 POST 请求，怎么把后端传过来的 JSON 字符串一键转成 Kotlin 的数据对象（Data Class）。</p>
+<h1 id="异步协作：Kotlin-协程（Coroutines）"><a href="#异步协作：Kotlin-协程（Coroutines）" class="headerlink" title="异步协作：Kotlin 协程（Coroutines）"></a>异步协作：Kotlin 协程（Coroutines）</h1><p>前端对齐： 相当于前端的 async &#x2F; await。</p>
+<p>怎么学： 只要学会用 launch 开启异步任务，用 withContext(Dispatchers.IO) 去跑网络请求，保证网络请求不会卡死你的手机屏幕（UI主线程）就行。</p>
+<h1 id="状态共享：ViewModel"><a href="#状态共享：ViewModel" class="headerlink" title="状态共享：ViewModel"></a>状态共享：ViewModel</h1><p>前端对齐： 相当于简化版的 Pinia。</p>
+<p>怎么学： 当你的 App 页面变多、数据变复杂时，把数据逻辑从 MainActivity.kt 抽离出来，放进一个叫 ViewModel 的类里，让它来统一管理整个页面的状态。</p>
+<h1 id="🏗️-掌控构建（不用深挖，够用就行）"><a href="#🏗️-掌控构建（不用深挖，够用就行）" class="headerlink" title="🏗️ 掌控构建（不用深挖，够用就行）"></a>🏗️ 掌控构建（不用深挖，够用就行）</h1><p>认识 Gradle 脚本（Kotlin 脚本 .kts）</p>
+<p>就是你今晚看到的那个大机器。你不需要成为 Gradle 专家（那太痛苦了），你只需要学会两件事：</p>
+<p>知道怎么在 dependencies { … } 里面复制粘贴引入新的第三方库（相当于在 package.json 里加依赖）。</p>
+<p>知道怎么修改 minSdk（最低支持的安卓版本）和 targetSdk。</p>
+
                 
               </div>
             
@@ -426,8 +446,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>kotlin语言</div>
-      <div>http://example.com/2026/06/02/Kotlin语言/</div>
+      <div>掌握现代安卓的“全家桶”（UI 与架构）</div>
+      <div>http://example.com/2026/06/02/掌握现代安卓的“全家桶”（UI 与架构）/</div>
     </div>
     <div class="license-meta">
       
