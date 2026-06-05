@@ -27,7 +27,7 @@
 <meta property="og:description" content="Jetpack Compose（声明式 UI 框架）">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-03T02:24:43.000Z">
-<meta property="article:modified_time" content="2026-06-03T10:33:46.770Z">
+<meta property="article:modified_time" content="2026-06-05T13:57:32.932Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="Jetpack Compose（声明式 UI 框架）">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          2.9k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          15 分钟
+          25 分钟
         
       </span>
     
@@ -418,7 +418,81 @@
 <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">modifier = Modifier<br><span class="hljs-title">.fillMaxWidth()</span><br><span class="hljs-title">.padding(16.dp),</span><br>horizontalArrangement = Arrangement.CenterHorizontally<br></code></pre></td></tr></table></figure>
 
 
-
+<h1 id="状态向下传递（数据），事件向上传递（暴露-fun）。"><a href="#状态向下传递（数据），事件向上传递（暴露-fun）。" class="headerlink" title="状态向下传递（数据），事件向上传递（暴露 fun）。"></a>状态向下传递（数据），事件向上传递（暴露 fun）。</h1><p>简单来说，Modifier（修饰符）就是一个普通的 Java&#x2F;Kotlin 对象，它的作用是告诉系统如何更改、装饰或对某个 UI 元素（Composable）的行为做出反应。</p>
+<p>modifier: Modifier &#x3D; Modifier</p>
+<p>小写的modifier是外面给的权利</p>
+<p>大写的Modifier是内部给的权利</p>
+<p>padding() 写在背景&#x2F;大小的前面 —— 它就是“外边距”</p>
+<p>当 padding() 写在背景&#x2F;大小的后面 —— 它就是“内边距”</p>
+<p>.size(40.dp)正方形</p>
+<p>.size(width &#x3D; 数字.dp, height &#x3D; 数字.dp)</p>
+<p>撑满全屏：.fillMaxSize()</p>
+<p>宽度撑满，高度随缘：.fillMaxWidth()</p>
+<p>Modifier 负责的是“通用外在属性”： 比如把你放大（size）、把你移位（padding）、给你上个底色（background）、让你能被手指点（clickable）。</p>
+<p>这些是所有 UI 组件共通的。</p>
+<p>声明式 UI 框架里非常经典的“属性 + 事件Listener” 的通用写法。</p>
+<p>大家更喜欢直接调用系统主题色（MaterialTheme），它会自动适配手机的深色模式（夜间模式）和浅色模式：</p>
+<p><code>color = MaterialTheme.colorScheme.onBackground</code></p>
+<p> <code>contentAlignment = Alignment.Center</code>居中</p>
+<h1 id="Flutter-Box-九宫格-Alignment-对照表"><a href="#Flutter-Box-九宫格-Alignment-对照表" class="headerlink" title="Flutter Box 九宫格 Alignment 对照表"></a>Flutter Box 九宫格 Alignment 对照表</h1><table>
+<thead>
+<tr>
+<th>对齐枚举参数</th>
+<th>通俗位置说明</th>
+<th>九宫格方位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Alignment.TopStart</td>
+<td>左上角</td>
+<td>第一行第一列</td>
+</tr>
+<tr>
+<td>Alignment.TopCenter</td>
+<td>顶部水平居中</td>
+<td>第一行第二列</td>
+</tr>
+<tr>
+<td>Alignment.TopEnd</td>
+<td>右上角</td>
+<td>第一行第三列</td>
+</tr>
+<tr>
+<td>Alignment.CenterStart</td>
+<td>左侧垂直居中</td>
+<td>第二行第一列</td>
+</tr>
+<tr>
+<td>Alignment.Center</td>
+<td>容器正中心（水平+垂直双居中）</td>
+<td>第二行第二列</td>
+</tr>
+<tr>
+<td>Alignment.CenterEnd</td>
+<td>右侧垂直居中</td>
+<td>第二行第三列</td>
+</tr>
+<tr>
+<td>Alignment.BottomStart</td>
+<td>左下角</td>
+<td>第三行第一列</td>
+</tr>
+<tr>
+<td>Alignment.BottomCenter</td>
+<td>底部水平居中</td>
+<td>第三行第二列</td>
+</tr>
+<tr>
+<td>Alignment.BottomEnd</td>
+<td>右下角</td>
+<td>第三行第三列</td>
+</tr>
+</tbody></table>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><ol>
+<li><strong>Start &#x2F; End 受文字方向影响</strong><br>默认从左到右布局（中文&#x2F;英文）：<code>Start=左、End=右</code>；阿拉伯文等从右向左排版时，<code>Start=右、End=左</code>。</li>
+<li><strong>使用场景</strong><br><code>Container</code>、<code>Align</code>组件的<code>alignment</code>属性直接传入该枚举，控制子组件在父容器内的摆放位置：</li>
+</ol>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">Container</span>(<br>  <span class="hljs-attribute">alignment</span>: Alignment.Center, <span class="hljs-comment">// 子控件居中</span><br>  <span class="hljs-attribute">child</span>: <span class="hljs-built_in">Text</span>(<span class="hljs-string">&quot;测试&quot;</span>),<br>)<br></code></pre></td></tr></table></figure>
                 
               </div>
             
