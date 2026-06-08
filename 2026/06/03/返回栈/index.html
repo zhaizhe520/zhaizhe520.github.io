@@ -27,7 +27,7 @@
 <meta property="og:description" content="快速连击（Double Click &#x2F; Fast Tap）导致的路由疯狂压栈">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-03T04:54:11.000Z">
-<meta property="article:modified_time" content="2026-06-05T14:51:42.152Z">
+<meta property="article:modified_time" content="2026-06-07T13:14:02.527Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="快速连击（Double Click &#x2F; Fast Tap）导致的路由疯狂压栈">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          2.2k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          9 分钟
+          19 分钟
         
       </span>
     
@@ -392,11 +392,23 @@
 <h2 id="解法一：防抖-节流（Debounce）——-最彻底"><a href="#解法一：防抖-节流（Debounce）——-最彻底" class="headerlink" title="解法一：防抖 &#x2F; 节流（Debounce）—— 最彻底"></a>解法一：防抖 &#x2F; 节流（Debounce）—— 最彻底</h2><p>限制按钮的点击频率。点击一次后，接下来的 500 毫秒内不管用户怎么疯狂点，直接忽略掉。</p>
 <p>系统时间戳对比。只要两次点击的间隔小于 500 毫秒，直接闭嘴，不执行任何回调！</p>
 <p>我们利用 Kotlin 的扩展函数，给 Android 所有的 UI 组件（Modifier）直接外挂一个防抖点击事件。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">// 1. 在 Composable 函数的顶部定义一个记录时间的变量（注意要用 remember）</span><br><span class="hljs-selector-tag">var</span> lastClickTime by remember &#123; <span class="hljs-built_in">mutableStateOf</span>(<span class="hljs-number">0</span>L) &#125;<br><br><span class="hljs-comment">// 2. 在你的按钮里做一层判断</span><br><span class="hljs-built_in">OutlinedButton</span>(<br>    onClick = &#123; <br>        val currentTime = System<span class="hljs-selector-class">.currentTimeMillis</span>()<br>        <span class="hljs-comment">// 🌟 如果距离上次点击小于 500 毫秒，直接不理它，防止狂点引起的奇怪加载</span><br>        <span class="hljs-keyword">if</span> (currentTime - lastClickTime &gt; <span class="hljs-number">500</span>) &#123; <br>            lastClickTime = currentTime<br>            <br>            <span class="hljs-comment">// 执行你的导航逻辑</span><br>            navController<span class="hljs-selector-class">.navigate</span>(<span class="hljs-string">&quot;home&quot;</span>) &#123;<br>                launchSingleTop = true<br>            &#125;<br>        &#125;<br>    &#125;,<br>    shape = <span class="hljs-built_in">RoundedCornerShape</span>(<span class="hljs-number">8</span>.dp),<br>    <span class="hljs-comment">// ... 下面保持你原本漂亮的样式配置不变</span><br>)<br></code></pre></td></tr></table></figure>
+
+
 <h1 id="解法二：标准大厂路由单例配置（Launch-Single-Top）"><a href="#解法二：标准大厂路由单例配置（Launch-Single-Top）" class="headerlink" title="解法二：标准大厂路由单例配置（Launch Single Top）"></a>解法二：标准大厂路由单例配置（Launch Single Top）</h1><p>告诉路由总管：“如果我想去的这个页面（比如 detail）已经处于当前路由栈的顶部了，就不要再重复创建它了！”</p>
 <p>打开你的 NavGraph.kt，把首页跳转的那一段加上一个 launchSingleTop &#x3D; true 的配置：</p>
 <p>launchSingleTop &#x3D; true</p>
 <h1 id="返回栈逻辑"><a href="#返回栈逻辑" class="headerlink" title="返回栈逻辑"></a>返回栈逻辑</h1><p>防狂点特效药 —— launchSingleTop（最推荐）</p>
-<p>navController.navigate(“my_screen”) {<br>    &#x2F;&#x2F; 🌟 终极特效药：开启单顶模式<br>    launchSingleTop &#x3D; true<br>}</p>
+<p>navController.navigate(“my_screen”) {<br>    &#x2F;&#x2F; 🌟 终极特效药：开启单顶模式<br>    launchSingleTop &#x3D; true<br>}<br>会布局重复绘制</p>
+<h1 id="popBackStack（回滚-弹栈）"><a href="#popBackStack（回滚-弹栈）" class="headerlink" title="popBackStack（回滚&#x2F;弹栈）"></a>popBackStack（回滚&#x2F;弹栈）</h1><p>navController.popBackStack(“home”, inclusive &#x3D; false)</p>
+<p>它的意思是：从最顶上的页面开始往下清理，一直清理到 “home” 为止，但是【不包含】”home” 自己（即保留 home）。</p>
+<p>如果改成 inclusive &#x3D; true 会发生什么？（连终点站一起干掉）</p>
+<h1 id="防抖，弹栈，栈顶3者结合"><a href="#防抖，弹栈，栈顶3者结合" class="headerlink" title="防抖，弹栈，栈顶3者结合"></a>防抖，弹栈，栈顶3者结合</h1><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">定义一个计时器<br><br><br><span class="hljs-keyword">var</span> lastClickTime <span class="hljs-keyword">by</span> remember &#123; mutableStateOf(<span class="hljs-number">0L</span>) &#125;<br><br>    <span class="hljs-comment">// 封装一个安全的点击检查函数</span><br>    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">safeNavigate</span><span class="hljs-params">(action: () -&gt; <span class="hljs-type">Unit</span>)</span></span> &#123;<br>        <span class="hljs-keyword">val</span> currentTime = System.currentTimeMillis()<br>        <span class="hljs-keyword">if</span> (currentTime - lastClickTime &gt; <span class="hljs-number">500</span>) &#123; <span class="hljs-comment">// 500毫秒防抖</span><br>            lastClickTime = currentTime<br>            action()<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">safeNavigate &#123;<br>         <span class="hljs-comment">// 彻底清空中间页面，干净地退回主页，防抖</span><br>         navController.<span class="hljs-title function_">navigate</span>(<span class="hljs-params"><span class="hljs-string">&quot;home&quot;</span></span>) &#123;<br>             <span class="hljs-title function_">popUpTo</span>(<span class="hljs-params"><span class="hljs-string">&quot;home&quot;</span></span>) &#123; inclusive = <span class="hljs-literal">false</span> &#125;<br>             launchSingleTop = <span class="hljs-literal">true</span><br>         &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>可能会出现从渲染问题</p>
+<p>现代高级写法（自定义 Modifier 扩展）</p>
 
                 
               </div>
