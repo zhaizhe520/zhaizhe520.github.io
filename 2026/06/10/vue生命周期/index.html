@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="多对多联系 (Many-to-Many)">
+    <meta name="description" content="vue生命周期">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多对多联系 (Many-to-Many) —— 必须引入“中间表”">
-<meta property="og:url" content="http://example.com/2026/06/06/%E5%A4%9A%E5%AF%B9%E5%A4%9A%E8%81%94%E7%B3%BB-Many-to-Many%E5%BC%95%E5%85%A5%E2%80%9C%E4%B8%AD%E9%97%B4%E8%A1%A8%E2%80%9D/index.html">
+<meta property="og:title" content="vue生命周期">
+<meta property="og:url" content="http://example.com/2026/06/10/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="多对多联系 (Many-to-Many)">
+<meta property="og:description" content="vue生命周期">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-06-06T02:47:19.000Z">
-<meta property="article:modified_time" content="2026-06-06T03:41:52.649Z">
+<meta property="article:published_time" content="2026-06-10T13:38:46.000Z">
+<meta property="article:modified_time" content="2026-06-10T14:16:53.359Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="多对多联系 (Many-to-Many)">
+<meta property="article:tag" content="vue生命周期">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>多对多联系 (Many-to-Many) —— 必须引入“中间表” - </title>
+  <title>vue生命周期 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="多对多联系 (Many-to-Many) —— 必须引入“中间表”"></span>
+            <span id="subtitle" data-typed-text="vue生命周期"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-06-06 10:47" pubdate>
-          2026年6月6日 上午
+        <time datetime="2026-06-10 21:38" pubdate>
+          2026年6月10日 晚上
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          298 字
+          980 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          3 分钟
+          9 分钟
         
       </span>
     
@@ -376,21 +376,21 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">多对多联系 (Many-to-Many) —— 必须引入“中间表”</h1>
+            <h1 id="seo-header">vue生命周期</h1>
             
             
               <div class="markdown-body">
                 
-                <p>多对多联系 (Many-to-Many) —— 必须引入“中间表”</p>
-<p>在现实生活中，很多关系是双向多值的。一个父记录对应多个子记录，反过来一个子记录也对应多个父记录。</p>
-<p>在数据库里，两张表是无法直接建立多对多联系的，必须生一个“中间表”（也叫关联表），把一个大难题拆成两个“一对多”。</p>
-<p>经典场景： 学生 与 课程；文章 与 标签。一个学生选多门课，一门课被多个学生选。</p>
-<div style="color:red">连线规则： 独立出第三张表，里面存放两张表的主键作为双外键。</div>
-
-<p>经典场景： 用户基础信息 与 用户详细隐私（或者用户主表 与 用户身份证信息）。</p>
-<p>连线规则： 子表的主键同时又是外键，直接指向父表的主键。</p>
-<p>独立主键 + 两个外键（最常见）</p>
-<p>联合主键（Composite Key，最严谨）</p>
+                <p>Vue 生命周期简述</p>
+<p>Vue 生命周期指组件实例从创建、初始化、挂载、更新到销毁的完整运行过程，过程中会自动执行一系列「生命周期钩子函数」，让开发者可以在特定阶段插入自定义逻辑。<br>核心阶段与钩子（按执行顺序）</p>
+<h1 id="创建阶段（实例初始化，无真实-DOM）"><a href="#创建阶段（实例初始化，无真实-DOM）" class="headerlink" title="创建阶段（实例初始化，无真实 DOM）"></a>创建阶段（实例初始化，无真实 DOM）</h1><p>beforeCreate：实例刚创建，响应式数据、方法均未初始化，无法访问 data、methods。<br>created：实例创建完成，数据、方法已初始化，可正常访问 data&#x2F;methods；但 DOM 未生成，$el 不可用。常用于发起接口请求、初始化非 DOM 相关数据。<br>挂载阶段（DOM 首次渲染到页面）<br>写接口</p>
+<h1 id="beforeMount：模板编译完成，真实-DOM-还未挂载到页面前执行。"><a href="#beforeMount：模板编译完成，真实-DOM-还未挂载到页面前执行。" class="headerlink" title="beforeMount：模板编译完成，真实 DOM 还未挂载到页面前执行。"></a>beforeMount：模板编译完成，真实 DOM 还未挂载到页面前执行。</h1><p>DOM已经创建，还没渲染，提前请求后端数据，等 DOM 挂载完成后直接渲染，减少页面白屏 &#x2F; 等待时间。</p>
+<h1 id="mounted：组件挂载完成，真实-DOM-已渲染到页面，可直接操作-DOM-节点、初始化第三方-DOM-插件。"><a href="#mounted：组件挂载完成，真实-DOM-已渲染到页面，可直接操作-DOM-节点、初始化第三方-DOM-插件。" class="headerlink" title="mounted：组件挂载完成，真实 DOM 已渲染到页面，可直接操作 DOM 节点、初始化第三方 DOM 插件。"></a>mounted：组件挂载完成，真实 DOM 已渲染到页面，可直接操作 DOM 节点、初始化第三方 DOM 插件。</h1><h1 id="更新阶段（响应式数据变化，DOM-重渲染）"><a href="#更新阶段（响应式数据变化，DOM-重渲染）" class="headerlink" title="更新阶段（响应式数据变化，DOM 重渲染）"></a>更新阶段（响应式数据变化，DOM 重渲染）</h1><p>beforeUpdate：响应式数据已更新，DOM 重新渲染前触发，可读取更新前的 DOM 状态。<br>updated：DOM 重渲染完成，可获取数据更新后的最新 DOM 结构。</p>
+<h1 id="销毁阶段（实例卸载与资源清理）"><a href="#销毁阶段（实例卸载与资源清理）" class="headerlink" title="销毁阶段（实例卸载与资源清理）"></a>销毁阶段（实例卸载与资源清理）</h1><p>beforeUnmount（Vue2 为 beforeDestroy）：实例销毁前执行，实例仍完整可用。常用于清除定时器、解绑全局事件、取消订阅。</p>
+<p>unmounted（Vue2 为 destroyed）：实例完全销毁，所有指令解绑、事件监听器移除，子实例同步销毁。<br>特殊钩子</p>
+<h1 id="特殊钩子"><a href="#特殊钩子" class="headerlink" title="特殊钩子"></a>特殊钩子</h1><p>activated &#x2F; deactivated：仅对 <code>&lt;keep-alive&gt;</code> 缓存的组件生效，分别在组件激活、失活时触发。</p>
+<p>errorCaptured：捕获子孙组件抛出的错误时触发。</p>
+<p>Vue3 组合式 API 专属调试钩子：onRenderTracked（依赖被追踪时触发）、onRenderTriggered（依赖触发更新时触发）。<br>Vue3 补充说明<br>选项式 API 钩子与 Vue2 大体一致，仅销毁阶段钩子重命名<br>。<br>组合式 API（<code>&lt;script setup&gt;</code>）中以 onXxx 形式调用钩子（如 onMounted）；setup 本身的执行时机早于<br>beforeCreate，没有对应的 beforeCreate&#x2F;created 钩子。</p>
 
                 
               </div>
@@ -409,7 +409,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
+  <a href="/categories/%E9%9D%A2%E8%AF%95/" class="category-chain-item">面试</a>
   
   
 
@@ -424,7 +424,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%A4%9A%E5%AF%B9%E5%A4%9A%E8%81%94%E7%B3%BB-Many-to-Many/" class="print-no-link">#多对多联系 (Many-to-Many)</a>
+        <a href="/tags/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="print-no-link">#vue生命周期</a>
       
     </div>
   
@@ -436,8 +436,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>多对多联系 (Many-to-Many) —— 必须引入“中间表”</div>
-      <div>http://example.com/2026/06/06/多对多联系-Many-to-Many引入“中间表”/</div>
+      <div>vue生命周期</div>
+      <div>http://example.com/2026/06/10/vue生命周期/</div>
     </div>
     <div class="license-meta">
       
@@ -449,7 +449,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年6月6日</div>
+          <div>2026年6月10日</div>
         </div>
       
       
@@ -481,18 +481,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/06/07/Navigation(%E8%B7%AF%E7%94%B1router)/" title="Navigation路由">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Navigation路由</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/06/05/Kotlin%E9%87%8C%E9%9D%A2%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Kotlin里面的生命周期">
-                        <span class="hidden-mobile">Kotlin里面的生命周期</span>
+                      <a href="/2026/06/08/ViewModel%E5%85%A8%E5%B1%80%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" title="ViewModel全局状态管理">
+                        <span class="hidden-mobile">ViewModel全局状态管理</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
