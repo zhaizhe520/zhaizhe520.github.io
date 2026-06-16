@@ -19,21 +19,32 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="http://example.com/archives/2026/05/index.html">
+    <meta name="description" content="项目面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="项目介绍">
+<meta property="og:url" content="http://example.com/2026/06/16/%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D/index.html">
 <meta property="og:site_name">
+<meta property="og:description" content="项目面试">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-06-16T00:00:15.000Z">
+<meta property="article:modified_time" content="2026-06-16T00:05:42.340Z">
 <meta property="article:author" content="Mashiro">
+<meta property="article:tag" content="项目面试">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>归档 - </title>
+  <title>项目介绍 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -83,7 +94,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -286,15 +297,55 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/null') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="归档"></span>
+            <span id="subtitle" data-typed-text="项目介绍"></span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-06-16 08:00" pubdate>
+          2026年6月16日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          276 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          3 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
 
         
       </div>
@@ -312,100 +363,221 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 102 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2026</p>
-    
-    <a href="/2026/05/31/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87/" class="list-group-item list-group-item-action">
-      <time>05-31</time>
-      <div class="list-group-item-title">毕业论文</div>
-    </a>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">项目介绍</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="完整的部署流程"><a href="#完整的部署流程" class="headerlink" title="完整的部署流程"></a>完整的部署流程</h1><table>
+<thead>
+<tr>
+<th>层面</th>
+<th>技术栈</th>
+<th>面试关键词</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>前端</td>
+<td>Vue3 + Pinia + Router + axios</td>
+<td>组件化、状态管理、路由守卫、懒加载</td>
+</tr>
+<tr>
+<td>中间</td>
+<td>Nginx 反代 + 环境变量</td>
+<td>同源策略、反向代理、CORS 绕过</td>
+</tr>
+<tr>
+<td>后端</td>
+<td>Express + mysql2 + bcrypt</td>
+<td>RESTful API、连接池、JWT&#x2F;登录</td>
+</tr>
+<tr>
+<td>数据库</td>
+<td>MariaDB + 外键 + 软删除</td>
+<td>父子表、JOIN、JSON_OBJECT、索引</td>
+</tr>
+<tr>
+<td>部署</td>
+<td>PM2 + Nginx + 安全组</td>
+<td>进程保活、SSL 终止</td>
+</tr>
+</tbody></table>
+<p>git</p>
+<p>ssh协议</p>
+<p>http（https）协议</p>
+<p>还有那个永久保存到浏览器的  还有jwt令牌 什么正则表达式 什么滑动窗口算法 来判断密码是不是符合要求或者太简单</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
   
     
-    <a href="/2026/05/28/Nginx/" class="list-group-item list-group-item-action">
-      <time>05-28</time>
-      <div class="list-group-item-title">Nginx</div>
-    </a>
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%9D%A2%E8%AF%95/" class="category-chain-item">面试</a>
   
-    
-    <a href="/2026/05/28/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%88%96%E4%BA%91%E5%AD%98%E5%82%A8-%E5%A6%82-OSS%E3%80%81S3/" class="list-group-item list-group-item-action">
-      <time>05-28</time>
-      <div class="list-group-item-title">图片上传到服务器或云存储(如 OSS、S3)</div>
-    </a>
   
+
+      </span>
     
-    <a href="/2026/05/28/%E5%89%8D%E7%AB%AF%E6%8B%BF%E5%88%B0%E7%9A%84%E6%98%AF%E6%97%B6%E9%97%B4%E6%88%B3/" class="list-group-item list-group-item-action">
-      <time>05-28</time>
-      <div class="list-group-item-title">时区差导致显示时间戳</div>
-    </a>
   
-    
-    <a href="/2026/05/27/Vue3%E9%87%8Cid-%E2%86%92-%E7%BB%84%E4%BB%B6-%E6%98%A0%E5%B0%84/" class="list-group-item list-group-item-action">
-      <time>05-27</time>
-      <div class="list-group-item-title">Vue3里id → 组件 映射</div>
-    </a>
+</span>
+
+    </div>
   
-    
-    <a href="/2026/05/26/%E5%90%8E%E7%AB%AF%E6%8E%A5%E5%8F%A3%E6%80%8E%E4%B9%88%E5%86%99/" class="list-group-item list-group-item-action">
-      <time>05-26</time>
-      <div class="list-group-item-title">后端接口怎么写</div>
-    </a>
   
-    
-    <a href="/2026/05/25/post%E5%92%8Cget%E8%AF%B7%E6%B1%82/" class="list-group-item list-group-item-action">
-      <time>05-25</time>
-      <div class="list-group-item-title">post和get请求</div>
-    </a>
-  
-    
-    <a href="/2026/05/25/mysql%E9%87%8C%E9%9D%A2text%E7%B1%BB%E5%9E%8B%E6%94%BEmarkdown%E6%A0%BC%E5%BC%8F/" class="list-group-item list-group-item-action">
-      <time>05-25</time>
-      <div class="list-group-item-title">mysql里面text类型放markdown格式</div>
-    </a>
-  
-    
-    <a href="/2026/05/25/%E5%AE%9E%E4%B9%A0%E7%AE%80%E5%8E%86/" class="list-group-item list-group-item-action">
-      <time>05-25</time>
-      <div class="list-group-item-title">实习简历</div>
-    </a>
-  
-    
-    <a href="/2026/05/23/%E7%BA%BF%E4%B8%8A%E9%83%A8%E7%BD%B2server-js/" class="list-group-item list-group-item-action">
-      <time>05-23</time>
-      <div class="list-group-item-title">线上部署server.js</div>
-    </a>
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%A1%B9%E7%9B%AE%E9%9D%A2%E8%AF%95/" class="print-no-link">#项目面试</a>
+      
+    </div>
   
 </div>
 
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2026/05/page/2/#board">2</a><a class="page-number" href="/archives/2026/05/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2026/05/page/5/#board">5</a><a class="extend next" rel="next" href="/archives/2026/05/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
+              
+  
 
-
-
-
-              </div>
-            </div>
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>项目介绍</div>
+      <div>http://example.com/2026/06/16/项目介绍/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Mashiro</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年6月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
           </div>
         </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/06/14/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8-UI/" title="数据驱动 UI">
+                        <span class="hidden-mobile">数据驱动 UI</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
     
@@ -498,6 +670,163 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 
