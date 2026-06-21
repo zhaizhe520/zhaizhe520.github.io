@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="live2d 点击单独的聊天组件系统">
+    <meta name="description" content="算法 数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="live2d 点击单独的聊天组件系统">
-<meta property="og:url" content="http://example.com/2026/06/02/live2d-%E7%82%B9%E5%87%BB%E5%8D%95%E7%8B%AC%E7%9A%84%E8%81%8A%E5%A4%A9%E7%BB%84%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:title" content="算法 数据结构 这其实是人类逻辑思维的最高浪漫。">
+<meta property="og:url" content="http://example.com/2026/06/21/%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="live2d 点击单独的聊天组件系统">
+<meta property="og:description" content="算法 数据结构">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-06-01T16:02:22.000Z">
-<meta property="article:modified_time" content="2026-06-21T01:58:43.175Z">
+<meta property="article:published_time" content="2026-06-21T01:12:11.000Z">
+<meta property="article:modified_time" content="2026-06-21T01:50:30.354Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="live2d 点击单独的聊天组件系统">
+<meta property="article:tag" content="算法 数据结构">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>live2d 点击单独的聊天组件系统 - </title>
+  <title>算法 数据结构 这其实是人类逻辑思维的最高浪漫。 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="live2d 点击单独的聊天组件系统"></span>
+            <span id="subtitle" data-typed-text="算法 数据结构 这其实是人类逻辑思维的最高浪漫。"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-06-02 00:02" pubdate>
-          2026年6月2日 凌晨
+        <time datetime="2026-06-21 09:12" pubdate>
+          2026年6月21日 上午
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          858 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          18 分钟
+          8 分钟
         
       </span>
     
@@ -376,45 +376,35 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">live2d 点击单独的聊天组件系统</h1>
+            <h1 id="seo-header">算法 数据结构 这其实是人类逻辑思维的最高浪漫。</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="🛠️-技术选型推荐"><a href="#🛠️-技术选型推荐" class="headerlink" title="🛠️ 技术选型推荐"></a>🛠️ 技术选型推荐</h1><p>前端框架：Vue 3 (Composition API) + Vite (构建速度快，对现代 JS 支持好)</p>
-<p>渲染引擎：PixiJS v7&#x2F;v8</p>
-<p>Live2D 插件：pixi-live2d-display (目前社区整合 Live2D 和 PixiJS 最成熟的库，支持 Cubism 2.1 和 4.x)</p>
-<p>状态管理：Pinia (用于管理全局的聊天状态、看板娘状态)</p>
-<p>样式库：Tailwind CSS (快速搞定聊天气泡和弹窗 UI)</p>
-<h1 id="📐-核心架构与核心逻辑"><a href="#📐-核心架构与核心逻辑" class="headerlink" title="📐 核心架构与核心逻辑"></a>📐 核心架构与核心逻辑</h1><p>要实现“点击 Live2D 进入独立聊天组件”，核心在于 PixiJS 的事件监听 与 Vue 组件的状态通信。</p>
-<p>核心步骤拆解<br>挂载 PixiJS 画布：在 Vue 的 onMounted 钩子中初始化 Pixi 应用，并加载 Live2D 模型。</p>
-<p>监听点击事件：利用 pixi-live2d-display 自带的命中检测（Hit Test），当用户点击模型的特定区域（如身体、头部）或任意位置时触发事件。</p>
-<p>触发 Vue 状态变更：点击后，通过 Pinia 或 emit 修改一个布尔值（例如 isChatOpen &#x3D; true）。</p>
-<p>遮罩与动画过渡：Vue 监听到 isChatOpen 变为 true，弹出聊天组件（可以通过 <Transition> 组件做个丝滑的淡入或抽屉效果）。</p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs nix">src<span class="hljs-symbol">/</span><br>├── components<span class="hljs-symbol">/</span><br>│   ├── Live2dStage.vue   <span class="hljs-comment"># 负责 PixiJS 和 Live2D 的渲染</span><br>│   └── ChatWindow.vue    <span class="hljs-comment"># 独立的聊天 Vue 组件</span><br>├── store<span class="hljs-symbol">/</span><br>│   └── appStore.js       <span class="hljs-comment"># 存放聊天窗口打开状态、对话记录等</span><br>└── App.vue               <span class="hljs-comment"># 主入口</span><br></code></pre></td></tr></table></figure>
+                <h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>随着你要处理的数据量变大，你的算法执行所需要的时间是怎么增长的。</p>
+<div style="color:pink">为什么不用“秒”来算时间？</div>
 
-<p>版本兼容问题（重点）：pixi-live2d-display 对 PixiJS 的版本要求比较严格。如果你使用的是 PixiJS v7 或 v8，请务必查看该插件的官方文档，安装对应分支&#x2F;版本的 npm 包，否则会报各种找不到 Namespace 的错误。</p>
-<p>资源跨域与路径：Live2D 模型包含大量的 .json, .moc3, .png 贴图。在本地开发时，建议把模型文件夹放在 Vue 的 public&#x2F; 目录下，用绝对路径（如 &#x2F;live2d&#x2F;model.model3.json）去请求，避免打包后路径找不到。</p>
-<p>性能优化：如果聊天组件打开后不需要看到看板娘，可以在打开聊天时，把 PixiJS 的 app.stop() 掉，或者让渲染层 display: none，关闭 Canvas 的实时渲染，释放手机或低配电脑的 GPU 压力。</p>
-<p>业务流水线：大模型接入的三步循环<br>当用户在你的 Vue 聊天组件里输入一句话并发送时，后端&#x2F;API 实际上在经历这样一个循环：</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">Plaintext<br><span class="hljs-string">[用户输入文本]</span> <br>      │<br>      ▼<br><span class="hljs-string">[1. 组装请求：加上 Prompt(提示词) 和历史记录]</span> <br>      │<br>      ▼<br><span class="hljs-string">[2. 调用大模型 API (如 DeepSeek、OpenAI)]</span> <br>      │<br>      ▼<br><span class="hljs-string">[3. 解析返回：提取文本给聊天框，提取表情动作给 Live2D]</span><br><br></code></pre></td></tr></table></figure>
+<p>你可能会问：“为什么不直接用手表数一数，这个算法运行了多少秒呢？”<br>因为换一台配置更高的电脑，或者换一种编程语言，运行秒数就会改变。为了公平且客观地评价一个算法，科学家们决定：不数“秒数”，而是去数“代码执行的次数（步数）”。</p>
+<p>这就引出了大名鼎鼎的 大O表示法（Big O Notation）。</p>
+<p>时间复杂度：$O(1)$ —— 叫 常数阶。不管数据规模多大，速度都一样快。</p>
+<p>时间复杂度：$O(n)$ —— 叫 线性阶。钥匙数量（数据量）翻倍，你花的时间也翻倍。</p>
+<p>时间复杂度：$O(n^2)$ —— 叫 平方阶。如果只有2把钥匙，试 4 次；如果有10把钥匙，就要试 100 次！</p>
+<p>数据量变大一点，时间就会暴涨。</p>
+<h1 id="数组（Array）"><a href="#数组（Array）" class="headerlink" title="数组（Array）"></a>数组（Array）</h1><p>连续性、相同类型、大小固定、下标0开始、紧密排列、大量数据插入删除时间复杂度为$O(n)$线性阶</p>
+<p>大小固定</p>
+<p>搬家扩容</p>
+<h1 id="链表-Linked-List"><a href="#链表-Linked-List" class="headerlink" title="链表(Linked List)"></a>链表(Linked List)</h1><p>浏览器的“前进”与“后退”（最经典的链表）  </p>
+<p>软件里的“撤销（Ctrl+Z）”与“反撤销（Ctrl+Y）”</p>
+<p>音乐播放器的“单曲循环”与“列表循环”</p>
+<p>只要是数组（Array），它就摆脱不了“必须连续坐在一起”的物理枷锁。<br>打破这个枷锁，发明了链表。</p>
+<p>数据可以随意分散在内存的任何角落</p>
+<p>链表的每一个房间，在算法里叫一个节点（Node）。一个节点包含两样东西：</p>
+<figure class="highlight purebasic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs purebasic">数据（<span class="hljs-keyword">Data</span>）：你想存的值。<br><br>指针（<span class="hljs-keyword">Next</span>）：指向下一个节点的内存地址<br></code></pre></td></tr></table></figure>
 
-<h1 id="🧩-接入大模型的核心要素"><a href="#🧩-接入大模型的核心要素" class="headerlink" title="🧩 接入大模型的核心要素"></a>🧩 接入大模型的核心要素</h1><h2 id="API-Key（通行证）"><a href="#API-Key（通行证）" class="headerlink" title="API Key（通行证）"></a>API Key（通行证）</h2><p>是什么：你在大模型官方平台（如 OpenAI、DeepSeek、Minimax 等）注册账号后申请的一串密钥。</p>
-<p>干嘛用：每次你的程序去找大模型聊天，都要带上这个密钥，证明你是注册用户，大模型才会理你，并从你的账户里扣除相应的 Token 费用。</p>
-<h2 id="Prompt（系统提示词-赋予人设）本质skill"><a href="#Prompt（系统提示词-赋予人设）本质skill" class="headerlink" title="Prompt（系统提示词 &#x2F; 赋予人设）本质skill"></a>Prompt（系统提示词 &#x2F; 赋予人设）本质skill</h2><p>这是让你的 Live2D 活过来的关键！大模型默认是一个冷冰冰的 AI，你需要通过 System Prompt 强制给它“洗脑”。</p>
-<p>例子：你可以告诉大模型：“你现在是一个傲娇的猫娘，名字叫小咪。你正在和主人聊天。请用傲娇、可爱的语气回答，每句话结尾都要带上’喵’。”</p>
-<p>作用：大模型接收到这个设定后，吐出来的文本就会完全符合你 Live2D 看板娘的形象。</p>
-<h2 id="Context（上下文-记忆力）"><a href="#Context（上下文-记忆力）" class="headerlink" title="Context（上下文 &#x2F; 记忆力）"></a>Context（上下文 &#x2F; 记忆力）</h2><p>大模型本身是没有记忆的。你对它说“你好”，它回“你好”；你下一句问“我刚才说了什么？”，它就懵了。</p>
-<p>怎么解决：每次用户发送新消息时，你的聊天组件需要把之前的聊天历史记录（比如前 5 轮对话），打包和新消息一起发给大模型。这样大模型才能“记住”上文。</p>
-<h2 id="Stream（流式传输-打字机效果）"><a href="#Stream（流式传输-打字机效果）" class="headerlink" title="Stream（流式传输 &#x2F; 打字机效果）"></a>Stream（流式传输 &#x2F; 打字机效果）</h2><p>如果不用流式传输：大模型在后台想了 5 秒钟，这 5 秒聊天框一片死寂，5 秒后突然蹦出一整段话。体验很差。</p>
-<p>流式传输的效果：大模型想好一个字就吐出一个字，前端聊天框就会像打字机一样一个字一个字地蹦出来。这对于聊天体验至关重要。</p>
-<p>🎨 进阶：如何让大模型操控 Live2D？</p>
-<p>光是文字聊天不够高级，既然引入了 Live2D，我们要让大模型一边说话，Live2D 一边做动作和表情。</p>
-<p>这里常用的高级手法叫做 “结构化输出” 或 “情感标签”。</p>
-<p>做法：让大模型在回答的同时，顺便吐出动作指令<br>你在系统提示词（Prompt）里对大模型做如下规定：</p>
-<p>“你在回答时，除了文本，还要根据你当时的心情，在回复前加上 [高兴], [生气], [害羞] 等标签。”</p>
-<p>fetch 向大模型的网址发送一个包含 messages 的请求。</p>
+<p>“地址”的唯一作用，就是为了把散落各处的数据“串联”起来</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs css">场景：中间插人<br><br>假设现在有三个人连成一队：<span class="hljs-selector-tag">A</span> 拿着 <span class="hljs-selector-tag">B</span> 的地址，<span class="hljs-selector-tag">B</span> 拿着 C 的地址。<br><br>现在特权阶级 <span class="hljs-attribute">X</span> 想要插队到 <span class="hljs-selector-tag">A</span> 和 <span class="hljs-selector-tag">B</span> 之间，链表是怎么做的呢？<br><br>让 <span class="hljs-attribute">X</span> 看一眼 <span class="hljs-selector-tag">B</span> 的地址（<span class="hljs-attribute">X</span> 指向 <span class="hljs-selector-tag">B</span>）；<br><br>让 <span class="hljs-selector-tag">A</span> 撕掉原本写着 <span class="hljs-selector-tag">B</span> 的纸条，改写上 <span class="hljs-attribute">X</span> 的地址（<span class="hljs-selector-tag">A</span> 指向 <span class="hljs-attribute">X</span>）。<br>Next-&gt;作用<br><br></code></pre></td></tr></table></figure>
 
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><h1 id="查找算法（怎么在海量数据里捞针？）"><a href="#查找算法（怎么在海量数据里捞针？）" class="headerlink" title="查找算法（怎么在海量数据里捞针？）"></a>查找算法（怎么在海量数据里捞针？）</h1><h1 id="排序算法（怎么把混乱的数据排整齐？）"><a href="#排序算法（怎么把混乱的数据排整齐？）" class="headerlink" title="排序算法（怎么把混乱的数据排整齐？）"></a>排序算法（怎么把混乱的数据排整齐？）</h1><h1 id="搜索与遍历算法（怎么在迷宫里找到出口？）"><a href="#搜索与遍历算法（怎么在迷宫里找到出口？）" class="headerlink" title="搜索与遍历算法（怎么在迷宫里找到出口？）"></a>搜索与遍历算法（怎么在迷宫里找到出口？）</h1><h1 id="高级策略（怎么解决复杂的变态难题？）"><a href="#高级策略（怎么解决复杂的变态难题？）" class="headerlink" title="高级策略（怎么解决复杂的变态难题？）"></a>高级策略（怎么解决复杂的变态难题？）</h1>
                 
               </div>
             
@@ -432,7 +422,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
   
   
 
@@ -447,7 +437,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/live2d-%E7%82%B9%E5%87%BB%E5%8D%95%E7%8B%AC%E7%9A%84%E8%81%8A%E5%A4%A9%E7%BB%84%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="print-no-link">#live2d 点击单独的聊天组件系统</a>
+        <a href="/tags/%E7%AE%97%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="print-no-link">#算法 数据结构</a>
       
     </div>
   
@@ -459,8 +449,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>live2d 点击单独的聊天组件系统</div>
-      <div>http://example.com/2026/06/02/live2d-点击单独的聊天组件系统/</div>
+      <div>算法 数据结构 这其实是人类逻辑思维的最高浪漫。</div>
+      <div>http://example.com/2026/06/21/算法/</div>
     </div>
     <div class="license-meta">
       
@@ -472,7 +462,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年6月2日</div>
+          <div>2026年6月21日</div>
         </div>
       
       
@@ -504,18 +494,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/06/02/HTML%E7%94%BB%E5%B8%83/" title="HTML画布">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">HTML画布</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/05/31/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87/" title="毕业论文">
-                        <span class="hidden-mobile">毕业论文</span>
+                      <a href="/2026/06/20/%E6%98%8E%E5%A4%A9%E5%87%86%E5%A4%87%E9%9D%A2%E8%AF%95%E4%BA%86/" title="明天准备面试了">
+                        <span class="hidden-mobile">明天准备面试了</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
