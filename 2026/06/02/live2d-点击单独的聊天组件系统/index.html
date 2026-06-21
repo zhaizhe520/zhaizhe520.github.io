@@ -27,7 +27,7 @@
 <meta property="og:description" content="live2d 点击单独的聊天组件系统">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-01T16:02:22.000Z">
-<meta property="article:modified_time" content="2026-06-21T01:58:43.175Z">
+<meta property="article:modified_time" content="2026-06-21T02:03:16.286Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="live2d 点击单独的聊天组件系统">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          2.1k 字
         
       </span>
     
@@ -390,7 +390,7 @@
 <p>核心步骤拆解<br>挂载 PixiJS 画布：在 Vue 的 onMounted 钩子中初始化 Pixi 应用，并加载 Live2D 模型。</p>
 <p>监听点击事件：利用 pixi-live2d-display 自带的命中检测（Hit Test），当用户点击模型的特定区域（如身体、头部）或任意位置时触发事件。</p>
 <p>触发 Vue 状态变更：点击后，通过 Pinia 或 emit 修改一个布尔值（例如 isChatOpen &#x3D; true）。</p>
-<p>遮罩与动画过渡：Vue 监听到 isChatOpen 变为 true，弹出聊天组件（可以通过 <Transition> 组件做个丝滑的淡入或抽屉效果）。</p>
+<p>遮罩与动画过渡：Vue 监听到 isChatOpen 变为 true，弹出聊天组件（可以通过 <code>&lt;Transition&gt;</code> 组件<br>做个丝滑的淡入或抽屉效果）。</p>
 <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs nix">src<span class="hljs-symbol">/</span><br>├── components<span class="hljs-symbol">/</span><br>│   ├── Live2dStage.vue   <span class="hljs-comment"># 负责 PixiJS 和 Live2D 的渲染</span><br>│   └── ChatWindow.vue    <span class="hljs-comment"># 独立的聊天 Vue 组件</span><br>├── store<span class="hljs-symbol">/</span><br>│   └── appStore.js       <span class="hljs-comment"># 存放聊天窗口打开状态、对话记录等</span><br>└── App.vue               <span class="hljs-comment"># 主入口</span><br></code></pre></td></tr></table></figure>
 
 <p>版本兼容问题（重点）：pixi-live2d-display 对 PixiJS 的版本要求比较严格。如果你使用的是 PixiJS v7 或 v8，请务必查看该插件的官方文档，安装对应分支&#x2F;版本的 npm 包，否则会报各种找不到 Namespace 的错误。</p>

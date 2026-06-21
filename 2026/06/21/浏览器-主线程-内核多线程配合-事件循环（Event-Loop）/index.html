@@ -19,21 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="面试准备？准备 面试？">
+    <meta name="description" content="浏览器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="明天准备面试了">
-<meta property="og:url" content="http://example.com/2026/06/20/%E6%98%8E%E5%A4%A9%E5%87%86%E5%A4%87%E9%9D%A2%E8%AF%95%E4%BA%86/index.html">
+<meta property="og:title" content="浏览器(主线程+内核多线程配合 + 事件循环（Event Loop）)">
+<meta property="og:url" content="http://example.com/2026/06/21/%E6%B5%8F%E8%A7%88%E5%99%A8-%E4%B8%BB%E7%BA%BF%E7%A8%8B-%E5%86%85%E6%A0%B8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%85%8D%E5%90%88-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%EF%BC%88Event-Loop%EF%BC%89/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="面试准备？准备 面试？">
+<meta property="og:description" content="浏览器">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-06-20T15:51:40.000Z">
-<meta property="article:modified_time" content="2026-06-21T00:53:39.963Z">
+<meta property="article:published_time" content="2026-06-21T02:11:41.000Z">
+<meta property="article:modified_time" content="2026-06-21T02:38:51.869Z">
 <meta property="article:author" content="Mashiro">
+<meta property="article:tag" content="浏览器">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>明天准备面试了 - </title>
+  <title>浏览器(主线程+内核多线程配合 + 事件循环（Event Loop）) - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -302,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="明天准备面试了"></span>
+            <span id="subtitle" data-typed-text="浏览器(主线程+内核多线程配合 + 事件循环（Event Loop）)"></span>
           
         </div>
 
@@ -313,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-06-20 23:51" pubdate>
-          2026年6月20日 晚上
+        <time datetime="2026-06-21 10:11" pubdate>
+          2026年6月21日 上午
         </time>
       </span>
     
@@ -325,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          10 字
+          1.8k 字
         
       </span>
     
@@ -336,7 +337,7 @@
         
         
         
-          1 分钟
+          16 分钟
         
       </span>
     
@@ -375,12 +376,98 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">明天准备面试了</h1>
+            <h1 id="seo-header">浏览器(主线程+内核多线程配合 + 事件循环（Event Loop）)</h1>
             
             
               <div class="markdown-body">
                 
-                <p>面试准备？<br>准备 面试？</p>
+                <h1 id="浏览器五大线程类比餐厅角色"><a href="#浏览器五大线程类比餐厅角色" class="headerlink" title="浏览器五大线程类比餐厅角色"></a>浏览器五大线程类比餐厅角色</h1><table>
+<thead>
+<tr>
+<th>员工职位（线程名称）</th>
+<th>岗位职责（核心功能）</th>
+<th>对应餐厅里的角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JS 引擎线程</td>
+<td>负责解析和运行 JavaScript 代码（比如 V8 引擎）。它就是那个单线程！</td>
+<td>大厨（全餐厅只有这一个大厨，切菜、炒菜全靠他，一次只能干一件事）</td>
+</tr>
+<tr>
+<td>GUI 渲染线程</td>
+<td>负责渲染浏览器界面，解析 HTML, CSS，构建 DOM 树和布局。</td>
+<td>装修队 &#x2F; 传菜员（负责把盘子摆得漂亮，把餐厅装修好）</td>
+</tr>
+<tr>
+<td>定时器触发线程</td>
+<td>负责管 setTimeout 和 setInterval 的倒计时。</td>
+<td>沙漏计时员（专门帮大厨盯着蒸鱼的时间）</td>
+</tr>
+<tr>
+<td>异步 HTTP 请求线程</td>
+<td>负责处理 Ajax、fetch 等网络请求。</td>
+<td>外购采购员（专门去海鲜市场帮大厨买食材）</td>
+</tr>
+<tr>
+<td>事件触发线程</td>
+<td>负责管用户的点击（click）、鼠标滚动等事件。</td>
+<td>前台迎宾（盯着哪个顾客拍桌子叫服务员）</td>
+</tr>
+</tbody></table>
+<h1 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h1><p>遇到同步任务：大厨自己当场做完。</p>
+<p>遇到定时器（setTimeout）：大厨把沙漏往“定时器触发线程（计时员）”怀里一塞：“你帮我倒计时 3 秒，到了叫我！”然后大厨继续炒下一个菜。</p>
+<p>遇到网络请求（Axios &#x2F; Fetch）：大厨把订单往“异步 HTTP 请求线程（采购员）”手里一塞：“你去服务器买个数据，买到了叫我！”大厨转头又去炒别的菜。</p>
+<h1 id="事件循环（Event-Loop）"><a href="#事件循环（Event-Loop）" class="headerlink" title="事件循环（Event Loop）"></a>事件循环（Event Loop）</h1><div style="color:red">
+
+<p>清空同步 -&gt; 清空微任务 -&gt; 渲染 -&gt; 执行一个宏任务 -&gt; 再清空微任务” 的死循环</p>
+</div>
+
+<p>宏任务队列（Macro-task）：存放定时器到期、点击事件触发的回调函数（像普通顾客排队）。</p>
+<p>微任务队列（Micro-task）：存放 Promise.then 的回调、MutationObserver（像 VIP 顾客插队）。</p>
+<p>第一步（执行栈）：大厨（JS主线程）先把手头所有的同步代码（主线程执行栈）全部炒完。</p>
+<p>第二步（微任务）：主线程空闲了。大厨走到厨房门口，先看“微任务队列（VIP通道）”。如果里面有 Promise.then 在排队，大厨会一口气把所有的微任务全部做完，直到 VIP 通道清空。</p>
+<p>第三步（渲染）：大厨看一眼装修队（GUI渲染线程）：“页面需要更新吗？”如果要更新，装修队此时入场开始刷新网页（Render）。</p>
+<p>第四步（宏任务）：大厨再走到厨房门口，看“宏任务队列（普通通道）”。注意！大厨非常抠门，他只拿出一个宏任务出来做（比如执行一个 setTimeout 的回调）。</p>
+<p>第五步（无限循环）：做完这一个宏任务后，大厨立刻回到第二步，重新去检查 VIP 通道（微任务）。</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>JS 引擎线程和 GUI 渲染线程是互斥的！ 也就是说，大厨在炒菜（JS 执行）时，装修队（GUI 渲染）必须停工；装修队在刷墙时，大厨必须熄火。这就是为什么如果你的 JS 写了死循环，网页当场就会“白屏”或卡死，因为 GUI 线程拿不到控制权，没法刷新页面！</p>
+<h1 id="知道这些开始在前端处理海量数据吧"><a href="#知道这些开始在前端处理海量数据吧" class="headerlink" title="知道这些开始在前端处理海量数据吧"></a>知道这些开始在前端处理海量数据吧</h1><h2 id="耗时的大数据计算：丢给-Web-Worker"><a href="#耗时的大数据计算：丢给-Web-Worker" class="headerlink" title="耗时的大数据计算：丢给 Web Worker"></a>耗时的大数据计算：丢给 Web Worker</h2><p>如果前端遇到了不可避免的超大数据处理（比如前端解析几十兆的 Excel、处理高清图像滤镜）：</p>
+<p>做法：千万别在主线程硬扛！利用浏览器内核的多线程特性，开辟一个 Web Worker 线程，把脏活累活丢给它。</p>
+<p>效果：Web Worker 在后台默默计算，算完了把结果传回来。大厨（主线程）在前面依然可以轻轻松松地配合 GUI 渲染，页面丝滑不卡顿。</p>
+<h2 id="分片渲染（Time-Slicing）"><a href="#分片渲染（Time-Slicing）" class="headerlink" title="分片渲染（Time Slicing）"></a>分片渲染（Time Slicing）</h2><p>如果要往页面上一次性渲染 10 万条 DOM 节点（比如超大的树状图）：</p>
+<p>如果一次性暴力渲染：JS 会执行很久，GUI 也会因为渲染量太大卡死。</p>
+<p>聪明的解法（React Fiber 的核心思想）：</p>
+<p>利用 requestAnimationFrame 或者 requestIdleCallback,实现时间分片</p>
+<p>把 10 万条数据拆成 100 组，每组 1000 条。大厨炒完一组（渲染 1000 条），主动停火，把控制权让给装修队（GUI）喘口气、刷个墙，下一帧再接着炒下一组。</p>
+<h1 id="Web-Worker（多线程外包）-Time-Slicing（主线程分期）"><a href="#Web-Worker（多线程外包）-Time-Slicing（主线程分期）" class="headerlink" title="Web Worker（多线程外包） | Time Slicing（主线程分期）"></a>Web Worker（多线程外包） | Time Slicing（主线程分期）</h1><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Web Worker（多线程外包）</th>
+<th>Time Slicing（主线程分期）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>解决的痛点</td>
+<td>耗时极长的 纯数据计算、加密、大文件解析。</td>
+<td>耗时极长的 DOM 渲染、大量视觉元素的频繁计算。</td>
+</tr>
+<tr>
+<td>工作地点</td>
+<td>完全独立的 新线程，和主线程并行运转。</td>
+<td>依然在 主线程，只是把长任务切成无数小碎块。</td>
+</tr>
+<tr>
+<td>能否操作 DOM</td>
+<td>绝对不能。</td>
+<td>可以，它本身就是为了配合 DOM 渲染而生的。</td>
+</tr>
+<tr>
+<td>本质思想</td>
+<td>充分利用多核 CPU 的硬件性能（空间换时间）。</td>
+<td>极致的时间管理大师，欺骗人类的眼睛（时间换流畅）。</td>
+</tr>
+</tbody></table>
 
                 
               </div>
@@ -389,6 +476,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%9D%A2%E8%AF%95/" class="category-chain-item">面试</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="print-no-link">#浏览器</a>
+      
+    </div>
   
 </div>
 
@@ -398,8 +513,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>明天准备面试了</div>
-      <div>http://example.com/2026/06/20/明天准备面试了/</div>
+      <div>浏览器(主线程+内核多线程配合 + 事件循环（Event Loop）)</div>
+      <div>http://example.com/2026/06/21/浏览器-主线程-内核多线程配合-事件循环（Event-Loop）/</div>
     </div>
     <div class="license-meta">
       
@@ -411,7 +526,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年6月20日</div>
+          <div>2026年6月21日</div>
         </div>
       
       
@@ -443,18 +558,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/06/21/%E7%AE%97%E6%B3%95/" title="算法 数据结构 这其实是人类逻辑思维的最高浪漫。">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">算法 数据结构 这其实是人类逻辑思维的最高浪漫。</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/06/16/%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D/" title="项目介绍">
-                        <span class="hidden-mobile">项目介绍</span>
+                      <a href="/2026/06/21/%E7%AE%97%E6%B3%95/" title="算法 数据结构 这其实是人类逻辑思维的最高浪漫。">
+                        <span class="hidden-mobile">算法 数据结构 这其实是人类逻辑思维的最高浪漫。</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
