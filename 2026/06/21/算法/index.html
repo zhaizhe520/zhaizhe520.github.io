@@ -27,7 +27,7 @@
 <meta property="og:description" content="算法 数据结构">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-21T01:12:11.000Z">
-<meta property="article:modified_time" content="2026-06-21T12:50:48.898Z">
+<meta property="article:modified_time" content="2026-06-22T02:12:26.365Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="算法 数据结构">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          858 字
+          3.9k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          8 分钟
+          33 分钟
         
       </span>
     
@@ -390,10 +390,10 @@
 <p>时间复杂度：$O(n)$ —— 叫 线性阶。钥匙数量（数据量）翻倍，你花的时间也翻倍。</p>
 <p>时间复杂度：$O(n^2)$ —— 叫 平方阶。如果只有2把钥匙，试 4 次；如果有10把钥匙，就要试 100 次！</p>
 <p>数据量变大一点，时间就会暴涨。</p>
-<h1 id="数组（Array）"><a href="#数组（Array）" class="headerlink" title="数组（Array）"></a>数组（Array）</h1><p>连续性、相同类型、大小固定、下标0开始、紧密排列、大量数据插入删除时间复杂度为$O(n)$线性阶</p>
+<h1 id="数组（Array）-物理存储结构"><a href="#数组（Array）-物理存储结构" class="headerlink" title="数组（Array） 物理存储结构"></a>数组（Array） 物理存储结构</h1><p>连续性、相同类型、大小固定、下标0开始、紧密排列、大量数据插入删除时间复杂度为$O(n)$线性阶</p>
 <p>大小固定</p>
 <p>搬家扩容</p>
-<h1 id="链表-Linked-List"><a href="#链表-Linked-List" class="headerlink" title="链表(Linked List)"></a>链表(Linked List)</h1><p>浏览器的“前进”与“后退”（最经典的链表）  </p>
+<h1 id="链表-Linked-List-物理存储结构"><a href="#链表-Linked-List-物理存储结构" class="headerlink" title="链表(Linked List) 物理存储结构"></a>链表(Linked List) 物理存储结构</h1><p>浏览器的“前进”与“后退”（最经典的链表）  </p>
 <p>软件里的“撤销（Ctrl+Z）”与“反撤销（Ctrl+Y）”</p>
 <p>音乐播放器的“单曲循环”与“列表循环”</p>
 <p>只要是数组（Array），它就摆脱不了“必须连续坐在一起”的物理枷锁。<br>打破这个枷锁，发明了链表。</p>
@@ -404,7 +404,80 @@
 <p>“地址”的唯一作用，就是为了把散落各处的数据“串联”起来</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs css">场景：中间插人<br><br>假设现在有三个人连成一队：<span class="hljs-selector-tag">A</span> 拿着 <span class="hljs-selector-tag">B</span> 的地址，<span class="hljs-selector-tag">B</span> 拿着 C 的地址。<br><br>现在特权阶级 <span class="hljs-attribute">X</span> 想要插队到 <span class="hljs-selector-tag">A</span> 和 <span class="hljs-selector-tag">B</span> 之间，链表是怎么做的呢？<br><br>让 <span class="hljs-attribute">X</span> 看一眼 <span class="hljs-selector-tag">B</span> 的地址（<span class="hljs-attribute">X</span> 指向 <span class="hljs-selector-tag">B</span>）；<br><br>让 <span class="hljs-selector-tag">A</span> 撕掉原本写着 <span class="hljs-selector-tag">B</span> 的纸条，改写上 <span class="hljs-attribute">X</span> 的地址（<span class="hljs-selector-tag">A</span> 指向 <span class="hljs-attribute">X</span>）。<br>Next-&gt;作用<br><br></code></pre></td></tr></table></figure>
 
-<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><h1 id="查找算法（怎么在海量数据里捞针？）"><a href="#查找算法（怎么在海量数据里捞针？）" class="headerlink" title="查找算法（怎么在海量数据里捞针？）"></a>查找算法（怎么在海量数据里捞针？）</h1><h1 id="排序算法（怎么把混乱的数据排整齐？）"><a href="#排序算法（怎么把混乱的数据排整齐？）" class="headerlink" title="排序算法（怎么把混乱的数据排整齐？）"></a>排序算法（怎么把混乱的数据排整齐？）</h1><h1 id="搜索与遍历算法（怎么在迷宫里找到出口？）"><a href="#搜索与遍历算法（怎么在迷宫里找到出口？）" class="headerlink" title="搜索与遍历算法（怎么在迷宫里找到出口？）"></a>搜索与遍历算法（怎么在迷宫里找到出口？）</h1><h1 id="高级策略（怎么解决复杂的变态难题？）"><a href="#高级策略（怎么解决复杂的变态难题？）" class="headerlink" title="高级策略（怎么解决复杂的变态难题？）"></a>高级策略（怎么解决复杂的变态难题？）</h1>
+<h1 id="栈（stack）-深度优先-后进先出-逻辑行为结构"><a href="#栈（stack）-深度优先-后进先出-逻辑行为结构" class="headerlink" title="栈（stack） 深度优先 后进先出  逻辑行为结构"></a>栈（stack） 深度优先 后进先出  逻辑行为结构</h1><p>栈（Stack）就是“剥洋葱，或者堆盘子，后来的反而先走（后进先出 - LIFO, Last In First Out）</p>
+<p>进栈（Push）：球只能一个一个往里塞。最先塞进去的球，被死死压在最底下。</p>
+<p>出栈（Pop）：想拿球？对不起，你只能从最上面的开口拿。最后塞进去的那个球，最先被拿出来。</p>
+<h2 id="栈在-JS-DOM-进程里的第一大体现：执行栈（Call-Stack）"><a href="#栈在-JS-DOM-进程里的第一大体现：执行栈（Call-Stack）" class="headerlink" title="栈在 JS&#x2F;DOM 进程里的第一大体现：执行栈（Call Stack）"></a><div style="color:pink">栈在 JS&#x2F;DOM 进程里的第一大体现：执行栈（Call Stack）</div></h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs scss">function <span class="hljs-built_in">init</span>() &#123;<br>    <span class="hljs-built_in">renderDOM</span>(); <span class="hljs-comment">// 第1步</span><br>&#125;<br><br>function <span class="hljs-built_in">renderDOM</span>() &#123;<br>    <span class="hljs-built_in">createButton</span>(); <span class="hljs-comment">// 第2步</span><br>&#125;<br><br>function <span class="hljs-built_in">createButton</span>() &#123;<br>    console<span class="hljs-selector-class">.log</span>(&#x27;按钮画好了&#x27;); <span class="hljs-comment">// 第3步</span><br>&#125;<br><br><span class="hljs-built_in">init</span>(); <span class="hljs-comment">// 触发启动</span><br></code></pre></td></tr></table></figure>
+
+<p>1.调用 init() —&gt; init 压入栈底 [ init ]</p>
+<p>2.进入 init，发现要调用 renderDOM() ——&gt; renderDOM 压入栈顶 [ init, renderDOM ]</p>
+<p>3.进入 renderDOM，发现要调用 createButton() —-&gt; createButton 再次压入栈顶 [ init, renderDOM, createButton ]</p>
+<p>4.此时栈顶是 createButton，大厨执行打印，执行完毕。</p>
+<p>5.createButton 弹出栈——&gt; [ init, renderDOM ]</p>
+<p>6.renderDOM 发现没事干了，弹出栈—–&gt; [ init ]</p>
+<p>7.init 执行完毕，弹出栈 [ ]（栈空，主线程闲下来了，Event Loop 准备去看微任务）。</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mathematica">💥 经典报错：<span class="hljs-built_in">Stack</span> <span class="hljs-built_in">Overflow</span>（栈溢出）的由来<br><br>如果你写了一个死递归（自己调用自己，没有出口），大厨就会疯狂地把函数往这个球筒里塞，直到球筒被塞爆<br><br>浏览器就会当场崩溃并报错：<span class="hljs-variable">Maximum</span> <span class="hljs-variable">call</span> <span class="hljs-variable">stack</span> <span class="hljs-variable">size</span> <span class="hljs-variable">exceeded</span>（超过最大栈深度）。<br><br>这就是大名鼎鼎的程序员问答网站 <span class="hljs-built_in">Stack</span> <span class="hljs-built_in">Overflow</span> 的名字来源！<br></code></pre></td></tr></table></figure>
+
+<h2 id="栈在-DOM-进程里的第二大体现：DOM-树的深度优先遍历（DFS）"><a href="#栈在-DOM-进程里的第二大体现：DOM-树的深度优先遍历（DFS）" class="headerlink" title="栈在 DOM 进程里的第二大体现：DOM 树的深度优先遍历（DFS）"></a>栈在 DOM 进程里的第二大体现：DOM 树的深度优先遍历（DFS）</h2><p>深度优先搜索（DFS），而 DFS 的底层灵魂就是“栈”。</p>
+<p>场景还原：<br>假设有这样一个 DOM 结构：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">HTML</span><br>&lt;<span class="hljs-selector-tag">div</span>&gt;<br>    &lt;<span class="hljs-selector-tag">p</span>&gt;&lt;/<span class="hljs-selector-tag">p</span>&gt;<br>    &lt;<span class="hljs-selector-tag">button</span>&gt;&lt;/<span class="hljs-selector-tag">button</span>&gt;<br>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<p>把根节点 <code>&lt;div&gt;</code> 放进栈里。</p>
+<p>弹出栈顶的<code> &lt;div&gt;</code>，开始处理它。接着把它的孩子们（<code>&lt;p&gt; </code>和 <code>&lt;button&gt;</code>）放进栈里。</p>
+<p>此时栈顶是 <code>&lt;p&gt;</code>，弹出 <code>&lt;p&gt;</code>，优先处理 <code>&lt;p&gt; </code>里面的内容（这就是“深度优先”，先往深了走，而不是先管旁边的<code> &lt;button&gt;）</code>。</p>
+<p>当 <code>&lt;p&gt; </code>这一条分支全部处理完了（出栈空了），大厨一回头，发现栈里还躺着<code> &lt;button&gt;</code>，再把它弹出来处理。</p>
+<h2 id="ctrl-Z-Y-链表-栈"><a href="#ctrl-Z-Y-链表-栈" class="headerlink" title="ctrl + Z\Y  链表+栈"></a>ctrl + Z\Y  链表+栈</h2><p>正常操作：一路往前</p>
+<p>你依次访问了网页 A -&gt; B -&gt; C。</p>
+<p>大厨把它们一个个压入 历史栈。</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">Plaintext<br>【历史栈】          【前进栈】<br>|<span class="hljs-string">   C   </span>|<span class="hljs-string">           </span>|<span class="hljs-string">       </span>|<br>|<span class="hljs-string">   B   </span>|<span class="hljs-string">           </span>|<span class="hljs-string">       </span>|<br>|<span class="hljs-string">___A___</span>|<span class="hljs-string">           </span>|<span class="hljs-string">_______</span>|<br>（当前在栈顶：C 网页）<br></code></pre></td></tr></table></figure>
+
+<p>触发回溯：点击“后退”或按 Ctrl + Z</p>
+<p>你想回溯？太简单了！大厨把历史栈顶的 C 弹出（Pop），顺手把它压入（Push）到右边的“前进栈”里。</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">Plaintext<br>【历史栈】          【前进栈】<br>|<span class="hljs-string">       </span>|<span class="hljs-string">           </span>|<span class="hljs-string">       </span>|<br>|<span class="hljs-string">   B   </span>|<span class="hljs-string">           </span>|<span class="hljs-string">   C   </span>|<br>|<span class="hljs-string">___A___</span>|<span class="hljs-string">           </span>|<span class="hljs-string">_______</span>|<br></code></pre></td></tr></table></figure>
+
+<p>（当前在历史栈顶：B 网页。右边记住了你刚刚退出来的 C）</p>
+<p>看！现在你退回到了 B。如果你再点“前进”（Ctrl + Y），大厨就把右边的 C 弹出来，重新塞回左边。完全不需要修改任何指针！</p>
+<p>核心杀招：在历史中“改写未来”</p>
+<p>现在你站在 B 网页上，突然点了一个全新的链接 D。</p>
+<p>这时候，右边那个桶里的 C（原本的未来）就变成了“平行宇宙里被抛弃的历史”。</p>
+<p>大厨怎么处理？非常无情：</p>
+<p>直接把右边的“前进栈”一把清空（C 彻底消失，不需要断开复杂的链表线）。</p>
+<p>把新网页 D 压入左边的“历史栈”。</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">Plaintext<br>【历史栈】          【前进栈】<br>|<span class="hljs-string">   D   </span>|<span class="hljs-string">           </span>|<span class="hljs-string">       </span>|<br>|<span class="hljs-string">   B   </span>|<span class="hljs-string">           </span>|<span class="hljs-string">       </span>|<br>|<span class="hljs-string">___A___</span>|<span class="hljs-string">           </span>|<span class="hljs-string">_______</span>|<br></code></pre></td></tr></table></figure>
+<p>（当前在最新网页：D。过去的 C 空间直接被清空释放）</p>
+<h1 id="队列-queue-逻辑行为结构"><a href="#队列-queue-逻辑行为结构" class="headerlink" title="队列 (queue) 逻辑行为结构"></a>队列 (queue) 逻辑行为结构</h1><p>两头通透</p>
+<p>队列的规则极其简单纯粹：先进先出（FIFO - First In First Out）。</p>
+<p>入队（Enqueue）：新来的人，只能老老实实从队尾（Rear）排进去。</p>
+<p>出队（Dequeue）：办完事的人，只能从队头（Front）离开。中间的人绝对不能插队，后面的人也绝对不能翻墙。</p>
+<h1 id="浏览器-处理宏任务和微任务"><a href="#浏览器-处理宏任务和微任务" class="headerlink" title="浏览器 处理宏任务和微任务"></a>浏览器 处理宏任务和微任务</h1><p>主线程 忙完了同步代码，转头来看这个队列。</p>
+<p>因为是队列，它必须极其公平地从队头开始一个接一个地处理：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs">点了按钮3下<br><br>弹出 click1 执行；<br><br>弹出 click2 执行；<br><br>弹出 click3 执行。<br></code></pre></td></tr></table></figure>
+
+<h2 id="队列在前端和浏览器里的第一大体现：微任务与宏任务队列"><a href="#队列在前端和浏览器里的第一大体现：微任务与宏任务队列" class="headerlink" title="队列在前端和浏览器里的第一大体现：微任务与宏任务队列"></a>队列在前端和浏览器里的第一大体现：微任务与宏任务队列</h2><h2 id="打印机排队机制（Print-Queue）"><a href="#打印机排队机制（Print-Queue）" class="headerlink" title="打印机排队机制（Print Queue）"></a>打印机排队机制（Print Queue）</h2><p>打印机打印</p>
+<h2 id="前后端交互"><a href="#前后端交互" class="headerlink" title="前后端交互"></a>前后端交互</h2><p>消息队列</p>
+<p>还记得我们上次聊到的 12306 抢票、或者电商“双十一”秒杀吗？</p>
+<p>几百万人同时在 0 点点击“提交订单”。如果后端服务器直接去扛这几百万个请求，数据库当场就会被冲垮（爆库）。</p>
+<p>解决办法：后端在最前面架设一个“大坝”，这个大坝叫消息队列（比如 RabbitMQ, Kafka）。</p>
+<p>几百万个请求像洪水一样涌过来，服务器不急着处理它们，而是先把这些请求一股脑全部塞进消息队列里排队。</p>
+<p>后端的业务服务器像个无情的流水线工人，从队列的头部，每秒钟只拉取 1000 个请求出来慢慢处理。</p>
+<p>效果：后面的用户可能会看到页面显示“订单处理中，请稍候…”，但由于队列在中间起到了“削峰填谷”的缓冲作用，服务器稳如泰山，绝不会崩溃。</p>
+<h2 id="双端队列（Deque）全名-Double-ended-Queue"><a href="#双端队列（Deque）全名-Double-ended-Queue" class="headerlink" title="双端队列（Deque）全名: Double-ended Queue"></a>双端队列（Deque）全名: Double-ended Queue</h2><p>Vue 3 核心的 Diff 算法中，为了用最快的速度对比新旧两个虚拟 DOM 列表的变动，它会使用双端队列的思路：同时从新旧列表的“头部”和“尾部”向中间双向遍历对比。</p>
+<p>这种“两头包抄”的算法，比傻乎乎地从头到尾一个个对，速度要快得多</p>
+<h1 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a><div style="color:pink">diff算法</div></h1><p>真实 DOM 实在是太重了</p>
+<p>内存里的计算，比浏览器的排版渲染快太多太多了</p>
+<p>眼里盯着新旧两个队列的 头指针 和 尾指针</p>
+<p>你如果在控制台打印一个空 <code>&lt;div&gt;</code>实例，会发现它身上密密麻麻挂着几百个属性。</p>
+<p>更致命的是，直接修改真实 DOM 会触发浏览器的重排（Reflow）和重绘（Repaint），</p>
+<p>这会让前面聊到的“装修队（GUI 渲染线程）”累到吐血。</p>
+<p>虚拟 DOM（Virtual DOM）</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs lasso"><span class="hljs-comment">// 真实 DOM 极其沉重，而虚拟 DOM 只是一个普通的 JS 对象：</span><br>const vnode = &#123;<br>    <span class="hljs-built_in">tag</span>: <span class="hljs-string">&#x27;div&#x27;</span>,<br>    props: &#123; id: <span class="hljs-string">&#x27;app&#x27;</span> &#125;,<br>    children: <span class="hljs-meta">[</span><br>        &#123; <span class="hljs-built_in">tag</span>: <span class="hljs-string">&#x27;p&#x27;</span>, text: <span class="hljs-string">&#x27;你好&#x27;</span> &#125;<br>    <span class="hljs-meta">]</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>当数据发生变化时（比如列表中间删除了一个名字）：</p>
+<p>框架会在内存里生成一棵全新的虚拟 DOM 树。</p>
+<p>拿新虚拟 DOM 树和旧虚拟 DOM 树进行肉眼可见的“找茬游戏”。</p>
+<p>这个“找茬”的对比算法，就叫做 Diff 算法！</p>
+<p>找出到底哪一小块发生变化后，大厨（主线程）再去精准地只修改那一只真实 DOM。</p>
+<h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><h1 id="查找算法（怎么在海量数据里捞针？）"><a href="#查找算法（怎么在海量数据里捞针？）" class="headerlink" title="查找算法（怎么在海量数据里捞针？）"></a>查找算法（怎么在海量数据里捞针？）</h1><h1 id="排序算法（怎么把混乱的数据排整齐？）"><a href="#排序算法（怎么把混乱的数据排整齐？）" class="headerlink" title="排序算法（怎么把混乱的数据排整齐？）"></a>排序算法（怎么把混乱的数据排整齐？）</h1><h1 id="搜索与遍历算法（怎么在迷宫里找到出口？）"><a href="#搜索与遍历算法（怎么在迷宫里找到出口？）" class="headerlink" title="搜索与遍历算法（怎么在迷宫里找到出口？）"></a>搜索与遍历算法（怎么在迷宫里找到出口？）</h1><h1 id="高级策略（怎么解决复杂的变态难题？）"><a href="#高级策略（怎么解决复杂的变态难题？）" class="headerlink" title="高级策略（怎么解决复杂的变态难题？）"></a>高级策略（怎么解决复杂的变态难题？）</h1>
                 
               </div>
             
