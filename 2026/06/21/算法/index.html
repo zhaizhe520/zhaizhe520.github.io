@@ -27,7 +27,7 @@
 <meta property="og:description" content="算法 数据结构">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-21T01:12:11.000Z">
-<meta property="article:modified_time" content="2026-06-22T02:27:30.297Z">
+<meta property="article:modified_time" content="2026-06-23T11:38:18.985Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="算法 数据结构">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.9k 字
+          4.8k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          33 分钟
+          40 分钟
         
       </span>
     
@@ -477,7 +477,31 @@
 <p>拿新虚拟 DOM 树和旧虚拟 DOM 树进行肉眼可见的“找茬游戏”。</p>
 <p>这个“找茬”的对比算法，就叫做 Diff 算法！</p>
 <p>找出到底哪一小块发生变化后，大厨（主线程）再去精准地只修改那一只真实 DOM。</p>
-<h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><h1 id="查找算法（怎么在海量数据里捞针？）"><a href="#查找算法（怎么在海量数据里捞针？）" class="headerlink" title="查找算法（怎么在海量数据里捞针？）"></a>查找算法（怎么在海量数据里捞针？）</h1><h1 id="排序算法（怎么把混乱的数据排整齐？）"><a href="#排序算法（怎么把混乱的数据排整齐？）" class="headerlink" title="排序算法（怎么把混乱的数据排整齐？）"></a>排序算法（怎么把混乱的数据排整齐？）</h1><h1 id="搜索与遍历算法（怎么在迷宫里找到出口？）"><a href="#搜索与遍历算法（怎么在迷宫里找到出口？）" class="headerlink" title="搜索与遍历算法（怎么在迷宫里找到出口？）"></a>搜索与遍历算法（怎么在迷宫里找到出口？）</h1><h1 id="高级策略（怎么解决复杂的变态难题？）"><a href="#高级策略（怎么解决复杂的变态难题？）" class="headerlink" title="高级策略（怎么解决复杂的变态难题？）"></a>高级策略（怎么解决复杂的变态难题？）</h1>
+<h1 id="哈希表（Hash-Table，也叫散列表）-逻辑结构？内存压根没有，人类纯对应造出来的"><a href="#哈希表（Hash-Table，也叫散列表）-逻辑结构？内存压根没有，人类纯对应造出来的" class="headerlink" title="哈希表（Hash Table，也叫散列表）  逻辑结构？内存压根没有，人类纯对应造出来的"></a>哈希表（Hash Table，也叫散列表）  逻辑结构？内存压根没有，人类纯对应造出来的</h1><p>肉身是物理的，灵魂是逻辑的</p>
+<p>哈希表在内存里，本质上就是一排连续的数组。</p>
+<p>哈希函数（Hash Function）。查找纯储结构里面的数据的函数</p>
+<p>哈希表，其实是用“数组”作为底座，通过“哈希函数”算出来的下标，拼出来的一种极其聪明的逻辑结构！</p>
+<h2 id="“哈希冲突”（Hash-Collision）"><a href="#“哈希冲突”（Hash-Collision）" class="headerlink" title="“哈希冲突”（Hash Collision）"></a>“哈希冲突”（Hash Collision）</h2><p>Hash值撞车，key值下标不重复</p>
+<p>本质数组 大小有限 数据冲突</p>
+<p>每一个数组存满了之后再后面拉一条链表</p>
+<p>解决: 哈希表在最坏的情况下，内部会退化成一条链表</p>
+<p>“拉链法”（Chaining）</p>
+<p>挂一条链表（Linked List）</p>
+<p>map :寄存</p>
+<p>set :去重？</p>
+<h2 id="实际运用"><a href="#实际运用" class="headerlink" title="实际运用"></a>实际运用</h2><h3 id="前端大曝光：其实你天天都在用哈希表！"><a href="#前端大曝光：其实你天天都在用哈希表！" class="headerlink" title="前端大曝光：其实你天天都在用哈希表！"></a>前端大曝光：其实你天天都在用哈希表！</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">const <span class="hljs-keyword">user</span> = &#123;<br>    <span class="hljs-type">name</span>: <span class="hljs-string">&#x27;张三&#x27;</span>,  // Key 是字符串，<span class="hljs-keyword">Value</span> 是值<br>    age: <span class="hljs-number">18</span><br>&#125;;<br>console.log(<span class="hljs-keyword">user</span>.name); // 这一步找数据的速度，就是 O(<span class="hljs-number">1</span>) 的哈希表速度！<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="ES6-里的-Map-和-Set"><a href="#ES6-里的-Map-和-Set" class="headerlink" title="ES6 里的 Map 和 Set"></a>ES6 里的 Map 和 Set</h3><p>现代前端如果要做高性能的去重、或者存键值对，都会用 new Map() 或 new Set()。</p>
+<p>Set 里的值不能重复，它怎么知道重复了？</p>
+<p>它就是在往哈希表里塞的时候，发现对应的位置已经有人了，直接拒绝，从而实现了 O(1) 级别的极速去重。</p>
+<h3 id="为什么-Vue-的-v-for-循环里必须写-key？"><a href="#为什么-Vue-的-v-for-循环里必须写-key？" class="headerlink" title="为什么 Vue 的 v-for 循环里必须写 :key？"></a>为什么 Vue 的 v-for 循环里必须写 :key？</h3><p>当 Vue 用 Diff 算法对新旧列表进行两头包抄“找茬”时，如果遇到了乱序:</p>
+<p>Vue 会把旧节点的 key 收集起来，在内存里临时做成一个哈希表（类似 Map）。</p>
+<p>当它遍历新节点时，拿着新节点的 key 去哈希表里“啪”的一下查（O(1) 速度），一瞬间就能知道这个节点在旧列表里到底在哪个位置、有没有被复用</p>
+<p>如果你不写 key，Vue 就没办法做哈希表，只能苦哈哈地用嵌套循环去死扣，性能当场暴跌。</p>
+<p>vue框架本质是虚拟dom，diff算法来实现找不同之后再做出正确的修改，v-if不写：key来对应hash表的index的话只能嵌套，没有性能 10分钟之前写什么玩意啊，现在就看不懂了真男啊</p>
+<h1 id="查找算法（怎么在海量数据里捞针？）"><a href="#查找算法（怎么在海量数据里捞针？）" class="headerlink" title="查找算法（怎么在海量数据里捞针？）"></a>查找算法（怎么在海量数据里捞针？）</h1><h1 id="排序算法（怎么把混乱的数据排整齐？）"><a href="#排序算法（怎么把混乱的数据排整齐？）" class="headerlink" title="排序算法（怎么把混乱的数据排整齐？）"></a>排序算法（怎么把混乱的数据排整齐？）</h1><h1 id="搜索与遍历算法（怎么在迷宫里找到出口？）"><a href="#搜索与遍历算法（怎么在迷宫里找到出口？）" class="headerlink" title="搜索与遍历算法（怎么在迷宫里找到出口？）"></a>搜索与遍历算法（怎么在迷宫里找到出口？）</h1><h1 id="高级策略（怎么解决复杂的变态难题？）"><a href="#高级策略（怎么解决复杂的变态难题？）" class="headerlink" title="高级策略（怎么解决复杂的变态难题？）"></a>高级策略（怎么解决复杂的变态难题？）</h1>
                 
               </div>
             
