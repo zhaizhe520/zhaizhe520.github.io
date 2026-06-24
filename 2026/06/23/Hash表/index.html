@@ -21,20 +21,20 @@
   
     <meta name="description" content="Hash表算法题目">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hash表算法题目">
-<meta property="og:url" content="http://example.com/2026/06/23/hash%E8%A1%A8%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE/index.html">
+<meta property="og:title" content="Hash表">
+<meta property="og:url" content="http://example.com/2026/06/23/Hash%E8%A1%A8/index.html">
 <meta property="og:site_name">
 <meta property="og:description" content="Hash表算法题目">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-23T08:37:42.000Z">
-<meta property="article:modified_time" content="2026-06-23T09:05:48.295Z">
+<meta property="article:modified_time" content="2026-06-24T01:00:02.905Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="Hash表算法题目">
+<meta property="article:tag" content="Hash表">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hash表算法题目 - </title>
+  <title>Hash表 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hash表算法题目"></span>
+            <span id="subtitle" data-typed-text="Hash表"></span>
           
         </div>
 
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          509 字
+          475 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          5 分钟
+          4 分钟
         
       </span>
     
@@ -376,7 +376,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hash表算法题目</h1>
+            <h1 id="seo-header">Hash表</h1>
             
             
               <div class="markdown-body">
@@ -388,11 +388,9 @@
 <p>与其苦苦地往后寻找“另一个数”，不如看看前面有没有人刚好在等我</p>
 <p>请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。</p>
 <p>笨方法拿2+7+…….,7+11+15+….时间复杂度On平方</p>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs livescript"><span class="hljs-keyword">function</span> twoSum (num,target)&#123;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">map</span> = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i&lt; nums.length; i++ )&#123;<br>        <span class="hljs-keyword">const</span> currentNum = nums[i];<br>        <span class="hljs-keyword">const</span> needNum = target - currentNum;<br><br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">map</span>.has(needNum))&#123;<br>            <span class="hljs-keyword">return</span> [<span class="hljs-keyword">map</span>.get(neeedNum),i];<br>        &#125;<br>        <span class="hljs-keyword">map</span>.set(currentNum,i);<br>    &#125;<br>&#125;<br><br><br><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs livescript"><span class="hljs-keyword">function</span> twoSum (num,target)&#123;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">map</span> = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i&lt; nums.length; i++ )&#123;<br>        <span class="hljs-keyword">const</span> currentNum = nums[i];<br>        <span class="hljs-keyword">const</span> needNum = target - currentNum;<br><br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">map</span>.has(needNum))&#123;<br>            <span class="hljs-keyword">return</span> [<span class="hljs-keyword">map</span>.get(neeedNum),i];<br>        &#125;<br>        <span class="hljs-keyword">map</span>.set(currentNum,i);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
-<p>function twoSum (num,target){</p>
-<p>}</p>
-
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
                 
               </div>
             
@@ -425,7 +423,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Hash%E8%A1%A8%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE/" class="print-no-link">#Hash表算法题目</a>
+        <a href="/tags/Hash%E8%A1%A8/" class="print-no-link">#Hash表</a>
       
     </div>
   
@@ -437,8 +435,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hash表算法题目</div>
-      <div>http://example.com/2026/06/23/hash表算法题目/</div>
+      <div>Hash表</div>
+      <div>http://example.com/2026/06/23/Hash表/</div>
     </div>
     <div class="license-meta">
       

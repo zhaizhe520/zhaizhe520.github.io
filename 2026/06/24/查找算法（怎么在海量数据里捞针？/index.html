@@ -19,21 +19,32 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="http://example.com/archives/page/8/index.html">
+    <meta name="description" content="查找算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查找算法（怎么在海量数据里捞针？)">
+<meta property="og:url" content="http://example.com/2026/06/24/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95%EF%BC%88%E6%80%8E%E4%B9%88%E5%9C%A8%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E9%87%8C%E6%8D%9E%E9%92%88%EF%BC%9F/index.html">
 <meta property="og:site_name">
+<meta property="og:description" content="查找算法">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-06-24T01:13:24.000Z">
+<meta property="article:modified_time" content="2026-06-24T01:20:45.227Z">
 <meta property="article:author" content="Mashiro">
+<meta property="article:tag" content="查找算法">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>归档 - </title>
+  <title>查找算法（怎么在海量数据里捞针？) - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -83,7 +94,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -286,15 +297,55 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/null') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="归档"></span>
+            <span id="subtitle" data-typed-text="查找算法（怎么在海量数据里捞针？)"></span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-06-24 09:13" pubdate>
+          2026年6月24日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          315 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          3 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
 
         
       </div>
@@ -312,100 +363,199 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 110 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2026</p>
-    
-    <a href="/2026/05/05/%E7%AC%AC%E4%B8%80%E5%80%8B%E5%A4%A7%E5%9E%8B%E9%A0%85%E7%9B%AE/" class="list-group-item list-group-item-action">
-      <time>05-05</time>
-      <div class="list-group-item-title">第一個大型項目</div>
-    </a>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">查找算法（怎么在海量数据里捞针？)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>面对从数据库涌来的海量数据，怎么在里面“捞针”？如果只会老老实实从头到尾数一遍，在海量数据面前无异于自杀。</p>
+<h1 id="线性查找（Linear-Search）"><a href="#线性查找（Linear-Search）" class="headerlink" title="线性查找（Linear Search）"></a>线性查找（Linear Search）</h1><p>时间复杂度：$\mathbf{O(n)}$</p>
+<p>致命痛点：</p>
+<p>如果数据有 1000 万条，目标刚好在最后一名，CPU 就要苦哈哈地执行 1000 万次循环。</p>
+<p>唯一优点：不挑食。数据哪怕是乱七八糟、毫无顺序的，它也能找。</p>
+<h1 id="二分查找（Binary-Search）"><a href="#二分查找（Binary-Search）" class="headerlink" title="二分查找（Binary Search）"></a>二分查找（Binary Search）</h1><p>数据必须是有序的（比如从小到大排列）！</p>
+<p>时间复杂度：$\mathbf{O(\log n)}$</p>
+<h1 id="哈希查找（Hash-Search）"><a href="#哈希查找（Hash-Search）" class="headerlink" title="哈希查找（Hash Search）"></a>哈希查找（Hash Search）</h1><p>时间复杂度：$\mathbf{O(1)}$</p>
+<p>海量数据威力：不管里面是 10 条还是 10 亿条数据</p>
+<p>大厨永远只花“算一次哈希函数 + 闪现过去”的时间。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
   
     
-    <a href="/2026/05/05/Vue3%E8%99%95%E7%90%86%E8%B7%A8%E5%9F%9F%E5%95%8F%E9%A1%8C/" class="list-group-item list-group-item-action">
-      <time>05-05</time>
-      <div class="list-group-item-title">Vue3處理跨域問題</div>
-    </a>
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
   
-    
-    <a href="/2026/05/05/%E5%AF%A6%E7%8F%BE%E8%A8%AA%E5%95%8Fwp%E5%BE%8C%E5%8F%B0%E9%A1%AF%E7%A4%BAvue3%E6%A1%86%E6%9E%B6/" class="list-group-item list-group-item-action">
-      <time>05-05</time>
-      <div class="list-group-item-title">实现wp前端顯示vue3框架</div>
-    </a>
   
+
+      </span>
     
-    <a href="/2026/05/04/Vue3%E9%87%8CAPP-vue%E8%A3%A1%E9%9D%A2%E7%B5%84%E4%BB%B6%E7%9A%84%E5%AD%90%E7%B5%84%E4%BB%B6%E4%B8%8D%E9%A1%AF%E7%A4%BA%E6%96%B9%E6%B3%95/" class="list-group-item list-group-item-action">
-      <time>05-04</time>
-      <div class="list-group-item-title">Vue3里APP.vue裡面組件的子組件不顯示方法</div>
-    </a>
   
-    
-    <a href="/2026/05/04/vue%E7%B5%84%E4%BB%B6%E5%B0%8F%E9%A0%85/" class="list-group-item list-group-item-action">
-      <time>05-04</time>
-      <div class="list-group-item-title">vue組件小項</div>
-    </a>
+</span>
+
+    </div>
   
-    
-    <a href="/2026/05/03/Git%E5%BA%94%E7%94%A8/" class="list-group-item list-group-item-action">
-      <time>05-03</time>
-      <div class="list-group-item-title">Git应用</div>
-    </a>
   
-    
-    <a href="/2026/05/03/2%E4%B8%AD%E6%96%B9%E6%B3%95%E6%8A%93wp%E7%9A%84%E7%89%B9%E8%89%B2%E5%9C%96%E7%89%87/" class="list-group-item list-group-item-action">
-      <time>05-03</time>
-      <div class="list-group-item-title">2中方法抓wp的特色圖片</div>
-    </a>
-  
-    
-    <a href="/2026/05/03/%E6%88%91%E5%A5%BD%E7%84%A6%E6%85%AE/" class="list-group-item list-group-item-action">
-      <time>05-03</time>
-      <div class="list-group-item-title">我好焦慮与迷茫</div>
-    </a>
-  
-    
-    <a href="/2026/04/29/%E8%BD%AF%E4%BB%B6%E9%9B%86%E6%88%90%E5%B9%B3%E5%8F%B0/" class="list-group-item list-group-item-action">
-      <time>04-29</time>
-      <div class="list-group-item-title">软件集成平台</div>
-    </a>
-  
-    
-    <a href="/2026/04/28/pinia%E6%8A%93%E7%B6%B2%E9%A0%81%E6%95%B8%E6%93%9A/" class="list-group-item list-group-item-action">
-      <time>04-28</time>
-      <div class="list-group-item-title">pinia抓網頁數據</div>
-    </a>
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/" class="print-no-link">#查找算法</a>
+      
+    </div>
   
 </div>
 
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/page/7/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/#board">6</a><a class="page-number" href="/archives/page/7/#board">7</a><span class="page-number current">8</span><a class="page-number" href="/archives/page/9/#board">9</a><a class="page-number" href="/archives/page/10/#board">10</a><a class="page-number" href="/archives/page/11/#board">11</a><a class="extend next" rel="next" href="/archives/page/9/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
+              
+  
 
-
-
-
-              </div>
-            </div>
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>查找算法（怎么在海量数据里捞针？)</div>
+      <div>http://example.com/2026/06/24/查找算法（怎么在海量数据里捞针？/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Mashiro</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年6月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
           </div>
         </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/06/24/%E5%92%8C-%E7%9A%84%E5%8C%BA%E5%88%AB/" title="===和==的区别">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">===和==的区别</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/06/23/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E5%B1%82/" title="数据采集层">
+                        <span class="hidden-mobile">数据采集层</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
     
@@ -498,6 +648,163 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 

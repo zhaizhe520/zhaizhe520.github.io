@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据采集层">
+    <meta name="description" content="树（Tree）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据采集层">
-<meta property="og:url" content="http://example.com/2026/06/23/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E5%B1%82/index.html">
+<meta property="og:title" content="树（Tree）">
+<meta property="og:url" content="http://example.com/2026/06/24/%E6%A0%91%EF%BC%88Tree%EF%BC%89/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="数据采集层">
+<meta property="og:description" content="树（Tree）">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-06-23T09:31:07.000Z">
-<meta property="article:modified_time" content="2026-06-23T10:28:05.907Z">
+<meta property="article:published_time" content="2026-06-24T02:34:39.000Z">
+<meta property="article:modified_time" content="2026-06-24T02:47:20.951Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="数据采集层">
+<meta property="article:tag" content="树（Tree）">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>数据采集层 - </title>
+  <title>树（Tree） - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="数据采集层"></span>
+            <span id="subtitle" data-typed-text="树（Tree）"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-06-23 17:31" pubdate>
-          2026年6月23日 下午
+        <time datetime="2026-06-24 10:34" pubdate>
+          2026年6月24日 上午
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          430 字
+          2k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          4 分钟
+          17 分钟
         
       </span>
     
@@ -376,16 +376,45 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">数据采集层</h1>
+            <h1 id="seo-header">树（Tree）</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="VNDB-API（推荐，干净）"><a href="#VNDB-API（推荐，干净）" class="headerlink" title="VNDB API（推荐，干净）"></a>VNDB API（推荐，干净）</h1><p>VNDB（The Visual Novel Database）有公开 API，返回 JSON，不用写爬虫：</p>
-<h1 id="python-脚本，20-行就能跑"><a href="#python-脚本，20-行就能跑" class="headerlink" title="python 脚本，20 行就能跑"></a>python 脚本，20 行就能跑</h1><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs stylus">import requests<br><br>res = requests<span class="hljs-selector-class">.post</span>(<span class="hljs-string">&quot;https://api.vndb.org/kana/vn&quot;</span>, json=&#123;<br>    <span class="hljs-string">&quot;filters&quot;</span>: <span class="hljs-selector-attr">[<span class="hljs-string">&quot;developer&quot;</span>, <span class="hljs-string">&quot;=&quot;</span>, <span class="hljs-string">&quot;yuzusoft&quot;</span>]</span>,<br>    <span class="hljs-string">&quot;fields&quot;</span>: <span class="hljs-string">&quot;title, released, developers.name&quot;</span><br>&#125;)<br><span class="hljs-keyword">for</span> vn <span class="hljs-keyword">in</span> res<span class="hljs-selector-class">.json</span>()<span class="hljs-selector-attr">[<span class="hljs-string">&quot;results&quot;</span>]</span>:<br>    <span class="hljs-built_in">print</span>(vn<span class="hljs-selector-attr">[<span class="hljs-string">&quot;title&quot;</span>]</span>, vn<span class="hljs-selector-attr">[<span class="hljs-string">&quot;released&quot;</span>]</span>)<br></code></pre></td></tr></table></figure>
-
-<p>数据采集现在解决不了</p>
-<p>先重构一个我的轻小说接口</p>
+                <h1 id="树-（B-Tree）"><a href="#树-（B-Tree）" class="headerlink" title="树 （B+ Tree）"></a>树 （B+ Tree）</h1><p>把查重的压力交给数据库</p>
+<p>B+树索引（B+ Tree）</p>
+<p>有了这棵树，当你发送这句 SQL 给数据库时，数据库的大厨绝对不会去通篇遍历（全表扫描）。</p>
+<p>它会拿着你传过来的 username（比如 “Murasame”），在这棵 B+树上玩一种类似于“升级版二分查找”的跨步跳跃游戏。</p>
+<p>1000 万条数据，它可能只需要在树上往下跳 3 ~ 4 次（$O(\log n)$ 级别），就能精准抓到这个人到底在不在！</p>
+<p>数据库 数据 存在硬盘里的不是内存里面</p>
+<p>双向链表</p>
+<p>一、 为什么不能用二分查找和哈希表？（硬件的残酷真相）在细说 B+树 之前，大厨（CPU）必须先告诉你一个关于硬件的残酷真相：内存（RAM）和硬盘（SSD&#x2F;HDD）的物理速度差了上万倍！我们前几天聊的数组、链表、哈希表，全都是在内存里手舞足蹈。内存是电子信号，速度极快，所以哈希表可以任性地 $O(1)$ 闪现。</p>
+<p>但数据库的几千万条数据是存在硬盘里的。大厨要看硬盘里的东西，必须先通过“磁盘 I&#x2F;O（输入&#x2F;输出）”把数据一页一页地搬进内存。磁盘 I&#x2F;O 非常慢，算法优化的终极核心，就是“如何让大厨尽量少去读硬盘”。</p>
+<p>为什么不用二分查找？ 二分查找要求数据在物理上是一个连续的超级大数组。在硬盘里开辟一个存 1000 万条数据的连续空间？硬盘当场死给你看。为什么不用哈希表？ 哈希表是散落的。更致命的是，哈希表无法做范围查询。</p>
+<p>如果你写一句 WHERE age &gt; 18，哈希表直接抓瞎，因为它算出来的哈希值是完全乱序的，只能又退化成通篇遍历。于是，B+树 带着历史使命登场了。</p>
+<p>二、 B+树 的物理大片：极度扁平的“千手观音”<br>B+树 也是一棵“文件夹套文件夹”的树，但它长得极其奇葩。为了不读硬盘，它进化出了三大核心超能力：</p>
+<ol>
+<li>矮胖到了极致（极低的树高）<br>普通二分树（比如二叉树），每个文件夹打开只能有 2 个子文件夹。1000 万条数据，树会变得高达 20 多层。大厨找一个数据，得连续打开 20 多次硬盘文件夹（20 次 I&#x2F;O），卡死。</li>
+</ol>
+<p>而 B+树 的每一个节点（文件夹）非常大，大到一打开里面能整整齐齐塞下几百个甚至上千个分叉指针！</p>
+<p>它的物理画面不是一棵细长的树，而是一个极其扁平、横向无限延展的“千手观音”。</p>
+<p>💡 惊人的物理数据：<br>一棵完美的 B+树，往往只有 3 ~ 4 层高。<br>这意味着：从 1000 万、甚至几个亿的数据里找一个人，大厨最多只需要双击打开 3 ~ 4 次文件夹（3~4 次磁盘 I&#x2F;O），就能精准定位！</p>
+<ol start="2">
+<li>“各司其职”的阶级划分：索引与数据分离<br>如果你双击打开 B+树 的上层文件夹，你会发现一件神奇的事：上三层的文件夹里，竟然不包含任何真实的员工数据（Value）！它们只装“工号的范围（Key）”和“下一层文件夹的地址（指针）”。</li>
+</ol>
+<p>非叶子节点（上三层）：纯工具人，只负责指路。</p>
+<p>叶子节点（最底层）：真实的数据库数据（比如姓名、薪资等），全部整整齐齐地躺在最底层的文件夹里。</p>
+<p>为什么要这么干？ 因为硬盘的一页空间是有限的（通常是 16KB）。如果上层文件夹里塞满了厚重的员工档案，一页就只能装几条数据，分叉就变少了，树就会变高。<br>现在上层文件夹只装小巧的数字工号（id），一页就能塞下上千个指路牌！分叉瞬间变成上千个，树直接被强行压扁！</p>
+<ol start="3">
+<li>最底层的手拉手：天然的“双向链表传送带”这是 B+树 最无耻、也最绝妙的设计。大厨发现，最底层的那些装满真实数据的文件夹，居然全部用指针首尾相连，串成了一条巨大的、有序的双向链表！</li>
+</ol>
+<p>🎬 实战模拟：范围查询 WHERE id BETWEEN 5 AND 100大厨拿着 5，从树顶出发。看了一眼第一层指路牌：“5 在左边第一个分支”，闪现到第二层。看了一眼第二层指路牌：“5 在第三个分支”，闪现到最底层。一共只花 3 步，精准抓到 id &#x3D; 5 的物理文件夹！（时间复杂度 $O(\log n)$）高能来了：接下来大厨要找 6, 7, 8…直到 100。大厨需要重新爬回树顶去二分查找吗？完全不用！ 大厨直接顺着最底层文件夹之间连着的“链表传送带”，像数糖果一样，顺藤摸瓜一路往右横向狂奔，直到数到 100 踩刹车，打包带走！</p>
+<p>结：B+树 的降维打击<br>你现在闭上眼睛，在脑海里勾勒出 B+树 的终极具象化画面：</p>
+<p>它在内存和硬盘之间，搭起了一座 3层高、长着几千只手、脚底下踩着一条巨型有序传送带 的摩天大楼。</p>
+<p>当你要单点精准查找（WHERE username &#x3D; ‘Murasame’）时，它利用极度扁平的树高，玩 3步之内的折半闪现。</p>
+<p>当你要范围查找（WHERE age &gt;&#x3D; 18）时，它先用 3 步定位到 18 岁的起点，然后顺着最底层的链表传送带一路横扫。</p>
+<p>它把二分查找的指路逻辑（树）和链表的顺藤摸瓜能力（底层的双向链表）完美地缝合在一起，专门用来治服硬盘这个慢性子的“大块头”。</p>
+<p>这就是为什么无论是 MySQL 的 InnoDB，还是各种大型文件系统，无一例外全部跪倒在 B+树 的石榴裙下。这种工业级的设计，是不是比纯前端的 Map 还要多出了一层宏大的机械美感？</p>
 
                 
               </div>
@@ -419,7 +448,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E5%B1%82/" class="print-no-link">#数据采集层</a>
+        <a href="/tags/%E6%A0%91%EF%BC%88Tree%EF%BC%89/" class="print-no-link">#树（Tree）</a>
       
     </div>
   
@@ -431,8 +460,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>数据采集层</div>
-      <div>http://example.com/2026/06/23/数据采集层/</div>
+      <div>树（Tree）</div>
+      <div>http://example.com/2026/06/24/树（Tree）/</div>
     </div>
     <div class="license-meta">
       
@@ -444,7 +473,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年6月23日</div>
+          <div>2026年6月24日</div>
         </div>
       
       
@@ -476,18 +505,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/06/24/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95%EF%BC%88%E6%80%8E%E4%B9%88%E5%9C%A8%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E9%87%8C%E6%8D%9E%E9%92%88%EF%BC%9F/" title="查找算法（怎么在海量数据里捞针？)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">查找算法（怎么在海量数据里捞针？)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/06/23/Hash%E8%A1%A8/" title="Hash表">
-                        <span class="hidden-mobile">Hash表</span>
+                      <a href="/2026/06/24/%E5%92%8C-%E7%9A%84%E5%8C%BA%E5%88%AB/" title="===和==的区别">
+                        <span class="hidden-mobile">===和==的区别</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
