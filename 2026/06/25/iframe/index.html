@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="排序算法">
+    <meta name="description" content="iframe HTML 内联框架标签">
 <meta property="og:type" content="article">
-<meta property="og:title" content="排序算法（怎么把混乱的数据排整齐？）">
-<meta property="og:url" content="http://example.com/2026/06/24/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%EF%BC%88%E6%80%8E%E4%B9%88%E6%8A%8A%E6%B7%B7%E4%B9%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8E%92%E6%95%B4%E9%BD%90%EF%BC%9F%EF%BC%89/index.html">
+<meta property="og:title" content="iframe HTML 内联框架标签">
+<meta property="og:url" content="http://example.com/2026/06/25/iframe/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="排序算法">
+<meta property="og:description" content="iframe HTML 内联框架标签">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-06-24T12:52:23.000Z">
-<meta property="article:modified_time" content="2026-06-26T01:56:20.249Z">
+<meta property="article:published_time" content="2026-06-25T02:44:11.000Z">
+<meta property="article:modified_time" content="2026-06-25T03:22:19.071Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="排序算法">
+<meta property="article:tag" content="iframe HTML 内联框架标签">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>排序算法（怎么把混乱的数据排整齐？） - </title>
+  <title>iframe HTML 内联框架标签 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="排序算法（怎么把混乱的数据排整齐？）"></span>
+            <span id="subtitle" data-typed-text="iframe HTML 内联框架标签"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-06-24 20:52" pubdate>
-          2026年6月24日 晚上
+        <time datetime="2026-06-25 10:44" pubdate>
+          2026年6月25日 上午
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          1.4k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          15 分钟
+          12 分钟
         
       </span>
     
@@ -376,55 +376,34 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">排序算法（怎么把混乱的数据排整齐？）</h1>
+            <h1 id="seo-header">iframe HTML 内联框架标签</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="冒泡排序（Bubble-Sort）——-笨重但老实的“排排坐”"><a href="#冒泡排序（Bubble-Sort）——-笨重但老实的“排排坐”" class="headerlink" title="冒泡排序（Bubble Sort）—— 笨重但老实的“排排坐”"></a>冒泡排序（Bubble Sort）—— 笨重但老实的“排排坐”</h1><p>最长递增子序列也算是排序算法</p>
-<p>🎬 物理画面：鱼吐泡泡</p>
-<p>第一轮：大厨从最左边第一个人开始，让相邻的两个人两两比身高。如果左边比右边高，两人就交换位置。这样一路比过去，你会发现，全场最高的那个人，就像水底的一个大泡泡一样，一轮比完之后，被硬生生地“顶”到了最右边。</p>
-<p>第二轮：大厨重新回到最左边，重复刚才的动作。这一轮比完，第二高的人又被“顶”到了倒数第二的位置。一直重复 n 轮，队伍就排好了。</p>
-<p>📊 性能体检表:</p>
-<p>时间复杂度：O(n^2)。因为大厨要玩双重 for 循环。外面要跑 n轮，里面每轮还要挨个比对。</p>
-<p>如果数据有 1 万条，大厨得比对差不多 1 亿次！在工业级生产环境里，这种算法就是个垃圾，会被直接开除</p>
-<p>空间复杂度:O(1)。因为大厨完全是在原始数组里“原地挪位置”（交换变量），不需要额外开辟新的 Map 或者数组空间，非常省内存。</p>
-<h1 id="快速排序（Quick-Sort）"><a href="#快速排序（Quick-Sort）" class="headerlink" title="快速排序（Quick Sort）"></a>快速排序（Quick Sort）</h1><p>🎬 物理画面：找个“基准”两边倒</p>
-<p>1、找个参照物（Pivot）：大厨随便在数组里挑一个数字（比如最中间的那个数字，叫它“基准”）。</p>
-<p>2、阵营大划分（统一遍历）：大厨让其他所有数字过来跟这个基准比大小。小的全部扔到左边，大的全部扔到右边。</p>
-<p>3、这时候，虽然左边和右边各自内部还是乱的，但大局观已经定了——左边的所有人，绝对都比右边的小！而那个基准数字，已经精准地坐在了它这辈子最正确的最终位置上！</p>
-<p>4、递归套娃（文件夹里套文件夹）：</p>
-<p>5、循环以上排序直到排序正确</p>
-<p>📊 性能体检表</p>
-<p>时间复杂度：平均 O(n \log n)这是一个极其高效的跨越。为什么是 O（log n）？因为大厨每次都在玩“对折划分”。1000 万条数据，冒泡排序要卡死，快排大厨几毫秒就给你切瓜砍菜般搞定了！</p>
-<p>快排最坏情况:选了个最大的，直接变成n平方</p>
-<h1 id="不要小看-V8-引擎（Chrome-和-Node-js-的底座）"><a href="#不要小看-V8-引擎（Chrome-和-Node-js-的底座）" class="headerlink" title="不要小看 V8 引擎（Chrome 和 Node.js 的底座）"></a>不要小看 V8 引擎（Chrome 和 Node.js 的底座）</h1><p>Array.prototype.sort()</p>
-<div style="color:pink">TimSort 算法</div>
+                <div style="color:pink">HTML 内联框架标签</div>
 
-<p>TimSort 的核心思想是：人类在真实业务里写的数据，绝对不可能是纯随机的乱序，往往里面已经有一部分片段是“局部有序”的。</p>
-<p>有序小片段进行归并</p>
-<h2 id="自动切块：寻找“顺风车”-片段（Run）"><a href="#自动切块：寻找“顺风车”-片段（Run）" class="headerlink" title="自动切块：寻找“顺风车” 片段（Run）"></a>自动切块：寻找“顺风车” 片段（Run）</h2><p>大厨拿到数组后，先从左往右扫描。</p>
-<p>如果发现有一段数字已经是排好序的（比如 [3, 5, 8, 9]），大厨就会把这一段打包成一个“顺风车片段”（专业术语叫 Run）。</p>
-<p>如果发现有一段是倒序的，大厨顺手顺脚地帮它当场反转过来，也变成一个正序的 Run。</p>
-<h2 id="小数据嫌弃：直接降维打击（插入排序）"><a href="#小数据嫌弃：直接降维打击（插入排序）" class="headerlink" title="小数据嫌弃：直接降维打击（插入排序）"></a>小数据嫌弃：直接降维打击（插入排序）</h2><p>如果大厨发现这个 Run 片段太短了（比如少于 32 个元素），大厨连快排、归并这种大招都懒得放。</p>
-<p>它会直接掏出一个叫<div style="color:pink">插入排序（Insertion Sort）的精巧算法</div>，把后面零散的数字像插扑克牌一样，极其快速地插进这个 Run 里面，把它补满到一个标准长度。</p>
-<h2 id="大局观合体：智能骨牌合并（归并排序）-归并（Merge）逻辑。"><a href="#大局观合体：智能骨牌合并（归并排序）-归并（Merge）逻辑。" class="headerlink" title="大局观合体：智能骨牌合并（归并排序） 归并（Merge）逻辑。"></a>大局观合体：智能骨牌合并（归并排序） 归并（Merge）逻辑。</h2><p>当整个数组被大厨切成了一个个有序的 Run 片段之后，大厨掏出真正的王牌 —— <div style="color:red">归并（Merge）逻辑</div></p>
-<p>大厨把这些 Run 压入一个执行栈里。每当发现栈里有相邻的两个 Run，大厨就会把它们合二为一。</p>
-<p>🛠️ 合并的物理画面：</p>
-<p>两个已经各自排好序的队伍，合并成一个大队伍，速度是极其惊人的（只需要O(n)级的光速遍历）。</p>
-<p>所有有序小片段全部融合成一个巨大的、完美有序的最终数组</p>
-<p>TimSort 的逆天战绩（体检表）</p>
-<p>V8 引擎用 TimSort 取代了老算法之后，带来了两个跨时代的震撼效果：</p>
-<ol>
-<li>战绩：完美的稳定性（Stable Sort）</li>
-</ol>
-<p>Vue 2 时代的前端痛点：由于老算法不稳定，如果你对一组商品先按“销量”排序，再按“价格”排序，第二次排序会把第一次销量的相对顺序给彻底打乱。彻底打乱之后diff算法和双端队列重新排布dom</p>
-<p>Vue 3 &#x2F; 现代前端时代：TimSort 天生是绝对稳定的。相同权重的节点，排序后绝对不会互换位置。这给虚拟 DOM 的稳定复用提供了天然的底层保障！ run片段小的有序片段不动 静态编译 操纵虚拟dom 实现时间复杂度大幅度消减</p>
-<ol start="2">
-<li>速度：在真实世界里接近神级别</li>
-</ol>
-<p>最坏情况（纯乱序）：它能死死守住 $\mathbf{O(n \log n)}$ 的底线，绝对不会像快排那样翻车退化成 $O(n^2)$。</p>
-<p>最好情况（数组本来就差不多排好了）：它的时间复杂度能达到恐怖的 $\mathbf{O(n)}$！大厨只需要顺着扫一遍，直接收工。</p>
+<p>隔离原理：浏览器自带的硬隔离。借由同源策略，主应用和 iframe 之间的 CSS、DOM、Window 全局变量都是完全隔离的，互不影响。</p>
+<p> <code>&lt;iframe src=&quot;/xxx/xxx.html&quot; class=&quot;&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</code></p>
+<p>样式绝对隔离（CSS Isolation）：Vue 主应用里的全局样式、组件样式，绝对不会影响到 &#x2F;game&#x2F;index.html 里面的游戏样式；反之，游戏里的样式也不会把主应用搞垮。</p>
+<p>脚本绝对隔离（JS Sandbox）：游戏里如果定义了 window.score &#x3D; 100，主应用的 window.score 是拿不到的，它们拥有各自独立的 window 全局对象。</p>
+<p>崩溃隔离：如果游戏由于内存泄漏或代码报错崩溃了，主应用通常仍能正常运行，不会导致整个网页白屏。</p>
+<h1 id="社区基于-iframe-封装的组件（如-v-iframe）"><a href="#社区基于-iframe-封装的组件（如-v-iframe）" class="headerlink" title="社区基于 iframe 封装的组件（如 v-iframe）"></a>社区基于 iframe 封装的组件（如 v-iframe）</h1><p>在 Vue 生态里，直接操作原生 iframe 有时候不太方便（比如组件通信、加载状态监听）。很多人会使用或自己封装一个类似 <code>&lt;v-iframe&gt;</code>的组件来方便在 Vue 3 中使用。</p>
+<h1 id="“微前端”隔离方案"><a href="#“微前端”隔离方案" class="headerlink" title="“微前端”隔离方案"></a>“微前端”隔离方案</h1><p>如果你是在做大系统拆分，觉得原生 iframe 刷新后状态丢失、路由无法同步，你可能是在找以下微前端框架中的“隔离沙箱”：</p>
+<p>wujie（无界）：腾讯开源的微前端框架。它最核心的特点就是基于 <code>&lt;iframe&gt;</code> 实现 JavaScript 沙箱隔离，同时把 DOM 渲染到 Shadow DOM 中。它完美解决了原生 iframe 的性能和路由问题，在 Vue 3 中非常常用。</p>
+<p>qiankun（乾坤）：阿里开源的微前端框架。它没有用 iframe，而是自己实现了一套 JS 代理沙箱（Proxy Sandbox）和 CSS 样式隔离</p>
+<h1 id="Vue-3-中如何与-iframe-进行“跨界通信”"><a href="#Vue-3-中如何与-iframe-进行“跨界通信”" class="headerlink" title="Vue 3 中如何与 iframe 进行“跨界通信”"></a>Vue 3 中如何与 iframe 进行“跨界通信”</h1><p>主要就是<code>console.log</code>到浏览器进行消息传递</p>
+<p>从游戏（iframe 内部）向 Vue 主应用发送消息</p>
+<p>向父窗口发送数据 postMessage</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-comment">// 游戏通关时，向父窗口发送数据</span><br>window.<span class="hljs-built_in">parent</span>.<span class="hljs-title function_ invoke__">postMessage</span>(&#123;<br>  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;GAME_OVER&#x27;</span>,<br>  <span class="hljs-attr">score</span>: <span class="hljs-number">999</span><br>&#125;, <span class="hljs-string">&#x27;*&#x27;</span>); <span class="hljs-comment">// &#x27;*&#x27; 可以换成你主应用的域名以确保安全</span><br></code></pre></td></tr></table></figure>
+<p>&#x2F;&#x2F; 定义接收消息的处理函数</p>
+<p><code>console.log</code>打印到浏览器</p>
+<p>组件挂载时启动监听</p>
+<p>组件销毁时记得移除监听，防止内存泄漏</p>
+<h1 id="使用-iframe-的三大“大坑”"><a href="#使用-iframe-的三大“大坑”" class="headerlink" title="使用 iframe 的三大“大坑”"></a>使用 iframe 的三大“大坑”</h1><p>虽然隔离性极佳，但你在写 Vue 3 的时候一定要注意这三个问题：</p>
+<p>路由与状态刷新丢失：如果用户在游戏里玩到了第 3 关，此时用户刷新了整个 Vue 页面，<code>&lt;iframe&gt;</code> 会直接重置回 &#x2F;game&#x2F;index.html（第 1 关）。它的内部状态不会自动保存到 Vue 的路由或 Pinia 中。</p>
+<p>遮罩层&#x2F;弹窗无法越界：如果游戏内部弹出一个 Modal 弹窗，它只能在 class&#x3D;”game-frame” 这个小框框里居中，绝对无法盖住整个浏览器屏幕。</p>
+<p>加载白屏与性能：<code>&lt;iframe&gt;</code>相当于重新加载了一个完整的 DOM 树和执行环境，比较消耗内存。建议加一个 v-if 或者 loading 状态，等主页面渲染完后再加载游戏。</p>
 
                 
               </div>
@@ -443,7 +422,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  <a href="/categories/Vue%E6%A1%86%E6%9E%B6/" class="category-chain-item">Vue框架</a>
   
   
 
@@ -458,7 +437,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="print-no-link">#排序算法</a>
+        <a href="/tags/iframe-HTML-%E5%86%85%E8%81%94%E6%A1%86%E6%9E%B6%E6%A0%87%E7%AD%BE/" class="print-no-link">#iframe HTML 内联框架标签</a>
       
     </div>
   
@@ -470,8 +449,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>排序算法（怎么把混乱的数据排整齐？）</div>
-      <div>http://example.com/2026/06/24/排序算法（怎么把混乱的数据排整齐？）/</div>
+      <div>iframe HTML 内联框架标签</div>
+      <div>http://example.com/2026/06/25/iframe/</div>
     </div>
     <div class="license-meta">
       
@@ -483,7 +462,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年6月24日</div>
+          <div>2026年6月25日</div>
         </div>
       
       
@@ -515,18 +494,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/06/24/%E7%B4%A2%E5%BC%95/" title="索引">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">索引</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/06/24/%E6%A0%91%EF%BC%88Tree%EF%BC%89/" title="树（Tree）">
-                        <span class="hidden-mobile">树（Tree）</span>
+                      <a href="/2026/06/24/%E7%B4%A2%E5%BC%95/" title="索引">
+                        <span class="hidden-mobile">索引</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
