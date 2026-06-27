@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="排序算法">
+    <meta name="description" content="Java学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="排序算法（怎么把混乱的数据排整齐？）">
-<meta property="og:url" content="http://example.com/2026/06/24/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%EF%BC%88%E6%80%8E%E4%B9%88%E6%8A%8A%E6%B7%B7%E4%B9%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8E%92%E6%95%B4%E9%BD%90%EF%BC%9F%EF%BC%89/index.html">
+<meta property="og:title" content="Java学习">
+<meta property="og:url" content="http://example.com/2026/06/26/Java%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="排序算法">
+<meta property="og:description" content="Java学习">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-06-24T12:52:23.000Z">
-<meta property="article:modified_time" content="2026-06-27T02:02:53.916Z">
+<meta property="article:published_time" content="2026-06-26T13:49:02.000Z">
+<meta property="article:modified_time" content="2026-06-27T01:57:28.535Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="排序算法">
+<meta property="article:tag" content="Java学习">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>排序算法（怎么把混乱的数据排整齐？） - </title>
+  <title>Java学习 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="排序算法（怎么把混乱的数据排整齐？）"></span>
+            <span id="subtitle" data-typed-text="Java学习"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-06-24 20:52" pubdate>
-          2026年6月24日 晚上
+        <time datetime="2026-06-26 21:49" pubdate>
+          2026年6月26日 晚上
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          1k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          15 分钟
+          9 分钟
         
       </span>
     
@@ -376,54 +376,30 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">排序算法（怎么把混乱的数据排整齐？）</h1>
+            <h1 id="seo-header">Java学习</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="冒泡排序（Bubble-Sort）——-笨重但老实的“排排坐”"><a href="#冒泡排序（Bubble-Sort）——-笨重但老实的“排排坐”" class="headerlink" title="冒泡排序（Bubble Sort）—— 笨重但老实的“排排坐”"></a>冒泡排序（Bubble Sort）—— 笨重但老实的“排排坐”</h1><p>最长递增子序列也算是排序算法</p>
-<p>🎬 物理画面：鱼吐泡泡</p>
-<p>第一轮：大厨从最左边第一个人开始，让相邻的两个人两两比身高。如果左边比右边高，两人就交换位置。这样一路比过去，你会发现，全场最高的那个人，就像水底的一个大泡泡一样，一轮比完之后，被硬生生地“顶”到了最右边。</p>
-<p>第二轮：大厨重新回到最左边，重复刚才的动作。这一轮比完，第二高的人又被“顶”到了倒数第二的位置。一直重复 n 轮，队伍就排好了。</p>
-<p>📊 性能体检表:</p>
-<p>时间复杂度：O(n^2)。因为大厨要玩双重 for 循环。外面要跑 n轮，里面每轮还要挨个比对。</p>
-<p>如果数据有 1 万条，大厨得比对差不多 1 亿次！在工业级生产环境里，这种算法就是个垃圾，会被直接开除</p>
-<p>空间复杂度:O(1)。因为大厨完全是在原始数组里“原地挪位置”（交换变量），不需要额外开辟新的 Map 或者数组空间，非常省内存。</p>
-<h1 id="快速排序（Quick-Sort）"><a href="#快速排序（Quick-Sort）" class="headerlink" title="快速排序（Quick Sort）"></a>快速排序（Quick Sort）</h1><p>🎬 物理画面：找个“基准”两边倒</p>
-<p>1、找个参照物（Pivot）：大厨随便在数组里挑一个数字（比如最中间的那个数字，叫它“基准”）。</p>
-<p>2、阵营大划分（统一遍历）：大厨让其他所有数字过来跟这个基准比大小。小的全部扔到左边，大的全部扔到右边。</p>
-<p>3、这时候，虽然左边和右边各自内部还是乱的，但大局观已经定了——左边的所有人，绝对都比右边的小！而那个基准数字，已经精准地坐在了它这辈子最正确的最终位置上！</p>
-<p>4、递归套娃（文件夹里套文件夹）：</p>
-<p>5、循环以上排序直到排序正确</p>
-<p>📊 性能体检表</p>
-<p>时间复杂度：平均 O(n \log n)这是一个极其高效的跨越。为什么是 O（log n）？因为大厨每次都在玩“对折划分”。1000 万条数据，冒泡排序要卡死，快排大厨几毫秒就给你切瓜砍菜般搞定了！</p>
-<p>快排最坏情况:选了个最大的，直接变成n平方</p>
-<p> 不要小看 V8 引擎（Chrome 和 Node.js 的底座）</p>
-<p>Array.prototype.sort()</p>
-<h1 id="TimSort-算法"><a href="#TimSort-算法" class="headerlink" title="TimSort 算法"></a><div style="color:pink">TimSort 算法</div></h1><p>TimSort 的核心思想是：人类在真实业务里写的数据，绝对不可能是纯随机的乱序，往往里面已经有一部分片段是“局部有序”的。</p>
-<p>有序小片段进行归并</p>
-<h2 id="自动切块：寻找“顺风车”-片段（Run）"><a href="#自动切块：寻找“顺风车”-片段（Run）" class="headerlink" title="自动切块：寻找“顺风车” 片段（Run）"></a>自动切块：寻找“顺风车” 片段（Run）</h2><p>大厨拿到数组后，先从左往右扫描。</p>
-<p>如果发现有一段数字已经是排好序的（比如 [3, 5, 8, 9]），大厨就会把这一段打包成一个“顺风车片段”（专业术语叫 Run）。</p>
-<p>如果发现有一段是倒序的，大厨顺手顺脚地帮它当场反转过来，也变成一个正序的 Run。</p>
-<h2 id="小数据嫌弃：直接降维打击（插入排序）"><a href="#小数据嫌弃：直接降维打击（插入排序）" class="headerlink" title="小数据嫌弃：直接降维打击（插入排序）"></a>小数据嫌弃：直接降维打击（插入排序）</h2><p>如果大厨发现这个 Run 片段太短了（比如少于 32 个元素），大厨连快排、归并这种大招都懒得放。</p>
-<p>它会直接掏出一个叫<div style="color:pink">插入排序（Insertion Sort）的精巧算法</div>，把后面零散的数字像插扑克牌一样，极其快速地插进这个 Run 里面，把它补满到一个标准长度。</p>
-<h2 id="大局观合体：智能骨牌合并（归并排序）-归并（Merge）逻辑。"><a href="#大局观合体：智能骨牌合并（归并排序）-归并（Merge）逻辑。" class="headerlink" title="大局观合体：智能骨牌合并（归并排序） 归并（Merge）逻辑。"></a>大局观合体：智能骨牌合并（归并排序） 归并（Merge）逻辑。</h2><p>当整个数组被大厨切成了一个个有序的 Run 片段之后，大厨掏出真正的王牌 —— <div style="color:red">归并（Merge）逻辑</div></p>
-<p>大厨把这些 Run 压入一个执行栈里。每当发现栈里有相邻的两个 Run，大厨就会把它们合二为一。</p>
-<p>🛠️ 合并的物理画面：</p>
-<p>两个已经各自排好序的队伍，合并成一个大队伍，速度是极其惊人的（只需要O(n)级的光速遍历）。</p>
-<p>所有有序小片段全部融合成一个巨大的、完美有序的最终数组</p>
-<p>TimSort 的逆天战绩（体检表）</p>
-<p>V8 引擎用 TimSort 取代了老算法之后，带来了两个跨时代的震撼效果：</p>
-<ol>
-<li>战绩：完美的稳定性（Stable Sort）</li>
-</ol>
-<p>Vue 2 时代的前端痛点：由于老算法不稳定，如果你对一组商品先按“销量”排序，再按“价格”排序，第二次排序会把第一次销量的相对顺序给彻底打乱。彻底打乱之后diff算法和双端队列重新排布dom</p>
-<p>Vue 3 &#x2F; 现代前端时代：TimSort 天生是绝对稳定的。相同权重的节点，排序后绝对不会互换位置。这给虚拟 DOM 的稳定复用提供了天然的底层保障！ run片段小的有序片段不动 静态编译 操纵虚拟dom 实现时间复杂度大幅度消减</p>
-<ol start="2">
-<li>速度：在真实世界里接近神级别</li>
-</ol>
-<p>最坏情况（纯乱序）：它能死死守住 $\mathbf{O(n \log n)}$ 的底线，绝对不会像快排那样翻车退化成 $O(n^2)$。</p>
-<p>最好情况（数组本来就差不多排好了）：它的时间复杂度能达到恐怖的 $\mathbf{O(n)}$！大厨只需要顺着扫一遍，直接收工。</p>
+                <p>🚀 第一梯队：必须立刻掌握的“核心硬通货”</p>
+<h1 id="类（Class）与-对象（Object）"><a href="#类（Class）与-对象（Object）" class="headerlink" title="类（Class）与 对象（Object）"></a>类（Class）与 对象（Object）</h1><p>在 Spring Boot 里的角色：你从数据库查出来一条用户数据，Java 不能直接把它当成一坨 JSON 丢着。</p>
+<p>你必须先在 Java 里定义一个 User 类（包含 id、username、password 属性）</p>
+<p>然后把查出来的数据变成一个 User 对象。</p>
+<p>这个类在后端有个专业术语叫 POJO &#x2F; Entity（实体类）。</p>
+<h1 id="集合（List-Map）"><a href="#集合（List-Map）" class="headerlink" title="集合（List &#x2F; Map）"></a>集合（List &#x2F; Map）</h1><p>这是后端处理数据的绝对核心，相当于 JS 里的数组和对象。</p>
+<p>List：就是数组（比如<code>List&lt;User&gt; list</code>），专门用来装列表数据。比如你从数据库查出“用户列表”，Java 就会用一个 List 把他们装起来。</p>
+<p>Map：就是 键值对（Key-Value）（比如 <code>Map&lt;String, Object&gt;</code>）。</p>
+<p>它非常像 JS 里的普通 Object。当你想临时拼一个自定义的 JSON 返回给 Vue 前端，但又懒得建一个新的类时，直接用 Map 塞数据最方便。</p>
+<h1 id="注解（Annotation）——-Spring-Boot-的灵魂"><a href="#注解（Annotation）——-Spring-Boot-的灵魂" class="headerlink" title="注解（Annotation）—— Spring Boot 的灵魂"></a>注解（Annotation）—— Spring Boot 的灵魂</h1><p>怎么理解：就是代码里那些带 @ 符号的东西（比如 @RestController、@GetMapping、@CrossOrigin）。</p>
+<p>在 Spring Boot 里的角色：Java 的注解就像是“贴标签”。</p>
+<p>你写一个普通的类，只要在上面贴一个 @RestController 标签，Spring Boot 就会自动把它变成一个可以接收网络请求的 API 控制器。</p>
+<p>学 Spring Boot，本质上很大一部分就是在学怎么用这些注解。</p>
+<p>🛠️ 第二梯队：遇到了再查的“功能挂件”</p>
+<h1 id="异常处理（Exception）"><a href="#异常处理（Exception）" class="headerlink" title="异常处理（Exception）"></a>异常处理（Exception）</h1><p>怎么理解：类似于前端的 try…catch。</p>
+<p>在 Spring Boot 里的角色：后端太容易报错了（比如数据库断开了、前端传错参数了）。</p>
+<p>Java 有一套非常严密的异常机制。在 Spring Boot 里，我们会写一个“<code>全局异常捕获器</code>”，不管后端哪里报错，都统一拦截下来，包装成一个 { code: 500, msg: “服务器冒烟了” } 的标准 JSON 丢给 Vue，不让前端页面崩溃。</p>
+<h1 id="IO（输入输出流）"><a href="#IO（输入输出流）" class="headerlink" title="IO（输入输出流）"></a>IO（输入输出流）</h1><p>怎么理解：Java 用来读写文件、处理上传下载的工具。</p>
+<p>在 Spring Boot 里的角色：如果你现在只是写增删改查的接口，暂时用不到 IO。只有当你要做“用户上传头像”、“后端生成 Excel 导出报表”功能时，才会用到 Java 的 IO 流。先不用死磕它。</p>
 
                 
               </div>
@@ -442,7 +418,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  <a href="/categories/Java/" class="category-chain-item">Java</a>
   
   
 
@@ -457,7 +433,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="print-no-link">#排序算法</a>
+        <a href="/tags/Java%E5%AD%A6%E4%B9%A0/" class="print-no-link">#Java学习</a>
       
     </div>
   
@@ -469,8 +445,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>排序算法（怎么把混乱的数据排整齐？）</div>
-      <div>http://example.com/2026/06/24/排序算法（怎么把混乱的数据排整齐？）/</div>
+      <div>Java学习</div>
+      <div>http://example.com/2026/06/26/Java学习/</div>
     </div>
     <div class="license-meta">
       
@@ -482,7 +458,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年6月24日</div>
+          <div>2026年6月26日</div>
         </div>
       
       
@@ -514,9 +490,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/06/24/%E7%B4%A2%E5%BC%95/" title="索引">
+                      <a href="/2026/06/27/%E6%90%9C%E7%B4%A2%E4%B8%8E%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95%EF%BC%88%E6%80%8E%E4%B9%88%E5%9C%A8%E8%BF%B7%E5%AE%AB%E9%87%8C%E6%89%BE%E5%88%B0%E5%87%BA%E5%8F%A3%EF%BC%9F%EF%BC%89/" title="搜索与遍历算法（怎么在迷宫里找到出口？）">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">索引</span>
+                        <span class="hidden-mobile">搜索与遍历算法（怎么在迷宫里找到出口？）</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -524,8 +500,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/06/24/%E6%A0%91%EF%BC%88Tree%EF%BC%89/" title="树（Tree）">
-                        <span class="hidden-mobile">树（Tree）</span>
+                      <a href="/2026/06/25/iframe/" title="iframe HTML 内联框架标签">
+                        <span class="hidden-mobile">iframe HTML 内联框架标签</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

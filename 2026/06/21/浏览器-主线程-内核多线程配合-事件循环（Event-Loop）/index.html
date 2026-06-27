@@ -27,7 +27,7 @@
 <meta property="og:description" content="浏览器">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-21T02:11:41.000Z">
-<meta property="article:modified_time" content="2026-06-22T00:28:49.010Z">
+<meta property="article:modified_time" content="2026-06-26T13:45:00.251Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="浏览器">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          2.7k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          16 分钟
+          23 分钟
         
       </span>
     
@@ -415,16 +415,32 @@
 <td>前台迎宾（盯着哪个顾客拍桌子叫服务员）</td>
 </tr>
 </tbody></table>
+<h1 id="执行栈"><a href="#执行栈" class="headerlink" title="执行栈"></a>执行栈</h1><p>JS 引擎用来追踪“当前程序正在执行哪个函数”的一种数据结构。</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-keyword">function</span> <span class="hljs-title function_">funcB</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;B工作完了&#x27;</span>);<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">funcA</span>(<span class="hljs-params"></span>) &#123;<br>  funcB(); <span class="hljs-comment">// A 里面调用了 B</span><br>  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;A工作完了&#x27;</span>);<br>&#125;<br><br>funcA(); <span class="hljs-comment">// 主程序开始调用 A</span><br></code></pre></td></tr></table></figure>
+
+<p>初始状态：执行栈是空的。</p>
+<p>全局上下文入栈：JS 引擎开始读取整篇代码（这叫全局执行上下文 global()），压入栈底。</p>
+<p>调用 funcA()：遇到 funcA()，把它压入栈顶。此时栈内：[global, funcA]。</p>
+<p>调用 funcB()：在 funcA 内部遇到了 funcB()，把 funcB 压入栈顶。此时栈内：[global, funcA, funcB]。</p>
+<p>执行 funcB：此时 funcB 在最顶端，打印 ‘B工作完了’。funcB 执行结束，弹出执行栈。此时栈内：[global, funcA]。</p>
+<p>继续执行 funcA：回到 funcA 刚才停下的地方，打印 ‘A工作完了’。funcA 执行结束，弹出执行栈。此时栈内：[global]。</p>
+<p>结束：全局代码跑完，global 弹出，执行栈再次变空。</p>
 <h1 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h1><p>遇到同步任务：大厨自己当场做完。</p>
 <p>遇到定时器（setTimeout）：大厨把沙漏往“定时器触发线程（计时员）”怀里一塞：“你帮我倒计时 3 秒，到了叫我！”然后大厨继续炒下一个菜。</p>
 <p>遇到网络请求（Axios &#x2F; Fetch）：大厨把订单往“异步 HTTP 请求线程（采购员）”手里一塞：“你去服务器买个数据，买到了叫我！”大厨转头又去炒别的菜。</p>
-<h1 id="事件循环（Event-Loop）"><a href="#事件循环（Event-Loop）" class="headerlink" title="事件循环（Event Loop）"></a>事件循环（Event Loop）</h1><div style="color:red">
+<h1 id="微任务-MicroTask"><a href="#微任务-MicroTask" class="headerlink" title="微任务(MicroTask)"></a>微任务(MicroTask)</h1><p>由 JS 引擎自身发起的异步任务。它们的优先级极高，只要同步代码一执行完，立刻插队全部执行掉，执行完微任务才会去执行下一个宏任务。</p>
+<p>Promise.then() &#x2F; .catch() &#x2F; .finally()</p>
+<p>Vue 3 的 nextTick()</p>
+<p>MutationObserver</p>
+<h1 id="宏任务-MacroTask"><a href="#宏任务-MacroTask" class="headerlink" title="宏任务(MacroTask)"></a>宏任务(MacroTask)</h1><p>由浏览器或宿主环境发起的异步任务。它们通常比较重，需要排队等候。</p>
+<p>setTimeout &#x2F; setInterval</p>
+<p>postMessage</p>
+<p>DOM 事件（如用户点击 click、滚动 scroll 后的回调函数）</p>
+<p>Ajax&#x2F;Fetch 网络请求完成后的回调</p>
+<h1 id="事件循环（Event-Loop）"><a href="#事件循环（Event-Loop）" class="headerlink" title="事件循环（Event Loop）"></a>事件循环（Event Loop）</h1><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-attr">[开始]</span> ──&gt; 执行栈(同步任务) ──&gt; 栈空了 ──&gt; 检查并清空【微任务队列】 <br>               ▲                                      │<br>               │                                      ▼<br>               └──────────执行【一个】宏任务 ◄── 从【宏任务队列】提取<br></code></pre></td></tr></table></figure>
 
-<p>清空同步 -&gt; 清空微任务 -&gt; 渲染 -&gt; 执行一个宏任务 -&gt; 再清空微任务” 的死循环</p>
-</div>
-
-<p>宏任务队列（Macro-task）：存放定时器到期、点击事件触发的回调函数（像普通顾客排队）。</p>
 <p>微任务队列（Micro-task）：存放 Promise.then 的回调、MutationObserver（像 VIP 顾客插队）。</p>
+<p>宏任务队列（Macro-task）：存放定时器到期、点击事件触发的回调函数（像普通顾客排队）。</p>
 <p>第一步（执行栈）：大厨（JS主线程）先把手头所有的同步代码（主线程执行栈）全部炒完。</p>
 <p>第二步（微任务）：主线程空闲了。大厨走到厨房门口，先看“微任务队列（VIP通道）”。如果里面有 Promise.then 在排队，大厨会一口气把所有的微任务全部做完，直到 VIP 通道清空。</p>
 <p>第三步（渲染）：大厨看一眼装修队（GUI渲染线程）：“页面需要更新吗？”如果要更新，装修队此时入场开始刷新网页（Render）。</p>
