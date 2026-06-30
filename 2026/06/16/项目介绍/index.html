@@ -27,7 +27,7 @@
 <meta property="og:description" content="项目面试">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-16T00:00:15.000Z">
-<meta property="article:modified_time" content="2026-06-21T13:01:42.149Z">
+<meta property="article:modified_time" content="2026-06-30T10:03:45.004Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="项目面试">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          359 字
+          987 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          3 分钟
+          9 分钟
         
       </span>
     
@@ -381,47 +381,70 @@
             
               <div class="markdown-body">
                 
-                <h1 id="完整的部署流程"><a href="#完整的部署流程" class="headerlink" title="完整的部署流程"></a>完整的部署流程</h1><table>
+                <table>
 <thead>
 <tr>
-<th>层面</th>
+<th>层级</th>
 <th>技术栈</th>
-<th>面试关键词</th>
+<th>核心文件&#x2F;实现内容</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>前端</td>
-<td>Vue3 + Pinia + Router + axios</td>
-<td>组件化、状态管理、路由守卫、懒加载</td>
+<td>前端框架</td>
+<td>Vue3 + Pinia + Vue Router</td>
+<td>App.vue、router</td>
 </tr>
 <tr>
-<td>中间</td>
-<td>Nginx 反代 + 环境变量</td>
-<td>同源策略、反向代理、CORS 绕过</td>
+<td>UI 组件</td>
+<td>原生 CSS + Swiper + 动态组件</td>
+<td>26 个公司品牌页 + 卡片网格 + 侧栏导航</td>
+</tr>
+<tr>
+<td>状态管理</td>
+<td>Pinia stores</td>
+<td>galgameStore.js、authStore.js、useWorkStore.js</td>
 </tr>
 <tr>
 <td>后端</td>
-<td>Express + mysql2 + bcrypt</td>
-<td>RESTful API、连接池、JWT&#x2F;登录</td>
+<td>Express (TS) + mysql2 + bcrypt</td>
+<td>server.ts</td>
 </tr>
 <tr>
 <td>数据库</td>
-<td>MariaDB + 外键 + 软删除</td>
-<td>父子表、JOIN、JSON_OBJECT、索引</td>
+<td>MariaDB</td>
+<td>companies、works、users，外键 + 软删除</td>
+</tr>
+<tr>
+<td>认证</td>
+<td>bcrypt + localStorage</td>
+<td>登录&#x2F;注册 + 路由守卫</td>
+</tr>
+<tr>
+<td>图床</td>
+<td>GitHub + jsDelivr + Nginx 反代</td>
+<td>&#x2F;medias&#x2F; → CDN</td>
 </tr>
 <tr>
 <td>部署</td>
-<td>PM2 + Nginx + 安全组</td>
-<td>进程保活、SSL 终止</td>
+<td>PM2 + Nginx</td>
+<td>服务器 110.42.248.8，前后端同源</td>
+</tr>
+<tr>
+<td>动画</td>
+<td>Live2D + PixiJS + 打字机</td>
+<td>丛雨看板娘 + 对话气泡</td>
 </tr>
 </tbody></table>
-<p>git</p>
-<p>ssh协议</p>
-<p>http（https）协议</p>
-<p>还有那个永久保存到浏览器的  还有jwt令牌 什么正则表达式 什么滑动窗口算法 来判断密码是不是符合要</p>
-<p>求或者太简单</p>
-<p>面试可以说”用 Node.js 做全栈项目，了解数据库和部署，现在在学 Spring Boot 上手后端工作”。两条腿走——Node 证明你能全栈，Java 证明你能接手公司后端。</p>
-
+<p>复盘路线图<br>层	复盘重点	核心文件</p>
+<p><code>1、数据库	表设计、外键、软删除、JSON_OBJECT	MariaDB SQL</code></p>
+<p><code>2、后端	Express 路由、连接池、bcrypt、TS 迁移	server.ts</code></p>
+<p><code>3、认证	登录/注册、路由守卫、localStorage	authStore.js</code></p>
+<p><code>4、状态管理	Pinia stores、axios 封装、环境变量	galgameStore.js</code></p>
+<p><code>5、前端组件	GalNav 侧栏映射、AllCompany 面板、卡片网格	GalNav.vue</code></p>
+<p><code>6、特色功能	Live2D 看板娘、Nginx 图片反代、打字机	murasame.vue</code></p>
+<p><code>7、部署运维	Nginx 配置、PM2、SSH、安全组	服务器 /etc/nginx/</code></p>
+<p>PixiJS（渲染引擎） + pixi-live2d-display（模型加载库） + Pinia（对话状态）</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs stylus">onMounted<br>  ↓<br>创建 PixiJS Application（透明背景、自适应父容器）<br>  ↓<br>Live2DModel<span class="hljs-selector-class">.registerTicker</span>() —— 把 Pixi 的时钟注册给 Live2D，让模型动起来<br>  ↓<br>Live2DModel<span class="hljs-selector-class">.from</span>(<span class="hljs-string">&#x27;/live2d/murasame/murasame.model3.json&#x27;</span>, &#123; autoInteract: true &#125;)<br>  ↓<br>设置缩放、锚点、位置居中<br>  ↓<br>app<span class="hljs-selector-class">.value</span><span class="hljs-selector-class">.stage</span><span class="hljs-selector-class">.addChild</span>(model) —— 模型放进 Pixi 舞台上<br></code></pre></td></tr></table></figure>
                 
               </div>
             

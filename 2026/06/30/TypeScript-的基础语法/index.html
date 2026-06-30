@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="应用层协议Web 相关  HTTPS：HTTP 加密版（443 端口）HTTP&#x2F;2、HTTP&#x2F;3：新版网页协议FTP：文件明文传输FTPS &#x2F; SFTP：加密文件传输（SFTP 基于 SSH）WebSocket：网页长连接远程管理  SSH（22）：安全远程登录Telnet（23）：明文远程登录（淘汰）RDP：Windows 远程桌面VNC：图形化远程控制邮件协议">
+    <meta name="description" content="TypeScript 的基础语法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="协议">
-<meta property="og:url" content="http://example.com/2026/06/29/%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:title" content="TypeScript 的基础语法">
+<meta property="og:url" content="http://example.com/2026/06/30/TypeScript-%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="应用层协议Web 相关  HTTPS：HTTP 加密版（443 端口）HTTP&#x2F;2、HTTP&#x2F;3：新版网页协议FTP：文件明文传输FTPS &#x2F; SFTP：加密文件传输（SFTP 基于 SSH）WebSocket：网页长连接远程管理  SSH（22）：安全远程登录Telnet（23）：明文远程登录（淘汰）RDP：Windows 远程桌面VNC：图形化远程控制邮件协议">
+<meta property="og:description" content="TypeScript 的基础语法">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-06-29T02:03:58.000Z">
-<meta property="article:modified_time" content="2026-06-30T03:02:10.373Z">
+<meta property="article:published_time" content="2026-06-30T01:29:40.000Z">
+<meta property="article:modified_time" content="2026-06-30T01:46:00.096Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="协议">
+<meta property="article:tag" content="TypeScript 的基础语法">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>协议 - </title>
+  <title>TypeScript 的基础语法 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="协议"></span>
+            <span id="subtitle" data-typed-text="TypeScript 的基础语法"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-06-29 10:03" pubdate>
-          2026年6月29日 上午
+        <time datetime="2026-06-30 09:29" pubdate>
+          2026年6月30日 上午
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          507 字
+          1.2k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          5 分钟
+          10 分钟
         
       </span>
     
@@ -376,24 +376,16 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">协议</h1>
+            <h1 id="seo-header">TypeScript 的基础语法</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="应用层协议"><a href="#应用层协议" class="headerlink" title="应用层协议"></a>应用层协议</h1><h1 id="web-相关">Web 相关</h1>
+                <p>TS &#x3D; JS + 类型安全</p>
+<h1 id="基础类型声明（给变量加保镖）"><a href="#基础类型声明（给变量加保镖）" class="headerlink" title="基础类型声明（给变量加保镖）"></a>基础类型声明（给变量加保镖）</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 1. 基础类型</span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">25</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;Miku&quot;</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">isIdol</span>: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;<br><br><span class="hljs-comment">// 2. 数组类型（两种写法的效果完全一样）</span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">scores</span>: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">90</span>, <span class="hljs-number">85</span>, <span class="hljs-number">95</span>]; <br><span class="hljs-keyword">let</span> <span class="hljs-attr">skills</span>: <span class="hljs-title class_">Array</span>&lt;<span class="hljs-built_in">string</span>&gt; = [<span class="hljs-string">&quot;Vue&quot;</span>, <span class="hljs-string">&quot;Node&quot;</span>, <span class="hljs-string">&quot;TS&quot;</span>];<br><br><span class="hljs-comment">// 3. 任意类型 (any) —— 相当于关掉 TS 的检查，退回原生 JS </span><br><span class="hljs-comment">// 工业界一般不建议用，但在刚从 JS 转过来的过渡期可以用它救急</span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">anything</span>: <span class="hljs-built_in">any</span> = <span class="hljs-string">&quot;我爱变啥变啥&quot;</span>;<br>anything = <span class="hljs-number">123</span>;<br></code></pre></td></tr></table></figure>
 
-<h2 id="HTTPS：HTTP-加密版（443-端口）"><a href="#HTTPS：HTTP-加密版（443-端口）" class="headerlink" title="HTTPS：HTTP 加密版（443 端口）"></a>HTTPS：HTTP 加密版（443 端口）</h2><h2 id="HTTP-2、HTTP-3：新版网页协议"><a href="#HTTP-2、HTTP-3：新版网页协议" class="headerlink" title="HTTP&#x2F;2、HTTP&#x2F;3：新版网页协议"></a>HTTP&#x2F;2、HTTP&#x2F;3：新版网页协议</h2><h2 id="FTP：文件明文传输"><a href="#FTP：文件明文传输" class="headerlink" title="FTP：文件明文传输"></a>FTP：文件明文传输</h2><h2 id="FTPS-SFTP：加密文件传输（SFTP-基于-SSH）"><a href="#FTPS-SFTP：加密文件传输（SFTP-基于-SSH）" class="headerlink" title="FTPS &#x2F; SFTP：加密文件传输（SFTP 基于 SSH）"></a>FTPS &#x2F; SFTP：加密文件传输（SFTP 基于 SSH）</h2><h2 id="WebSocket：网页长连接"><a href="#WebSocket：网页长连接" class="headerlink" title="WebSocket：网页长连接"></a>WebSocket：网页长连接</h2><h1 id="远程管理">远程管理</h1>
-
-<h2 id="SSH（22）：安全远程登录"><a href="#SSH（22）：安全远程登录" class="headerlink" title="SSH（22）：安全远程登录"></a>SSH（22）：安全远程登录</h2><h2 id="Telnet（23）：明文远程登录（淘汰）"><a href="#Telnet（23）：明文远程登录（淘汰）" class="headerlink" title="Telnet（23）：明文远程登录（淘汰）"></a>Telnet（23）：明文远程登录（淘汰）</h2><h2 id="RDP：Windows-远程桌面"><a href="#RDP：Windows-远程桌面" class="headerlink" title="RDP：Windows 远程桌面"></a>RDP：Windows 远程桌面</h2><h1 id="VNC：图形化远程控制"><a href="#VNC：图形化远程控制" class="headerlink" title="VNC：图形化远程控制"></a>VNC：图形化远程控制</h1><h1 id="邮件协议">邮件协议</h1>
-
-<h2 id="SMTP：发邮件"><a href="#SMTP：发邮件" class="headerlink" title="SMTP：发邮件"></a>SMTP：发邮件</h2><h2 id="POP3：收邮件"><a href="#POP3：收邮件" class="headerlink" title="POP3：收邮件"></a>POP3：收邮件</h2><p>IMAP：同步邮件（主流）</p>
-<p>域名、网络发现<br>DNS：域名解析（域名转 IP）<br>DHCP：自动分配内网 IP<br>NTP：网络时间同步</p>
-<p>其他业务应用<br>MySQL 协议：数据库连接<br>Redis 协议：缓存通信<br>MQTT：物联网设备通信<br>RTSP&#x2F;RTMP：直播、监控流媒体<br>SNMP：网络设备监控</p>
-<p>传输层协议（承载应用层）<br>TCP：可靠连接（HTTP&#x2F;SSH&#x2F;DNS 默认）<br>UDP：无连接、低延迟（直播、游戏、DNS 查询）</p>
-<p>网络层（IP 层）<br>IPv4 &#x2F; IPv6：地址寻址核心协议<br>ICMP：ping 命令使用（网络探测报错）<br>ARP：IP 转局域网 MAC 地址</p>
-<p>数据链路层（局域网）<br>Ethernet 以太网协议<br>PPP：拨号宽带协议</p>
-
+<h1 id="函数的类型约束（管好输入和输出）"><a href="#函数的类型约束（管好输入和输出）" class="headerlink" title="函数的类型约束（管好输入和输出）"></a>函数的类型约束（管好输入和输出）</h1><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">// 定义一个名为 <span class="hljs-keyword">User</span> <span class="hljs-title">的接口</span><br><span class="hljs-title">interface</span> <span class="hljs-keyword">User</span> <span class="hljs-title">&#123;</span><br><span class="hljs-title">    id</span>: <span class="hljs-keyword">number</span>;<br>    username: <span class="hljs-keyword">string</span>;<br>    email: <span class="hljs-keyword">string</span>;<br>    age?: <span class="hljs-keyword">number</span>; // 💡 注意这里的问号：表示这个属性是可选的（可有可无）<br>&#125;<br><br>// 实际使用：这个对象必须严格遵守 <span class="hljs-keyword">User</span> <span class="hljs-title">的结构</span><br><span class="hljs-title">const</span> myUser: <span class="hljs-keyword">User</span> <span class="hljs-title">= &#123;</span><br><span class="hljs-title">    id</span>: <span class="hljs-number">1001</span>,<br>    username: <span class="hljs-string">&quot;田中&quot;</span>,<br>    email: <span class="hljs-string">&quot;tanaka@example.com&quot;</span><br>    // age 没写也不会报错，因为它是可选的<br>&#125;;<br><br>// ❌ 报错示例：<br>const badUser: <span class="hljs-keyword">User</span> <span class="hljs-title">= &#123;</span><br><span class="hljs-title">    id</span>: <span class="hljs-number">1002</span>,<br>    username: <span class="hljs-string">&quot;佐藤&quot;</span><br>    // ❌ 报错：漏掉了必填的 email 属性！<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h1 id="接口（Interface）——-全栈开发的绝对灵魂-🌟"><a href="#接口（Interface）——-全栈开发的绝对灵魂-🌟" class="headerlink" title="接口（Interface）—— 全栈开发的绝对灵魂 🌟"></a>接口（Interface）—— 全栈开发的绝对灵魂 🌟</h1><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">// 定义一个名为 <span class="hljs-keyword">User</span> <span class="hljs-title">的接口</span><br><span class="hljs-title">interface</span> <span class="hljs-keyword">User</span> <span class="hljs-title">&#123;</span><br><span class="hljs-title">    id</span>: <span class="hljs-keyword">number</span>;<br>    username: <span class="hljs-keyword">string</span>;<br>    email: <span class="hljs-keyword">string</span>;<br>    age?: <span class="hljs-keyword">number</span>; // 💡 注意这里的问号：表示这个属性是可选的（可有可无）<br>&#125;<br><br>// 实际使用：这个对象必须严格遵守 <span class="hljs-keyword">User</span> <span class="hljs-title">的结构</span><br><span class="hljs-title">const</span> myUser: <span class="hljs-keyword">User</span> <span class="hljs-title">= &#123;</span><br><span class="hljs-title">    id</span>: <span class="hljs-number">1001</span>,<br>    username: <span class="hljs-string">&quot;田中&quot;</span>,<br>    email: <span class="hljs-string">&quot;tanaka@example.com&quot;</span><br>    // age 没写也不会报错，因为它是可选的<br>&#125;;<br><br>// ❌ 报错示例：<br>const badUser: <span class="hljs-keyword">User</span> <span class="hljs-title">= &#123;</span><br><span class="hljs-title">    id</span>: <span class="hljs-number">1002</span>,<br>    username: <span class="hljs-string">&quot;佐藤&quot;</span><br>    // ❌ 报错：漏掉了必填的 email 属性！<br>&#125;;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -411,7 +403,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%90%8E%E7%AB%AF/" class="category-chain-item">后端</a>
+  <a href="/categories/TypeScript/" class="category-chain-item">TypeScript</a>
   
   
 
@@ -426,7 +418,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8D%8F%E8%AE%AE/" class="print-no-link">#协议</a>
+        <a href="/tags/TypeScript-%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="print-no-link">#TypeScript 的基础语法</a>
       
     </div>
   
@@ -438,8 +430,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>协议</div>
-      <div>http://example.com/2026/06/29/协议/</div>
+      <div>TypeScript 的基础语法</div>
+      <div>http://example.com/2026/06/30/TypeScript-的基础语法/</div>
     </div>
     <div class="license-meta">
       
@@ -451,7 +443,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年6月29日</div>
+          <div>2026年6月30日</div>
         </div>
       
       
@@ -483,18 +475,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/06/30/TypeScript-%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" title="TypeScript 的基础语法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">TypeScript 的基础语法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/06/29/%E9%AB%98%E7%BA%A7%E7%AD%96%E7%95%A5/" title="高级策略">
-                        <span class="hidden-mobile">高级策略</span>
+                      <a href="/2026/06/29/%E5%8D%8F%E8%AE%AE/" title="协议">
+                        <span class="hidden-mobile">协议</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
