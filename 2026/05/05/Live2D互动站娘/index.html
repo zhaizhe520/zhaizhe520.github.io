@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Vue3 + Live2D">
+    <meta name="description" content="Vue3 + pixiJs &#x3D; Live2D">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue3 + Live2D 站娘">
-<meta property="og:url" content="http://example.com/2026/05/05/Vue3-Live2D-%E5%8F%AF%E4%BA%92%E5%8B%95%E7%AB%99%E5%A8%98/index.html">
+<meta property="og:title" content="Live2D互动站娘">
+<meta property="og:url" content="http://example.com/2026/05/05/Live2D%E4%BA%92%E5%8A%A8%E7%AB%99%E5%A8%98/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="Vue3 + Live2D">
+<meta property="og:description" content="Vue3 + pixiJs &#x3D; Live2D">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-05-05T14:32:30.000Z">
-<meta property="article:modified_time" content="2026-08-26T01:34:12.731Z">
+<meta property="article:modified_time" content="2026-08-26T15:05:02.927Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="Vue3 + Live2D">
+<meta property="article:tag" content="Live2D互动站娘">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Vue3 + Live2D 站娘 - </title>
+  <title>Live2D互动站娘 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vue3 + Live2D 站娘"></span>
+            <span id="subtitle" data-typed-text="Live2D互动站娘"></span>
           
         </div>
 
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.7k 字
+          5.1k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          40 分钟
+          43 分钟
         
       </span>
     
@@ -376,7 +376,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Vue3 + Live2D 站娘</h1>
+            <h1 id="seo-header">Live2D互动站娘</h1>
             
             
               <div class="markdown-body">
@@ -395,7 +395,6 @@
 <p>核心插件： pixi-live2d-display (连接 PixiJS 与 Live2D 的桥梁)</p>
 <p>构建工具： Vite (极速的热更新体验)</p>
 <p>动画库： GSAP (用于处理气泡弹出、UI 平滑位移)</p>
-<hr>
 <h1 id="🛠️-技术栈的构成（以你的项目为例）"><a href="#🛠️-技术栈的构成（以你的项目为例）" class="headerlink" title="🛠️ 技术栈的构成（以你的项目为例）"></a>🛠️ 技术栈的构成（以你的项目为例）</h1><p>一个完整、专业的 Live2D 宠物组件技术栈通常分为以下几个层次：</p>
 <ol>
 <li>前端框架 (The Framework)<br>选项： Vue 3</li>
@@ -419,51 +418,60 @@
 <p>作用：</p>
 <p>GSAP： 让宠物对话框弹出、位置移动更符合物理逻辑。</p>
 <p>Pinia： 如果你的宠物数据要在多个页面共享，它负责存储宠物的“记忆”。</p>
-<hr>
-<p>没问题，这是一份为你量身定制的 “环境初始化清单”。环境搭建与依赖配置。</p>
-<p>🛠️ 第一步：初始化 Vue3 项目<br>如果你还没有创建项目，先用 Vite 快速起步：</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">Bash<br><span class="hljs-comment"># 创建项目</span><br>輕量<br><span class="hljs-built_in">npm</span> create vite@latest my-live2d-pet -- --template vue<br>完整<br><span class="hljs-built_in">npm</span> create vue@latest<br></code></pre></td></tr></table></figure>
+<p>可能会出现 索引0的问题 很复杂 明天慢慢来吧</p>
+<h1 id="依赖安装"><a href="#依赖安装" class="headerlink" title="依赖安装"></a>依赖安装</h1><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">npm</span> install<br><br><span class="hljs-attribute">npm</span> install pixi.js@<span class="hljs-number">7</span>(<span class="hljs-number">6</span>.<span class="hljs-number">5</span>.<span class="hljs-number">10</span>) // 注意版本 <br><br><span class="hljs-attribute">npm</span> install pixi-live2d-display //live2D 解析插件<br><br><span class="hljs-attribute">npm</span> install live2dcubismcore  //live <span class="hljs-number">2</span>D 核心插件<br><br></code></pre></td></tr></table></figure>
 
-<h1 id="进入目录"><a href="#进入目录" class="headerlink" title="进入目录"></a>进入目录</h1><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">cd <span class="hljs-keyword">my</span>-live2d-pet<br></code></pre></td></tr></table></figure>
+<h1 id="初始化-Vue3-项目"><a href="#初始化-Vue3-项目" class="headerlink" title="初始化 Vue3 项目"></a>初始化 Vue3 项目</h1><p>如果你还没有创建项目，先用 Vite 快速起步：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql">輕量<br>npm <span class="hljs-keyword">create</span> vite<span class="hljs-variable">@latest</span> 项目名字 <span class="hljs-comment">-- --template vue</span><br><br>完整<br>npm <span class="hljs-keyword">create</span> vue<span class="hljs-variable">@latest</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="进入目录"><a href="#进入目录" class="headerlink" title="进入目录"></a>进入目录</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> 项目<br></code></pre></td></tr></table></figure>
 
 <h1 id="安装基础依赖"><a href="#安装基础依赖" class="headerlink" title="安装基础依赖"></a>安装基础依赖</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure>
-<p>📦 第二步：安装核心依赖<br>这是实现 Live2D 效果最关键的三件套：</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">Bash</span><br><span class="hljs-keyword"></span><span class="hljs-comment"># 1. 安装渲染引擎 PixiJS（建议使用 v7 版本，文档最全）</span><br>npm <span class="hljs-keyword">install </span>pixi.<span class="hljs-keyword">js@7</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="安装核心依赖"><a href="#安装核心依赖" class="headerlink" title="安装核心依赖"></a>安装核心依赖</h1><p>这是实现 Live2D 效果最关键的三件套：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">安装渲染引擎 PixiJS（使用 xxx 版本）<br><br>npm install pixi.<span class="hljs-symbol">js@</span><span class="hljs-number">7</span>  <span class="hljs-comment">//这个可能与pixi-live2d-display版本不兼容 需要查看具体文档</span><br></code></pre></td></tr></table></figure>
 
 <figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-meta"># 2. 安装 Live2D 解析插件</span><br>npm install pixi-live2d-<span class="hljs-keyword">display</span><br></code></pre></td></tr></table></figure>
 
-<h1 id="3-安装官方核心运行时（Cubism-Core）"><a href="#3-安装官方核心运行时（Cubism-Core）" class="headerlink" title="3. 安装官方核心运行时（Cubism Core）"></a>3. 安装官方核心运行时（Cubism Core）</h1><h1 id="注意：由于版权原因，这个包通常需要手动引入，或者安装社区维护的版本"><a href="#注意：由于版权原因，这个包通常需要手动引入，或者安装社区维护的版本" class="headerlink" title="注意：由于版权原因，这个包通常需要手动引入，或者安装社区维护的版本"></a>注意：由于版权原因，这个包通常需要手动引入，或者安装社区维护的版本</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> live2dcubismcore<br></code></pre></td></tr></table></figure>
-
+<h1 id="3-安装官方核心运行时（Cubism-Core）"><a href="#3-安装官方核心运行时（Cubism-Core）" class="headerlink" title="3. 安装官方核心运行时（Cubism Core）"></a>3. 安装官方核心运行时（Cubism Core）</h1><p><code>注意：由于版权原因，这个包通常需要手动引入，或者安装社区维护的版本，npm里面没有cubism core核心</code></p>
+<p><code>npm install live2dcubismcore</code></p>
 <p><code>Live2DCubismCore 是解析 .model3.json 的二進制黑盒</code></p>
 <div style="color:pink">核心官網</div>
 
 <p><code>https://www.live2d.com/zh-CHS/sdk/download/web/</code></p>
-<div style="color:pink">Cubism Core for Web</div>
-
-<div style="color:pink">不是Cubism SDK for Web</div>
-
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs scss">簡單來說，Cubism Core 是引擎的「心臟」（底層解析邏輯），而 Cubism SDK 是外層的「軀幹」（各種封裝好的 API 和工具類）。如果只加載了 SDK 而沒有 Core，或者 Core 的版本與模型不匹配，就會出現你遇到的 <span class="hljs-built_in">read</span>(<span class="hljs-number">0</span>) 報錯，因為 SDK 根本無法解析模型數據。<br><br></code></pre></td></tr></table></figure>
+<div style="color:pink">Cubism Core for Web<div style="color:red">切记不是Cubism SDK for Web</div></div>
 
 
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs scss">Cubism Core 是引擎的「心臟」（底層解析邏輯），而 Cubism SDK 是外層的「軀幹」（各種封裝好的 API 和工具類）。如果只加載了 SDK 而沒有 Core，或者 Core 的版本與模型不匹配，<br><br>可能会遇到 <span class="hljs-built_in">read</span>(<span class="hljs-number">0</span>) 報錯，因為 SDK 根本無法解析模型數據。<br><br></code></pre></td></tr></table></figure>
 
 <div style="color:pink">live2dcubismcore.min.js</div>
 
 <p>pixi-live2d-display	你目前選用的第三方適配庫，它需要 Cubism Core 才能工作。(npm 包)</p>
-<p>🌐 在 index.html 引入核心库<br>在 src&#x2F;main.js 加载之前，我们需要确保 Live2D 的底层核心库已经加载。在 index.html 的 <head> 中添加：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><br>HTML<br><span class="hljs-comment">&lt;!-- 引入 Live2D Cubism SDK 核心文件 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cubism.live2d.com/sdk-web/bin/cubismcore/live2dcubismcore.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h1 id="在-index-html-引入核心库"><a href="#在-index-html-引入核心库" class="headerlink" title="在 index.html 引入核心库"></a>在 index.html 引入核心库</h1><p>在 src&#x2F;main.js 加载之前，我们需要确保 Live2D 的底层核心库已经加载。在 index.html 的 <code>&lt;head&gt;</code>中添加：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 引入 Live2D Cubism SDK 核心文件 --&gt;</span><br><br><span class="hljs-comment">&lt;!--在线版本 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cubism.live2d.com/sdk-web/bin/cubismcore/live2dcubismcore.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--离线版本--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/live2dcubismcore.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<details>
+<summary>反編譯 拿模型</summary>
+
+<p>.lpk 加密格式反编译，提取出标准的 .moc3 和 .json 资源。</p>
+<p><code>https://github.com/ihopenot/LpkUnpacker</code> 反编译官网</p>
+<p>📂 静态资源配置（关键环节）</p>
+<p>Live2D 模型包含很多 .json、.moc3 和图片文件，这些必须放在 public 目录下，否则 Vite 会找不到它们，vite 会编译public  以外的文件</p>
+<p>建议的目录结构：（你解包壓縮的文件在哪裡就在哪裡）json文件不要動</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs 1c">public/<br>└── live2d/<br><span class="hljs-string">|    └── xxx/             </span><br><span class="hljs-string">|        ├── xxx.model3.json</span><br><span class="hljs-string">|        ├── xxx.moc3</span><br><span class="hljs-string">|        ├── xxx.png</span><br><span class="hljs-string">|      </span><br>├── src/<br>│   └── components/<br>│       └── Live2d.vue      <span class="hljs-meta"># 你的live2d组件</span><br>└── index.html<br></code></pre></td></tr></table></figure>
+</details>
 
 
 
-<h1 id="反編譯-拿模型"><a href="#反編譯-拿模型" class="headerlink" title="反編譯 拿模型"></a>反編譯 拿模型</h1><p>.lpk 加密格式反编译，提取出标准的 .moc3 和 .json 资源。</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/ihopenot/</span>LpkUnpacker<br></code></pre></td></tr></table></figure>
 
-<p>📂 第三步：静态资源配置（关键环节）<br>Live2D 模型包含很多 .json、.moc3 和图片文件，这些必须放在 public 目录下，否则 Vite 会找不到它们。</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs 1c">建议的目录结构：（你解包壓縮的文件在哪裡就在哪裡）json文件不要動<br>Plaintext<br>public/<br>└── live2d/<br><span class="hljs-string">|    └── xxx/             </span><br><span class="hljs-string">|        ├── xxx.model3.json</span><br><span class="hljs-string">|        ├── xxx.moc3</span><br><span class="hljs-string">|        ├── xxx.png</span><br><span class="hljs-string">|      </span><br>├── src/<br>│   └── components/<br>│       └── Live2dPet.vue      <span class="hljs-meta"># 你的宠物组件</span><br>└── index.html<br></code></pre></td></tr></table></figure>
+<h1 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h1><p>为了确认你的环境已经配好，可以在 App.vue 中尝试打印一下对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> <span class="hljs-variable constant_">PIXI</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;pixi.js&#x27;</span>;<br><span class="hljs-comment">///cubism4 是什么玩意</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Live2DModel</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;pixi-live2d-display/cubism4&#x27;</span>; <br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Pixi版本:&#x27;</span>, <span class="hljs-variable constant_">PIXI</span>.<span class="hljs-property">VERSION</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Live2D模型类:&#x27;</span>, <span class="hljs-title class_">Live2DModel</span>);<br></code></pre></td></tr></table></figure>
 
-<p>🏁 第五步：验证安装<br>为了确认你的环境已经配好，可以在 App.vue 中尝试打印一下对象：</p>
-<p>JavaScript<br>import * as PIXI from ‘pixi.js’;<br>import { Live2DModel } from ‘pixi-live2d-display’;</p>
-<p>console.log(‘Pixi版本:’, PIXI.VERSION);<br>console.log(‘Live2D模型类:’, Live2DModel);</p>
-<h1 id="技術棧介紹"><a href="#技術棧介紹" class="headerlink" title="技術棧介紹"></a>技術棧介紹</h1><h2 id="PixiJS-是一款效能極強的開源-2D-渲染引擎。"><a href="#PixiJS-是一款效能極強的開源-2D-渲染引擎。" class="headerlink" title="PixiJS 是一款效能極強的開源 2D 渲染引擎。"></a>PixiJS 是一款效能極強的開源 2D 渲染引擎。</h2><p>如果你想在網頁上製作流暢的動畫、遊戲或是處理大量的圖像，PixiJS 幾乎是業界的首選。它最大的特色在於「快」，利用 WebGL（以及現代的 WebGPU）來達成硬體加速，讓你在瀏覽器中同時渲染成千上萬個物件還能保持 60 FPS。</p>
+<h1 id="怎么渲染到页面上我也不知道-明天写吧"><a href="#怎么渲染到页面上我也不知道-明天写吧" class="headerlink" title="怎么渲染到页面上我也不知道 明天写吧"></a>怎么渲染到页面上我也不知道 明天写吧</h1><details>
+<summary>技術棧介紹</summary>
+
+
+<h1 id="PixiJS-是一款效能極強的開源-2D-渲染引擎。"><a href="#PixiJS-是一款效能極強的開源-2D-渲染引擎。" class="headerlink" title="PixiJS 是一款效能極強的開源 2D 渲染引擎。"></a>PixiJS 是一款效能極強的開源 2D 渲染引擎。</h1><p>如果你想在網頁上製作流暢的動畫、遊戲或是處理大量的圖像，PixiJS 幾乎是業界的首選。它最大的特色在於「快」，利用 WebGL（以及現代的 WebGPU）來達成硬體加速，讓你在瀏覽器中同時渲染成千上萬個物件還能保持 60 FPS。</p>
 <p>以下是關於 PixiJS v7 的核心介紹：</p>
 <p>1.它不是遊戲引擎，而是渲染引擎<br>這是一個常見的誤區。PixiJS 不包含物理引擎、碰撞偵測或關卡編輯器（雖然可以搭配其他工具實現）。它專注於一件事：把圖形放到螢幕上，並且快到不可思議。</p>
 <p>與 Three.js 相比： Three.js 專攻 3D，而 PixiJS 專攻 2D。</p>
@@ -483,7 +491,7 @@
 <p>API 穩定性： 許多知名的遊戲框架（如 Phaser）或開發工具，底層對 v7 的相容性最高。</p>
 <p>TypeScript 支援： v7 對 TypeScript 有非常完美的定義，開發體驗極佳，能有效避免拼錯屬性的低級錯誤。</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs stata">import &#123; Application, Sprite &#125; from &#x27;pixi.js&#x27;;<br><br><span class="hljs-comment">// 1. 建立應用程式</span><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">app</span> = new Application(&#123; width: 800, height: 600 &#125;);<br>document.body.appendChild(<span class="hljs-keyword">app</span>.<span class="hljs-keyword">view</span>);<br><br><span class="hljs-comment">// 2. 載入並建立精靈</span><br><span class="hljs-keyword">const</span> bunny = Sprite.from(&#x27;https:<span class="hljs-comment">//pixijs.com/assets/bunny.png&#x27;);</span><br><br><span class="hljs-comment">// 3. 設定屬性並加入舞台</span><br>bunny.anchor.<span class="hljs-keyword">set</span>(0.5); <span class="hljs-comment">// 設定中心點</span><br>bunny.x = <span class="hljs-keyword">app</span>.screen.width / 2;<br>bunny.y = <span class="hljs-keyword">app</span>.screen.height / 2;<br><span class="hljs-keyword">app</span>.stage.addChild(bunny);<br><br><span class="hljs-comment">// 4. 動畫迴圈</span><br><span class="hljs-keyword">app</span>.ticker.add((delta) =&gt; &#123;<br>    bunny.rotation += 0.1 * delta; <span class="hljs-comment">// 讓兔子轉起來</span><br>&#125;);<br><br></code></pre></td></tr></table></figure>
-<hr>
+
 <ol>
 <li>GSAP 是什麼？<br>GSAP (GreenSock Animation Platform) 是一個專門用來處理屬性動畫的 JavaScript 庫。</li>
 </ol>
@@ -503,12 +511,15 @@
 <p>UI 氣泡彈出： 當叢雨說話時，對話氣泡從縮小狀態（scale: 0）平滑地彈大（scale: 1），並帶有一點彈性效果 (Back.easeOut)。</p>
 <p>平滑位移： 點擊按鈕，讓叢雨從畫面左邊緩緩滑動到右邊，而不是瞬間移動。</p>
 <p>呼吸感： 雖然 Live2D 有內建呼吸，但如果你想讓整個模型有種輕微的上下浮動感，GSAP 一行代碼就能搞定。</p>
-<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>第一階段：誰負責什麼？（大藍圖）<br>在你的網頁裡，這三者是合作關係：</p>
+<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p>第一階段：誰負責什麼？（大藍圖）<br>在你的網頁裡，這三者是合作關係：</p>
 <p>PixiJS (引擎)：它就像是一個畫布和畫家。它負責在瀏覽器上畫圖，並保證每秒畫 60 次（FPS），讓畫面看起來很順。</p>
 <p>Live2D Cubism Core (大腦)：這是 Live2D 官方提供的核心黑盒子。它負責計算「當人物轉頭時，臉上的線條該怎麼變形」。</p>
 <p>pixi-live2d-display (翻譯官)：這是最關鍵的插件。因為畫家（PixiJS）聽不懂大腦（Live2D Core）的專業術語，這個插件負責在兩者之間傳話，把計算好的變形結果交給畫家畫出來。</p>
 <p>GSAP：提供絲滑的轉場與 UI 反饋（視覺潤飾）。</p>
-<hr>
+</details>
+
+
+
 
                 
               </div>
@@ -542,7 +553,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Vue3-Live2D/" class="print-no-link">#Vue3 + Live2D</a>
+        <a href="/tags/Live2D%E4%BA%92%E5%8A%A8%E7%AB%99%E5%A8%98/" class="print-no-link">#Live2D互动站娘</a>
       
     </div>
   
@@ -554,8 +565,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vue3 + Live2D 站娘</div>
-      <div>http://example.com/2026/05/05/Vue3-Live2D-可互動站娘/</div>
+      <div>Live2D互动站娘</div>
+      <div>http://example.com/2026/05/05/Live2D互动站娘/</div>
     </div>
     <div class="license-meta">
       
