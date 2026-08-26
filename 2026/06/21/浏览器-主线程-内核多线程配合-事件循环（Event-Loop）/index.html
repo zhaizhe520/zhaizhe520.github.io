@@ -1,0 +1,919 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Mashiro">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器(主线程+内核多线程配合 + 事件循环（Event Loop）)">
+<meta property="og:url" content="http://example.com/2026/06/21/%E6%B5%8F%E8%A7%88%E5%99%A8-%E4%B8%BB%E7%BA%BF%E7%A8%8B-%E5%86%85%E6%A0%B8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%85%8D%E5%90%88-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%EF%BC%88Event-Loop%EF%BC%89/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="浏览器">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-06-21T02:11:41.000Z">
+<meta property="article:modified_time" content="2026-08-26T01:34:12.758Z">
+<meta property="article:author" content="Mashiro">
+<meta property="article:tag" content="浏览器">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>浏览器(主线程+内核多线程配合 + 事件循环（Event Loop）) - </title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>我不是二次元</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/zhaizhe520" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="https://github.com/zhaizhe520" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="浏览器(主线程+内核多线程配合 + 事件循环（Event Loop）)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-06-21 10:11" pubdate>
+          2026年6月21日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          23 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">浏览器(主线程+内核多线程配合 + 事件循环（Event Loop）)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="浏览器五大线程类比餐厅角色"><a href="#浏览器五大线程类比餐厅角色" class="headerlink" title="浏览器五大线程类比餐厅角色"></a>浏览器五大线程类比餐厅角色</h1><table>
+<thead>
+<tr>
+<th>员工职位（线程名称）</th>
+<th>岗位职责（核心功能）</th>
+<th>对应餐厅里的角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JS 引擎线程</td>
+<td>负责解析和运行 JavaScript 代码（比如 V8 引擎）。它就是那个单线程！</td>
+<td>大厨（全餐厅只有这一个大厨，切菜、炒菜全靠他，一次只能干一件事）</td>
+</tr>
+<tr>
+<td>GUI 渲染线程</td>
+<td>负责渲染浏览器界面，解析 HTML, CSS，构建 DOM 树和布局。</td>
+<td>装修队 &#x2F; 传菜员（负责把盘子摆得漂亮，把餐厅装修好）</td>
+</tr>
+<tr>
+<td>定时器触发线程</td>
+<td>负责管 setTimeout 和 setInterval 的倒计时。</td>
+<td>沙漏计时员（专门帮大厨盯着蒸鱼的时间）</td>
+</tr>
+<tr>
+<td>异步 HTTP 请求线程</td>
+<td>负责处理 Ajax、fetch 等网络请求。</td>
+<td>外购采购员（专门去海鲜市场帮大厨买食材）</td>
+</tr>
+<tr>
+<td>事件触发线程</td>
+<td>负责管用户的点击（click）、鼠标滚动等事件。</td>
+<td>前台迎宾（盯着哪个顾客拍桌子叫服务员）</td>
+</tr>
+</tbody></table>
+<h1 id="执行栈"><a href="#执行栈" class="headerlink" title="执行栈"></a>执行栈</h1><p>JS 引擎用来追踪“当前程序正在执行哪个函数”的一种数据结构。</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-keyword">function</span> <span class="hljs-title function_">funcB</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;B工作完了&#x27;</span>);<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">funcA</span>(<span class="hljs-params"></span>) &#123;<br>  funcB(); <span class="hljs-comment">// A 里面调用了 B</span><br>  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;A工作完了&#x27;</span>);<br>&#125;<br><br>funcA(); <span class="hljs-comment">// 主程序开始调用 A</span><br></code></pre></td></tr></table></figure>
+
+<p>初始状态：执行栈是空的。</p>
+<p>全局上下文入栈：JS 引擎开始读取整篇代码（这叫全局执行上下文 global()），压入栈底。</p>
+<p>调用 funcA()：遇到 funcA()，把它压入栈顶。此时栈内：[global, funcA]。</p>
+<p>调用 funcB()：在 funcA 内部遇到了 funcB()，把 funcB 压入栈顶。此时栈内：[global, funcA, funcB]。</p>
+<p>执行 funcB：此时 funcB 在最顶端，打印 ‘B工作完了’。funcB 执行结束，弹出执行栈。此时栈内：[global, funcA]。</p>
+<p>继续执行 funcA：回到 funcA 刚才停下的地方，打印 ‘A工作完了’。funcA 执行结束，弹出执行栈。此时栈内：[global]。</p>
+<p>结束：全局代码跑完，global 弹出，执行栈再次变空。</p>
+<h1 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h1><p>遇到同步任务：大厨自己当场做完。</p>
+<p>遇到定时器（setTimeout）：大厨把沙漏往“定时器触发线程（计时员）”怀里一塞：“你帮我倒计时 3 秒，到了叫我！”然后大厨继续炒下一个菜。</p>
+<p>遇到网络请求（Axios &#x2F; Fetch）：大厨把订单往“异步 HTTP 请求线程（采购员）”手里一塞：“你去服务器买个数据，买到了叫我！”大厨转头又去炒别的菜。</p>
+<h1 id="微任务-MicroTask"><a href="#微任务-MicroTask" class="headerlink" title="微任务(MicroTask)"></a>微任务(MicroTask)</h1><p>由 JS 引擎自身发起的异步任务。它们的优先级极高，只要同步代码一执行完，立刻插队全部执行掉，执行完微任务才会去执行下一个宏任务。</p>
+<p>Promise.then() &#x2F; .catch() &#x2F; .finally()</p>
+<p>Vue 3 的 nextTick()</p>
+<p>MutationObserver</p>
+<h1 id="宏任务-MacroTask"><a href="#宏任务-MacroTask" class="headerlink" title="宏任务(MacroTask)"></a>宏任务(MacroTask)</h1><p>由浏览器或宿主环境发起的异步任务。它们通常比较重，需要排队等候。</p>
+<p>setTimeout &#x2F; setInterval</p>
+<p>postMessage</p>
+<p>DOM 事件（如用户点击 click、滚动 scroll 后的回调函数）</p>
+<p>Ajax&#x2F;Fetch 网络请求完成后的回调</p>
+<h1 id="事件循环（Event-Loop）"><a href="#事件循环（Event-Loop）" class="headerlink" title="事件循环（Event Loop）"></a>事件循环（Event Loop）</h1><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-attr">[开始]</span> ──&gt; 执行栈(同步任务) ──&gt; 栈空了 ──&gt; 检查并清空【微任务队列】 <br>               ▲                                      │<br>               │                                      ▼<br>               └──────────执行【一个】宏任务 ◄── 从【宏任务队列】提取<br></code></pre></td></tr></table></figure>
+
+<p>微任务队列（Micro-task）：存放 Promise.then 的回调、MutationObserver（像 VIP 顾客插队）。</p>
+<p>宏任务队列（Macro-task）：存放定时器到期、点击事件触发的回调函数（像普通顾客排队）。</p>
+<p>第一步（执行栈）：大厨（JS主线程）先把手头所有的同步代码（主线程执行栈）全部炒完。</p>
+<p>第二步（微任务）：主线程空闲了。大厨走到厨房门口，先看“微任务队列（VIP通道）”。如果里面有 Promise.then 在排队，大厨会一口气把所有的微任务全部做完，直到 VIP 通道清空。</p>
+<p>第三步（渲染）：大厨看一眼装修队（GUI渲染线程）：“页面需要更新吗？”如果要更新，装修队此时入场开始刷新网页（Render）。</p>
+<p>第四步（宏任务）：大厨再走到厨房门口，看“宏任务队列（普通通道）”。注意！大厨非常抠门，他只拿出一个宏任务出来做（比如执行一个 setTimeout 的回调）。</p>
+<p>第五步（无限循环）：做完这一个宏任务后，大厨立刻回到第二步，重新去检查 VIP 通道（微任务）。</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>JS 引擎线程和 GUI 渲染线程是互斥的！ 也就是说，大厨在炒菜（JS 执行）时，装修队（GUI 渲染）必须停工；装修队在刷墙时，大厨必须熄火。这就是为什么如果你的 JS 写了死循环，网页当场就会“白屏”或卡死，因为 GUI 线程拿不到控制权，没法刷新页面！</p>
+<h1 id="知道这些开始在前端处理海量数据吧"><a href="#知道这些开始在前端处理海量数据吧" class="headerlink" title="知道这些开始在前端处理海量数据吧"></a>知道这些开始在前端处理海量数据吧</h1><h2 id="耗时的大数据计算：丢给-Web-Worker"><a href="#耗时的大数据计算：丢给-Web-Worker" class="headerlink" title="耗时的大数据计算：丢给 Web Worker"></a>耗时的大数据计算：丢给 Web Worker</h2><p>如果前端遇到了不可避免的超大数据处理（比如前端解析几十兆的 Excel、处理高清图像滤镜）：</p>
+<p>做法：千万别在主线程硬扛！利用浏览器内核的多线程特性，开辟一个 Web Worker 线程，把脏活累活丢给它。</p>
+<p>效果：Web Worker 在后台默默计算，算完了把结果传回来。大厨（主线程）在前面依然可以轻轻松松地配合 GUI 渲染，页面丝滑不卡顿。</p>
+<h2 id="分片渲染（Time-Slicing）"><a href="#分片渲染（Time-Slicing）" class="headerlink" title="分片渲染（Time Slicing）"></a>分片渲染（Time Slicing）</h2><p>如果要往页面上一次性渲染 10 万条 DOM 节点（比如超大的树状图）：</p>
+<p>如果一次性暴力渲染：JS 会执行很久，GUI 也会因为渲染量太大卡死。</p>
+<p>聪明的解法（React Fiber 的核心思想）：</p>
+<p>利用 requestAnimationFrame 或者 requestIdleCallback,实现时间分片</p>
+<p>把 10 万条数据拆成 100 组，每组 1000 条。大厨炒完一组（渲染 1000 条），主动停火，把控制权让给装修队（GUI）喘口气、刷个墙，下一帧再接着炒下一组。</p>
+<h1 id="Web-Worker（多线程外包）-Time-Slicing（主线程分期）"><a href="#Web-Worker（多线程外包）-Time-Slicing（主线程分期）" class="headerlink" title="Web Worker（多线程外包） | Time Slicing（主线程分期）"></a>Web Worker（多线程外包） | Time Slicing（主线程分期）</h1><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Web Worker（多线程外包）</th>
+<th>Time Slicing（主线程分期）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>解决的痛点</td>
+<td>耗时极长的 纯数据计算、加密、大文件解析。</td>
+<td>耗时极长的 DOM 渲染、大量视觉元素的频繁计算。</td>
+</tr>
+<tr>
+<td>工作地点</td>
+<td>完全独立的 新线程，和主线程并行运转。</td>
+<td>依然在 主线程，只是把长任务切成无数小碎块。</td>
+</tr>
+<tr>
+<td>能否操作 DOM</td>
+<td>绝对不能。</td>
+<td>可以，它本身就是为了配合 DOM 渲染而生的。</td>
+</tr>
+<tr>
+<td>本质思想</td>
+<td>充分利用多核 CPU 的硬件性能（空间换时间）。</td>
+<td>极致的时间管理大师，欺骗人类的眼睛（时间换流畅）。</td>
+</tr>
+</tbody></table>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%9D%A2%E8%AF%95/" class="category-chain-item">面试</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="print-no-link">#浏览器</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>浏览器(主线程+内核多线程配合 + 事件循环（Event Loop）)</div>
+      <div>http://example.com/2026/06/21/浏览器-主线程-内核多线程配合-事件循环（Event-Loop）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Mashiro</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年6月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/06/21/Spring-Boot/" title="Spring Boot">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Spring Boot</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/06/21/%E7%AE%97%E6%B3%95/" title="算法 数据结构 这其实是人类逻辑思维的最高浪漫">
+                        <span class="hidden-mobile">算法 数据结构 这其实是人类逻辑思维的最高浪漫</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

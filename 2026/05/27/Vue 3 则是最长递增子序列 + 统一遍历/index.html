@@ -1,0 +1,871 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Mashiro">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Vue 3 则是最长递增子序列 + 统一遍历">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue 3 则是最长递增子序列 + 统一遍历">
+<meta property="og:url" content="http://example.com/2026/05/27/Vue%203%20%E5%88%99%E6%98%AF%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97%20+%20%E7%BB%9F%E4%B8%80%E9%81%8D%E5%8E%86/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Vue 3 则是最长递增子序列 + 统一遍历">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-27T14:26:24.000Z">
+<meta property="article:modified_time" content="2026-08-26T01:34:12.730Z">
+<meta property="article:author" content="Mashiro">
+<meta property="article:tag" content="Vue 3 则是最长递增子序列 + 统一遍历">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Vue 3 则是最长递增子序列 + 统一遍历 - </title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>我不是二次元</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/zhaizhe520" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="https://github.com/zhaizhe520" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Vue 3 则是最长递增子序列 + 统一遍历"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-05-27 22:26" pubdate>
+          2026年5月27日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          24 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Vue 3 则是最长递增子序列 + 统一遍历</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Vue 3 则是最长递增子序列 + 统一遍历</p>
+<p>但是，如果用户在前端玩了一把“极端的乱序大洗牌”呢？</p>
+<p>比如一个商品列表，用户点了一下“价格从低到高排序”，整个列表的顺序瞬间全乱了。</p>
+<p>这时候，Vue 2 的 4 个指针就会全部抓瞎，两头对不上，只能苦哈哈地退化成去哈希表里一个个查、一个个在页面上无脑移动 DOM 节点。</p>
+<div style="color:pink">DOM 操作是整个浏览器里最贵的硬件开销。频繁地去移动一个 DOM 节点，会触发浏览器的重排（Reflow），非常卡。</div>
+
+
+<p>能不能找到一种算法，算出在乱序大洗牌时，有哪些节点其实可以“原地躺平不动”，只去移动那些非动不可的节点？</p>
+<p>这就引出了最长递增子序列。</p>
+<p>找出原地躺平不动的钉子户</p>
+<p>[0, 1, 2, 3] —&gt;[2, 0, 1, 3]—–&gt;[0 , 1, 3]为最长没动的递增子序列</p>
+<h1 id="Vue-3-完整的乱序-Diff-过程，其实是一套极其丝滑的组合拳："><a href="#Vue-3-完整的乱序-Diff-过程，其实是一套极其丝滑的组合拳：" class="headerlink" title="Vue 3 完整的乱序 Diff 过程，其实是一套极其丝滑的组合拳："></a>Vue 3 完整的乱序 Diff 过程，其实是一套极其丝滑的组合拳：</h1><ol>
+<li>统一遍历（预处理）</li>
+</ol>
+<p>大厨先从左往右遍历、再从右往左遍历。把头部一模一样的节点、尾部一模一样的节点直接复用。这步叫“前后预处理”，能直接干掉 80% 没变动的场景。</p>
+<ol start="2">
+<li>建立新旧映射表（捞出乱序核心）diff算法</li>
+</ol>
+<p>处理完头尾后，中间如果剩下一堆乱序的节点，Vue 3 会用一个数组记录下这些新节点在旧列表里的位置。</p>
+<ol start="3">
+<li>求出最长递增子序列（算出不动的主干）</li>
+</ol>
+<p>对这个映射表数组，运用动态规划或二分查找的数学公式，算出最长递增子序列。</p>
+<p>这个子序列，就是整个页面上的“稳定大后方（不动产）”。</p>
+<ol start="4">
+<li>倒序移动（查缺补漏）<br>大厨从后往前遍历乱序区，如果发现当前节点的下标在“最长递增子序列”里，大厨直接打个手势：“你别动，跳过！”</li>
+</ol>
+<p>如果发现不在子序列里，大厨才动手：“起来，把你移动到指定位置。”</p>
+<p>Vue 2 在运行时（浏览器里）是有点“笨”的。当数据变了，它会把新旧虚拟 DOM 全通篇 Diff 比对一遍，哪怕你的 HTML 里 90% 都是绝对不会变的死文字。</p>
+<p>Vue 3 引入了极其强悍的编译期静态分析（Static Analysis），在把 .vue 文件打包编译成 JS 的时候，就已经把浏览器要干的活给提前干完了。</p>
+<h1 id="响应式的降维打击：从“死脑筋拦截”到“全局影分身”"><a href="#响应式的降维打击：从“死脑筋拦截”到“全局影分身”" class="headerlink" title="响应式的降维打击：从“死脑筋拦截”到“全局影分身”"></a>响应式的降维打击：从“死脑筋拦截”到“全局影分身”</h1><h2 id="Vue-2-的死穴：Object-defineProperty（老实人挨个盯着）"><a href="#Vue-2-的死穴：Object-defineProperty（老实人挨个盯着）" class="headerlink" title="Vue 2 的死穴：Object.defineProperty（老实人挨个盯着）"></a>Vue 2 的死穴：Object.defineProperty（老实人挨个盯着）</h2><p>Vue 2 的响应式，是大厨拿着放大镜，去把你的 data 对象里的每一个属性用 <code>for...in </code>遍历一遍，给每个属性强行加上<code>getter</code> 和 <code>setter</code>。</p>
+<p>致命缺陷 1（性能差）：如果后端传给你一个 1 万条数据的超级大对象，Vue 2 一上来就会不管三七二十一，深度遍历这个大对象的所有格子，把内存直接吃满，导致首屏加载巨卡。</p>
+<p>致命缺陷 2（测漏）：大厨初始化时只盯着现有的属性。如果你在代码里突然写一句 <code>this.obj.newKey = &#39;Murasame&#39;（新增属性）</code>，或者用下标修改数组，Vue 2 的大厨根本“看漏了”，页面完全不更新，你必须卑微地去用 <code>this.$set()</code>。</p>
+<h2 id="Vue-3-的外挂：Proxy（全局雷达防空网）"><a href="#Vue-3-的外挂：Proxy（全局雷达防空网）" class="headerlink" title="Vue 3 的外挂：Proxy（全局雷达防空网）"></a>Vue 3 的外挂：Proxy（全局雷达防空网）</h2><p>Vue 3 彻底抛弃了挨个拦截的笨方法，直接利用了原生 ES6 的 Proxy（代理）。</p>
+<p>大厨不再去碰原始数据，而是在原始对象的外面，套了一层透明的防空网（代理对象）。</p>
+<p>真香定律：管你对象里有一万个属性还是新增属性，任何人想去读取或者修改这个对象，都必须经过外面这层防空网的拦截（get&#x2F;set 钩子）。</p>
+<p>降维打击：Vue 3 实现了惰性监听（Lazy Initialization）。只有当你在页面里真正用到深层数据时，它才会去给那那一层加响应式。</p>
+<p>首屏速度直接飞起，而且天生完美支持动态新增属性和数组下标修改，<code>this.$set</code> 直接被扫进了历史垃圾堆！</p>
+<h1 id="编译期的“降智打击”：把活在编译阶段干完！"><a href="#编译期的“降智打击”：把活在编译阶段干完！" class="headerlink" title="编译期的“降智打击”：把活在编译阶段干完！"></a>编译期的“降智打击”：把活在编译阶段干完！</h1><p>Vue 2 在运行时（浏览器里）是有点“笨”的。当数据变了，它会把新旧虚拟 DOM 全通篇 Diff 比对一遍，哪怕你的 HTML 里 90% 都是绝对不会变的死文字。</p>
+<p>Vue 3 引入了极其强悍的编译期静态分析（Static Analysis），在把 .vue 文件打包编译成 JS 的时候，就已经把浏览器要干的活给提前干完了。</p>
+<h2 id="补丁标记（Patch-Flags）：睁眼瞎变成了精准打击"><a href="#补丁标记（Patch-Flags）：睁眼瞎变成了精准打击" class="headerlink" title="补丁标记（Patch Flags）：睁眼瞎变成了精准打击"></a>补丁标记（Patch Flags）：睁眼瞎变成了精准打击</h2><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>今天继续学算法<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">username</span> &#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml">      </span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>Vue 2：组件更新时，虚拟 DOM 会老老实实对比 <code>&lt;div&gt;</code>、再去对比<code> &lt;h1&gt;</code>（发现没变）、再去对比<code> &lt;p&gt;</code>。</p>
+<p>Vue 3：编译时，大厨一眼看穿<code>&lt;h1&gt;</code> 是死文字，<code>&lt;p&gt;</code> 是动态的。于是它在生成的虚拟 DOM 节点后面，<code>偷偷打了一个数字补丁标记（Patch Flag）</code>，比如标记为 1（代表只有文本会变）。</p>
+<p>当页面更新时，Diff 算法看到 <code>&lt;h1&gt;</code> 直接跳过连看都不看，直接闪现到<code>&lt;p&gt;</code> 进行精准更新。</p>
+<h2 id="静态提升（Static-Hoisting）：不给内存添乱"><a href="#静态提升（Static-Hoisting）：不给内存添乱" class="headerlink" title="静态提升（Static Hoisting）：不给内存添乱"></a>静态提升（Static Hoisting）：不给内存添乱</h2><p>在 Vue 2 里，只要组件一更新，所有的虚拟 DOM 节点都会在内存里重新被 createVNode 创建一遍，哪怕是那个永远不变的 <code>&lt;h1&gt;</code>。</p>
+<p>Vue 3：大厨直接过河拆桥。把所有绝对不会变的静态节点，打包提升到组件外面去变成全局常量。</p>
+<p>无论你组件更新 1 万次，这个 <code>&lt;h1&gt;</code> 节点在内存里永远只被创建 1 次，直接把浏览器的内存垃圾回收（GC）压力降到了最低。</p>
+<p>reach ability ansinsty</p>
+<p>就是在内存创建一次才能用虚拟dom和diff算法来找不同实现dom操作，不同的才会动，相同的不动，最长自增子序列</p>
+<h2 id="代码组织：从“按菜单抓药”到“按模块拼乐高”"><a href="#代码组织：从“按菜单抓药”到“按模块拼乐高”" class="headerlink" title="代码组织：从“按菜单抓药”到“按模块拼乐高”"></a>代码组织：从“按菜单抓药”到“按模块拼乐高”</h2><p>也就是你天天看得到的 Options API（Vue 2） 变成 Composition API（Vue 3）。</p>
+<p>Vue 2（Options）：逼着你把代码拆散在 data、methods、computed 里面。如果你要写一个“黑猫”的功能和一个“白狗”的功能，你得把黑猫的变量写在 data 头部，黑猫的方法写在 methods 尾部，白狗的交织在中间。代码长了之后，上下反复横跳，极其痛苦。</p>
+<p>Vue 3（Composition）：允许你把“黑猫”的所有变量、方法揉成一个独立的 useBlackCat() 函数，把“白狗”揉成 useWhiteDog()。最后在 setup 里面像拼乐高一样组装。这不仅是写法变了，而是让前端真正具备了和后端一样的、完美的“高内聚低耦合”的代码抽象能力。</p>
+<h1 id="Vue-2-到-Vue-3-的进化：总结"><a href="#Vue-2-到-Vue-3-的进化：总结" class="headerlink" title="Vue 2 到 Vue 3 的进化：总结"></a>Vue 2 到 Vue 3 的进化：总结</h1><p>2 代更像是一个精巧的、老老实实工作的手工工坊，用着双端指针、defineProperty 挨个打补丁。</p>
+<p>3 代则直接升级成了工业化自动流水线。它用 Proxy 编织防空网，用 最长递增子序列 钉住主干，用 编译期优化 提前给 DOM 打上指路牌，用 Composition API 解放了生产力。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Vue%E6%A1%86%E6%9E%B6/" class="category-chain-item">Vue框架</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Vue-3-%E5%88%99%E6%98%AF%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97-%E7%BB%9F%E4%B8%80%E9%81%8D%E5%8E%86/" class="print-no-link">#Vue 3 则是最长递增子序列 + 统一遍历</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Vue 3 则是最长递增子序列 + 统一遍历</div>
+      <div>http://example.com/2026/05/27/Vue 3 则是最长递增子序列 + 统一遍历/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Mashiro</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年5月27日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/05/28/%E5%89%8D%E7%AB%AF%E6%8B%BF%E5%88%B0%E7%9A%84%E6%98%AF%E6%97%B6%E9%97%B4%E6%88%B3/" title="时区差导致显示时间戳">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">时区差导致显示时间戳</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/05/26/%E5%90%8E%E7%AB%AF%E6%8E%A5%E5%8F%A3%E6%80%8E%E4%B9%88%E5%86%99/" title="后端接口怎么写">
+                        <span class="hidden-mobile">后端接口怎么写</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
