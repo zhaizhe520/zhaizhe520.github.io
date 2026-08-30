@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="抓wp特色圖片">
+    <meta name="description" content="日语勉強">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2中方法抓wp的特色圖片">
-<meta property="og:url" content="http://example.com/2026/05/03/2%E4%B8%AD%E6%96%B9%E6%B3%95%E6%8A%93wp%E7%9A%84%E7%89%B9%E8%89%B2%E5%9C%96%E7%89%87/index.html">
+<meta property="og:title" content="系统学习日语">
+<meta property="og:url" content="http://example.com/2026/05/03/%E6%97%A5%E8%AF%ADN2/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="抓wp特色圖片">
+<meta property="og:description" content="日语勉強">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-05-03T11:32:29.000Z">
-<meta property="article:modified_time" content="2026-08-26T01:34:12.718Z">
+<meta property="article:published_time" content="2026-05-03T08:11:05.000Z">
+<meta property="article:modified_time" content="2026-08-30T11:43:42.705Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="2種方法抓wp特色圖片">
+<meta property="article:tag" content="日语勉強">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>2中方法抓wp的特色圖片 - </title>
+  <title>系统学习日语 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="2中方法抓wp的特色圖片"></span>
+            <span id="subtitle" data-typed-text="系统学习日语"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-05-03 19:32" pubdate>
-          2026年5月3日 晚上
+        <time datetime="2026-05-03 16:11" pubdate>
+          2026年5月3日 下午
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.1k 字
         
       </span>
     
@@ -376,13 +376,75 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">2中方法抓wp的特色圖片</h1>
+            <h1 id="seo-header">系统学习日语</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="第一種"><a href="#第一種" class="headerlink" title="第一種"></a>第一種</h1><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">// 在 useWorkStore.js 的 fetchWpPosts Action 中</span><br><span class="hljs-keyword">const</span> res = await axios.<span class="hljs-keyword">get</span>(<span class="hljs-string">&#x27;http://110.42.248.8/wp-json/wp/v2/posts?_embed&#x27;</span>)<br><br><span class="hljs-keyword">this</span>.pageAllData[<span class="hljs-number">1</span>] = res.<span class="hljs-keyword">data</span>.map(post =&gt; &#123;<br>  <span class="hljs-comment">// 安全地抓取特色圖片地址</span><br>  let featuredImg = <span class="hljs-string">&#x27;&#x27;</span>;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-comment">// 路徑通常是：_embedded -&gt; wp:featuredmedia -&gt; [0] -&gt; source_url</span><br>    featuredImg = post._embedded[<span class="hljs-string">&#x27;wp:featuredmedia&#x27;</span>][<span class="hljs-number">0</span>].source_url;<br>  &#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>    featuredImg = <span class="hljs-string">&#x27;默認圖片地址&#x27;</span>; <span class="hljs-comment">// 如果沒設置特色圖片，給個備用圖</span><br>  &#125;<br><br>  <span class="hljs-keyword">return</span> &#123;<br>    imgSrc: featuredImg,<br>    textName: post.title.rendered,<br>    <span class="hljs-comment">// ...其餘字段</span><br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
-<h1 id="第二種-修改-WordPress-的-functions-php-後端方案"><a href="#第二種-修改-WordPress-的-functions-php-後端方案" class="headerlink" title="第二種 修改 WordPress 的 functions.php (後端方案)"></a>第二種 修改 WordPress 的 functions.php (後端方案)</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title function_ invoke__">add_action</span>(<span class="hljs-string">&#x27;rest_api_init&#x27;</span>, <span class="hljs-string">&#x27;register_rest_images&#x27;</span> );<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register_rest_images</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-title function_ invoke__">register_rest_field</span>( <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;post&#x27;</span>),<br>        <span class="hljs-string">&#x27;fimg_url&#x27;</span>, <span class="hljs-comment">// 前端看到的字段名</span><br>        <span class="hljs-keyword">array</span>(<br>            <span class="hljs-string">&#x27;get_callback&#x27;</span>    =&gt; <span class="hljs-string">&#x27;get_rest_featured_image&#x27;</span>,<br>            <span class="hljs-string">&#x27;update_callback&#x27;</span> =&gt; <span class="hljs-literal">null</span>,<br>            <span class="hljs-string">&#x27;schema&#x27;</span>          =&gt; <span class="hljs-literal">null</span>,<br>        )<br>    );<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get_rest_featured_image</span>(<span class="hljs-params"> <span class="hljs-variable">$object</span>, <span class="hljs-variable">$field_name</span>, <span class="hljs-variable">$request</span> </span>) </span>&#123;<br>    <span class="hljs-keyword">if</span>( <span class="hljs-variable">$object</span>[<span class="hljs-string">&#x27;featured_media&#x27;</span>] )&#123;<br>        <span class="hljs-variable">$img</span> = <span class="hljs-title function_ invoke__">wp_get_attachment_image_src</span>( <span class="hljs-variable">$object</span>[<span class="hljs-string">&#x27;featured_media&#x27;</span>], <span class="hljs-string">&#x27;app-thumb&#x27;</span> );<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable">$img</span>[<span class="hljs-number">0</span>]; <span class="hljs-comment">// 返回圖片 URL</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <p>N2 系统学习</p>
+<p>尺度得点 量表分数</p>
+<p>策略: 基础打牢 单词比较难 听力能力  刷真题 </p>
+<details>
+<summary>五十音「ごじゅうおん」 </summary>
+
+<p>草书 本质　演变</p>
+<p>平仮名「ひらがな」: 给汉字 注音 　片仮名「かたかな」: 外来语</p>
+<p>あア　いイ　うウ　えエ　おオ</p>
+<p>かカ　きキ　くク　けケ　こコ</p>
+</details>
+
+<details>
+<summary>2026/8/27単語</summary>
+
+<p>アップデート　デートは新しいに変わるの意味です<br>　<br>しにたい　まじです　あああああ</p>
+</details>
+
+<details>
+<summary>2026/8/28东京音</summary>
+
+<p>日语是高到低音</p>
+<p>4,5,3,2,1形音  到哪个假名 之后语调开始下降</p>
+<p>0第一个升之后平</p>
+<p>こんにちは</p>
+<p>「甥」　おい　</p>
+<p>「柿」　かき　知らない果物　いましっていた </p>
+<p>「化石」　かせき　なにこれ　いし？　石　化石をたいせつななに　ま　知らない　いし　じゃない　むり　これ覚えない　</p>
+<p>「石を拾う」　拾うは他動詞です　　石を捨てる　拾うと捨てるは反対語です　はんたいご　へん　はん　わからない　ああああ　反対語のはんたいごはるいぎご　「類義語」　むずかしいなあ</p>
+<p>「返事」　へんじ　へん　はん　なにそれ　hennji</p>
+<p>「蹴る」　ける　石を蹴る　川に落ちた　</p>
+<p>「土地」　とち　地下鉄　ちかてつ　質　しつ　意味がわからない　大地　だいち</p>
+<p>「棚」　　たな　棚というの単語　覚えているは難しいかもしれません　なにこれ　意味わかんないのたな　漢字　変な単語　棚に本を置いてる</p>
+<p>「西」にし　これ　</p>
+<p>「布」　ぬの　抜く　</p>
+<p>「醍醐味」　だいごみ　そのたんごは気になる　ＩＴの醍醐味はなにもできます、なにも作ってる　</p>
+<p>「済ませる」　すませる　これ　済むという単語が変わた　なになにをすませる　意味がおおいな　ああ　これ　おいの漢字甥じゃないか　変だね　多いおおい　発音　同じですね　</p>
+<p>「ベーコン」　朝ごはん　美味しな　卵となに知らない単語　いっしょに　つくる　美味しそう</p>
+<p>「平和」　へいわ　い　忘れた　ごめんね</p>
+<p>「タイトル」　　　ホームページの意味です　だが　ゲームが多い　でするい　</p>
+<p>「神秘」　しんぴとひみつはるいぎごです　かもしれません　さっき　知った　内緒　ないしょ　おなじです</p>
+</details>
+
+<details>
+<summary>2026/8/29単語</summary>
+
+<p>「表示する」　ひょうじ　　何を表示しているな　　画面の文字　かもしれません　例えば　</p>
+<p>「表す」　あらわす　　これは　あれか　心の感じ　かもしれません</p>
+<p>「示す」　しめす　んんん　地図とか　態度　とか　めじゃ</p>
+<p>「枕」まくら　眠いとき　ねじゃだ　の　「道具」どうぐ　</p>
+<p>「車」くるま　こわい　まじ似合う　</p>
+</details>
+
+<details>
+<summary>2026/8/29単語</summary>
+
+<p>「声優」　せいゆう　大好きな　人　例えば　　「若山詩音」　わかやま　しおん　大好きな声優　ＪＫ見だいの声が　若い顔<br>全部すきな　後は　AMSR　　「柚木　つばめ」　ゆずき　つばめ　あと　いろいろ人が多い　</p>
+<p>「尻取り」　しりとり　これ　ま　なとしょか　ゲーム？　違う　現実のげーム　かもしれません　単語の最後の文字は新しい単語の　初めて文字　そなよに　感じ　そして　ロープ  続けている　</p>
+<p>「なんていえばいいのだろう」　え段+ば　この</p>
+<p>「行」「段」　　ぎょう　これ　は　五十音　の　ぎょう　です　　段は同じです　さっき　よはそくおん　見間違えた</p>
+<p>「頂く」　さっきぺしん　見た時　変な単語　敬語　かな　「貰う」の「謙譲語」けんじょうご</p>
+</details>
+
+
                 
               </div>
             
@@ -400,7 +462,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Vue%E6%A1%86%E6%9E%B6/" class="category-chain-item">Vue框架</a>
+  <a href="/categories/%E6%97%A5%E8%AF%AD/" class="category-chain-item">日语</a>
   
   
 
@@ -415,7 +477,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/2%E7%A8%AE%E6%96%B9%E6%B3%95%E6%8A%93wp%E7%89%B9%E8%89%B2%E5%9C%96%E7%89%87/" class="print-no-link">#2種方法抓wp特色圖片</a>
+        <a href="/tags/%E6%97%A5%E8%AF%AD%E5%8B%89%E5%BC%B7/" class="print-no-link">#日语勉強</a>
       
     </div>
   
@@ -427,8 +489,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>2中方法抓wp的特色圖片</div>
-      <div>http://example.com/2026/05/03/2中方法抓wp的特色圖片/</div>
+      <div>系统学习日语</div>
+      <div>http://example.com/2026/05/03/日语N2/</div>
     </div>
     <div class="license-meta">
       
@@ -472,9 +534,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/05/03/Git%E5%BA%94%E7%94%A8/" title="Git应用">
+                      <a href="/2026/05/03/%E6%97%A5%E8%AE%B0/" title="にっき">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Git应用</span>
+                        <span class="hidden-mobile">にっき</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -482,8 +544,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/05/03/PixiJS%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84%E5%92%8C%E5%9C%BA%E6%99%AF%E5%9B%BE/" title="PIXI">
-                        <span class="hidden-mobile">PIXI</span>
+                      <a href="/2026/04/29/%E8%BD%AF%E4%BB%B6%E9%9B%86%E6%88%90%E5%B9%B3%E5%8F%B0/" title="软件集成平台">
+                        <span class="hidden-mobile">软件集成平台</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
