@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="TypeScript 的基础语法">
+    <meta name="description" content="TypeScript语法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TypeScript 的基础语法">
-<meta property="og:url" content="http://example.com/2026/06/30/TypeScript-%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:title" content="TypeScript语法">
+<meta property="og:url" content="http://example.com/2026/06/30/TypeScript/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="TypeScript 的基础语法">
+<meta property="og:description" content="TypeScript语法">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-30T01:29:40.000Z">
-<meta property="article:modified_time" content="2026-08-26T01:34:12.729Z">
+<meta property="article:modified_time" content="2026-09-09T15:11:10.614Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="TypeScript 的基础语法">
+<meta property="article:tag" content="TypeScript语法">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>TypeScript 的基础语法 - </title>
+  <title>TypeScript语法 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="TypeScript 的基础语法"></span>
+            <span id="subtitle" data-typed-text="TypeScript语法"></span>
           
         </div>
 
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          2.1k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          10 分钟
+          18 分钟
         
       </span>
     
@@ -376,7 +376,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">TypeScript 的基础语法</h1>
+            <h1 id="seo-header">TypeScript语法</h1>
             
             
               <div class="markdown-body">
@@ -386,6 +386,77 @@
 
 <h1 id="函数的类型约束（管好输入和输出）"><a href="#函数的类型约束（管好输入和输出）" class="headerlink" title="函数的类型约束（管好输入和输出）"></a>函数的类型约束（管好输入和输出）</h1><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">// 定义一个名为 <span class="hljs-keyword">User</span> <span class="hljs-title">的接口</span><br><span class="hljs-title">interface</span> <span class="hljs-keyword">User</span> <span class="hljs-title">&#123;</span><br><span class="hljs-title">    id</span>: <span class="hljs-keyword">number</span>;<br>    username: <span class="hljs-keyword">string</span>;<br>    email: <span class="hljs-keyword">string</span>;<br>    age?: <span class="hljs-keyword">number</span>; // 💡 注意这里的问号：表示这个属性是可选的（可有可无）<br>&#125;<br><br>// 实际使用：这个对象必须严格遵守 <span class="hljs-keyword">User</span> <span class="hljs-title">的结构</span><br><span class="hljs-title">const</span> myUser: <span class="hljs-keyword">User</span> <span class="hljs-title">= &#123;</span><br><span class="hljs-title">    id</span>: <span class="hljs-number">1001</span>,<br>    username: <span class="hljs-string">&quot;田中&quot;</span>,<br>    email: <span class="hljs-string">&quot;tanaka@example.com&quot;</span><br>    // age 没写也不会报错，因为它是可选的<br>&#125;;<br><br>// ❌ 报错示例：<br>const badUser: <span class="hljs-keyword">User</span> <span class="hljs-title">= &#123;</span><br><span class="hljs-title">    id</span>: <span class="hljs-number">1002</span>,<br>    username: <span class="hljs-string">&quot;佐藤&quot;</span><br>    // ❌ 报错：漏掉了必填的 email 属性！<br>&#125;;<br></code></pre></td></tr></table></figure>
 <h1 id="接口（Interface）——-全栈开发的绝对灵魂-🌟"><a href="#接口（Interface）——-全栈开发的绝对灵魂-🌟" class="headerlink" title="接口（Interface）—— 全栈开发的绝对灵魂 🌟"></a>接口（Interface）—— 全栈开发的绝对灵魂 🌟</h1><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">// 定义一个名为 <span class="hljs-keyword">User</span> <span class="hljs-title">的接口</span><br><span class="hljs-title">interface</span> <span class="hljs-keyword">User</span> <span class="hljs-title">&#123;</span><br><span class="hljs-title">    id</span>: <span class="hljs-keyword">number</span>;<br>    username: <span class="hljs-keyword">string</span>;<br>    email: <span class="hljs-keyword">string</span>;<br>    age?: <span class="hljs-keyword">number</span>; // 💡 注意这里的问号：表示这个属性是可选的（可有可无）<br>&#125;<br><br>// 实际使用：这个对象必须严格遵守 <span class="hljs-keyword">User</span> <span class="hljs-title">的结构</span><br><span class="hljs-title">const</span> myUser: <span class="hljs-keyword">User</span> <span class="hljs-title">= &#123;</span><br><span class="hljs-title">    id</span>: <span class="hljs-number">1001</span>,<br>    username: <span class="hljs-string">&quot;田中&quot;</span>,<br>    email: <span class="hljs-string">&quot;tanaka@example.com&quot;</span><br>    // age 没写也不会报错，因为它是可选的<br>&#125;;<br><br>// ❌ 报错示例：<br>const badUser: <span class="hljs-keyword">User</span> <span class="hljs-title">= &#123;</span><br><span class="hljs-title">    id</span>: <span class="hljs-number">1002</span>,<br>    username: <span class="hljs-string">&quot;佐藤&quot;</span><br>    // ❌ 报错：漏掉了必填的 email 属性！<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<details>
+<summary>TS 指令类型声明</summary>
+
+<h1 id="ObjectDirective（对象指令类型）"><a href="#ObjectDirective（对象指令类型）" class="headerlink" title="ObjectDirective（对象指令类型）"></a>ObjectDirective（对象指令类型）</h1><p>是什么：它定义了一个自定义指令对象应该长什么样。</p>
+<p>作用：告诉 TS：“我定义的这个变量是一个 Vue 自定义指令，里面包含 mounted、unmounted、updated 等钩子函数”。</p>
+<p>好处：如果你把钩子函数名字拼错了（比如写成了 onMounted 或 mount），TS 会立刻弹红提示你写错了。</p>
+<h1 id="DirectiveBinding（指令绑定参数类型）"><a href="#DirectiveBinding（指令绑定参数类型）" class="headerlink" title="DirectiveBinding（指令绑定参数类型）"></a>DirectiveBinding（指令绑定参数类型）</h1><p>是什么：它定义了在生命周期钩子（如 mounted(el, binding)）里，第二个参数 binding 内部包含哪些属性。</p>
+<p>作用：告诉 TS：binding 里面有 value（传进来的值）、oldValue、arg（参数）、modifiers（修饰符）等属性。</p>
+<p>好处：当你敲出 binding. 时，编辑器（如 VS Code）会自动弹出 value、oldValue 的自动补全和提示，不需要再去死记硬背。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>el</td>
+<td>HTMLElement (或自定义扩展)</td>
+<td>真实的原生 DOM 节点<br>绑定原生事件（addEventListener）、修改 style 样式。</td>
+</tr>
+<tr>
+<td>binding</td>
+<td>DirectiveBinding&lt;T&gt;</td>
+<td>指令包含的属性对象<br>获取 binding.value（传进来的值）、binding.arg（如 v‑pet:foo 中的 foo）。</td>
+</tr>
+<tr>
+<td>vnode</td>
+<td>VNode</td>
+<td>Vue 的虚拟 DOM 节点<br>获取当前节点对应的 Vue 组件实例（vnode.component）、上下文信息等高级操作。</td>
+</tr>
+<tr>
+<td>prevVNode</td>
+<td>VNode | null</td>
+<td>旧的虚拟 DOM 节点<br>主要在 updated 钩子中做新旧 VNode 比较（Diffing）。</td>
+</tr>
+</tbody></table>
+<h1 id="类型补丁"><a href="#类型补丁" class="headerlink" title="类型补丁"></a>类型补丁</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>类型来源</th>
+<th>示例</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>TS &#x2F; JS 原生内置类型</td>
+<td>HTMLElement &#x2F; string &#x2F; number</td>
+<td>描述标准 DOM 或原生数据类型</td>
+</tr>
+<tr>
+<td>2</td>
+<td>框架提供的类型</td>
+<td>ObjectDirective &#x2F; DirectiveBinding &#x2F; VNode</td>
+<td>描述 Vue 内部的特定结构</td>
+</tr>
+<tr>
+<td>3</td>
+<td>自己用 interface 定义的类型</td>
+<td>PetNovelElement</td>
+<td>根据业务需求灵活补全或自定义数据结构</td>
+</tr>
+</tbody></table>
+</details>
+
+<p>状态共享（单例与工厂模式）</p>
+
                 
               </div>
             
@@ -418,7 +489,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/TypeScript-%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="print-no-link">#TypeScript 的基础语法</a>
+        <a href="/tags/TypeScript%E8%AF%AD%E6%B3%95/" class="print-no-link">#TypeScript语法</a>
       
     </div>
   
@@ -430,8 +501,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>TypeScript 的基础语法</div>
-      <div>http://example.com/2026/06/30/TypeScript-的基础语法/</div>
+      <div>TypeScript语法</div>
+      <div>http://example.com/2026/06/30/TypeScript/</div>
     </div>
     <div class="license-meta">
       
