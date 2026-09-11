@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="抓wp特色圖片">
+    <meta name="description" content="前后端分离登录界面">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2中方法抓wp的特色圖片">
-<meta property="og:url" content="http://example.com/2026/05/03/2%E4%B8%AD%E6%96%B9%E6%B3%95%E6%8A%93wp%E7%9A%84%E7%89%B9%E8%89%B2%E5%9C%96%E7%89%87/index.html">
+<meta property="og:title" content="登录界面">
+<meta property="og:url" content="http://example.com/2026/06/04/%E8%AE%BE%E8%AE%A1%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="抓wp特色圖片">
+<meta property="og:description" content="前后端分离登录界面">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-05-03T11:32:29.000Z">
-<meta property="article:modified_time" content="2026-08-26T01:34:12.718Z">
+<meta property="article:published_time" content="2026-06-04T02:07:25.000Z">
+<meta property="article:modified_time" content="2026-09-10T12:39:44.019Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="2種方法抓wp特色圖片">
+<meta property="article:tag" content="前后端分离登录界面">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>2中方法抓wp的特色圖片 - </title>
+  <title>登录界面 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="2中方法抓wp的特色圖片"></span>
+            <span id="subtitle" data-typed-text="登录界面"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-05-03 19:32" pubdate>
-          2026年5月3日 晚上
+        <time datetime="2026-06-04 10:07" pubdate>
+          2026年6月4日 上午
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.4k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          10 分钟
+          12 分钟
         
       </span>
     
@@ -376,13 +376,73 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">2中方法抓wp的特色圖片</h1>
+            <h1 id="seo-header">登录界面</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="第一種"><a href="#第一種" class="headerlink" title="第一種"></a>第一種</h1><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">// 在 useWorkStore.js 的 fetchWpPosts Action 中</span><br><span class="hljs-keyword">const</span> res = await axios.<span class="hljs-keyword">get</span>(<span class="hljs-string">&#x27;http://110.42.248.8/wp-json/wp/v2/posts?_embed&#x27;</span>)<br><br><span class="hljs-keyword">this</span>.pageAllData[<span class="hljs-number">1</span>] = res.<span class="hljs-keyword">data</span>.map(post =&gt; &#123;<br>  <span class="hljs-comment">// 安全地抓取特色圖片地址</span><br>  let featuredImg = <span class="hljs-string">&#x27;&#x27;</span>;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-comment">// 路徑通常是：_embedded -&gt; wp:featuredmedia -&gt; [0] -&gt; source_url</span><br>    featuredImg = post._embedded[<span class="hljs-string">&#x27;wp:featuredmedia&#x27;</span>][<span class="hljs-number">0</span>].source_url;<br>  &#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>    featuredImg = <span class="hljs-string">&#x27;默認圖片地址&#x27;</span>; <span class="hljs-comment">// 如果沒設置特色圖片，給個備用圖</span><br>  &#125;<br><br>  <span class="hljs-keyword">return</span> &#123;<br>    imgSrc: featuredImg,<br>    textName: post.title.rendered,<br>    <span class="hljs-comment">// ...其餘字段</span><br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
-<h1 id="第二種-修改-WordPress-的-functions-php-後端方案"><a href="#第二種-修改-WordPress-的-functions-php-後端方案" class="headerlink" title="第二種 修改 WordPress 的 functions.php (後端方案)"></a>第二種 修改 WordPress 的 functions.php (後端方案)</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title function_ invoke__">add_action</span>(<span class="hljs-string">&#x27;rest_api_init&#x27;</span>, <span class="hljs-string">&#x27;register_rest_images&#x27;</span> );<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register_rest_images</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-title function_ invoke__">register_rest_field</span>( <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;post&#x27;</span>),<br>        <span class="hljs-string">&#x27;fimg_url&#x27;</span>, <span class="hljs-comment">// 前端看到的字段名</span><br>        <span class="hljs-keyword">array</span>(<br>            <span class="hljs-string">&#x27;get_callback&#x27;</span>    =&gt; <span class="hljs-string">&#x27;get_rest_featured_image&#x27;</span>,<br>            <span class="hljs-string">&#x27;update_callback&#x27;</span> =&gt; <span class="hljs-literal">null</span>,<br>            <span class="hljs-string">&#x27;schema&#x27;</span>          =&gt; <span class="hljs-literal">null</span>,<br>        )<br>    );<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get_rest_featured_image</span>(<span class="hljs-params"> <span class="hljs-variable">$object</span>, <span class="hljs-variable">$field_name</span>, <span class="hljs-variable">$request</span> </span>) </span>&#123;<br>    <span class="hljs-keyword">if</span>( <span class="hljs-variable">$object</span>[<span class="hljs-string">&#x27;featured_media&#x27;</span>] )&#123;<br>        <span class="hljs-variable">$img</span> = <span class="hljs-title function_ invoke__">wp_get_attachment_image_src</span>( <span class="hljs-variable">$object</span>[<span class="hljs-string">&#x27;featured_media&#x27;</span>], <span class="hljs-string">&#x27;app-thumb&#x27;</span> );<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable">$img</span>[<span class="hljs-number">0</span>]; <span class="hljs-comment">// 返回圖片 URL</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="为什么只要一张表？"><a href="#为什么只要一张表？" class="headerlink" title="为什么只要一张表？"></a>为什么只要一张表？</h1><p>“注册”和“登录”其实是对同一批数据的两种不同操作：</p>
+<p>注册（Create）： 往表里插入一条新的用户数据（比如写入用户名和密码）。</p>
+<p>登录（Read）： 从表里查询有没有匹配的用户名和密码。</p>
+<p>如果分成两个表，当一个新用户注册时，你得同时往“注册表”和“登录表”各写一条数据；以后用户修改密码，你还得同时更新两张表，不仅浪费空间，还极易导致数据不一致（比如 A 表更新了，B 表没更新成功）。</p>
+<p>基础用户表（users）该怎么设计？<br>刚开始学全栈，你的核心用户表只需要包含以下几个基础字段（以 MySQL 为例）：</p>
+<table>
+<thead>
+<tr>
+<th>字段名 (Column)</th>
+<th>类型 (Type)</th>
+<th>作用 (Description)</th>
+<th>备注 (Notes)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>INT</td>
+<td>唯一标识</td>
+<td>主键，自增 (Primary Key, Auto Increment)</td>
+</tr>
+<tr>
+<td>username</td>
+<td>VARCHAR</td>
+<td>用户名&#x2F;账号</td>
+<td>唯一约束 (Unique)，不允许重复</td>
+</tr>
+<tr>
+<td>password</td>
+<td>VARCHAR</td>
+<td>密码</td>
+<td>绝对不能存明文！必须加密（如 bcrypt）</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>TIMESTAMP</td>
+<td>注册时间</td>
+<td>自动生成，方便后续统计</td>
+</tr>
+</tbody></table>
+<h1 id="全栈实现时的业务流程"><a href="#全栈实现时的业务流程" class="headerlink" title="全栈实现时的业务流程"></a>全栈实现时的业务流程</h1><p>两者的前端页面是分开的，但后端的核心逻辑都是围绕这张 users 表展开：</p>
+<p>📝 注册流程 (Sign Up)<br>前端输入用户名和密码，发送给后端。</p>
+<p>后端先去 users 表里查一下：SELECT * FROM users WHERE username &#x3D; ‘输入的用户名’。</p>
+<p>如果查到了： 返回错误“用户名已存在”。</p>
+<p>如果没查到： 把密码用加密算法（如 bcrypt）打散，然后插入新数据：INSERT INTO users (username, password) VALUES (…)。</p>
+<p>🔑 登录流程 (Sign In)<br>前端输入用户名和密码，发送给后端。</p>
+<p>后端去表里查这个用户：SELECT * FROM users WHERE username &#x3D; ‘输入的用户名’。</p>
+<p>如果没查到： 返回错误“用户不存在或密码错误”。</p>
+<p>如果查到了： 取出表里的加密密码，和用户输入的密码进行比对。比对成功则登录成功，生成 Token（如 JWT）返回给前端。</p>
+<p>💡 全栈新手小贴士：<br>在写密码字段时，千万不要直接把用户输入的 123456 存进数据库。作为全栈，第一天就要养成安全意识，去搜一下你所用后端语言的 bcrypt 库，用它来加密和校验密码。</p>
+<p>你目前后端准备用什么语言和框架来写呢？（比如 Node.js + Express，Python + Django，还是 Java + Spring？）我们可以聊聊下一步的接口怎么写！</p>
+<h1 id="安装加密包"><a href="#安装加密包" class="headerlink" title="安装加密包"></a>安装加密包</h1><p><code>npm install bcrypt</code></p>
+<h1 id="唯一约束"><a href="#唯一约束" class="headerlink" title="唯一约束"></a>唯一约束</h1><p>用户名防止数据库套</p>
+<p>浏览器地址栏发的是 GET 请求，但登录是 POST。两个测试方法：</p>
+<p>终端用 curl 手动测</p>
+<h1 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h1><p>查重 + bcrypt 哈希插入。</p>
+<h1 id="Token-存入持久化仓库"><a href="#Token-存入持久化仓库" class="headerlink" title="Token 存入持久化仓库"></a>Token 存入持久化仓库</h1><p>localStorage.setItem(‘my_user_token’, res.data.token);</p>
+<p>企业放 JWT 令牌</p>
+<p>（经典双 Token 机制）</p>
+<p>令牌名称存活时间 (Expires)作用 (Role)存放位置 (Storage)访问令牌 (Access Token)短（如 30 分钟 ~ 2 小时）真正用来调接口、拿数据的通行证。</p>
+<p>因为时间短，哪怕被黑客偷走，半小时后也自动失效了。LocalStorage &#x2F; Memory刷新令牌 (Refresh Token)长（如 7 天 ~ 30 天）不用来调数据。</p>
+<p>它的唯一作用是：当“访问令牌”过期时，悄悄找后端“续命”换一个新的访问令牌。仅限 HttpOnly Cookie (极安全)</p>
+
                 
               </div>
             
@@ -400,7 +460,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Vue%E6%A1%86%E6%9E%B6/" class="category-chain-item">Vue框架</a>
+  <a href="/categories/%E5%85%A8%E6%A0%88/" class="category-chain-item">全栈</a>
   
   
 
@@ -415,7 +475,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/2%E7%A8%AE%E6%96%B9%E6%B3%95%E6%8A%93wp%E7%89%B9%E8%89%B2%E5%9C%96%E7%89%87/" class="print-no-link">#2種方法抓wp特色圖片</a>
+        <a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2/" class="print-no-link">#前后端分离登录界面</a>
       
     </div>
   
@@ -427,8 +487,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>2中方法抓wp的特色圖片</div>
-      <div>http://example.com/2026/05/03/2中方法抓wp的特色圖片/</div>
+      <div>登录界面</div>
+      <div>http://example.com/2026/06/04/设计登录界面/</div>
     </div>
     <div class="license-meta">
       
@@ -440,7 +500,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年5月3日</div>
+          <div>2026年6月4日</div>
         </div>
       
       
@@ -472,9 +532,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/05/03/Git%E5%BA%94%E7%94%A8/" title="Git应用">
+                      <a href="/2026/06/05/Kotlin%E9%87%8C%E9%9D%A2%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Kotlin里面的生命周期">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Git应用</span>
+                        <span class="hidden-mobile">Kotlin里面的生命周期</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -482,8 +542,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/05/03/PixiJS%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84%E5%92%8C%E5%9C%BA%E6%99%AF%E5%9B%BE/" title="PIXI">
-                        <span class="hidden-mobile">PIXI</span>
+                      <a href="/2026/06/03/%E8%BF%94%E5%9B%9E%E6%A0%88/" title="快速连击（Double Click / Fast Tap）导致的路由疯狂压栈">
+                        <span class="hidden-mobile">快速连击（Double Click / Fast Tap）导致的路由疯狂压栈</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
