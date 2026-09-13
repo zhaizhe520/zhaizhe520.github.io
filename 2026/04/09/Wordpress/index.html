@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://example.com/img/bg/NIGHT.png">
 <meta property="og:image" content="http://example.com/img/bg/OVER.png">
 <meta property="article:published_time" content="2026-04-09T09:03:38.000Z">
-<meta property="article:modified_time" content="2026-09-11T12:19:31.385Z">
+<meta property="article:modified_time" content="2026-09-12T02:13:50.695Z">
 <meta property="article:author" content="Mashiro">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/bg/MySQL.png">
@@ -330,7 +330,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.3k 字
+          7.1k 字
         
       </span>
     
@@ -341,7 +341,7 @@
         
         
         
-          45 分钟
+          60 分钟
         
       </span>
     
@@ -471,7 +471,7 @@ server {
 <li>访问安装页<br>打开浏览器，输入 <a target="_blank" rel="noopener" href="http://localhost,自动跳转到/">http://localhost，自动跳转到</a> WordPress 安装引导页<br>选择语言：简体中文 → 点击「继续」</li>
 <li>数据库配置（关键，填错连不上）<br>表格<br>配置项	填写内容</li>
 </ol>
-<p>数据库名	wp_local（之前 MySQL 创建的数据库）<br>用户名	root（MySQL 超级管理员账号）<br>密码	你之前设置的 MySQL root 密码<br>数据库主机	localhost（默认，不用改）<br>表前缀	wp_（默认，不用改）<br>点击「提交」→「运行安装程序」<br>3. 网站信息配置<br>站点标题：你的网站名称（比如「我的 ACG 博客」）<br>用户名：WordPress 后台管理员账号（自己设，比如 admin）<br>密码：后台管理员密码（自己设，务必记住！）<br>你的邮箱：本地开发可随便填，比如 <a href="mailto:&#x74;&#x65;&#x73;&#116;&#x40;&#116;&#x65;&#x73;&#x74;&#46;&#x63;&#x6f;&#x6d;">test@test.com</a><br>勾选「建议搜索引擎不索引本站点」（本地环境用）<br>点击「安装 WordPress」→ 完成后点击「登录」，进入后台</p>
+<p>数据库名	wp_local（之前 MySQL 创建的数据库）<br>用户名	root（MySQL 超级管理员账号）<br>密码	你之前设置的 MySQL root 密码<br>数据库主机	localhost（默认，不用改）<br>表前缀	wp_（默认，不用改）<br>点击「提交」→「运行安装程序」<br>3. 网站信息配置<br>站点标题：你的网站名称（比如「我的 ACG 博客」）<br>用户名：WordPress 后台管理员账号（自己设，比如 admin）<br>密码：后台管理员密码（自己设，务必记住！）<br>你的邮箱：本地开发可随便填，比如 <a href="mailto:&#x74;&#x65;&#115;&#116;&#64;&#116;&#x65;&#x73;&#x74;&#x2e;&#99;&#111;&#109;">test@test.com</a><br>勾选「建议搜索引擎不索引本站点」（本地环境用）<br>点击「安装 WordPress」→ 完成后点击「登录」，进入后台</p>
 <h1 id="第二次配置wordpress"><a href="#第二次配置wordpress" class="headerlink" title="第二次配置wordpress"></a>第二次配置wordpress</h1><p>行第一次卡主了，要不再來一次？</p>
 <h1 id="一-安裝準備"><a href="#一-安裝準備" class="headerlink" title="一.安裝準備"></a>一.安裝準備</h1><ol>
 <li>Nginx（Web 服务器）<br>去官网下载：<a target="_blank" rel="noopener" href="http://nginx.org/en/download.html">http://nginx.org/en/download.html</a><br>下载：nginx&#x2F;Windows‑xxx.zip解压到：XXXXXX</li>
@@ -502,6 +502,41 @@ location ~ \.php$ {
 <h2 id="三-終端打開"><a href="#三-終端打開" class="headerlink" title="三.終端打開"></a>三.終端打開</h2><p>cd *******\php<br>php-cgi.exe -b 127.0.0.1:9000<br>不能刪除</p>
 <p>cd*******\nginx<br>nginx.exe<br>不能刪除</p>
 <p>打開<a target="_blank" rel="noopener" href="http://localhost/wp-admin">http://localhost/wp-admin</a><br><img src="/img/bg/OVER.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="一、先给你讲清楚：什么是前后端分离（超简单）"><a href="#一、先给你讲清楚：什么是前后端分离（超简单）" class="headerlink" title="一、先给你讲清楚：什么是前后端分离（超简单）"></a>一、先给你讲清楚：什么是前后端分离（超简单）</h1><p>WordPress &#x3D; 后端 &#x2F; 数据中心<br>存文章<br>存图片<br>存用户<br>自动生成 API 接口（不用你写）<br>Vue3 &#x3D; 前端 &#x2F; 展示页面<br>做界面<br>做交互<br>做样式<br>通过 API 去 WordPress 拿数据<br>它们的关系：<br>Vue ← API ← WordPress</p>
+<h1 id="二、你本地具备的条件（全部满足）"><a href="#二、你本地具备的条件（全部满足）" class="headerlink" title="二、你本地具备的条件（全部满足）"></a>二、你本地具备的条件（全部满足）</h1><p>✅ 本地 WordPress 能跑（你已经登录后台了）<br>✅ Vue3 项目能跑、能打包<br>✅ 数据库 MySQL 你已经会进了<br>✅ 你只差：Vue 调用 WP API</p>
+<ol>
+<li>找到 WordPress 自带的 API 地址<br>不用插件、不用配置自带接口例如：</li>
+</ol>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">plaintext<br>http:<span class="hljs-regexp">//</span>localhost<span class="hljs-regexp">/你的WP地址/</span>wp-json<span class="hljs-regexp">/wp/</span>v2/posts<br>打开就是文章列表 JSON<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>Vue 安装 axios（发送请求）</li>
+</ol>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">plaintext<br>npm <span class="hljs-keyword">install</span> axios<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>Vue 里写 3 行代码请求 WP 数据<br>js<br>axios.get(‘<a target="_blank" rel="noopener" href="http://localhost/.../posts').then">http://localhost/.../posts&#39;).then</a>(res &#x3D;&gt; {<br>  console.log(res.data)<br>})catch(error){<br>  console.log(“抓取失敗”)<br>}</li>
+<li>把数据渲染到 Vue 页面</li>
+</ol>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">html</span><br><span class="language-xml">预览</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in list&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item.id&quot;</span>&gt;</span></span><br><span class="language-xml">  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">item.title.rendered</span> &#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+
+<h1 id="什麼是axios"><a href="#什麼是axios" class="headerlink" title="什麼是axios"></a>什麼是axios</h1><p>簡單來說，Axios 是一個基於 Promise 的 HTTP 客戶端，專門用來在瀏覽器（Frontend）和 Node.js（Backend）環境中發送網路請求。</p>
+<p>如果你曾經被原生 JavaScript 那囉唆的 XMLHttpRequest 搞得頭大，或者覺得 fetch 的某些功能（如自動轉換 JSON）還不夠便利，那 Axios 就像是你的「網路請求懶人包」。</p>
+<p>🚀 為什麼大家愛用 Axios？<br>Axios 之所以成為開發者的首選，主要有以下幾個核心特性：</p>
+<p>基於 Promise： 它完全支持現代的 async&#x2F;await 語法，讓非同步代碼看起來像同步一樣整潔。</p>
+<p>同構性 (Isomorphic)： 同一套代碼可以運行在瀏覽器端，也可以運行在 Node.js 伺服器端。</p>
+<p>自動轉換 JSON： 發送請求時它會幫你把物件轉成 JSON，收到回應時也會自動解析成 JavaScript 物件，省去手動 .json() 的步驟。</p>
+<p>攔截器 (Interceptors)： 這是它的殺手鐧。你可以在請求發出前（例如統一加上 Auth Token）或回應回來後（例如統一處理 401 錯誤）進行攔截處理。</p>
+<p>請求取消： 內建機制可以讓你取消尚未完成的請求，避免浪費資源。</p>
+<p>客戶端防禦 XSRF： 內建了一些基本的安全性保護。</p>
+<hr>
+<h2 id="簡單的git"><a href="#簡單的git" class="headerlink" title="簡單的git"></a>簡單的git</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span>;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getUserData</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-comment">// 不需要手動轉 JSON，response.data 直接就是結果</span><br>    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;https://api.example.com/user/123&#x27;</span>);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(response.<span class="hljs-property">data</span>);<br>  &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>    <span class="hljs-comment">// 只要 API 回傳 4xx 或 5xx，都會直接進到這裡</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;抓取失敗：&#x27;</span>, error.<span class="hljs-property">message</span>);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="🎯總結"><a href="#🎯總結" class="headerlink" title="🎯總結"></a>🎯總結</h1><p>Axios 就是一個更聰明、功能更完整的網路請求工具。對於小型專案，原生 fetch 可能就夠了；但如果你在開發中大型應用，需要統一處理 Token、錯誤提示或複雜的 API 邏輯，Axios 會幫你省下大量的開發時間。</p>
+<h1 id="推荐插件：All-in-One-WP-Migration"><a href="#推荐插件：All-in-One-WP-Migration" class="headerlink" title="推荐插件：All-in-One WP Migration"></a>推荐插件：All-in-One WP Migration</h1><p>在你现在的 WordPress 后台 → 插件 → 安装 → 搜 All-in-One WP Migration</p>
+<p>启用后，点导出 → 直接导出成一个 .wpress 单文件<br>（这个文件就是整站备份：文章、设置、图片、插件、数据库全在里面）</p>
+<p>新服务器 &#x2F; 新电脑搭建的空白 WP：</p>
+<p>同样装这个插件 → 导入这个 .wpress 文件 → 一键还原</p>
+<p>不用单独导 SQL，不用分开传文件</p>
 
                 
               </div>
@@ -595,8 +630,8 @@ location ~ \.php$ {
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/08/3%E5%B9%B4%E4%B9%8B%E5%BE%8C%E7%B6%B2%E7%AB%99%E8%83%BD%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%BC%8F%E4%B8%8A%E7%B7%9A%E9%97%9C%E6%96%BC%E5%A5%B9%E7%9A%84%E9%80%99%E4%B8%80%E4%BB%B6%E4%BA%8B-1/" title="3年之後網站能不能正式上線關於她的這一件事">
-                        <span class="hidden-mobile">3年之後網站能不能正式上線關於她的這一件事</span>
+                      <a href="/2026/04/08/%E5%85%B3%E4%BA%8E%E6%AF%95%E4%B8%9A%E4%B9%8B%E5%90%8E%E8%83%BD%E4%B8%8D%E8%83%BD%E4%B8%8A%E7%BA%BF%E5%A5%B9%E8%BF%99%E4%B8%80%E7%BD%91%E7%AB%99%E8%BF%99%E6%A1%A3%E4%BA%8B/" title="关于毕业之后能不能上线她这一网站这档事">
+                        <span class="hidden-mobile">关于毕业之后能不能上线她这一网站这档事</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

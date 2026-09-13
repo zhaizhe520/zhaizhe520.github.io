@@ -19,21 +19,24 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前後端分離">
+    <meta name="description" content="编程思维">
 <meta property="og:type" content="article">
-<meta property="og:title" content="本地部署Wordpress實現Vue3接口前後端分離">
-<meta property="og:url" content="http://example.com/2026/04/28/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2Wordpress%E5%AF%A6%E7%8F%BEVue3%E6%8E%A5%E5%8F%A3%E5%89%8D%E5%BE%8C%E7%AB%AF%E5%88%86%E9%9B%A2/index.html">
+<meta property="og:title" content="编程思维">
+<meta property="og:url" content="http://example.com/2026/09/12/%E7%BC%96%E7%A8%8B%E6%80%9D%E7%BB%B4/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="前後端分離">
+<meta property="og:description" content="编程思维">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-04-28T07:32:27.000Z">
-<meta property="article:modified_time" content="2026-08-26T01:34:12.756Z">
+<meta property="og:image" content="http://example.com/img/bg/part2.jpg">
+<meta property="article:published_time" content="2026-09-12T02:04:35.000Z">
+<meta property="article:modified_time" content="2026-09-12T03:19:21.752Z">
 <meta property="article:author" content="Mashiro">
+<meta property="article:tag" content="编程思维">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/bg/part2.jpg">
   
   
   
-  <title>本地部署Wordpress實現Vue3接口前後端分離 - </title>
+  <title>编程思维 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -302,7 +305,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="本地部署Wordpress實現Vue3接口前後端分離"></span>
+            <span id="subtitle" data-typed-text="编程思维"></span>
           
         </div>
 
@@ -313,8 +316,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-04-28 15:32" pubdate>
-          2026年4月28日 下午
+        <time datetime="2026-09-12 10:04" pubdate>
+          2026年9月12日 上午
         </time>
       </span>
     
@@ -325,7 +328,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          9 字
         
       </span>
     
@@ -336,7 +339,7 @@
         
         
         
-          14 分钟
+          1 分钟
         
       </span>
     
@@ -375,41 +378,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">本地部署Wordpress實現Vue3接口前後端分離</h1>
+            <h1 id="seo-header">编程思维</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="一、先给你讲清楚：什么是前后端分离（超简单）"><a href="#一、先给你讲清楚：什么是前后端分离（超简单）" class="headerlink" title="一、先给你讲清楚：什么是前后端分离（超简单）"></a>一、先给你讲清楚：什么是前后端分离（超简单）</h1><p>WordPress &#x3D; 后端 &#x2F; 数据中心<br>存文章<br>存图片<br>存用户<br>自动生成 API 接口（不用你写）<br>Vue3 &#x3D; 前端 &#x2F; 展示页面<br>做界面<br>做交互<br>做样式<br>通过 API 去 WordPress 拿数据<br>它们的关系：<br>Vue ← API ← WordPress</p>
-<h1 id="二、你本地具备的条件（全部满足）"><a href="#二、你本地具备的条件（全部满足）" class="headerlink" title="二、你本地具备的条件（全部满足）"></a>二、你本地具备的条件（全部满足）</h1><p>✅ 本地 WordPress 能跑（你已经登录后台了）<br>✅ Vue3 项目能跑、能打包<br>✅ 数据库 MySQL 你已经会进了<br>✅ 你只差：Vue 调用 WP API</p>
-<ol>
-<li>找到 WordPress 自带的 API 地址<br>不用插件、不用配置自带接口例如：</li>
-</ol>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">plaintext<br>http:<span class="hljs-regexp">//</span>localhost<span class="hljs-regexp">/你的WP地址/</span>wp-json<span class="hljs-regexp">/wp/</span>v2/posts<br>打开就是文章列表 JSON<br></code></pre></td></tr></table></figure>
-<ol start="2">
-<li>Vue 安装 axios（发送请求）</li>
-</ol>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">plaintext<br>npm <span class="hljs-keyword">install</span> axios<br></code></pre></td></tr></table></figure>
-<ol start="3">
-<li>Vue 里写 3 行代码请求 WP 数据<br>js<br>axios.get(‘<a target="_blank" rel="noopener" href="http://localhost/.../posts').then">http://localhost/.../posts&#39;).then</a>(res &#x3D;&gt; {<br>  console.log(res.data)<br>})catch(error){<br>  console.log(“抓取失敗”)<br>}</li>
-<li>把数据渲染到 Vue 页面</li>
-</ol>
-<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">html</span><br><span class="language-xml">预览</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in list&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item.id&quot;</span>&gt;</span></span><br><span class="language-xml">  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">item.title.rendered</span> &#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
-
-
-<h1 id="什麼是axios"><a href="#什麼是axios" class="headerlink" title="什麼是axios"></a>什麼是axios</h1><p>簡單來說，Axios 是一個基於 Promise 的 HTTP 客戶端，專門用來在瀏覽器（Frontend）和 Node.js（Backend）環境中發送網路請求。</p>
-<p>如果你曾經被原生 JavaScript 那囉唆的 XMLHttpRequest 搞得頭大，或者覺得 fetch 的某些功能（如自動轉換 JSON）還不夠便利，那 Axios 就像是你的「網路請求懶人包」。</p>
-<p>🚀 為什麼大家愛用 Axios？<br>Axios 之所以成為開發者的首選，主要有以下幾個核心特性：</p>
-<p>基於 Promise： 它完全支持現代的 async&#x2F;await 語法，讓非同步代碼看起來像同步一樣整潔。</p>
-<p>同構性 (Isomorphic)： 同一套代碼可以運行在瀏覽器端，也可以運行在 Node.js 伺服器端。</p>
-<p>自動轉換 JSON： 發送請求時它會幫你把物件轉成 JSON，收到回應時也會自動解析成 JavaScript 物件，省去手動 .json() 的步驟。</p>
-<p>攔截器 (Interceptors)： 這是它的殺手鐧。你可以在請求發出前（例如統一加上 Auth Token）或回應回來後（例如統一處理 401 錯誤）進行攔截處理。</p>
-<p>請求取消： 內建機制可以讓你取消尚未完成的請求，避免浪費資源。</p>
-<p>客戶端防禦 XSRF： 內建了一些基本的安全性保護。</p>
-<hr>
-<h2 id="簡單的git"><a href="#簡單的git" class="headerlink" title="簡單的git"></a>簡單的git</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span>;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getUserData</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-comment">// 不需要手動轉 JSON，response.data 直接就是結果</span><br>    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;https://api.example.com/user/123&#x27;</span>);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(response.<span class="hljs-property">data</span>);<br>  &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>    <span class="hljs-comment">// 只要 API 回傳 4xx 或 5xx，都會直接進到這裡</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;抓取失敗：&#x27;</span>, error.<span class="hljs-property">message</span>);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="🎯總結"><a href="#🎯總結" class="headerlink" title="🎯總結"></a>🎯總結</h1><p>Axios 就是一個更聰明、功能更完整的網路請求工具。對於小型專案，原生 fetch 可能就夠了；但如果你在開發中大型應用，需要統一處理 Token、錯誤提示或複雜的 API 邏輯，Axios 會幫你省下大量的開發時間。</p>
+                <p>重构才是进步的源泉</p>
 
                 
               </div>
@@ -418,27 +392,13 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
       
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/WordPress/" class="category-chain-item">WordPress</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
+        <a href="/tags/%E7%BC%96%E7%A8%8B%E6%80%9D%E7%BB%B4/" class="print-no-link">#编程思维</a>
+      
     </div>
-  
   
 </div>
 
@@ -448,8 +408,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>本地部署Wordpress實現Vue3接口前後端分離</div>
-      <div>http://example.com/2026/04/28/本地部署Wordpress實現Vue3接口前後端分離/</div>
+      <div>编程思维</div>
+      <div>http://example.com/2026/09/12/编程思维/</div>
     </div>
     <div class="license-meta">
       
@@ -461,7 +421,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年4月28日</div>
+          <div>2026年9月12日</div>
         </div>
       
       
@@ -493,9 +453,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/28/pinia%E6%8A%93%E7%B6%B2%E9%A0%81%E6%95%B8%E6%93%9A/" title="pinia抓網頁數據">
+                      <a href="/2026/09/12/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" title="后端框架">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">pinia抓網頁數據</span>
+                        <span class="hidden-mobile">后端框架</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -503,8 +463,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/27/pinia%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/" title="Pinia从入门到入土">
-                        <span class="hidden-mobile">Pinia从入门到入土</span>
+                      <a href="/2026/09/03/Vue%E6%A1%86%E6%9E%B6%E6%B7%B1%E8%80%95%E7%B2%BE%E9%80%9A/" title="Vue3框架深耕精通">
+                        <span class="hidden-mobile">Vue3框架深耕精通</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
