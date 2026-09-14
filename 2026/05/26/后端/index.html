@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="多对多联系 (Many-to-Many)">
+    <meta name="description" content="后端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多对多联系 (Many-to-Many) —— 必须引入“中间表”">
-<meta property="og:url" content="http://example.com/2026/06/06/%E5%A4%9A%E5%AF%B9%E5%A4%9A%E8%81%94%E7%B3%BB-Many-to-Many%E5%BC%95%E5%85%A5%E2%80%9C%E4%B8%AD%E9%97%B4%E8%A1%A8%E2%80%9D/index.html">
+<meta property="og:title" content="后端">
+<meta property="og:url" content="http://example.com/2026/05/26/%E5%90%8E%E7%AB%AF/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="多对多联系 (Many-to-Many)">
+<meta property="og:description" content="后端">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-06-06T02:47:19.000Z">
-<meta property="article:modified_time" content="2026-08-26T01:34:12.751Z">
+<meta property="article:published_time" content="2026-05-26T03:34:36.000Z">
+<meta property="article:modified_time" content="2026-09-13T09:49:43.393Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="多对多联系 (Many-to-Many)">
+<meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>多对多联系 (Many-to-Many) —— 必须引入“中间表” - </title>
+  <title>后端 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="多对多联系 (Many-to-Many) —— 必须引入“中间表”"></span>
+            <span id="subtitle" data-typed-text="后端"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-06-06 10:47" pubdate>
-          2026年6月6日 上午
+        <time datetime="2026-05-26 11:34" pubdate>
+          2026年5月26日 中午
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          298 字
+          216 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          3 分钟
+          2 分钟
         
       </span>
     
@@ -376,22 +376,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">多对多联系 (Many-to-Many) —— 必须引入“中间表”</h1>
+            <h1 id="seo-header">后端</h1>
             
             
               <div class="markdown-body">
                 
-                <p>多对多联系 (Many-to-Many) —— 必须引入“中间表”</p>
-<p>在现实生活中，很多关系是双向多值的。一个父记录对应多个子记录，反过来一个子记录也对应多个父记录。</p>
-<p>在数据库里，两张表是无法直接建立多对多联系的，必须生一个“中间表”（也叫关联表），把一个大难题拆成两个“一对多”。</p>
-<p>经典场景： 学生 与 课程；文章 与 标签。一个学生选多门课，一门课被多个学生选。</p>
-<div style="color:red">连线规则： 独立出第三张表，里面存放两张表的主键作为双外键。</div>
-
-<p>经典场景： 用户基础信息 与 用户详细隐私（或者用户主表 与 用户身份证信息）。</p>
-<p>连线规则： 子表的主键同时又是外键，直接指向父表的主键。</p>
-<p>独立主键 + 两个外键（最常见）</p>
-<p>联合主键（Composite Key，最严谨）</p>
-
+                <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs nix">my-backend<span class="hljs-symbol">/</span><br>├── routes<span class="hljs-symbol">/</span>          <span class="hljs-comment"># 路由层：只负责定义 API 路径（如 /api/chat, /api/user）</span><br>├── controllers<span class="hljs-symbol">/</span>     <span class="hljs-comment"># 控制器层：负责具体的业务逻辑与 req/res 处理</span><br>├── services<span class="hljs-symbol">/</span>        <span class="hljs-comment"># 服务层：调用大模型 SDK、调外部 API 或做复杂计算</span><br>├── models<span class="hljs-symbol">/</span>          <span class="hljs-comment"># 数据层：负责和数据库打交道</span><br>├── .env             <span class="hljs-comment"># 环境变量</span><br>└── server.js        <span class="hljs-comment"># 入口文件：初始化 Express，挂载中间件和路由</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -409,7 +399,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
+  <a href="/categories/%E5%90%8E%E7%AB%AF/" class="category-chain-item">后端</a>
   
   
 
@@ -424,7 +414,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%A4%9A%E5%AF%B9%E5%A4%9A%E8%81%94%E7%B3%BB-Many-to-Many/" class="print-no-link">#多对多联系 (Many-to-Many)</a>
+        <a href="/tags/%E5%90%8E%E7%AB%AF/" class="print-no-link">#后端</a>
       
     </div>
   
@@ -436,8 +426,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>多对多联系 (Many-to-Many) —— 必须引入“中间表”</div>
-      <div>http://example.com/2026/06/06/多对多联系-Many-to-Many引入“中间表”/</div>
+      <div>后端</div>
+      <div>http://example.com/2026/05/26/后端/</div>
     </div>
     <div class="license-meta">
       
@@ -449,7 +439,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年6月6日</div>
+          <div>2026年5月26日</div>
         </div>
       
       
@@ -481,9 +471,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/06/07/Navigation(%E8%B7%AF%E7%94%B1router)/" title="Navigation路由">
+                      <a href="/2026/05/27/Vue%203%20%E5%88%99%E6%98%AF%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97%20+%20%E7%BB%9F%E4%B8%80%E9%81%8D%E5%8E%86/" title="Vue 3 则是最长递增子序列 + 统一遍历">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Navigation路由</span>
+                        <span class="hidden-mobile">Vue 3 则是最长递增子序列 + 统一遍历</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -491,8 +481,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/06/05/Kotlin%E9%87%8C%E9%9D%A2%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Kotlin里面的生命周期">
-                        <span class="hidden-mobile">Kotlin里面的生命周期</span>
+                      <a href="/2026/05/25/post%E5%92%8Cget%E8%AF%B7%E6%B1%82/" title="post和get请求">
+                        <span class="hidden-mobile">post和get请求</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
