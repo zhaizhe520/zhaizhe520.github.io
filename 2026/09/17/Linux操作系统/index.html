@@ -1,0 +1,1293 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Mashiro">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Linux操作系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux操作系统">
+<meta property="og:url" content="http://example.com/2026/09/17/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Linux操作系统">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-09-17T14:37:54.000Z">
+<meta property="article:modified_time" content="2026-09-18T13:14:53.350Z">
+<meta property="article:author" content="Mashiro">
+<meta property="article:tag" content="Linux操作系统">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Linux操作系统 - </title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>我不是二次元</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/zhaizhe520" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="https://github.com/zhaizhe520" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux操作系统"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-09-17 22:37" pubdate>
+          2026年9月17日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          76 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Linux操作系统</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h1><h1 id="Linux-服务器常用命令速查"><a href="#Linux-服务器常用命令速查" class="headerlink" title="Linux &#x2F; 服务器常用命令速查"></a>Linux &#x2F; 服务器常用命令速查</h1><h2 id="基本命令-1"><a href="#基本命令-1" class="headerlink" title="基本命令"></a>基本命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ssh root@服务器ip</code></td>
+<td>远程连接服务器</td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td>列出当前目录文件；<code>ls -lh</code> 带大小、时间</td>
+</tr>
+<tr>
+<td><code>cd /xxx</code></td>
+<td>切换目录；<code>cd ~</code> 回到家目录</td>
+</tr>
+<tr>
+<td><code>pwd</code></td>
+<td>查看当前所在路径</td>
+</tr>
+<tr>
+<td><code>mkdir xxx</code></td>
+<td>创建文件夹；<code>mkdir -p /www/typewords</code> 递归创建多级目录</td>
+</tr>
+<tr>
+<td><code>rm file</code></td>
+<td>删除文件；<code>rm -r folder</code> 删除文件夹；⚠️ <code>rm -rf</code> 谨慎使用</td>
+</tr>
+<tr>
+<td><code>cp source dest</code></td>
+<td>复制文件；<code>cp -r</code> 复制文件夹</td>
+</tr>
+<tr>
+<td><code>mv old new</code></td>
+<td>移动&#x2F;重命名文件</td>
+</tr>
+<tr>
+<td><code>tar -zcvf out.tar.gz .output/public</code></td>
+<td>打包静态文件为压缩包</td>
+</tr>
+<tr>
+<td><code>tar -zxvf out.tar.gz</code></td>
+<td>解压 gz 压缩包</td>
+</tr>
+</tbody></table>
+<p><code>ls -la</code> 其实就是 <code>ls -l -a</code>：</p>
+<ul>
+<li><code>-l</code>：长格式，显示权限、所有者、大小、时间</li>
+<li><code>-a</code>：显示所有文件，包括 <code>.</code> 开头的隐藏文件</li>
+</ul>
+<p>常用变体：</p>
+<ul>
+<li><code>ls -lah</code>：大小人类可读，如 KB&#x2F;MB</li>
+<li><code>ls -lht</code>：按修改时间倒序，最新在前</li>
+<li><code>ls -ltr</code>：按修改时间正序，最旧在前</li>
+<li><code>ls -lhS</code>：按文件大小排序</li>
+<li><code>ls -laR</code>：递归列出子目录</li>
+<li><code>ll</code>：很多系统里是 <code>ls -l</code> 的别名，不一定默认有</li>
+</ul>
+<hr>
+<h2 id="1-文件与目录"><a href="#1-文件与目录" class="headerlink" title="1. 文件与目录"></a>1. 文件与目录</h2><ul>
+<li><code>cd</code>：回到家目录</li>
+<li><code>cd ~</code>：回到家目录</li>
+<li><code>cd -</code>：回到上一次所在目录</li>
+<li><code>cd ..</code>：上一级</li>
+<li><code>cd ../..</code>：上两级</li>
+<li><code>pwd</code>：显示当前路径</li>
+<li><code>pwd -P</code>：显示物理路径，不显示软链接路径</li>
+<li><code>mkdir xxx</code>：创建目录</li>
+<li><code>mkdir -p /www/typewords</code>：递归创建多级目录</li>
+<li><code>rmdir xxx</code>：删除空目录</li>
+<li><code>rm file</code>：删除文件</li>
+<li><code>rm -i file</code>：删除前询问</li>
+<li><code>rm -r folder</code>：递归删除目录</li>
+<li><code>rm -rf folder</code>：强制递归删除，危险</li>
+<li><code>cp source dest</code>：复制文件</li>
+<li><code>cp -r folder1 folder2</code>：复制目录</li>
+<li><code>cp -a source dest</code>：保留权限、时间、链接等复制</li>
+<li><code>cp -v source dest</code>：显示复制过程</li>
+<li><code>mv old new</code>：移动或重命名</li>
+<li><code>mv -v old new</code>：显示移动过程</li>
+<li><code>touch file</code>：创建空文件或更新时间</li>
+<li><code>ln -s /target /link</code>：创建软链接</li>
+<li><code>ln /target /link</code>：创建硬链接</li>
+<li><code>stat file</code>：查看文件详细状态</li>
+<li><code>file file</code>：查看文件类型</li>
+<li><code>basename /a/b.txt</code>：取文件名 <code>b.txt</code></li>
+<li><code>dirname /a/b.txt</code>：取目录名 <code>/a</code></li>
+<li><code>realpath file</code>：显示绝对路径</li>
+<li><code>readlink -f file</code>：解析软链接最终路径</li>
+<li><code>tree -L 2</code>：树状显示两层目录，需安装 tree</li>
+<li><code>du -sh folder</code>：查看目录总大小</li>
+<li><code>du -h --max-depth=1 | sort -h</code>：查看一级子目录大小并排序</li>
+<li><code>df -h</code>：查看磁盘使用</li>
+<li><code>df -i</code>：查看 inode 使用</li>
+<li><code>mktemp</code>：创建临时文件</li>
+<li><code>install -d /path</code>：创建目录并设权限</li>
+</ul>
+<hr>
+<h2 id="2-查看、编辑、文本处理"><a href="#2-查看、编辑、文本处理" class="headerlink" title="2. 查看、编辑、文本处理"></a>2. 查看、编辑、文本处理</h2><ul>
+<li><code>cat file</code>：查看文件全部内容</li>
+<li><code>cat -n file</code>：带行号查看</li>
+<li><code>tac file</code>：倒序查看</li>
+<li><code>nl file</code>：带行号输出</li>
+<li><code>head file</code>：看开头 10 行</li>
+<li><code>head -n 20 file</code>：看开头 20 行</li>
+<li><code>tail file</code>：看末尾 10 行</li>
+<li><code>tail -n 50 file</code>：看末尾 50 行</li>
+<li><code>tail -f app.log</code>：实时跟踪日志</li>
+<li><code>tail -F app.log</code>：日志轮转后继续跟踪</li>
+<li><code>less file</code>：分页查看，<code>/关键词</code> 搜索，<code>q</code> 退出</li>
+<li><code>more file</code>：简单分页查看</li>
+<li><code>wc -l file</code>：统计行数</li>
+<li><code>wc -w file</code>：统计单词数</li>
+<li><code>wc -c file</code>：统计字节数</li>
+<li><code>grep &quot;keyword&quot; file</code>：搜索关键词</li>
+<li><code>grep -i &quot;keyword&quot; file</code>：忽略大小写</li>
+<li><code>grep -n &quot;keyword&quot; file</code>：显示行号</li>
+<li><code>grep -r &quot;keyword&quot; .</code>：递归搜索</li>
+<li><code>grep -rin &quot;keyword&quot; .</code>：递归、忽略大小写、显示行号</li>
+<li><code>grep -v &quot;keyword&quot; file</code>：反选，不包含关键词的行</li>
+<li><code>grep -E &quot;regex&quot; file</code>：扩展正则</li>
+<li><code>grep -A 3 -B 3 &quot;keyword&quot; file</code>：显示前后 3 行</li>
+<li><code>grep -rl &quot;old&quot; .</code>：只列出包含 old 的文件名</li>
+<li><code>zgrep &quot;keyword&quot; file.gz</code>：搜索压缩日志</li>
+<li><code>zcat file.gz</code>：查看 gz 内容</li>
+<li><code>sed -n &#39;1,20p&#39; file</code>：只打印 1 到 20 行</li>
+<li><code>sed -i &#39;s/old/new/g&#39; file</code>：替换文本</li>
+<li><code>sed -i.bak &#39;s/old/new/g&#39; file</code>：替换并备份</li>
+<li><code>awk &#39;{print $1}&#39; file</code>：打印第一列</li>
+<li><code>awk -F&#39;,&#39; &#39;{print $2}&#39; file</code>：按逗号分割打印第二列</li>
+<li><code>cut -d: -f1 /etc/passwd</code>：按冒号切割取第一列</li>
+<li><code>sort file</code>：排序</li>
+<li><code>sort -u file</code>：排序去重</li>
+<li><code>sort -h</code>：按人类可读大小排序</li>
+<li><code>uniq -c</code>：统计连续重复行次数</li>
+<li><code>tr &#39;a-z&#39; &#39;A-Z&#39;</code>：小写转大写</li>
+<li><code>xargs</code>：把输入变成命令参数</li>
+<li><code>tee file</code>：同时输出到屏幕和文件</li>
+<li><code>diff -u a.txt b.txt</code>：比较文件</li>
+<li><code>patch -p1 &lt; fix.patch</code>：打补丁</li>
+<li><code>jq . file.json</code>：格式化 JSON</li>
+<li><code>vim file</code>：编辑文件，<code>i</code> 插入，<code>:wq</code> 保存退出，<code>:q!</code> 不保存退出</li>
+<li><code>nano file</code>：简单编辑器，<code>Ctrl+O</code> 保存，<code>Ctrl+X</code> 退出</li>
+<li><code>echo &quot;text&quot;</code>：输出文本</li>
+<li><code>printf &quot;%s\n&quot; &quot;text&quot;</code>：格式化输出</li>
+<li><code>cmd &gt; file</code>：覆盖输出到文件</li>
+<li><code>cmd &gt;&gt; file</code>：追加输出到文件</li>
+<li><code>cmd 2&gt; err.log</code>：错误输出到文件</li>
+<li><code>cmd &gt; out.log 2&gt;&amp;1</code>：标准输出和错误都到同一文件</li>
+<li><code>cmd1 &amp;&amp; cmd2</code>：前一个成功才执行后一个</li>
+<li><code>cmd1 || cmd2</code>：前一个失败才执行后一个</li>
+<li><code>cmd1 ; cmd2</code>：顺序执行</li>
+<li><code>$?</code>：上一条命令退出码，0 表示成功</li>
+<li><code>watch -n 2 &#39;df -h&#39;</code>：每 2 秒执行一次</li>
+<li><code>time command</code>：统计命令耗时</li>
+</ul>
+<hr>
+<h2 id="3-权限、用户、组"><a href="#3-权限、用户、组" class="headerlink" title="3. 权限、用户、组"></a>3. 权限、用户、组</h2><ul>
+<li><code>chmod 755 file</code>：设置权限 rwxr-xr-x</li>
+<li><code>chmod 644 file</code>：设置权限 rw-r–r–</li>
+<li><code>chmod +x script.sh</code>：增加执行权限</li>
+<li><code>chmod -R 755 folder</code>：递归设置权限</li>
+<li><code>chown user file</code>：改所有者</li>
+<li><code>chown user:group file</code>：改所有者和组</li>
+<li><code>chown -R www-data:www-data /www</code>：递归改所有者</li>
+<li><code>chgrp group file</code>：改所属组</li>
+<li><code>umask</code>：查看默认权限掩码</li>
+<li><code>sudo command</code>：以 root 执行</li>
+<li><code>sudo -i</code>：切换到 root 交互 shell</li>
+<li><code>su -</code>：切换到 root</li>
+<li><code>sudo -l</code>：查看当前用户可执行的 sudo 命令</li>
+<li><code>visudo</code>：安全编辑 sudoers</li>
+<li><code>useradd -m -s /bin/bash user</code>：创建用户并建家目录</li>
+<li><code>adduser user</code>：交互式创建用户，Debian&#x2F;Ubuntu</li>
+<li><code>passwd user</code>：设置密码</li>
+<li><code>passwd -l user</code>：锁定用户</li>
+<li><code>usermod -aG sudo user</code>：把用户加入 sudo 组</li>
+<li><code>usermod -aG docker user</code>：把用户加入 docker 组</li>
+<li><code>deluser user</code>：删除用户，Debian&#x2F;Ubuntu</li>
+<li><code>deluser --remove-home user</code>：删除用户和家目录</li>
+<li><code>groupadd dev</code>：创建组</li>
+<li><code>groups user</code>：查看用户所属组</li>
+<li><code>id</code>：查看当前用户 uid&#x2F;gid&#x2F;组</li>
+<li><code>id user</code>：查看指定用户</li>
+<li><code>whoami</code>：当前用户名</li>
+<li><code>who</code>：当前登录用户</li>
+<li><code>w</code>：当前登录用户及正在做什么</li>
+<li><code>last</code>：登录历史</li>
+<li><code>lastb</code>：失败登录历史</li>
+<li><code>chage -l user</code>：查看密码过期信息</li>
+</ul>
+<hr>
+<h2 id="4-查找与搜索"><a href="#4-查找与搜索" class="headerlink" title="4. 查找与搜索"></a>4. 查找与搜索</h2><ul>
+<li><code>find /path -name &quot;*.log&quot;</code>：按名字查找</li>
+<li><code>find . -type f -name &quot;*.js&quot;</code>：只找文件</li>
+<li><code>find . -type d -name &quot;node_modules&quot;</code>：只找目录</li>
+<li><code>find . -type f -size +100M</code>：找大于 100M 的文件</li>
+<li><code>find . -type f -mtime +7</code>：找 7 天前修改的文件</li>
+<li><code>find . -type f -mtime -1</code>：找 1 天内修改的文件</li>
+<li><code>find . -type f -name &quot;*.log&quot; -delete</code>：找到并删除，危险</li>
+<li><code>find . -type f -name &quot;*.log&quot; -exec rm {} \;</code>：找到并执行删除</li>
+<li><code>find . -type f -perm 644</code>：按权限查找</li>
+<li><code>find / -perm -4000 -type f</code>：查找 SUID 文件</li>
+<li><code>find . -not -path &quot;./node_modules/*&quot;</code>：排除目录</li>
+<li><code>locate file</code>：快速查找，需 updatedb</li>
+<li><code>updatedb</code>：更新 locate 数据库</li>
+<li><code>which command</code>：查看命令路径</li>
+<li><code>whereis command</code>：查看命令相关路径</li>
+<li><code>type command</code>：查看命令类型，内建&#x2F;别名&#x2F;文件</li>
+</ul>
+<hr>
+<h2 id="5-压缩、解压、传输"><a href="#5-压缩、解压、传输" class="headerlink" title="5. 压缩、解压、传输"></a>5. 压缩、解压、传输</h2><ul>
+<li><code>tar -zcvf out.tar.gz .output/public</code>：打包并 gzip 压缩</li>
+<li><code>tar -zxvf out.tar.gz</code>：解压 gz 包</li>
+<li><code>tar -zxvf out.tar.gz -C /www</code>：解压到指定目录</li>
+<li><code>tar -ztvf out.tar.gz</code>：查看压缩包内容</li>
+<li><code>tar -zcvf out.tar.gz --exclude=node_modules .</code>：排除目录打包</li>
+<li><code>gzip file</code>：压缩成 file.gz</li>
+<li><code>gunzip file.gz</code>：解压 gz</li>
+<li><code>zip -r out.zip folder</code>：zip 压缩目录</li>
+<li><code>unzip out.zip</code>：解压 zip</li>
+<li><code>unzip -l out.zip</code>：查看 zip 内容</li>
+<li><code>unzip out.zip -d /www</code>：解压到指定目录</li>
+<li><code>xz file</code>：xz 压缩</li>
+<li><code>unxz file.xz</code>：解压 xz</li>
+<li><code>scp file root@ip:/www/</code>：上传文件</li>
+<li><code>scp -r folder root@ip:/www/</code>：上传目录</li>
+<li><code>scp -P 2222 file root@ip:/www/</code>：指定 SSH 端口</li>
+<li><code>scp root@ip:/www/file .</code>：下载文件</li>
+<li><code>rsync -avz local/ root@ip:/remote/</code>：同步目录</li>
+<li><code>rsync -avz --delete local/ root@ip:/remote/</code>：删除远端多余文件后同步，危险</li>
+<li><code>rsync -avz -e &quot;ssh -p 2222&quot; local/ root@ip:/remote/</code>：指定 SSH 端口</li>
+<li><code>sftp root@ip</code>：SFTP 交互传输</li>
+<li><code>curl -T file ftp://...</code>：上传文件</li>
+<li><code>rz</code>：上传文件，需 lrzsz</li>
+<li><code>sz file</code>：下载文件，需 lrzsz</li>
+<li><code>ssh-keygen -t ed25519 -C &quot;email&quot;</code>：生成 SSH 密钥</li>
+<li><code>ssh-keygen -t rsa -b 4096</code>：生成 RSA 4096 密钥</li>
+<li><code>ssh-copy-id root@ip</code>：复制公钥到服务器</li>
+<li><code>ssh-add ~/.ssh/id_ed25519</code>：添加密钥到 agent</li>
+<li><code>ssh -i key.pem root@ip</code>：指定私钥登录</li>
+<li><code>ssh -p 2222 root@ip</code>：指定端口登录</li>
+<li><code>ssh -L 8080:localhost:80 root@ip</code>：本地端口转发</li>
+<li><code>ssh -R 8080:localhost:80 root@ip</code>：远程端口转发</li>
+<li><code>ssh -D 1080 root@ip</code>：动态 socks 代理</li>
+</ul>
+<hr>
+<h2 id="6-进程、系统、服务"><a href="#6-进程、系统、服务" class="headerlink" title="6. 进程、系统、服务"></a>6. 进程、系统、服务</h2><ul>
+<li><code>ps aux</code>：查看所有进程</li>
+<li><code>ps -ef</code>：查看所有进程，另一种格式</li>
+<li><code>ps aux | grep nginx</code>：过滤进程</li>
+<li><code>ps aux --sort=-%mem | head</code>：按内存倒序</li>
+<li><code>pgrep nginx</code>：按名字找 PID</li>
+<li><code>pkill nginx</code>：按名字杀进程</li>
+<li><code>pkill -f &quot;node app.js&quot;</code>：按完整命令行杀进程</li>
+<li><code>kill PID</code>：发送终止信号</li>
+<li><code>kill -15 PID</code>：优雅终止</li>
+<li><code>kill -9 PID</code>：强制杀死</li>
+<li><code>killall nginx</code>：按名字杀所有</li>
+<li><code>top</code>：实时进程，<code>P</code> 按 CPU，<code>M</code> 按内存，<code>q</code> 退出</li>
+<li><code>htop</code>：更友好进程查看，需安装</li>
+<li><code>free -h</code>：内存使用</li>
+<li><code>uptime</code>：负载和运行时间</li>
+<li><code>vmstat 1</code>：系统状态</li>
+<li><code>iostat -x 1</code>：磁盘 IO</li>
+<li><code>iotop</code>：磁盘 IO 进程</li>
+<li><code>sar</code>：历史性能</li>
+<li><code>nohup command &gt; app.log 2&gt;&amp;1 &amp;</code>：后台运行并写日志</li>
+<li><code>command &amp;</code>：后台运行</li>
+<li><code>jobs</code>：查看后台任务</li>
+<li><code>bg %1</code>：后台继续</li>
+<li><code>fg %1</code>：调回前台</li>
+<li><code>Ctrl+Z</code>：暂停当前任务</li>
+<li><code>screen -S name</code>：创建 screen</li>
+<li><code>screen -r name</code>：恢复 screen</li>
+<li><code>Ctrl+A D</code>：退出 screen 但保持运行</li>
+<li><code>tmux new -s name</code>：创建 tmux</li>
+<li><code>tmux attach -t name</code>：连接 tmux</li>
+<li><code>Ctrl+B D</code>：退出 tmux 但保持运行</li>
+<li><code>systemctl status nginx</code>：查看服务状态</li>
+<li><code>systemctl start nginx</code>：启动服务</li>
+<li><code>systemctl stop nginx</code>：停止服务</li>
+<li><code>systemctl restart nginx</code>：重启服务</li>
+<li><code>systemctl reload nginx</code>：重载配置</li>
+<li><code>systemctl enable nginx</code>：开机自启</li>
+<li><code>systemctl disable nginx</code>：取消开机自启</li>
+<li><code>service nginx status</code>：旧式服务命令</li>
+<li><code>journalctl -u nginx</code>：查看服务日志</li>
+<li><code>journalctl -u nginx -f</code>：实时查看服务日志</li>
+<li><code>journalctl -xe</code>：查看最近错误</li>
+<li><code>journalctl --since &quot;1 hour ago&quot;</code>：最近一小时日志</li>
+<li><code>dmesg -T | tail</code>：查看内核日志</li>
+<li><code>dmesg -w</code>：实时内核日志</li>
+<li><code>lsof -i:80</code>：查看 80 端口占用</li>
+<li><code>lsof -p PID</code>：查看进程打开文件</li>
+<li><code>strace -p PID</code>：跟踪系统调用</li>
+<li><code>crontab -e</code>：编辑定时任务</li>
+<li><code>crontab -l</code>：列出定时任务</li>
+<li><code>crontab -r</code>：删除所有定时任务，危险</li>
+<li><code>at now + 1 hour</code>：一次性定时任务</li>
+<li><code>shutdown -h now</code>：立刻关机</li>
+<li><code>reboot</code>：重启</li>
+<li><code>poweroff</code>：关机</li>
+</ul>
+<hr>
+<h2 id="7-网络、端口、下载"><a href="#7-网络、端口、下载" class="headerlink" title="7. 网络、端口、下载"></a>7. 网络、端口、下载</h2><ul>
+<li><code>ip addr</code>：查看 IP</li>
+<li><code>ip a</code>：简写</li>
+<li><code>ip route</code>：查看路由</li>
+<li><code>ip link</code>：查看网卡</li>
+<li><code>hostname -I</code>：查看本机 IP</li>
+<li><code>ping host</code>：测试连通</li>
+<li><code>ping -c 4 host</code>：ping 4 次</li>
+<li><code>curl URL</code>：请求 URL</li>
+<li><code>curl -I URL</code>：只看响应头</li>
+<li><code>curl -L URL</code>：跟随重定向</li>
+<li><code>curl -o file URL</code>：下载并保存</li>
+<li><code>curl -O URL</code>：按远端文件名保存</li>
+<li><code>curl -X POST -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;a&quot;:1}&#39; URL</code>：POST JSON</li>
+<li><code>curl ifconfig.me</code>：查看公网 IP</li>
+<li><code>wget URL</code>：下载</li>
+<li><code>wget -c URL</code>：断点续传</li>
+<li><code>ss -tunlp</code>：查看监听端口</li>
+<li><code>ss -tunlp | grep 3000</code>：查看 3000 端口</li>
+<li><code>netstat -tunlp</code>：旧式查看端口</li>
+<li><code>lsof -i:3000</code>：查看端口占用</li>
+<li><code>nc -zv host 80</code>：测试端口连通</li>
+<li><code>telnet host 80</code>：测试端口</li>
+<li><code>dig domain</code>：DNS 查询</li>
+<li><code>dig +short domain</code>：简洁 DNS 结果</li>
+<li><code>nslookup domain</code>：DNS 查询</li>
+<li><code>host domain</code>：DNS 查询</li>
+<li><code>traceroute host</code>：路由追踪</li>
+<li><code>mtr host</code>：持续路由追踪</li>
+<li><code>tcpdump -i any port 80</code>：抓包</li>
+<li><code>nmap host</code>：端口扫描，需授权</li>
+<li><code>whois domain</code>：域名信息</li>
+<li><code>ufw status</code>：防火墙状态</li>
+<li><code>ufw allow 22</code>：允许 22 端口</li>
+<li><code>ufw allow 80/tcp</code>：允许 80 TCP</li>
+<li><code>ufw enable</code>：启用 ufw</li>
+<li><code>ufw delete allow 80/tcp</code>：删除规则</li>
+<li><code>firewall-cmd --state</code>：firewalld 状态</li>
+<li><code>firewall-cmd --add-port=80/tcp --permanent</code>：永久开放 80</li>
+<li><code>firewall-cmd --reload</code>：重载防火墙</li>
+<li><code>iptables -L -n -v</code>：查看 iptables 规则</li>
+<li><code>iptables -F</code>：清空规则，危险</li>
+<li><code>nft list ruleset</code>：查看 nftables</li>
+<li><code>getenforce</code>：查看 SELinux</li>
+<li><code>setenforce 0</code>：临时关闭 SELinux</li>
+</ul>
+<hr>
+<h2 id="8-磁盘、内存、性能"><a href="#8-磁盘、内存、性能" class="headerlink" title="8. 磁盘、内存、性能"></a>8. 磁盘、内存、性能</h2><ul>
+<li><code>lsblk</code>：查看块设备</li>
+<li><code>lsblk -f</code>：查看文件系统</li>
+<li><code>blkid</code>：查看 UUID</li>
+<li><code>fdisk -l</code>：查看磁盘分区</li>
+<li><code>parted -l</code>：查看分区</li>
+<li><code>df -hT</code>：查看磁盘和文件系统类型</li>
+<li><code>du -sh *</code>：查看当前目录各项大小</li>
+<li><code>ncdu</code>：交互式磁盘占用分析</li>
+<li><code>mount</code>：查看挂载</li>
+<li><code>mount /dev/sdb1 /mnt</code>：挂载</li>
+<li><code>umount /mnt</code>：卸载</li>
+<li><code>mkfs.ext4 /dev/sdb1</code>：格式化，危险</li>
+<li><code>fsck /dev/sdb1</code>：检查文件系统，危险</li>
+<li><code>dd if=/dev/zero of=/swapfile bs=1M count=1024</code>：创建 swap 文件，危险</li>
+<li><code>smartctl -a /dev/sda</code>：硬盘健康</li>
+<li><code>free -h</code>：内存</li>
+<li><code>top</code> &#x2F; <code>htop</code>：进程资源</li>
+<li><code>vmstat 1</code>：虚拟内存统计</li>
+<li><code>iostat -x 1</code>：磁盘 IO</li>
+<li><code>iotop</code>：IO 进程</li>
+<li><code>iftop</code>：网络流量</li>
+<li><code>nload</code>：网卡流量</li>
+<li><code>sar -u 1 5</code>：CPU 历史</li>
+</ul>
+<hr>
+<h2 id="9-软件包、运行时、Docker"><a href="#9-软件包、运行时、Docker" class="headerlink" title="9. 软件包、运行时、Docker"></a>9. 软件包、运行时、Docker</h2><h3 id="Debian-Ubuntu"><a href="#Debian-Ubuntu" class="headerlink" title="Debian &#x2F; Ubuntu"></a>Debian &#x2F; Ubuntu</h3><ul>
+<li><code>apt update</code>：更新软件源</li>
+<li><code>apt upgrade -y</code>：升级软件</li>
+<li><code>apt install nginx</code>：安装</li>
+<li><code>apt remove nginx</code>：卸载</li>
+<li><code>apt purge nginx</code>：卸载并删配置</li>
+<li><code>apt search keyword</code>：搜索</li>
+<li><code>apt list --installed</code>：已安装列表</li>
+<li><code>dpkg -i package.deb</code>：安装 deb</li>
+<li><code>dpkg -l</code>：列出 deb 包</li>
+</ul>
+<h3 id="CentOS-RHEL"><a href="#CentOS-RHEL" class="headerlink" title="CentOS &#x2F; RHEL"></a>CentOS &#x2F; RHEL</h3><ul>
+<li><code>yum update</code>：更新</li>
+<li><code>yum install nginx</code>：安装</li>
+<li><code>yum remove nginx</code>：卸载</li>
+<li><code>dnf install nginx</code>：新版本用法</li>
+<li><code>rpm -ivh package.rpm</code>：安装 rpm</li>
+<li><code>rpm -qa</code>：列出 rpm 包</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><code>snap install name</code>：安装 snap</li>
+<li><code>brew install name</code>：macOS&#x2F;Linuxbrew</li>
+<li><code>docker ps</code>：运行中容器</li>
+<li><code>docker ps -a</code>：所有容器</li>
+<li><code>docker images</code>：镜像</li>
+<li><code>docker run -d -p 80:80 nginx</code>：运行容器</li>
+<li><code>docker stop 容器</code>：停止</li>
+<li><code>docker rm 容器</code>：删除容器</li>
+<li><code>docker rmi 镜像</code>：删除镜像</li>
+<li><code>docker logs -f 容器</code>：实时日志</li>
+<li><code>docker exec -it 容器 bash</code>：进入容器</li>
+<li><code>docker compose up -d</code>：后台启动 compose</li>
+<li><code>docker compose down</code>：停止并删除 compose</li>
+<li><code>pm2 list</code>：Node PM2 列表</li>
+<li><code>pm2 restart app</code>：重启</li>
+<li><code>pm2 logs app</code>：日志</li>
+<li><code>nginx -t</code>：测试 Nginx 配置</li>
+<li><code>nginx -s reload</code>：重载 Nginx</li>
+<li><code>certbot renew --dry-run</code>：测试证书续期</li>
+<li><code>htpasswd -c /etc/nginx/.htpasswd user</code>：创建基础认证</li>
+<li><code>node -v</code>：Node 版本</li>
+<li><code>npm -v</code>：npm 版本</li>
+<li><code>pnpm -v</code>：pnpm 版本</li>
+<li><code>python3 -m http.server 8000</code>：临时 HTTP 服务</li>
+</ul>
+<hr>
+<h2 id="10-环境、历史、快捷键"><a href="#10-环境、历史、快捷键" class="headerlink" title="10. 环境、历史、快捷键"></a>10. 环境、历史、快捷键</h2><ul>
+<li><code>history</code>：历史命令</li>
+<li><code>history | grep ssh</code>：搜索历史</li>
+<li><code>Ctrl+R</code>：反向搜索历史</li>
+<li><code>!!</code>：执行上一条命令</li>
+<li><code>!$</code>：上一条命令最后一个参数</li>
+<li><code>alias ll=&#39;ls -lah&#39;</code>：设置别名</li>
+<li><code>unalias ll</code>：取消别名</li>
+<li><code>export PATH=$PATH:/new/path</code>：添加 PATH</li>
+<li><code>source ~/.bashrc</code>：重新加载配置</li>
+<li><code>env</code>：查看环境变量</li>
+<li><code>printenv</code>：查看环境变量</li>
+<li><code>echo $PATH</code>：查看 PATH</li>
+<li><code>man command</code>：查看手册</li>
+<li><code>command --help</code>：查看帮助</li>
+<li><code>info command</code>：查看 info</li>
+<li><code>Ctrl+C</code>：中断当前命令</li>
+<li><code>Ctrl+D</code>：退出 shell &#x2F; EOF</li>
+<li><code>Ctrl+Z</code>：挂起当前任务</li>
+<li><code>Ctrl+L</code>：清屏</li>
+<li><code>Ctrl+A</code>：行首</li>
+<li><code>Ctrl+E</code>：行尾</li>
+<li><code>Ctrl+U</code>：删除到行首</li>
+<li><code>Ctrl+K</code>：删除到行尾</li>
+<li><code>Ctrl+W</code>：删除前一个词</li>
+<li><code>Tab</code>：自动补全</li>
+<li><code>上下方向键</code>：历史命令</li>
+</ul>
+<hr>
+<h2 id="11-常用组合示例"><a href="#11-常用组合示例" class="headerlink" title="11. 常用组合示例"></a>11. 常用组合示例</h2><h3 id="打包静态文件"><a href="#打包静态文件" class="headerlink" title="打包静态文件"></a>打包静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -zcvf out.tar.gz .output/public<br></code></pre></td></tr></table></figure>
+
+<h3 id="上传到服务器"><a href="#上传到服务器" class="headerlink" title="上传到服务器"></a>上传到服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp out.tar.gz root@服务器ip:/www/typewords/<br></code></pre></td></tr></table></figure>
+
+<h3 id="登录服务器"><a href="#登录服务器" class="headerlink" title="登录服务器"></a>登录服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh root@服务器ip<br></code></pre></td></tr></table></figure>
+
+<h3 id="解压到目标目录"><a href="#解压到目标目录" class="headerlink" title="解压到目标目录"></a>解压到目标目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -zxvf out.tar.gz -C /www/typewords<br></code></pre></td></tr></table></figure>
+
+<h3 id="查看-Nginx-配置并重载"><a href="#查看-Nginx-配置并重载" class="headerlink" title="查看 Nginx 配置并重载"></a>查看 Nginx 配置并重载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nginx -t &amp;&amp; systemctl reload nginx<br></code></pre></td></tr></table></figure>
+
+<h3 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ss -tunlp | grep 3000<br>lsof -i:3000<br></code></pre></td></tr></table></figure>
+
+<h3 id="实时看日志"><a href="#实时看日志" class="headerlink" title="实时看日志"></a>实时看日志</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">tail</span> -f app.log<br>journalctl -u nginx -f<br></code></pre></td></tr></table></figure>
+
+<h3 id="后台运行-Node"><a href="#后台运行-Node" class="headerlink" title="后台运行 Node"></a>后台运行 Node</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">nohup</span> npm run start &gt; app.log 2&gt;&amp;1 &amp;<br></code></pre></td></tr></table></figure>
+
+<h3 id="找大目录"><a href="#找大目录" class="headerlink" title="找大目录"></a>找大目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">du</span> -h --max-depth=1 | <span class="hljs-built_in">sort</span> -h<br></code></pre></td></tr></table></figure>
+
+<h3 id="批量替换"><a href="#批量替换" class="headerlink" title="批量替换"></a>批量替换</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep -rl <span class="hljs-string">&quot;old&quot;</span> . | xargs sed -i <span class="hljs-string">&#x27;s/old/new/g&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="同步目录到服务器"><a href="#同步目录到服务器" class="headerlink" title="同步目录到服务器"></a>同步目录到服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rsync -avz --delete .output/public/ root@服务器ip:/www/typewords/<br></code></pre></td></tr></table></figure>
+
+<h3 id="测试端口"><a href="#测试端口" class="headerlink" title="测试端口"></a>测试端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nc -zv 127.0.0.1 3000<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="12-危险命令提醒"><a href="#12-危险命令提醒" class="headerlink" title="12. 危险命令提醒"></a>12. 危险命令提醒</h2><p>以下命令不要随便执行，尤其不要在生产服务器上试：</p>
+<ul>
+<li><code>rm -rf /</code></li>
+<li><code>rm -rf *</code></li>
+<li><code>rm -rf /www/*</code></li>
+<li><code>chmod -R 777 /</code></li>
+<li><code>chown -R root:root /</code></li>
+<li><code>dd if=/dev/zero of=/dev/sda</code></li>
+<li><code>mkfs.ext4 /dev/sda1</code></li>
+<li><code>&gt; /dev/sda</code></li>
+<li><code>crontab -r</code></li>
+<li><code>iptables -F</code></li>
+<li><code>kill -9 1</code></li>
+<li><code>find / -name &quot;*.log&quot; -delete</code></li>
+</ul>
+<p>执行删除、格式化、防火墙清空、批量替换前，先备份，先 <code>pwd</code>，先 <code>ls</code> 确认路径。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="print-no-link">#Linux操作系统</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux操作系统</div>
+      <div>http://example.com/2026/09/17/Linux操作系统/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Mashiro</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年9月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/09/18/%E9%9D%A2%E8%AF%95/" title="面试">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">面试</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/09/16/%E6%83%B3%E5%B0%9D%E8%AF%95%E7%9A%84%E4%BA%8B/" title="想尝试的事">
+                        <span class="hidden-mobile">想尝试的事</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
