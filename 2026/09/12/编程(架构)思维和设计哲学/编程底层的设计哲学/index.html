@@ -19,22 +19,24 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="后端框架">
+    <meta name="description" content="编程底层的设计哲学">
 <meta property="og:type" content="article">
-<meta property="og:title" content="后端框架">
-<meta property="og:url" content="http://example.com/2026/09/12/%E5%90%8E%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/Node%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/index.html">
+<meta property="og:title" content="编程底层的设计哲学">
+<meta property="og:url" content="http://example.com/2026/09/12/%E7%BC%96%E7%A8%8B(%E6%9E%B6%E6%9E%84)%E6%80%9D%E7%BB%B4%E5%92%8C%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6/%E7%BC%96%E7%A8%8B%E5%BA%95%E5%B1%82%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="后端框架">
+<meta property="og:description" content="编程底层的设计哲学">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-12T02:40:19.000Z">
-<meta property="article:modified_time" content="2026-09-16T03:00:34.902Z">
+<meta property="og:image" content="http://example.com/img/bg/part2.jpg">
+<meta property="article:published_time" content="2026-09-12T02:04:35.000Z">
+<meta property="article:modified_time" content="2026-09-20T16:15:16.765Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="后端框架">
+<meta property="article:tag" content="编程底层的设计哲学">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/bg/part2.jpg">
   
   
   
-  <title>后端框架 - </title>
+  <title>编程底层的设计哲学 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +305,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="后端框架"></span>
+            <span id="subtitle" data-typed-text="编程底层的设计哲学"></span>
           
         </div>
 
@@ -314,7 +316,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-12 10:40" pubdate>
+        <time datetime="2026-09-12 10:04" pubdate>
           2026年9月12日 上午
         </time>
       </span>
@@ -326,7 +328,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.8k 字
+          2.2k 字
         
       </span>
     
@@ -337,7 +339,7 @@
         
         
         
-          32 分钟
+          19 分钟
         
       </span>
     
@@ -376,145 +378,87 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">后端框架</h1>
+            <h1 id="seo-header">编程底层的设计哲学</h1>
             
             
               <div class="markdown-body">
                 
-                <table>
+                <p><code>重构才是进步的源泉</code></p>
+<p><code>计算机科学领域的任何问题，都可以通过增加一个中间抽象层来解决</code></p>
+<p><code>使用框架不等于“偷懒”，而是现代工程化的必然选择</code></p>
+<p><code>产生一种“失去掌控感”的不安全感</code></p>
+<details>
+<summary>OOP<summary>
+
+
+
+
+</details>
+
+
+<h1 id="IoC：Inversion-of-Control-控制反转-思想"><a href="#IoC：Inversion-of-Control-控制反转-思想" class="headerlink" title="IoC：Inversion of Control 控制反转 思想"></a>IoC：Inversion of Control 控制反转 思想</h1><p>你不要自己创建依赖，交给容器&#x2F;框架来创建，然后送给你。</p>
+<p>好莱坞原则: Don’t call us, we’ll call you.</p>
+<h1 id="DI：Dependency-Injection-依赖注入-实现ioc的思想"><a href="#DI：Dependency-Injection-依赖注入-实现ioc的思想" class="headerlink" title="DI：Dependency Injection 依赖注入 实现ioc的思想"></a>DI：Dependency Injection 依赖注入 实现ioc的思想</h1><h2 id="类的di注入"><a href="#类的di注入" class="headerlink" title="类的di注入"></a>类的di注入</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 依赖：UserRepository （被注入的类）</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">UserRepository</span> &#123;<br>  <span class="hljs-title function_">findUser</span>(<span class="hljs-params"><span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span></span>) &#123;<br>    <span class="hljs-keyword">return</span> &#123; id, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;张三&quot;</span> &#125;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 业务类 UserService，不自己 new UserRepository！ 你要自己new 不是要exdens继承一下这个父类的东西吗？</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">UserService</span> &#123;<br>  <span class="hljs-comment">// 构造器注入：外部传入依赖</span><br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> <span class="hljs-attr">repo</span>: <span class="hljs-title class_">UserRepository</span></span>) &#123;&#125;<br><br>  <span class="hljs-title function_">getUserInfo</span>(<span class="hljs-params"><span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">repo</span>.<span class="hljs-title function_">findUser</span>(id)<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// ========== 外部组装依赖（DI）==========</span><br><span class="hljs-comment">// 外部new依赖，传给UserService</span><br><span class="hljs-keyword">const</span> repo = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UserRepository</span>()<br><span class="hljs-keyword">const</span> service = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UserService</span>(repo) <br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(service.<span class="hljs-title function_">getUserInfo</span>(<span class="hljs-number">1</span>))<br></code></pre></td></tr></table></figure>
+
+<h2 id="接口的di注入"><a href="#接口的di注入" class="headerlink" title="接口的di注入"></a>接口的di注入</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 定义接口：只规定需要的方法签名，不写实现</span><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">IUserRepo</span> &#123;<br>  <span class="hljs-title function_">findUser</span>(<span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>): &#123; <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>; <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span> &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">UserRepository</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">IUserRepo</span> &#123;<br>  <span class="hljs-title function_">findUser</span>(<span class="hljs-params"><span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span></span>) &#123;<br>    <span class="hljs-keyword">return</span> &#123; id, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;张三&quot;</span> &#125;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 重点：这里类型标注改成接口 IUserRepo，不再写 UserRepository</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">UserService</span> &#123;<br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> <span class="hljs-attr">repo</span>: <span class="hljs-title class_">IUserRepo</span></span>) &#123;&#125; <span class="hljs-comment">// ✅ 类型是接口</span><br>  <span class="hljs-title function_">getUserInfo</span>(<span class="hljs-params"><span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">repo</span>.<span class="hljs-title function_">findUser</span>(id)<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 正常使用</span><br><span class="hljs-keyword">const</span> repo = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UserRepository</span>()<br><span class="hljs-keyword">const</span> service = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UserService</span>(repo) <br></code></pre></td></tr></table></figure>
+
+<p>“被动符合契约” 与 “主动声明契约”</p>
+<table>
 <thead>
 <tr>
-<th>语言生态</th>
-<th>核心代表</th>
-<th>生态风格</th>
-<th>最佳场景</th>
+<th>对比项</th>
+<th>维度仅依赖接口参数类型（不写 implements）</th>
+<th>显式写 class Impl implements Interface</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Node.js</td>
-<td>Express, Fastify, NestJS, Hono</td>
-<td>迭代快、碎片化严重、轻量非阻塞、全栈&#x2F;边缘计算优势明显</td>
-<td>全栈开发、BFF 层、高并发 I&#x2F;O、实时应用</td>
+<td>契约判定时机</td>
+<td>延迟校验（直到你把类 new 出来传给 UserService 时才检查）</td>
+<td>即时校验（写 Class 代码的瞬间就立马检查）</td>
 </tr>
 <tr>
-<td>Java</td>
-<td>Spring Boot, Quarkus, Netty</td>
-<td>高度标准化、企业级规范、强类型、长生命周期</td>
-<td>金融级后台、复杂企业级微服务系统、大数据处理</td>
+<td>错误归属者</td>
+<td>使用方报错（UserService 处弹红线，报错信息可能很长很绕）</td>
+<td>实现方报错（UserRepository 处直接弹红线，精准定位）</td>
 </tr>
 <tr>
-<td>Python</td>
-<td>Django, Flask, FastAPI</td>
-<td>快速交付、语法优雅、人工智能&#x2F;数据科学无缝集成</td>
-<td>AI&#x2F;数据分析后端 API、MVP 快速验证、中小型 Web 系统</td>
-</tr>
-<tr>
-<td>Go(Golang)</td>
-<td>Gin, Echo, Fiber, Beego</td>
-<td>编译型、极简高效、低内存占用、原生高并发、部署简单</td>
-<td>高并发网关、微服务、容器云原生、中间件、高性能接口服务</td>
-</tr>
-<tr>
-<td>Rust</td>
-<td>Axum, Rocket, Actix-web</td>
-<td>极致性能、内存安全、无GC、高稳定性、超低延迟</td>
-<td>底层基础设施、高性能核心服务、区块链、高可靠低延迟系统</td>
+<td>重构与补全</td>
+<td>❌ 没有代码自动补全，改了接口方法名难以自动定位修改</td>
+<td>✅ 支持 VS Code &#x2F; Cursor 一键生成接口方法存根，重构更安全</td>
 </tr>
 </tbody></table>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs text">┌──────────────────────────────────────────┐<br>                        │      JavaScript / TypeScript 后端生态      │<br>                        └────────────────────┬─────────────────────┘<br>                                             │<br>      ┌──────────────────────┬───────────────┴───────────────┬──────────────────────┐<br>      ▼                      ▼                               ▼                      ▼<br>【1. 底层 / 极简路由层】    【2. 企业级 / 架构驱动】        【3. 全栈 / SSR 服务端】    【4. 跨运行环境 / 边缘】<br> (微服务/高性能 API)       (控制反转/依赖注入/规范)        (前端驱动/前后端同构)       (Cloudflare/Deno/Bun)<br> ──────────────────        ────────────────────────        ─────────────────────       ──────────────────────<br>  • Express                 • NestJS (默认Express/Fastify)  • Next.js (React)           • Hono<br>  • Fastify                 • Midway.js (阿里开源)          • Nuxt.js (Vue)             • Elysia.js (Bun)<br>  • Koa                     • Sails.js                      • SvelteKit                 • Feathers.js<br>  • h3 (UnJS)               • LoopBack                      • Remix (React Router)<br>  • hapi<br></code></pre></td></tr></table></figure>
-
-
 <details>
-<summary>Express</summary>
+<summary>API</summary>
 
-<p>封装Node.js 原生 <code>http 模块</code>之上封装的一层轻量级工具库</p>
-<p>核心功能仅包含<code>路由机制</code>与<code>中间件架构</code></p>
-<details>
-<summary>中间件</summary>
-
-<h1 id="中间件-Middleware-：-Express-的灵魂所在"><a href="#中间件-Middleware-：-Express-的灵魂所在" class="headerlink" title="中间件 (Middleware)： Express 的灵魂所在"></a>中间件 (Middleware)： Express 的灵魂所在</h1><p>所有请求在到达最终路由处理逻辑前，都会按顺序通过一系列中间件函数。</p>
-<p>每个中间件均可接收 (req, res, next) 三个参数，用于解析请求体、验证身份、记录日志或捕获错误。</p>
-<details>
-<summary>请求数据解析类</summary>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 全局应用解析器</span><br>app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">json</span>());<br>app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/api/user&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br><span class="hljs-comment">// 输出解析后的 JavaScript 对象：&#123; name: &#x27;Alice&#x27;, age: 25 &#125;</span><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(req.<span class="hljs-property">body</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//express.urlencoded()（内置）：解析表单数据（application/x-www-form-urlencoded）。</span><br>app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">urlencoded</span>(&#123; <span class="hljs-attr">extended</span>: <span class="hljs-literal">true</span> &#125;));<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//multer：处理文件上传（multipart/form-data）。</span><br><span class="hljs-keyword">const</span> multer = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;multer&#x27;</span>);<br><span class="hljs-keyword">const</span> upload = <span class="hljs-title function_">multer</span>(&#123; <span class="hljs-attr">dest</span>: <span class="hljs-string">&#x27;uploads/&#x27;</span> &#125;);<br><br><span class="hljs-comment">// 仅针对单文件上传接口挂载</span><br>app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/profile&#x27;</span>, upload.<span class="hljs-title function_">single</span>(<span class="hljs-string">&#x27;avatar&#x27;</span>), <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(req.<span class="hljs-property">file</span>); <span class="hljs-comment">// 接收文件信息</span><br>  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;上传成功&#x27;</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//cookie-parser：解析客户端传来的 Cookie 并挂载到 req.cookies 上。</span><br><span class="hljs-keyword">const</span> cookieParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;cookie-parser&#x27;</span>);<br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">cookieParser</span>(<span class="hljs-string">&#x27;secret_key&#x27;</span>));<br></code></pre></td></tr></table></figure>
-
+<p>语言上的 API</p>
+<p>宿主环境的的 API</p>
+<p>第三方 &#x2F; 后端 API</p>
 </details>
 
 <details>
-<summary>安全防护类</summary>
+<summary>原型/原型链/可迭代对象</summary>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//helmet：修改 HTTP 响应头以提升安全性（如防御 XSS、防点击劫持等）。</span><br><span class="hljs-keyword">const</span> helmet = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;helmet&#x27;</span>);<br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">helmet</span>()); <span class="hljs-comment">// 一键开启多项标准安全防护</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//cors：开启跨域资源共享，允许其他域名的前端访问 API。</span><br><span class="hljs-keyword">const</span> cors = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;cors&#x27;</span>);<br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">cors</span>(&#123; <span class="hljs-attr">origin</span>: <span class="hljs-string">&#x27;https://your-frontend.com&#x27;</span> &#125;));<br></code></pre></td></tr></table></figure>
+</details>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//express-rate-limit：限流中间件，防止 IP 恶意刷接口或 DDoS 攻击。</span><br><span class="hljs-keyword">const</span> rateLimit = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express-rate-limit&#x27;</span>);<br><span class="hljs-keyword">const</span> limiter = <span class="hljs-title function_">rateLimit</span>(&#123;<br>  <span class="hljs-attr">windowMs</span>: <span class="hljs-number">15</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>, <span class="hljs-comment">// 15 分钟</span><br>  <span class="hljs-attr">max</span>: <span class="hljs-number">100</span> <span class="hljs-comment">// 每个 IP 最多发 100 个请求</span><br>&#125;);<br>app.<span class="hljs-title function_">use</span>(limiter);<br></code></pre></td></tr></table></figure>
 
+<details>
+<summary>解构</summary>
+JS的语法糖 
+
+<p>浅拷贝</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]<br><span class="hljs-keyword">const</span> [a,b] = arr<br><br><span class="hljs-keyword">const</span> obj = &#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&quot;Tom&quot;</span>&#125;<br><span class="hljs-keyword">const</span> &#123;name&#125; = obj<br><br><span class="hljs-keyword">const</span> obj = <span class="hljs-title function_">reactive</span>(&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&quot;ZZ&quot;</span>&#125;)<br><span class="hljs-keyword">const</span> &#123;name&#125; = obj <span class="hljs-comment">//这个name失去响应式</span><br><br><span class="hljs-keyword">const</span> &#123;name&#125; = <span class="hljs-title function_">toRefs</span>(obj) <span class="hljs-comment">//让个name实现响应式</span><br><br></code></pre></td></tr></table></figure>
 </details>
 
 <details>
-<summary>日志与性能监控类</summary>
+<summary>写注释</summary>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//morgan：HTTP 请求日志收集器，自动打印终端日志。</span><br><span class="hljs-keyword">const</span> morgan = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;morgan&#x27;</span>);<br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">morgan</span>(<span class="hljs-string">&#x27;dev&#x27;</span>)); <span class="hljs-comment">// 打印简短格式的彩图日志</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs txt">// 单行注释<br><br>// TODO: 待实现<br>// FIXME: 这里有bug需要修复<br>// NOTE: 重要注意点<br>// HACK: 临时hack方案，后续要改掉<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//compression：响应体 Gzip 压缩，减少网络传输体积。</span><br><span class="hljs-keyword">const</span> compression = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;compression&#x27;</span>);<br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">compression</span>());<br></code></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs txt">/* 多行注释 */<br><br>/** */ 块注释，JS 文档注释常用<br><br>/**<br> * @param &#123;数据类型&#125; 参数名 描述<br> * @param &#123;数据类型&#125; [参数名] 可选参数<br> * @param &#123;数据类型&#125; [参数名=默认值] 可选+默认值<br> */<br><br><br>/**<br> * @todo 这里需要做参数校验<br> * @todo 重构逻辑，抽离公共函数<br> */<br><br> /** @type &#123;number&#125; */<br><br> /** @description 用户登录接口 */<br></code></pre></td></tr></table></figure>
+
+<p><code>&lt;!-- HTML注释 --&gt;</code></p>
 </details>
-
-<details>
-<summary>静态资源与认证类</summary>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//express.static()（内置）：直接对外托管静态文件（如图片、前端构建产物）。</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;/static&#x27;</span>, express.<span class="hljs-title function_">static</span>(<span class="hljs-string">&#x27;public&#x27;</span>)); <br><span class="hljs-comment">// 访问 http://localhost:3000/static/logo.png</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//express-session：服务端 Session 管理。</span><br><br><span class="hljs-keyword">const</span> session = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express-session&#x27;</span>);<br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">session</span>(&#123;<br>  <span class="hljs-attr">secret</span>: <span class="hljs-string">&#x27;keyboard cat&#x27;</span>,<br>  <span class="hljs-attr">resave</span>: <span class="hljs-literal">false</span>,<br>  <span class="hljs-attr">saveUninitialized</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">cookie</span>: &#123; <span class="hljs-attr">maxAge</span>: <span class="hljs-number">60000</span> &#125;<br>&#125;));<br></code></pre></td></tr></table></figure>
-
-</details>
-
-<details>
-<summary>自定义认证中间件</summary>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 自定义 JWT 校验中间件</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">authenticateToken</span> = (<span class="hljs-params">req, res, next</span>) =&gt; &#123;<br>  <span class="hljs-keyword">const</span> authHeader = req.<span class="hljs-property">headers</span>[<span class="hljs-string">&#x27;authorization&#x27;</span>];<br>  <span class="hljs-keyword">const</span> token = authHeader &amp;&amp; authHeader.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27; &#x27;</span>)[<span class="hljs-number">1</span>];<br><br>  <span class="hljs-keyword">if</span> (!token) <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">401</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;未提供 Token&#x27;</span> &#125;);<br><br>  jwt.<span class="hljs-title function_">verify</span>(token, process.<span class="hljs-property">env</span>.<span class="hljs-property">ACCESS_TOKEN_SECRET</span>, <span class="hljs-function">(<span class="hljs-params">err, user</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">403</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;Token 无效或过期&#x27;</span> &#125;);<br>    req.<span class="hljs-property">user</span> = user; <span class="hljs-comment">// 将解码后的用户信息挂载到 req</span><br>    <span class="hljs-title function_">next</span>(); <span class="hljs-comment">// 放行</span><br>  &#125;);<br>&#125;;<br><br><span class="hljs-comment">// 局部应用到敏感路由</span><br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/api/dashboard&#x27;</span>, authenticateToken, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>  res.<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">message</span>: <span class="hljs-string">`欢迎用户 <span class="hljs-subst">$&#123;req.user.id&#125;</span>`</span> &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
-
-</details>
-
-</details>
-
-</details>
-
-</details>
-
-<details>
-<summary>Fastify</summary>
-官方网址:[https://fastify.dev/]
-
-<p>多了个sheame校验 重写了express的路由机制</p>
-</details>
-
-<details>
-<summary>Nuxt.js</summary>
-
-</details>
-
-<details>
-<summary>Next.js</summary>
-
-</details>
-
-<details>
-<summary>NestJS</summary>
-
-</details>
-
-<details>
-<summary>koa</summary>
-
-</details>
-
                 
               </div>
             
@@ -522,32 +466,11 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%90%8E%E7%AB%AF/" class="category-chain-item">后端</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="print-no-link">#后端框架</a>
+        <a href="/tags/%E7%BC%96%E7%A8%8B%E5%BA%95%E5%B1%82%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6/" class="print-no-link">#编程底层的设计哲学</a>
       
     </div>
   
@@ -559,8 +482,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>后端框架</div>
-      <div>http://example.com/2026/09/12/后端知识结构和概念/Node后端框架/</div>
+      <div>编程底层的设计哲学</div>
+      <div>http://example.com/2026/09/12/编程(架构)思维和设计哲学/编程底层的设计哲学/</div>
     </div>
     <div class="license-meta">
       
@@ -604,9 +527,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/13/Agent%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/Agent/" title="Agent">
+                      <a href="/2026/09/12/%E5%90%8E%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/Node%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" title="后端框架">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Agent</span>
+                        <span class="hidden-mobile">后端框架</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -614,8 +537,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/09/12/%E7%BC%96%E7%A8%8B(%E6%9E%B6%E6%9E%84)%E6%80%9D%E7%BB%B4%E5%92%8C%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6/%E7%BC%96%E7%A8%8B%E5%BA%95%E5%B1%82%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6/" title="编程底层的设计哲学">
-                        <span class="hidden-mobile">编程底层的设计哲学</span>
+                      <a href="/2026/09/03/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/Vue%E6%A1%86%E6%9E%B6%E6%B7%B1%E8%80%95%E7%B2%BE%E9%80%9A/" title="Vue3框架深耕精通">
+                        <span class="hidden-mobile">Vue3框架深耕精通</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

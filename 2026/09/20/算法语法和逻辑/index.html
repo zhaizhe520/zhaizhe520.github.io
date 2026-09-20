@@ -19,24 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="编程思维">
+    <meta name="description" content="Hash（哈希）  1234567               ┌── Set  (集) ──────────► 唯一值的集合 (去重&#x2F;交并补)               │    └─ WeakSet ─────────► 弱引用对象，自动 GC哈希表结构 ────┤               │    ┌─ Map (映射) ──────► 键值对键任意类型 (数据存储&#x2F;频次统计)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编程思维">
-<meta property="og:url" content="http://example.com/2026/09/12/%E7%BC%96%E7%A8%8B(%E6%9E%B6%E6%9E%84)%E6%80%9D%E7%BB%B4%E5%92%8C%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6/%E7%BC%96%E7%A8%8B%E6%80%9D%E7%BB%B4/index.html">
+<meta property="og:title" content="算法语法和逻辑">
+<meta property="og:url" content="http://example.com/2026/09/20/%E7%AE%97%E6%B3%95%E8%AF%AD%E6%B3%95%E5%92%8C%E9%80%BB%E8%BE%91/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="编程思维">
+<meta property="og:description" content="Hash（哈希）  1234567               ┌── Set  (集) ──────────► 唯一值的集合 (去重&#x2F;交并补)               │    └─ WeakSet ─────────► 弱引用对象，自动 GC哈希表结构 ────┤               │    ┌─ Map (映射) ──────► 键值对键任意类型 (数据存储&#x2F;频次统计)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/bg/part2.jpg">
-<meta property="article:published_time" content="2026-09-12T02:04:35.000Z">
-<meta property="article:modified_time" content="2026-09-18T03:21:18.807Z">
+<meta property="article:published_time" content="2026-09-20T09:39:18.000Z">
+<meta property="article:modified_time" content="2026-09-20T14:35:28.993Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="编程思维">
+<meta property="article:tag" content="leetCode 算法题">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/bg/part2.jpg">
   
   
   
-  <title>编程思维 - </title>
+  <title>算法语法和逻辑 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -305,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="编程思维"></span>
+            <span id="subtitle" data-typed-text="算法语法和逻辑"></span>
           
         </div>
 
@@ -316,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-12 10:04" pubdate>
-          2026年9月12日 上午
+        <time datetime="2026-09-20 17:39" pubdate>
+          2026年9月20日 下午
         </time>
       </span>
     
@@ -328,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          430 字
+          1.6k 字
         
       </span>
     
@@ -339,7 +337,7 @@
         
         
         
-          4 分钟
+          14 分钟
         
       </span>
     
@@ -378,26 +376,34 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">编程思维</h1>
+            <h1 id="seo-header">算法语法和逻辑</h1>
             
             
               <div class="markdown-body">
                 
-                <p><code>重构才是进步的源泉</code></p>
-<p><code>计算机科学领域的任何问题，都可以通过增加一个中间抽象层来解决</code></p>
-<p><code>使用框架不等于“偷懒”，而是现代工程化的必然选择</code></p>
-<p><code>产生一种“失去掌控感”的不安全感</code></p>
+                <details>
+<summary>Hash（哈希）</summary>
+
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs txt"><br>               ┌── Set  (集) ──────────► 唯一值的集合 (去重/交并补)<br>               │    └─ WeakSet ─────────► 弱引用对象，自动 GC<br>哈希表结构 ────┤<br>               │    ┌─ Map (映射) ──────► 键值对键任意类型 (数据存储/频次统计)<br>               └── Map <br>                    └─ WeakMap ────────► 键必须是对象，防内存泄漏 (Vue 3 响应式原理)<br></code></pre></td></tr></table></figure>
+<h2 id="Map（键值对映射）"><a href="#Map（键值对映射）" class="headerlink" title="Map（键值对映射）"></a>Map（键值对映射）</h2><p>相比普通 JavaScript 对象（Object），Map 的键可以是任意数据类型（对象、函数、基本类型都可以），且保持插入顺序。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">//初始化</span><br><span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>&lt;<span class="hljs-built_in">string</span>,<span class="hljs-built_in">number</span>&gt;();<br><br>map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&quot;A&quot;</span>,<span class="hljs-number">1</span>)<span class="hljs-comment">//真</span><br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(map.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;A&quot;</span>))<span class="hljs-comment">//查 返回1值</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(map.<span class="hljs-title function_">has</span>(<span class="hljs-string">&quot;A&quot;</span>))<span class="hljs-comment">//查 返回true </span><br><br>map.<span class="hljs-title function_">delete</span>(<span class="hljs-string">&quot;A&quot;</span>)<span class="hljs-comment">//删</span><br><br><span class="hljs-comment">//遍历</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">const</span> [key,value] <span class="hljs-keyword">of</span> map)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(key, value);<br>&#125;<br><br><span class="hljs-comment">//高级数学函数 全部相加 纯函数 </span><br><span class="hljs-keyword">const</span> arraySum = <span class="hljs-title class_">Array</span>.<span class="hljs-property">from</span> (map.<span class="hljs-title function_">values</span>()) <br></code></pre></td></tr></table></figure>
+<h2 id="Set（无序唯一值集合）"><a href="#Set（无序唯一值集合）" class="headerlink" title="Set（无序唯一值集合）"></a>Set（无序唯一值集合）</h2><p>Set 内部的值必须是唯一的，经常用来做去重或元素存在性判断。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs ts"><br><span class="hljs-keyword">const</span> set = <span class="hljs-keyword">new</span>  <span class="hljs-title class_">Set</span>&lt;<span class="hljs-built_in">number</span>&gt;([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(set)<span class="hljs-comment">//[1,2,3,4,5]</span><br><br><span class="hljs-comment">// 2. 增 / 删 / 查</span><br>set.<span class="hljs-title function_">add</span>(<span class="hljs-number">5</span>);<br>set.<span class="hljs-title function_">delete</span>(<span class="hljs-number">1</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(set.<span class="hljs-title function_">has</span>(<span class="hljs-number">3</span>)); <span class="hljs-comment">// true (时间复杂度 O(1))</span><br><br><span class="hljs-comment">//// 3. 集合操作（ES2025 原生方法或手动实现）</span><br><br><span class="hljs-keyword">const</span> a = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span> ([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-keyword">const</span> b = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span> ([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>])<br><span class="hljs-keyword">const</span> c =  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span> ([<span class="hljs-number">5</span>,<span class="hljs-number">6</span>])<br><br><span class="hljs-keyword">const</span> intersection =  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>([...a].<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">x</span>=&gt;</span>b.<span class="hljs-title function_">has</span>(x))) <span class="hljs-comment">//filter()过滤 交集</span><br><span class="hljs-keyword">const</span> difference= <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span> ([...a].<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">x</span>=&gt;</span>!b.<span class="hljs-title function_">has</span>(x))) <span class="hljs-comment">//反向过滤 差集</span><br><span class="hljs-keyword">const</span> union = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>([...a, ...b]) <span class="hljs-comment">//并集</span><br></code></pre></td></tr></table></figure>
+
+<p>核心思维：当你发现嵌套循环 $\mathcal{O}(n^2)$ 查找某个数字时，用 Map 把“已经看过”的数据记录下来，下次直接查。 map做纯储</p>
+<p>核心思维：使用 Map 作为分类容器，Key 作为分类依据&#x2F;特征码，Value 存放符合条件的数组  key做指纹</p>
+<p>核心思维：不需要知道位置，只需要知道“在不在”时，用 Set.has() 代替 Array.includes()（includes 是 $\mathcal{O}(n)$，Set.has 是 $\mathcal{O}(1)$</p>
+<h1 id="二数和"><a href="#二数和" class="headerlink" title="二数和"></a>二数和</h1><h1 id="字符串打乱整合"><a href="#字符串打乱整合" class="headerlink" title="字符串打乱整合"></a>字符串打乱整合</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs ts"><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">abc</span> (<span class="hljs-params"><span class="hljs-attr">strs</span>: <span class="hljs-built_in">string</span>[]</span>): sting[][]&#123;<br>    <span class="hljs-keyword">const</span>  map =  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>&lt;<span class="hljs-built_in">string</span>,<span class="hljs-built_in">string</span>[]&gt;()<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">const</span> a <span class="hljs-keyword">of</span> strs)&#123;<br>        <span class="hljs-keyword">const</span> k = a.<span class="hljs-title function_">sprit</span>(<span class="hljs-string">&quot;&quot;</span>).<span class="hljs-title function_">sore</span>().<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>);<br>        <span class="hljs-keyword">if</span>(!map.<span class="hljs-title function_">has</span>(k))&#123;<br>            map.<span class="hljs-title function_">set</span>(k,[]);<br>        &#125;<br>        map.<span class="hljs-title function_">get</span>(k)!.<span class="hljs-title function_">push</span>(a)<br>    &#125;<br>    <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(map.<span class="hljs-title function_">value</span>())<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="排序去重"><a href="#排序去重" class="headerlink" title="排序去重"></a>排序去重</h1></details>
+
 <details>
-<summary>写注释</summary>
+<summary></summary>
 
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs txt">// 单行注释<br><br>// TODO: 待实现<br>// FIXME: 这里有bug需要修复<br>// NOTE: 重要注意点<br>// HACK: 临时hack方案，后续要改掉<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs txt">/* 多行注释 */<br><br>/** */ 块注释，JS 文档注释常用<br><br>/**<br> * @param &#123;数据类型&#125; 参数名 描述<br> * @param &#123;数据类型&#125; [参数名] 可选参数<br> * @param &#123;数据类型&#125; [参数名=默认值] 可选+默认值<br> */<br><br><br>/**<br> * @todo 这里需要做参数校验<br> * @todo 重构逻辑，抽离公共函数<br> */<br><br> /** @type &#123;number&#125; */<br><br> /** @description 用户登录接口 */<br></code></pre></td></tr></table></figure>
-
-<p><code>&lt;!-- HTML注释 --&gt;</code></p>
 </details>
 
-<h1 id="IOC-ADN-DI"><a href="#IOC-ADN-DI" class="headerlink" title="IOC ADN DI"></a>IOC ADN DI</h1><p>2思想</p>
+
 
                 
               </div>
@@ -410,7 +416,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%BC%96%E7%A8%8B%E6%80%9D%E7%BB%B4/" class="print-no-link">#编程思维</a>
+        <a href="/tags/leetCode-%E7%AE%97%E6%B3%95%E9%A2%98/" class="print-no-link">#leetCode 算法题</a>
       
     </div>
   
@@ -422,8 +428,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>编程思维</div>
-      <div>http://example.com/2026/09/12/编程(架构)思维和设计哲学/编程思维/</div>
+      <div>算法语法和逻辑</div>
+      <div>http://example.com/2026/09/20/算法语法和逻辑/</div>
     </div>
     <div class="license-meta">
       
@@ -435,7 +441,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年9月12日</div>
+          <div>2026年9月20日</div>
         </div>
       
       
@@ -467,18 +473,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/12/%E5%90%8E%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/Node%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" title="后端框架">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">后端框架</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/09/03/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/Vue%E6%A1%86%E6%9E%B6%E6%B7%B1%E8%80%95%E7%B2%BE%E9%80%9A/" title="Vue3框架深耕精通">
-                        <span class="hidden-mobile">Vue3框架深耕精通</span>
+                      <a href="/2026/09/18/%E9%9D%A2%E8%AF%95/" title="面试">
+                        <span class="hidden-mobile">面试</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
