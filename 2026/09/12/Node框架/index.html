@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="后端框架">
+    <meta name="description" content="Node框架">
 <meta property="og:type" content="article">
-<meta property="og:title" content="后端框架">
-<meta property="og:url" content="http://example.com/2026/09/12/%E5%90%8E%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/Node%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/index.html">
+<meta property="og:title" content="Node框架">
+<meta property="og:url" content="http://example.com/2026/09/12/Node%E6%A1%86%E6%9E%B6/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="后端框架">
+<meta property="og:description" content="Node框架">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-12T02:40:19.000Z">
-<meta property="article:modified_time" content="2026-09-16T03:00:34.902Z">
+<meta property="article:modified_time" content="2026-09-22T15:58:29.951Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="后端框架">
+<meta property="article:tag" content="Node框架">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>后端框架 - </title>
+  <title>Node框架 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="后端框架"></span>
+            <span id="subtitle" data-typed-text="Node框架"></span>
           
         </div>
 
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.8k 字
+          4.6k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          32 分钟
+          39 分钟
         
       </span>
     
@@ -376,7 +376,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">后端框架</h1>
+            <h1 id="seo-header">Node框架</h1>
             
             
               <div class="markdown-body">
@@ -498,7 +498,55 @@
 <details>
 <summary>Nuxt.js</summary>
 
-</details>
+<p>Nuxt 是<code>同构框架</code>，一份代码，会打包成两套产物，分别跑在两个完全不同环境：服务端（Node）、客户端（浏览器）</p>
+<p>一份代码2个环境跑 一份nodejs 一份浏览器</p>
+<p>import.meta.client 来判断是哪端 防止出现localstorage宿主环境乱用的问题</p>
+<h1 id="水合（Hydration，注水）"><a href="#水合（Hydration，注水）" class="headerlink" title="水合（Hydration，注水）"></a>水合（Hydration，注水）</h1><p>静态HTML发送给浏览器（客户端）加载JS 这一过程是注水</p>
+<h1 id="服务端没有DOM"><a href="#服务端没有DOM" class="headerlink" title="服务端没有DOM"></a>服务端没有DOM</h1><p>没 2生命周钩子函数  onMounted() onUnmounted() </p>
+<h1 id="框架基本结构"><a href="#框架基本结构" class="headerlink" title="框架基本结构"></a>框架基本结构</h1><p>Nuxt 3 采用的是服务端渲染（SSR）和基于文件系统的路由机制</p>
+<table>
+<thead>
+<tr>
+<th>目录&#x2F;文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pages&#x2F;</td>
+<td>存放页面，自动生成路由。</td>
+</tr>
+<tr>
+<td>components&#x2F;</td>
+<td>存放公共组件，在任何 .vue 文件中直接写组件名就能用，无需手动 import。</td>
+</tr>
+<tr>
+<td>layouts&#x2F;</td>
+<td>存放页面通用布局（如包含统一的导航栏和页脚）。</td>
+</tr>
+<tr>
+<td>public&#x2F;</td>
+<td>存放无需打包的静态资源（如图片、图标、robots.txt）。可以直接通过 &#x2F;filename 访问。</td>
+</tr>
+<tr>
+<td>server&#x2F;</td>
+<td>编写后端 API 接口。例如在 server&#x2F;api&#x2F;hello.ts 中写接口，前端可以直接用 useFetch(‘&#x2F;api&#x2F;hello’) 调用。</td>
+</tr>
+<tr>
+<td>nuxt.config.ts</td>
+<td>项目全局配置文件（用于引入全局 CSS、配置插件、设置 SEO 标题等）。</td>
+</tr>
+</tbody></table>
+<h1 id="基于文件系统的路由（File-based-Routing）"><a href="#基于文件系统的路由（File-based-Routing）" class="headerlink" title="基于文件系统的路由（File-based Routing）"></a>基于文件系统的路由（File-based Routing）</h1><p><code>&lt;NuxtLink&gt; 和 &lt;NuxtPage&gt;，是因为 Nuxt 在背后为你做了一套“自动化映射”与“自动导入（Auto-imports）”机制。</code></p>
+<details>
+<summary>Nuxt 专属的 API<summary>
+
+<h1 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h1><p>SSR（服务端渲染）水和&#x2F;防共享&#x2F;契合服务端渲染(SSR)</p>
+<p><code>const key = useState(&#39;key&#39;, () =&gt; value)</code> &#x2F;&#x2F;全局状态管理 轻量版pinia</p>
+<details>
+
+<h1 id="强大的-Node-js-后端服务引擎（Nitro）"><a href="#强大的-Node-js-后端服务引擎（Nitro）" class="headerlink" title="强大的 Node.js 后端服务引擎（Nitro）"></a>强大的 Node.js 后端服务引擎（Nitro）</h1></details>
+
+
 
 <details>
 <summary>Next.js</summary>
@@ -547,7 +595,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="print-no-link">#后端框架</a>
+        <a href="/tags/Node%E6%A1%86%E6%9E%B6/" class="print-no-link">#Node框架</a>
       
     </div>
   
@@ -559,8 +607,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>后端框架</div>
-      <div>http://example.com/2026/09/12/后端知识结构和概念/Node后端框架/</div>
+      <div>Node框架</div>
+      <div>http://example.com/2026/09/12/Node框架/</div>
     </div>
     <div class="license-meta">
       
@@ -614,8 +662,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/09/12/%E7%BC%96%E7%A8%8B(%E6%9E%B6%E6%9E%84)%E6%80%9D%E7%BB%B4%E5%92%8C%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6/%E7%BC%96%E7%A8%8B%E5%BA%95%E5%B1%82%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6/" title="编程底层的设计哲学">
-                        <span class="hidden-mobile">编程底层的设计哲学</span>
+                      <a href="/2026/09/03/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/Vue%E6%A1%86%E6%9E%B6%E6%B7%B1%E8%80%95%E7%B2%BE%E9%80%9A/" title="Vue3框架深耕精通">
+                        <span class="hidden-mobile">Vue3框架深耕精通</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

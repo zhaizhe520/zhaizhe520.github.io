@@ -27,7 +27,7 @@
 <meta property="og:description" content="Vue框架深耕精通">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-03T07:07:38.000Z">
-<meta property="article:modified_time" content="2026-09-20T16:16:57.430Z">
+<meta property="article:modified_time" content="2026-09-22T15:58:27.111Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="Vue框架深耕精通">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.9k 字
+          5.4k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          41 分钟
+          46 分钟
         
       </span>
     
@@ -382,7 +382,7 @@
               <div class="markdown-body">
                 
                 <p>官方文档: [<a target="_blank" rel="noopener" href="https://cn.vuejs.org/]">https://cn.vuejs.org/]</a></p>
-<p>基于函数范式底层思想哲学</p>
+<p>基于函数范式底层思想哲学  &#96;&#96;</p>
 <p>框架类型: 渐进式 声明式 响应式 组件化 基于<code>MVVM</code>思想的实现</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs txt">WeakMap (targetMap)<br> └── key: target (被代理的原始对象 obj)<br>      └── value: Map (depsMap)<br>           └── key: key (对象的属性名, 如 &#x27;name&#x27;)<br>                └── value: Set (dep)<br>                     └── 包含该属性的所有 side effect 函数 (ReactiveEffect)<br></code></pre></td></tr></table></figure>
 
@@ -435,8 +435,66 @@
 
 </details>
 
-<p>Vue 自定义指令，就是导出一个对象，对象上挂载<code>mounted / updated / unmounted</code> 这些函数，Vue内部会在对应生命周期自动调用这些函数，传入 <code>el、binding、vnode、prevVNode</code>参数。&#96;</p>
+<h1 id="Vue-自定义指令，"><a href="#Vue-自定义指令，" class="headerlink" title="Vue 自定义指令，"></a>Vue 自定义指令，</h1><p>导出一个对象，对象上挂载<code>mounted / updated / unmounted</code> 这些函数，Vue内部会在对应生命周期自动调用这些函数，传入 <code>el、binding、vnode、prevVNode</code>参数。&#96;</p>
+<details>
+<summary>computed 完整知识架构、底层模型、哲学</summary>
 
+<p>惰性求值</p>
+<p>computed 是响应式系统里的「自动缓存的纯派生公式」</p>
+<p><strong>computed 计算属性</strong>：<strong>派生状态（derived state）</strong>。</p>
+<p>它<strong>只读、自动缓存、基于响应式依赖做纯计算；不会修改任何外部变量，不改变外部世界</strong>。 它<strong>没有副作用</strong>。</p>
+<p>区分「源状态（source state）」和「派生状态 (derived state)」</p>
+<p>源状态：真相源头，ref&#x2F;reactive 保存。</p>
+<p>派生状态：不需要独立存储，完全可以由源状态推导得出。不要单独存一份！ 消除冗余状态</p>
+<p>vue2 {a+b} —&gt;每次都会触发从渲染</p>
+<p>能推导出来的数据，就不要单独保存。让 computed 自动推导，保证永远和源状态一致。</p>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>computed</th>
+<th>watch</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>定位</td>
+<td>派生状态，求值、产生值</td>
+<td>依赖变化，执行动作，处理副作用</td>
+</tr>
+<tr>
+<td>范式</td>
+<td>声明式</td>
+<td>命令式</td>
+</tr>
+<tr>
+<td>执行时机</td>
+<td>惰性，读取才执行</td>
+<td>依赖变更，主动触发回调</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>返回一个响应式包装的值</td>
+<td>无返回，一般用来做 side effect</td>
+</tr>
+<tr>
+<td>能不能放副作用</td>
+<td>getter 禁止；setter 可以（慎用）</td>
+<td>专门用来承载副作用</td>
+</tr>
+<tr>
+<td>哲学</td>
+<td>根据源状态自动算出新状态，消除冗余状态</td>
+<td>状态变化之后，协调外部世界</td>
+</tr>
+</tbody></table>
+</details>
+
+
+<details>
+<summary>处理副作用的载体</summary>
+
+
+</details>
                 
               </div>
             
@@ -526,9 +584,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/12/%E7%BC%96%E7%A8%8B(%E6%9E%B6%E6%9E%84)%E6%80%9D%E7%BB%B4%E5%92%8C%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6/%E7%BC%96%E7%A8%8B%E5%BA%95%E5%B1%82%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6/" title="编程底层的设计哲学">
+                      <a href="/2026/09/12/Node%E6%A1%86%E6%9E%B6/" title="Node框架">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">编程底层的设计哲学</span>
+                        <span class="hidden-mobile">Node框架</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
