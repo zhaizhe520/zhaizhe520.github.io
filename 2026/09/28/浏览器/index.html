@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据采集层">
+    <meta name="description" content="浏览器知识体系">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据采集层">
-<meta property="og:url" content="http://example.com/2026/06/23/%E5%90%8E%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E5%B1%82/index.html">
+<meta property="og:title" content="浏览器">
+<meta property="og:url" content="http://example.com/2026/09/28/%E6%B5%8F%E8%A7%88%E5%99%A8/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="数据采集层">
+<meta property="og:description" content="浏览器知识体系">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-06-23T09:31:07.000Z">
-<meta property="article:modified_time" content="2026-08-26T01:34:12.755Z">
+<meta property="article:published_time" content="2026-09-28T07:15:07.000Z">
+<meta property="article:modified_time" content="2026-09-28T13:30:16.421Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="数据采集层">
+<meta property="article:tag" content="浏览器知识体系">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>数据采集层 - </title>
+  <title>浏览器 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="数据采集层"></span>
+            <span id="subtitle" data-typed-text="浏览器"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-06-23 17:31" pubdate>
-          2026年6月23日 下午
+        <time datetime="2026-09-28 15:15" pubdate>
+          2026年9月28日 下午
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          430 字
+          1.6k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          4 分钟
+          14 分钟
         
       </span>
     
@@ -376,16 +376,104 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">数据采集层</h1>
+            <h1 id="seo-header">浏览器</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="VNDB-API（推荐，干净）"><a href="#VNDB-API（推荐，干净）" class="headerlink" title="VNDB API（推荐，干净）"></a>VNDB API（推荐，干净）</h1><p>VNDB（The Visual Novel Database）有公开 API，返回 JSON，不用写爬虫：</p>
-<h1 id="python-脚本，20-行就能跑"><a href="#python-脚本，20-行就能跑" class="headerlink" title="python 脚本，20 行就能跑"></a>python 脚本，20 行就能跑</h1><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs stylus">import requests<br><br>res = requests<span class="hljs-selector-class">.post</span>(<span class="hljs-string">&quot;https://api.vndb.org/kana/vn&quot;</span>, json=&#123;<br>    <span class="hljs-string">&quot;filters&quot;</span>: <span class="hljs-selector-attr">[<span class="hljs-string">&quot;developer&quot;</span>, <span class="hljs-string">&quot;=&quot;</span>, <span class="hljs-string">&quot;yuzusoft&quot;</span>]</span>,<br>    <span class="hljs-string">&quot;fields&quot;</span>: <span class="hljs-string">&quot;title, released, developers.name&quot;</span><br>&#125;)<br><span class="hljs-keyword">for</span> vn <span class="hljs-keyword">in</span> res<span class="hljs-selector-class">.json</span>()<span class="hljs-selector-attr">[<span class="hljs-string">&quot;results&quot;</span>]</span>:<br>    <span class="hljs-built_in">print</span>(vn<span class="hljs-selector-attr">[<span class="hljs-string">&quot;title&quot;</span>]</span>, vn<span class="hljs-selector-attr">[<span class="hljs-string">&quot;released&quot;</span>]</span>)<br></code></pre></td></tr></table></figure>
+                <p>多进程架构</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs txt">浏览器知识体系<br>├─ 五大核心模块<br>│  ├─ UI界面<br>│  ├─ 浏览器引擎（调度）<br>│  ├─ 网络模块（http、缓存、跨域）<br>│  ├─ 渲染引擎（关键渲染路径、回流重绘合成）<br>│  └─ JS引擎（V8、JIT、GC、事件循环）<br>├─ Chrome多进程模型（进程、线程、IPC通信）<br>├─ 安全体系（同源策略、CORS、XSS、CSRF、沙箱）<br>├─ 存储体系（cookie、localStorage、indexedDB、CacheAPI）<br>├─ 性能优化（加载优化、渲染优化、内存优化）<br>└─ DevTools调试、浏览器标准规范<br></code></pre></td></tr></table></figure>
 
-<p>数据采集现在解决不了</p>
-<p>先重构一个我的轻小说接口</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs txt">用户界面层<br>   ↓ 用户操作<br>浏览器引擎层<br>   ↓ 调度<br>网络与存储层 → 获取资源 / 缓存 / 存储<br>   ↓<br>渲染引擎层 → 解析 / 布局 / 绘制 / 合成<br>   ↑<br>JavaScript 引擎与执行层 → 操作 DOM / CSSOM / 发请求<br></code></pre></td></tr></table></figure>
+
+<p><em>用户界面 UI → 浏览器引擎 (调度中枢) → 网络模块 → 渲染引擎 → JS 引擎</em></p>
+<details>
+<summary>用户界面 UI（User Interface）</summary>
+地址栏
+
+<p>前进&#x2F;后退按钮</p>
+<p>刷新&#x2F;停止按钮</p>
+<p>书签栏</p>
+<p>标签页</p>
+<p>菜单</p>
+<p>下载管理</p>
+<p>设置页面</p>
+<p>开发者工具入口</p>
+</details>
+
+<h1 id="浏览器引擎"><a href="#浏览器引擎" class="headerlink" title="浏览器引擎"></a>浏览器引擎</h1><p>Chromium 的 Browser Process</p>
+<p>浏览器引擎层是浏览器的“总调度中心”。它连接用户界面层、渲染引擎层、网络层、JS 执行层。</p>
+<p>主要职责</p>
+<p>接收用户界面层的指令</p>
+<details>
+<summary>渲染引擎 (Rendering Engine)</summary>
+
+<p>DOM 树 + CSSOM 树 → Render 树 → Layout → Paint → Composite</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs txt">HTML → DOM<br>CSS → CSSOM<br>DOM + CSSOM → Render Tree<br>Render Tree → Layout<br>Layout → Paint<br>Paint → Composite<br>Composite → 屏幕像素    <br></code></pre></td></tr></table></figure>
+
+<h2 id="解析-HTML"><a href="#解析-HTML" class="headerlink" title="解析 HTML"></a>解析 HTML</h2><p>字节流 → 字符流 → Token → Node → DOM 树 </p>
+<p>字节流: 协议变成2进制</p>
+<p>字符流:  根据 <code>charset</code>（html meta、http 响应头），把字节按 UTF-8 &#x2F; GBK 解码 → <strong>文本字符</strong>。</p>
+<p>&#x2F;<em>词法分析，Lexer 词法扫描器</em>&#x2F;</p>
+<p>token : 最小语法单元 </p>
+<p>遇到<code>&lt;script&gt;</code> 可能阻塞解析</p>
+<p>遇到<code>&lt;style&gt;</code>会构建 CSSOM</p>
+<p>预加载扫描器会提前发现资源</p>
+<h2 id="解析-CSS"><a href="#解析-CSS" class="headerlink" title="解析 CSS"></a>解析 CSS</h2><p>CSS 字节流 → CSSOM</p>
+<p>CSS 是渲染阻塞资源</p>
+<p>选择器匹配影响样式计算性能</p>
+<h2 id="构建渲染树"><a href="#构建渲染树" class="headerlink" title="构建渲染树"></a>构建渲染树</h2><p>DOM + CSSOM → Render Tree </p>
+<p>不包含 display: none 节点</p>
+<p>包含伪元素、可见节点</p>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>计算每个节点的几何信息</p>
+<p>位置、大小、盒模型</p>
+<p>回流&#x2F;重排</p>
+<h2 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h2><p>生成绘制指令</p>
+<p>填充颜色、文字、边框、阴影、图片</p>
+<p>重绘</p>
+<h2 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h2><p>分层</p>
+<p>栅格化</p>
+<p>合成到屏幕</p>
+<p>GPU 加速</p>
+<p>合成层、will-change、transform</p>
+</details>
+
+<h1 id="网络模块-Networking"><a href="#网络模块-Networking" class="headerlink" title="网络模块 (Networking)"></a>网络模块 (Networking)</h1><p>输入 URL → DNS 查找 (浏览器缓存 → OS 缓存 → 递归查询) → TCP 三次握手 → TLS 协商 (HTTPS) → 发送 HTTP 请求 → 接收响应 → TCP 四次挥手。</p>
+<p>URL 解析</p>
+<p>DNS 查询</p>
+<p>TCP &#x2F; TLS</p>
+<p>HTTP&#x2F;1.1、HTTP&#x2F;2、HTTP&#x2F;3</p>
+<p>请求头、响应头</p>
+<p>Cookie</p>
+<p>CORS</p>
+<p>CSP</p>
+<p>代理</p>
+<p>CDN</p>
+<p>缓存</p>
+<h2 id="缓存体系"><a href="#缓存体系" class="headerlink" title="缓存体系"></a>缓存体系</h2><p>强缓存：Cache-Control、Expires</p>
+<p>协商缓存：ETag、Last-Modified</p>
+<p>Memory Cache</p>
+<p>Disk Cache</p>
+<p>Service Worker Cache</p>
+<p>Push Cache</p>
+<h2 id="存储部分"><a href="#存储部分" class="headerlink" title="存储部分"></a>存储部分</h2><p>Cookie</p>
+<p>localStorage</p>
+<p>sessionStorage</p>
+<p>IndexedDB</p>
+<p>Cache Storage</p>
+<p>Web SQL（已废弃）</p>
+<p>File System Access API</p>
+<h2 id="安全部分"><a href="#安全部分" class="headerlink" title="安全部分"></a>安全部分</h2><p>同源策略</p>
+<p>CORS</p>
+<p>XSS</p>
+<p>CSRF</p>
+<p>CSP</p>
+<p>HTTPS</p>
+<p>HSTS</p>
+<p>Secure Cookie</p>
+<p>SameSite</p>
+<h1 id="JavaScript-引擎-JS-Engine"><a href="#JavaScript-引擎-JS-Engine" class="headerlink" title="JavaScript 引擎 (JS Engine)"></a>JavaScript 引擎 (JS Engine)</h1><p>JS 引擎不是独立进程，和渲染引擎<strong>在同一个渲染进程的主线程</strong></p>
+<p>JS 操作 DOM，本质是调用渲染引擎暴露的 DOM API。</p>
 
                 
               </div>
@@ -394,32 +482,11 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%90%8E%E7%AB%AF/" class="category-chain-item">后端</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E5%B1%82/" class="print-no-link">#数据采集层</a>
+        <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/" class="print-no-link">#浏览器知识体系</a>
       
     </div>
   
@@ -431,8 +498,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>数据采集层</div>
-      <div>http://example.com/2026/06/23/后端知识结构和概念/数据采集层/</div>
+      <div>浏览器</div>
+      <div>http://example.com/2026/09/28/浏览器/</div>
     </div>
     <div class="license-meta">
       
@@ -444,7 +511,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年6月23日</div>
+          <div>2026年9月28日</div>
         </div>
       
       
@@ -476,9 +543,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/06/24/%E7%AE%97%E6%B3%95%E9%80%BB%E8%BE%91%E6%80%9D%E7%BB%B4%E4%B8%8E%E8%AF%AD%E6%B3%95/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95%EF%BC%88%E6%80%8E%E4%B9%88%E5%9C%A8%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E9%87%8C%E6%8D%9E%E9%92%88%EF%BC%9F/" title="查找算法（怎么在海量数据里捞针？)">
+                      <a href="/2026/09/28/%E4%B8%9A%E5%8A%A1%E5%B7%A5%E7%A8%8B%E5%88%92/" title="业务工程划">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">查找算法（怎么在海量数据里捞针？)</span>
+                        <span class="hidden-mobile">业务工程划</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -486,8 +553,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/06/21/%E5%90%8E%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/Spring-Boot/" title="Spring Boot">
-                        <span class="hidden-mobile">Spring Boot</span>
+                      <a href="/2026/09/20/%E7%AE%97%E6%B3%95%E8%AF%AD%E6%B3%95%E5%92%8C%E9%80%BB%E8%BE%91/" title="算法语法和逻辑">
+                        <span class="hidden-mobile">算法语法和逻辑</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

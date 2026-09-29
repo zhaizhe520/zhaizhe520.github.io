@@ -22,12 +22,12 @@
     <meta name="description" content="Vue框架深耕精通">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue3框架深耕精通">
-<meta property="og:url" content="http://example.com/2026/09/03/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/Vue%E6%A1%86%E6%9E%B6%E6%B7%B1%E8%80%95%E7%B2%BE%E9%80%9A/index.html">
+<meta property="og:url" content="http://example.com/2026/09/03/Vue%E6%A1%86%E6%9E%B6%E6%B7%B1%E8%80%95%E7%B2%BE%E9%80%9A/index.html">
 <meta property="og:site_name">
 <meta property="og:description" content="Vue框架深耕精通">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-03T07:07:38.000Z">
-<meta property="article:modified_time" content="2026-09-22T15:58:27.111Z">
+<meta property="article:modified_time" content="2026-09-28T16:18:10.246Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="Vue框架深耕精通">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.4k 字
+          5.5k 字
         
       </span>
     
@@ -393,8 +393,6 @@
 <p>JS源生语法与vue框架API 产生的冲突</p>
 </details>
 
-
-
 <details>
 <summary>MVVM:Model‑View‑ViewModel思想</summary>
 
@@ -413,7 +411,9 @@
 <p>不存在的属性<code>{age: 18}</code> 要触发set就要上<code>$set</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-comment">// 模拟$set给新增属性加上劫持</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">my$set</span>(<span class="hljs-params">obj,key,value</span>)&#123;<br>  <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(obj,key,&#123;<br>    <span class="hljs-title function_">get</span>(<span class="hljs-params"></span>)&#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`读取<span class="hljs-subst">$&#123;key&#125;</span>`</span>)<br>      <span class="hljs-keyword">return</span> value<br>    &#125;,<br>    <span class="hljs-title function_">set</span>(<span class="hljs-params">newVal</span>)&#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`修改<span class="hljs-subst">$&#123;key&#125;</span>`</span>,newVal)<br>      value = newVal<br>    &#125;<br>  &#125;)<br>  obj[key] = value<br>&#125;<br><br><span class="hljs-title function_">my$set</span>(data,<span class="hljs-string">&#x27;age&#x27;</span>,<span class="hljs-number">22</span>)<br>data.<span class="hljs-property">age</span> = <span class="hljs-number">30</span> <span class="hljs-comment">// ✅触发set，打印日志</span><br><br></code></pre></td></tr></table></figure>
 
-<p><strong>Vue3：<code>Proxy + Reflect</code></strong><br>直接代理<strong>整个对象</strong>，拦截对象所有读写、增删操作。<br>懒代理：只有访问嵌套对象才做响应式，不用初始化递归全部遍历，性能更好。<br>内部模型：<code>targetMap</code> 存储对象 → 属性 → effect 映射。</p>
+<p><strong>Vue3：<code>Proxy + Reflect</code></strong><br>直接代理<strong>整个对象</strong>，拦截对象所有读写、增删操作。</p>
+<p>懒代理：只有访问嵌套对象才做响应式，不用初始化递归全部遍历，性能更好。</p>
+<p>内部模型：<code>targetMap</code> 存储对象 → 属性 → effect 映射。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> raw = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;张三&quot;</span> &#125;<br><br><span class="hljs-comment">// 代理整个对象</span><br><span class="hljs-keyword">const</span> proxy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Proxy</span>(raw, &#123;<br>  <span class="hljs-title function_">get</span>(<span class="hljs-params">target, key</span>) &#123;<br>    <span class="hljs-comment">// 读取属性，收集依赖 track</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`读取属性:<span class="hljs-subst">$&#123;key&#125;</span>`</span>)<br>    <span class="hljs-comment">// Reflect 保证this指向正确</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">get</span>(target, key)<br>  &#125;,<br>  <span class="hljs-title function_">set</span>(<span class="hljs-params">target, key, newVal</span>) &#123;<br>    <span class="hljs-comment">// 修改属性，派发更新 trigger</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`设置属性<span class="hljs-subst">$&#123;key&#125;</span>=<span class="hljs-subst">$&#123;newVal&#125;</span>`</span>)<br>    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">set</span>(target, key, newVal)<br>  &#125;<br>&#125;)<br><br>proxy.<span class="hljs-property">name</span>       <span class="hljs-comment">// 触发proxy get</span><br>proxy.<span class="hljs-property">name</span>=<span class="hljs-string">&quot;李四&quot;</span><span class="hljs-comment">// 触发proxy set</span><br>proxy.<span class="hljs-property">age</span>=<span class="hljs-number">20</span>     <span class="hljs-comment">// ✅ 新增属性也能劫持！Vue2做不到</span><br><br></code></pre></td></tr></table></figure>
 
 <p>proxy  只能代理「对象&#x2F;数组」，不能直接劫持 number&#x2F;string&#x2F;boolean 这类基本类型</p>
@@ -425,17 +425,16 @@
 
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs txt">WeakMap (targetMap)<br> └── key: target (被代理的原始对象 obj)<br>      └── value: Map (depsMap)<br>           └── key: key (对象的属性名, 如 &#x27;name&#x27;)<br>                └── value: Set (dep)<br>                     └── 包含该属性的所有 side effect 函数 (ReactiveEffect)<br></code></pre></td></tr></table></figure>
 
+<p>&#x2F;*试着写一track依赖搜集与trigger分发订阅</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 1. 创建全局顶层 WeakMap 容器（targetMap）</span><br><span class="hljs-comment">// Key: 被代理的原始对象 (object)</span><br><span class="hljs-comment">// Value: 该对象对应的属性依赖表 (Map)</span><br><span class="hljs-keyword">const</span> targetMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">WeakMap</span>&lt;<span class="hljs-built_in">object</span>, <span class="hljs-title class_">Map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">Set</span>&lt;<span class="hljs-title class_">Function</span>&gt;&gt;&gt;();<br><br><span class="hljs-comment">// 2. 依赖收集函数：track（当读取对象属性时调用）</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">track</span>(<span class="hljs-params"><span class="hljs-attr">target</span>: <span class="hljs-built_in">object</span>, <span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">effectFn</span>: <span class="hljs-title class_">Function</span></span>) &#123;<br>  <span class="hljs-comment">// ① 从 WeakMap 中查找当前对象的依赖表</span><br>  <span class="hljs-keyword">let</span> depsMap = targetMap.<span class="hljs-title function_">get</span>(target);<br>  <span class="hljs-keyword">if</span> (!depsMap) &#123;<br>    depsMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">Set</span>&lt;<span class="hljs-title class_">Function</span>&gt;&gt;();<br>    targetMap.<span class="hljs-title function_">set</span>(target, depsMap); <span class="hljs-comment">// 建立第一层：WeakMap -&gt; Map</span><br>  &#125;<br><br>  <span class="hljs-comment">// ② 从 depsMap 中查找当前属性的 Set 集合</span><br>  <span class="hljs-keyword">let</span> dep = depsMap.<span class="hljs-title function_">get</span>(key);<br>  <span class="hljs-keyword">if</span> (!dep) &#123;<br>    dep = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>&lt;<span class="hljs-title class_">Function</span>&gt;();<br>    depsMap.<span class="hljs-title function_">set</span>(key, dep); <span class="hljs-comment">// 建立第二层：Map -&gt; Set</span><br>  &#125;<br><br>  <span class="hljs-comment">// ③ 将副作用函数存入 Set 中（第三层：Set 存 effectFn）</span><br>  dep.<span class="hljs-title function_">add</span>(effectFn);<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`[依赖收集] 成功收集属性 &quot;<span class="hljs-subst">$&#123;key&#125;</span>&quot; 的依赖函数！`</span>);<br>&#125;<br><br><span class="hljs-comment">// 3. 依赖触发函数：trigger（当修改对象属性时调用）</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">trigger</span>(<span class="hljs-params"><span class="hljs-attr">target</span>: <span class="hljs-built_in">object</span>, <span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span></span>) &#123;<br>  <span class="hljs-keyword">const</span> depsMap = targetMap.<span class="hljs-title function_">get</span>(target);<br>  <span class="hljs-keyword">if</span> (!depsMap) <span class="hljs-keyword">return</span>;<br><br>  <span class="hljs-keyword">const</span> dep = depsMap.<span class="hljs-title function_">get</span>(key);<br>  <span class="hljs-keyword">if</span> (dep) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`[触发更新] 属性 &quot;<span class="hljs-subst">$&#123;key&#125;</span>&quot; 发生变化，开始执行依赖函数...`</span>);<br>    dep.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">effectFn</span> =&gt;</span> <span class="hljs-title function_">effectFn</span>());<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// ==================== 🛠️ 测试运行 ====================</span><br><br><span class="hljs-comment">// 假设我们有一个用户对象</span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">user</span>: &#123; <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>; <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span> &#125; | <span class="hljs-literal">null</span> = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;张三&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">22</span> &#125;;<br><br><span class="hljs-comment">// 定义一个更新 UI 的副作用函数</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">renderUI</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`UI 渲染更新：用户姓名是 <span class="hljs-subst">$&#123;user?.name&#125;</span>`</span>);<br>&#125;;<br><br><span class="hljs-comment">// 模拟读取 user.name，触发依赖收集</span><br><span class="hljs-title function_">track</span>(user, <span class="hljs-string">&quot;name&quot;</span>, renderUI);<br><br><span class="hljs-comment">// 模拟修改 user.name，触发派发更新</span><br><span class="hljs-title function_">trigger</span>(user, <span class="hljs-string">&quot;name&quot;</span>); <span class="hljs-comment">// 输出：UI 渲染更新：用户姓名是 张三</span><br><br><span class="hljs-comment">// 💡 重点：内存回收演示</span><br><span class="hljs-comment">// 当业务逻辑结束，将 user 变量置为 null</span><br>user = <span class="hljs-literal">null</span>; <br><span class="hljs-comment">// 此时，因为 targetMap 是 WeakMap，GC（垃圾回收器）在下一次清理时，</span><br><span class="hljs-comment">// 会自动将原来的 user 对象以及它在 targetMap 中对应的 Map/Set 数据全部清空，完美防范内存泄漏！</span><br><br></code></pre></td></tr></table></figure>
 
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 1. 原始对象 user = &#123;name:&quot;张三&quot;,age:22&#125;</span><br><span class="hljs-comment">// 2. renderUI 副作用函数，读取user.name</span><br><span class="hljs-comment">// 3. track(user, &quot;name&quot;, renderUI)</span><br><span class="hljs-comment">//    - targetMap没有user，新建depsMap存入targetMap</span><br><span class="hljs-comment">//    - depsMap没有key &quot;name&quot;，新建Set(dep)</span><br><span class="hljs-comment">//    - 把renderUI放进Set</span><br><span class="hljs-comment">// 4. trigger(user, &quot;name&quot;)</span><br><span class="hljs-comment">//    - 根据user找到depsMap，再找到name对应的dep集合</span><br><span class="hljs-comment">//    - 遍历dep执行renderUI，打印UI更新</span><br><span class="hljs-comment">// 5. user = null</span><br><span class="hljs-comment">//    外部不再持有user对象引用。WeakMap不阻止GC，user对象连同targetMap里面对应的整条依赖记录，会被垃圾回收清理。</span><br></code></pre></td></tr></table></figure>
 
 </details>
 
-
-
 </details>
 
-<h1 id="Vue-自定义指令，"><a href="#Vue-自定义指令，" class="headerlink" title="Vue 自定义指令，"></a>Vue 自定义指令，</h1><p>导出一个对象，对象上挂载<code>mounted / updated / unmounted</code> 这些函数，Vue内部会在对应生命周期自动调用这些函数，传入 <code>el、binding、vnode、prevVNode</code>参数。&#96;</p>
+<h1 id="Vue-自定义指令"><a href="#Vue-自定义指令" class="headerlink" title="Vue 自定义指令"></a>Vue 自定义指令</h1><p>导出一个对象，对象上挂载<code>mounted / updated / unmounted</code> 这些函数，Vue内部会在对应生命周期自动调用这些函数，传入 <code>el、binding、vnode、prevVNode</code>参数。&#96;</p>
 <details>
 <summary>computed 完整知识架构、底层模型、哲学</summary>
 
@@ -489,12 +488,26 @@
 </tbody></table>
 </details>
 
-
 <details>
 <summary>处理副作用的载体</summary>
-
+set()
 
 </details>
+
+<details>
+<summary>template标签</summary>
+
+<p>自己写的 <code>词法分析</code></p>
+<p>编译时优化 + 最小化 DOM 操作 + 渲染引擎原生机制</p>
+</details>
+
+
+<details>
+<summary>开屏快</summary>
+
+<p>编译时优化 + 最小化 DOM 操作 + 渲染引擎原生机制</p>
+</details>
+
                 
               </div>
             
@@ -540,7 +553,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Vue3框架深耕精通</div>
-      <div>http://example.com/2026/09/03/前端知识结构和概念/Vue框架深耕精通/</div>
+      <div>http://example.com/2026/09/03/Vue框架深耕精通/</div>
     </div>
     <div class="license-meta">
       
@@ -584,9 +597,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/12/Node%E6%A1%86%E6%9E%B6/" title="Node框架">
+                      <a href="/2026/09/12/%E7%BC%96%E7%A8%8B(%E6%9E%B6%E6%9E%84)%E6%80%9D%E7%BB%B4%E5%92%8C%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6/%E7%BC%96%E7%A8%8B%E5%BA%95%E5%B1%82%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6/" title="编程底层的设计哲学">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Node框架</span>
+                        <span class="hidden-mobile">编程底层的设计哲学</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

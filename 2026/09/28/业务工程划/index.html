@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Hash表算法题目">
+    <meta name="description" content="业务工程划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hash表">
-<meta property="og:url" content="http://example.com/2026/06/23/%E7%AE%97%E6%B3%95%E9%80%BB%E8%BE%91%E6%80%9D%E7%BB%B4%E4%B8%8E%E8%AF%AD%E6%B3%95/Hash%E8%A1%A8/index.html">
+<meta property="og:title" content="业务工程划">
+<meta property="og:url" content="http://example.com/2026/09/28/%E4%B8%9A%E5%8A%A1%E5%B7%A5%E7%A8%8B%E5%88%92/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="Hash表算法题目">
+<meta property="og:description" content="业务工程划">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-06-23T08:37:42.000Z">
-<meta property="article:modified_time" content="2026-08-26T01:34:12.723Z">
+<meta property="article:published_time" content="2026-09-28T14:22:10.000Z">
+<meta property="article:modified_time" content="2026-09-29T00:31:21.114Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="Hash表">
+<meta property="article:tag" content="业务工程划">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hash表 - </title>
+  <title>业务工程划 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hash表"></span>
+            <span id="subtitle" data-typed-text="业务工程划"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-06-23 16:37" pubdate>
-          2026年6月23日 下午
+        <time datetime="2026-09-28 22:22" pubdate>
+          2026年9月28日 晚上
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          475 字
+          202 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          4 分钟
+          2 分钟
         
       </span>
     
@@ -376,21 +376,27 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hash表</h1>
+            <h1 id="seo-header">业务工程划</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="找出和为目标值的那两个整数，并返回它们的数组下标。"><a href="#找出和为目标值的那两个整数，并返回它们的数组下标。" class="headerlink" title="找出和为目标值的那两个整数，并返回它们的数组下标。"></a>找出和为目标值的那两个整数，并返回它们的数组下标。</h1><p>本质加法的交换律</p>
-<p>A+B&#x3D;C  &#x3D;&gt;C-B&#x3D;A</p>
-<p>因为hash表有寄存（map）</p>
-<p>给你一个整数数组 nums（比如 [2, 7, 11, 15]）和一个目标值 target（比如 比如 9）。</p>
-<p>与其苦苦地往后寻找“另一个数”，不如看看前面有没有人刚好在等我</p>
-<p>请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。</p>
-<p>笨方法拿2+7+…….,7+11+15+….时间复杂度On平方</p>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs livescript"><span class="hljs-keyword">function</span> twoSum (num,target)&#123;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">map</span> = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i&lt; nums.length; i++ )&#123;<br>        <span class="hljs-keyword">const</span> currentNum = nums[i];<br>        <span class="hljs-keyword">const</span> needNum = target - currentNum;<br><br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">map</span>.has(needNum))&#123;<br>            <span class="hljs-keyword">return</span> [<span class="hljs-keyword">map</span>.get(neeedNum),i];<br>        &#125;<br>        <span class="hljs-keyword">map</span>.set(currentNum,i);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+                <p>单一职责原则 (SRP)</p>
+<p>DDD</p>
+<h1 id="领域层"><a href="#领域层" class="headerlink" title="领域层"></a>领域层</h1><p>业务对象、业务规则</p>
+<ol>
+<li><strong>接口层 &#x2F; 应用层</strong>：接收请求、事务编排、调用领域层、调用仓储，<strong>不写业务规则</strong></li>
+<li><strong>领域层 Domain（核心！你刚才那一堆全部放这里）</strong><ul>
+<li>聚合根 Aggregate Root</li>
+<li>实体 Entity</li>
+<li>值对象 ValueObject</li>
+<li>领域服务 DomainService</li>
+<li>领域事件 DomainEvent</li>
+</ul>
+</li>
+<li><strong>基础设施层</strong>：仓储 Repository 实现、数据库、消息队列、外部 API</li>
+</ol>
+<h1 id="胶水层"><a href="#胶水层" class="headerlink" title="胶水层"></a>胶水层</h1><h1 id="UI-层"><a href="#UI-层" class="headerlink" title="UI 层"></a>UI 层</h1>
                 
               </div>
             
@@ -398,32 +404,11 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Hash%E8%A1%A8/" class="print-no-link">#Hash表</a>
+        <a href="/tags/%E4%B8%9A%E5%8A%A1%E5%B7%A5%E7%A8%8B%E5%88%92/" class="print-no-link">#业务工程划</a>
       
     </div>
   
@@ -435,8 +420,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hash表</div>
-      <div>http://example.com/2026/06/23/算法逻辑思维与语法/Hash表/</div>
+      <div>业务工程划</div>
+      <div>http://example.com/2026/09/28/业务工程划/</div>
     </div>
     <div class="license-meta">
       
@@ -448,7 +433,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年6月23日</div>
+          <div>2026年9月28日</div>
         </div>
       
       
@@ -480,18 +465,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/06/23/%E5%90%8E%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E5%B1%82/" title="数据采集层">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据采集层</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/06/21/%E5%90%8E%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/Spring-Boot/" title="Spring Boot">
-                        <span class="hidden-mobile">Spring Boot</span>
+                      <a href="/2026/09/28/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">
+                        <span class="hidden-mobile">浏览器</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
