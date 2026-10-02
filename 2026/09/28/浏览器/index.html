@@ -27,7 +27,7 @@
 <meta property="og:description" content="浏览器知识体系">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-28T07:15:07.000Z">
-<meta property="article:modified_time" content="2026-09-28T13:30:16.421Z">
+<meta property="article:modified_time" content="2026-10-01T13:17:01.064Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="浏览器知识体系">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          2.8k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          14 分钟
+          24 分钟
         
       </span>
     
@@ -386,6 +386,9 @@
 
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs txt">用户界面层<br>   ↓ 用户操作<br>浏览器引擎层<br>   ↓ 调度<br>网络与存储层 → 获取资源 / 缓存 / 存储<br>   ↓<br>渲染引擎层 → 解析 / 布局 / 绘制 / 合成<br>   ↑<br>JavaScript 引擎与执行层 → 操作 DOM / CSSOM / 发请求<br></code></pre></td></tr></table></figure>
 
+<p>&#x2F;<em>主进程</em>&#x2F;</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs txt">浏览器主程序<br>├─ UI模块（标签栏、滚动条、地址栏）<br>├─ 网络模块（http请求）<br>├─ 渲染引擎<br>│  ├─ HTML解析器 ✅（在这里！）<br>│  ├─ CSS解析器<br>│  ├─ DOM树、CSSOM、渲染树<br>│  ├─ Layout、Paint、Composite<br>├─ JS引擎(V8)<br>└─ 数据存储、安全模块<br></code></pre></td></tr></table></figure>
+
 <p><em>用户界面 UI → 浏览器引擎 (调度中枢) → 网络模块 → 渲染引擎 → JS 引擎</em></p>
 <details>
 <summary>用户界面 UI（User Interface）</summary>
@@ -408,34 +411,39 @@
 <details>
 <summary>渲染引擎 (Rendering Engine)</summary>
 
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>页面标题<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;页面描述&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;keywords&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;关键词&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;author&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- 禁止移动端自动识别电话邮箱 --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;format-detection&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;telephone=no,email=no&quot;</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- 引入css --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;./style.css&quot;</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- favicon --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;./favicon.ico&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>HTML 解析器遇到<code>&lt;link&gt;</code>的时候，<strong>会并行触发资源请求</strong>（预加载扫描器 preloader），预加载扫描器是独立小模块</p>
+<p>在 HTML 还没完整解析完的时候，提前捞里面的资源 url，让网络模块提前下载，提升性能。</p>
 <p>DOM 树 + CSSOM 树 → Render 树 → Layout → Paint → Composite</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs txt">HTML → DOM<br>CSS → CSSOM<br>DOM + CSSOM → Render Tree<br>Render Tree → Layout<br>Layout → Paint<br>Paint → Composite<br>Composite → 屏幕像素    <br></code></pre></td></tr></table></figure>
 
-<h2 id="解析-HTML"><a href="#解析-HTML" class="headerlink" title="解析 HTML"></a>解析 HTML</h2><p>字节流 → 字符流 → Token → Node → DOM 树 </p>
-<p>字节流: 协议变成2进制</p>
-<p>字符流:  根据 <code>charset</code>（html meta、http 响应头），把字节按 UTF-8 &#x2F; GBK 解码 → <strong>文本字符</strong>。</p>
-<p>&#x2F;<em>词法分析，Lexer 词法扫描器</em>&#x2F;</p>
-<p>token : 最小语法单元 </p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs txt">HTML → DOM 树（JS 可操作）暴露出的API 对象<br><br>CSS  →    CSSOM 树<br>            ↓<br>DOM树 -&gt;  渲染树（Render Tree，只含可见元素）<br>             ↓<br>        布局（Layout/Reflow）→ 绘制（Paint）→ 合成（Composite）<br></code></pre></td></tr></table></figure>
+
+<h2 id="解析-HTML"><a href="#解析-HTML" class="headerlink" title="解析 HTML"></a>解析 HTML</h2><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">字节流 → 字符流 → Token → <span class="hljs-keyword">Node</span> <span class="hljs-title">→ DOM</span> 树<br><br>字节流: 协议变成<span class="hljs-number">2</span>进制<br><br>字符流:  根据 `charset`（html <span class="hljs-keyword">meta</span>、http 响应头），把字节按 UTF-<span class="hljs-number">8</span> / GBK 解码 → **文本字符**。<br><br>/*词法分析，Lexer 词法扫描器*/<br><br>token : 最小语法单元<br><br><span class="hljs-keyword">node</span><span class="hljs-title">节点: </span><br><span class="hljs-title"></span><br><span class="hljs-title">dom</span>:<br></code></pre></td></tr></table></figure>
+
 <p>遇到<code>&lt;script&gt;</code> 可能阻塞解析</p>
 <p>遇到<code>&lt;style&gt;</code>会构建 CSSOM</p>
-<p>预加载扫描器会提前发现资源</p>
+<p><code>预加载扫描器（preloader）</code></p>
+<p>预加载扫描器会提前发现资源 抓取 link、script、img 里的 url，丢给网络模块提前下载资源</p>
+<p>HTTP响应(字节流)<br>        ↓<br>【解码】字符流（HTML文本）<br>        ↓<br>【Tokenizer词法】Token序列<br>        ↓<br>【Parser语法】生成DOM Node对象<br>        ↓<br>建立父子关系 → DOM树</p>
 <h2 id="解析-CSS"><a href="#解析-CSS" class="headerlink" title="解析 CSS"></a>解析 CSS</h2><p>CSS 字节流 → CSSOM</p>
 <p>CSS 是渲染阻塞资源</p>
 <p>选择器匹配影响样式计算性能</p>
-<h2 id="构建渲染树"><a href="#构建渲染树" class="headerlink" title="构建渲染树"></a>构建渲染树</h2><p>DOM + CSSOM → Render Tree </p>
+<h2 id="构建渲染树"><a href="#构建渲染树" class="headerlink" title="构建渲染树"></a>构建渲染树</h2><p>DOM + CSSOM → Render Tree</p>
 <p>不包含 display: none 节点</p>
 <p>包含伪元素、可见节点</p>
-<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>计算每个节点的几何信息</p>
+<h2 id="布局-layout"><a href="#布局-layout" class="headerlink" title="布局 layout"></a>布局 layout</h2><p>计算每个节点的几何信息</p>
 <p>位置、大小、盒模型</p>
 <p>回流&#x2F;重排</p>
-<h2 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h2><p>生成绘制指令</p>
+<h2 id="绘制-paint"><a href="#绘制-paint" class="headerlink" title="绘制 paint"></a>绘制 paint</h2><p>生成绘制指令</p>
 <p>填充颜色、文字、边框、阴影、图片</p>
 <p>重绘</p>
-<h2 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h2><p>分层</p>
+<h2 id="合成-composite"><a href="#合成-composite" class="headerlink" title="合成 composite"></a>合成 composite</h2><p>分层</p>
 <p>栅格化</p>
 <p>合成到屏幕</p>
 <p>GPU 加速</p>
-<p>合成层、will-change、transform</p>
+<p>合成层、will-change、transform opacity</p>
 </details>
 
 <h1 id="网络模块-Networking"><a href="#网络模块-Networking" class="headerlink" title="网络模块 (Networking)"></a>网络模块 (Networking)</h1><p>输入 URL → DNS 查找 (浏览器缓存 → OS 缓存 → 递归查询) → TCP 三次握手 → TLS 协商 (HTTPS) → 发送 HTTP 请求 → 接收响应 → TCP 四次挥手。</p>
@@ -474,6 +482,7 @@
 <p>SameSite</p>
 <h1 id="JavaScript-引擎-JS-Engine"><a href="#JavaScript-引擎-JS-Engine" class="headerlink" title="JavaScript 引擎 (JS Engine)"></a>JavaScript 引擎 (JS Engine)</h1><p>JS 引擎不是独立进程，和渲染引擎<strong>在同一个渲染进程的主线程</strong></p>
 <p>JS 操作 DOM，本质是调用渲染引擎暴露的 DOM API。</p>
+<h1 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h1><p>虚拟滚动</p>
 
                 
               </div>

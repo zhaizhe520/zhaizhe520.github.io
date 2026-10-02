@@ -19,22 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta name="description" content="TypeScript语法">
+    <meta name="description" content="Node后端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TypeScript语法">
-<meta property="og:url" content="http://example.com/2026/06/30/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/TypeScript/index.html">
+<meta property="og:title" content="Node后端">
+<meta property="og:url" content="http://example.com/2026/10/01/Node%E5%90%8E%E7%AB%AF/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="TypeScript语法">
+<meta property="og:description" content="Node后端">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-06-30T01:29:40.000Z">
-<meta property="article:modified_time" content="2026-09-20T14:14:59.463Z">
+<meta property="article:published_time" content="2026-10-01T14:57:12.000Z">
+<meta property="article:modified_time" content="2026-10-01T15:27:55.826Z">
 <meta property="article:author" content="Mashiro">
-<meta property="article:tag" content="TypeScript语法">
+<meta property="article:tag" content="Node后端">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>TypeScript语法 - </title>
+  <title>Node后端 - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -303,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="TypeScript语法"></span>
+            <span id="subtitle" data-typed-text="Node后端"></span>
           
         </div>
 
@@ -314,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-06-30 09:29" pubdate>
-          2026年6月30日 上午
+        <time datetime="2026-10-01 22:57" pubdate>
+          2026年10月1日 晚上
         </time>
       </span>
     
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          105 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          17 分钟
+          1 分钟
         
       </span>
     
@@ -376,56 +376,27 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">TypeScript语法</h1>
+            <h1 id="seo-header">Node后端</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="TypeScript-开发"><a href="#TypeScript-开发" class="headerlink" title="TypeScript 开发"></a>TypeScript 开发</h1><p>需要熟练掌握类型定义、泛型、接口（Interfaces）以及 Vue 全家桶中的 TS 类型推导与扩展。</p>
-<h1 id="TypeScript类比JS补充的功能"><a href="#TypeScript类比JS补充的功能" class="headerlink" title="TypeScript类比JS补充的功能"></a>TypeScript类比JS补充的功能</h1><p>类型声明与检查（如 name: string）。</p>
-<p>编译期访问修饰符（public &#x2F; protected &#x2F; private）。</p>
-<p>构造函数参数简写（如 constructor(public name: string)）。</p>
-<p>抽象类与接口实现（如 implements Interface）。</p>
-<details>
-<summary>类和接口</summary>
-
-<h1 id="class"><a href="#class" class="headerlink" title="class"></a>class</h1><h1 id="interface"><a href="#interface" class="headerlink" title="interface"></a>interface</h1><p>最小契约 全传完</p>
-<p>interface a{<br>  name : string<br>}</p>
-<p>class A{<br>  construct( public ){}</p>
-<p>}</p>
-</details>
-
-<details>
-<summary>修饰符</summary>
-
-<h1 id="public-修饰符"><a href="#public-修饰符" class="headerlink" title="public  修饰符"></a>public  修饰符</h1><h1 id="protected-修饰符"><a href="#protected-修饰符" class="headerlink" title="protected 修饰符"></a>protected 修饰符</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs ts"><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">AbstractController</span> &#123;<br>  <span class="hljs-comment">// 限制构造函数仅允许子类调用</span><br>  <span class="hljs-keyword">protected</span> <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">protected</span> <span class="hljs-attr">moduleName</span>: <span class="hljs-built_in">string</span></span>) &#123;&#125;<br>&#125;<br><br><span class="hljs-comment">// const ctrl = new AbstractController(&quot;User&quot;); // ❌ 报错：构造函数受保护，无法直接实例化 不能new</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">UserController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">AbstractController</span> &#123;<br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">super</span>(<span class="hljs-string">&quot;UserModule&quot;</span>); <span class="hljs-comment">// ✅ 子类可以通过 super() 正常调用</span><br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// JS 原生 #field 语法：在运行时强制私有（由 JavaScript 引擎提供保障），任何外部手段都无法突破限制 object.freeze()</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">user</span> &#123;<br>  #<span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span> <br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">this</span>.#name = <span class="hljs-string">&quot;tom&quot;</span><br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> a = <span class="hljs-keyword">new</span> <span class="hljs-title function_">user</span>()<br><br><span class="hljs-comment">// a.name = xxx no</span><br></code></pre></td></tr></table></figure>
-
-<h1 id="private-修饰符"><a href="#private-修饰符" class="headerlink" title="private 修饰符"></a>private 修饰符</h1><h1 id="readonly-修饰符"><a href="#readonly-修饰符" class="headerlink" title="readonly 修饰符"></a>readonly 修饰符</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">//readonly  修饰的属性只能在声明时或构造函数中赋值，之后不能再修改</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">user</span>&#123;<br>  <span class="hljs-keyword">readonly</span> into=&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&quot;tom&quot;</span>&#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> a = <span class="hljs-keyword">new</span> <span class="hljs-title function_">user</span>()<br><br>a.<span class="hljs-property">into</span>=&#123;&#125; <span class="hljs-comment">//no</span><br><br>a.<span class="hljs-property">into</span>.<span class="hljs-property">name</span> = <span class="hljs-string">&quot;jom&quot;</span> <span class="hljs-comment">//yes</span><br><br><span class="hljs-comment">//静态类型校验 编译成js之后没有readonly  </span><br></code></pre></td></tr></table></figure>
-
-<h1 id="新旧Class写法"><a href="#新旧Class写法" class="headerlink" title="新旧Class写法"></a>新旧Class写法</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">//在构造函数参数前加修饰符（如 public readonly），TS 会自动完成&quot;声明属性 + 赋值&quot;两步，等价于省略赋值的过程 在construct()+ 修饰符</span><br><br><br><span class="hljs-comment">// 写法 A（简写） 构造函数+语法糖 没有修饰符不会生成具体实例</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> &#123;<br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span></span>) &#123;&#125;<br>&#125;<br><br><span class="hljs-comment">// 写法 B（等价展开） </span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;<br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span></span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">id</span> = id;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-</details>
-
-<details>
-<summary>抽象类与接口实现</summary>
-
-<p>protected construct() {}</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>  <span class="hljs-keyword">protected</span> <span class="hljs-title function_">construct</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> <span class="hljs-attr">a</span>:<span class="hljs-built_in">string</span></span>) &#123;&#125;<br>  <span class="hljs-comment">//不能在类A 里面new 实例</span><br>  <span class="hljs-title function_">say</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a)<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">//const B = new A (); X 外部不能new A</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">A</span>&#123;<br>  <span class="hljs-title function_">construct</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">super</span>(<span class="hljs-number">999</span>)<br>  &#125;<br>&#125;<br><br><br><span class="hljs-keyword">const</span> b = <span class="hljs-keyword">new</span> <span class="hljs-title function_">B</span> ()<br><br>b.<span class="hljs-title function_">say</span>()<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">//基础抽象模版</span><br><span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">user</span>&#123;<br>  <span class="hljs-title function_">construct</span> (<span class="hljs-keyword">public</span> <span class="hljs-attr">a</span>:<span class="hljs-built_in">string</span>)&#123;&#125;<br>  <span class="hljs-keyword">abstract</span> <span class="hljs-title function_">say</span>(<span class="hljs-params"></span>)&#123;&#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-</details>
-
-<details>
-<summary>T 泛型约束</summary>
-
-<p><code>&lt;k,v&gt;</code> 泛型键值对</p>
-<p>T : string | number</p>
-<p>T extends interface</p>
-<p>T : 对象结构 {name : “TOM”}</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ts"><br><span class="hljs-keyword">function</span> a &lt;<span class="hljs-attr">T</span>: <span class="hljs-built_in">string</span>| <span class="hljs-built_in">number</span>&gt;(<span class="hljs-attr">v</span>:T )&#123;<br><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(v)<br>&#125;<br><br><span class="hljs-title function_">a</span>(<span class="hljs-number">1</span>)<br><br></code></pre></td></tr></table></figure>
-
-</details>
+                <p>同源策略</p>
+<p>CORS</p>
+<p>预检请求</p>
+<p>Cookie</p>
+<p>代理</p>
+<p>Express 中间件</p>
+<p>中间件的执行顺序</p>
+<p>洋葱模型</p>
+<p>MySQL vs MariaDB</p>
+<p>索引</p>
+<p>连接池</p>
+<p>软删除</p>
+<p>SQL 注入防范</p>
+<p>事务</p>
+<p>bcrypt 自带 salt，防彩虹表</p>
+<p>JWT 和 session 怎么选？</p>
 
                 
               </div>
@@ -434,32 +405,11 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/TypeScript/" class="category-chain-item">TypeScript</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/TypeScript%E8%AF%AD%E6%B3%95/" class="print-no-link">#TypeScript语法</a>
+        <a href="/tags/Node%E5%90%8E%E7%AB%AF/" class="print-no-link">#Node后端</a>
       
     </div>
   
@@ -471,8 +421,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>TypeScript语法</div>
-      <div>http://example.com/2026/06/30/前端知识结构和概念/TypeScript/</div>
+      <div>Node后端</div>
+      <div>http://example.com/2026/10/01/Node后端/</div>
     </div>
     <div class="license-meta">
       
@@ -484,7 +434,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年6月30日</div>
+          <div>2026年10月1日</div>
         </div>
       
       
@@ -516,18 +466,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/07/03/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1/" title="前端八股">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">前端八股</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/06/29/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%92%8C%E6%A6%82%E5%BF%B5/%E5%8D%8F%E8%AE%AE/" title="协议">
-                        <span class="hidden-mobile">协议</span>
+                      <a href="/2026/10/01/%E5%B7%B2%E5%81%9A%E8%BF%87%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1%E4%B8%8E%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98/" title="已做过项目设计与遇到问题">
+                        <span class="hidden-mobile">已做过项目设计与遇到问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

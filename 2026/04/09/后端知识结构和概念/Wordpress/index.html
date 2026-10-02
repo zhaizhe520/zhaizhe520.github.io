@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://example.com/img/bg/NIGHT.png">
 <meta property="og:image" content="http://example.com/img/bg/OVER.png">
 <meta property="article:published_time" content="2026-04-09T09:03:38.000Z">
-<meta property="article:modified_time" content="2026-09-12T02:13:50.695Z">
+<meta property="article:modified_time" content="2026-10-01T15:27:50.826Z">
 <meta property="article:author" content="Mashiro">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/bg/MySQL.png">
@@ -417,10 +417,8 @@
 <li><p>完全替换成下面的配置（注意修改 WordPress 路径）<br>nginx</p>
 </li>
 </ol>
-<p>#user  nobody;<br>worker_processes  1;</p>
-<p>#error_log  logs&#x2F;error.log;<br>#error_log  logs&#x2F;error.log  notice;<br>#error_log  logs&#x2F;error.log  info;</p>
-<p>#pid        logs&#x2F;nginx.pid;</p>
-<p>events {<br>    worker_connections  1024;<br>}</p>
+<h1 id="user-nobody"><a href="#user-nobody" class="headerlink" title="user  nobody;"></a>user  nobody;</h1><p>worker_processes  1;</p>
+<h1 id="error-log-logs-error-log"><a href="#error-log-logs-error-log" class="headerlink" title="error_log  logs&#x2F;error.log;"></a>error_log  logs&#x2F;error.log;</h1><h1 id="error-log-logs-error-log-notice"><a href="#error-log-logs-error-log-notice" class="headerlink" title="error_log  logs&#x2F;error.log  notice;"></a>error_log  logs&#x2F;error.log  notice;</h1><h1 id="error-log-logs-error-log-info"><a href="#error-log-logs-error-log-info" class="headerlink" title="error_log  logs&#x2F;error.log  info;"></a>error_log  logs&#x2F;error.log  info;</h1><h1 id="pid-logs-nginx-pid"><a href="#pid-logs-nginx-pid" class="headerlink" title="pid        logs&#x2F;nginx.pid;"></a>pid        logs&#x2F;nginx.pid;</h1><p>events {<br>    worker_connections  1024;<br>}</p>
 <p>http {<br>    include       mime.types;<br>    default_type  application&#x2F;octet-stream;</p>
 <pre><code class="hljs">#log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
 #                  &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
@@ -464,20 +462,21 @@ server {
 }
 </code></pre>
 <p>}</p>
-<ol start="3">
+<ol>
 <li>关键修改说明<br>只需要改 root D:\PhpStudy\wordpress; 这一行，换成你自己的 WordPress 文件夹路径<br>其他配置完全不用改，直接保存即可<br>二、启动 Nginx（CMD 操作）</li>
 <li>先关闭旧 Nginx 进程（如果之前启动过）<br>bash<br>运行<br>taskkill &#x2F;F &#x2F;IM nginx.exe</li>
 <li>进入 Nginx 目录，启动服务<br>bash<br>运行<br>cd D:\PhpStudy\nginx-1.28.3<br>start nginx.exe<br>启动后无任何提示就是成功，Nginx 会后台运行，不用保持 CMD 窗口打开<br>验证：浏览器访问 <a target="_blank" rel="noopener" href="http://localhost,如果出现/">http://localhost，如果出现</a> WordPress 安装页，说明 Nginx 配置生效<br>三、WordPress 浏览器安装步骤（5 分钟完成）</li>
 <li>访问安装页<br>打开浏览器，输入 <a target="_blank" rel="noopener" href="http://localhost,自动跳转到/">http://localhost，自动跳转到</a> WordPress 安装引导页<br>选择语言：简体中文 → 点击「继续」</li>
-<li>数据库配置（关键，填错连不上）<br>表格<br>配置项	填写内容</li>
+<li>数据库配置（关键，填错连不上）<br>表格<br>配置项 填写内容<br>数据库名 wp_local（之前 MySQL 创建的数据库）<br>用户名 root（MySQL 超级管理员账号）<br>密码 你之前设置的 MySQL root 密码<br>数据库主机 localhost（默认，不用改）<br>表前缀 wp_（默认，不用改）<br>点击「提交」→「运行安装程序」</li>
+<li>网站信息配置<br>站点标题：你的网站名称（比如「我的 ACG 博客」）<br>用户名：WordPress 后台管理员账号（自己设，比如 admin）<br>密码：后台管理员密码（自己设，务必记住！）<br>你的邮箱：本地开发可随便填，比如 <a href="mailto:&#116;&#101;&#115;&#x74;&#64;&#x74;&#x65;&#115;&#x74;&#x2e;&#99;&#111;&#x6d;">test@test.com</a><br>勾选「建议搜索引擎不索引本站点」（本地环境用）<br>点击「安装 WordPress」→ 完成后点击「登录」，进入后台</li>
 </ol>
-<p>数据库名	wp_local（之前 MySQL 创建的数据库）<br>用户名	root（MySQL 超级管理员账号）<br>密码	你之前设置的 MySQL root 密码<br>数据库主机	localhost（默认，不用改）<br>表前缀	wp_（默认，不用改）<br>点击「提交」→「运行安装程序」<br>3. 网站信息配置<br>站点标题：你的网站名称（比如「我的 ACG 博客」）<br>用户名：WordPress 后台管理员账号（自己设，比如 admin）<br>密码：后台管理员密码（自己设，务必记住！）<br>你的邮箱：本地开发可随便填，比如 <a href="mailto:&#x74;&#x65;&#115;&#116;&#64;&#x74;&#x65;&#115;&#x74;&#46;&#99;&#x6f;&#109;">test@test.com</a><br>勾选「建议搜索引擎不索引本站点」（本地环境用）<br>点击「安装 WordPress」→ 完成后点击「登录」，进入后台</p>
 <h1 id="第二次配置wordpress"><a href="#第二次配置wordpress" class="headerlink" title="第二次配置wordpress"></a>第二次配置wordpress</h1><p>行第一次卡主了，要不再來一次？</p>
 <h1 id="一-安裝準備"><a href="#一-安裝準備" class="headerlink" title="一.安裝準備"></a>一.安裝準備</h1><ol>
 <li>Nginx（Web 服务器）<br>去官网下载：<a target="_blank" rel="noopener" href="http://nginx.org/en/download.html">http://nginx.org/en/download.html</a><br>下载：nginx&#x2F;Windows‑xxx.zip解压到：XXXXXX</li>
 <li>PHP（运行 WordPress 用）<br>下载：<a target="_blank" rel="noopener" href="https://windows.php.net/download/">https://windows.php.net/download/</a><br>选：Zip → x64 → Non Thread Safe解压到：XXXXXXXX</li>
-<li>MySQL（数据库）<br>下载：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a><br>选：Windows (x86, 64-bit), ZIP Archive解压到：XXXX<br>4.wordpress下載<br><a target="_blank" rel="noopener" href="https://cn.wordpress.org/latest-zh_CN.zip">https://cn.wordpress.org/latest-zh_CN.zip</a></li>
+<li>MySQL（数据库）<br>下载：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a><br>选：Windows (x86, 64-bit), ZIP Archive解压到：XXXX<br>4.wordpress下載</li>
 </ol>
+<p><a target="_blank" rel="noopener" href="https://cn.wordpress.org/latest-zh_CN.zip">https://cn.wordpress.org/latest-zh_CN.zip</a></p>
 <h1 id="二-開始配置"><a href="#二-開始配置" class="headerlink" title="二.開始配置"></a>二.開始配置</h1><h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><p>配置环节（重点）：<br>端口保持默认 3306，不要修改。<br>身份验证方式选择 「Use Legacy Authentication Method」（兼容 WordPress，避免连接报错）。<br>设置 root 账户密码，务必记住，后续安装 WordPress 必须用。<br>勾选「Start the MySQL Server at System Startup」，设为开机自启，不用每次手动启动。<br>验证安装：<br>安装完成后，打开 CMD 输入：<br>bash<br>运行<br>mysql -u root -p<br>输入你设置的密码，能进入 MySQL 命令行，就说明安装成功。<br>创建 WordPress 数据库：<br>进入 MySQL 后执行：<br>sql<br>CREATE DATABASE wp_local CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;<br>这个 wp_local 就是后续安装 WordPress 要用的数据库。<br><img src="/img/bg/MySQL.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="PHP配置"><a href="#PHP配置" class="headerlink" title="PHP配置"></a>PHP配置</h2><ol>
 <li>进入 PHP 目录</li>
@@ -508,16 +507,17 @@ location ~ \.php$ {
 <li>找到 WordPress 自带的 API 地址<br>不用插件、不用配置自带接口例如：</li>
 </ol>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">plaintext<br>http:<span class="hljs-regexp">//</span>localhost<span class="hljs-regexp">/你的WP地址/</span>wp-json<span class="hljs-regexp">/wp/</span>v2/posts<br>打开就是文章列表 JSON<br></code></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>Vue 安装 axios（发送请求）</li>
 </ol>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">plaintext<br>npm <span class="hljs-keyword">install</span> axios<br></code></pre></td></tr></table></figure>
+
 <ol start="3">
-<li>Vue 里写 3 行代码请求 WP 数据<br>js<br>axios.get(‘<a target="_blank" rel="noopener" href="http://localhost/.../posts').then">http://localhost/.../posts&#39;).then</a>(res &#x3D;&gt; {<br>  console.log(res.data)<br>})catch(error){<br>  console.log(“抓取失敗”)<br>}</li>
+<li>Vue 里写 3 行代码请求 WP 数据<br>js<br>axios.get(‘<a target="_blank" rel="noopener" href="http://localhost/.../posts').then(res">http://localhost/.../posts&#39;).then(res</a> &#x3D;&gt; {<br>  console.log(res.data)<br>})catch(error){<br>  console.log(“抓取失敗”)<br>}</li>
 <li>把数据渲染到 Vue 页面</li>
 </ol>
 <figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">html</span><br><span class="language-xml">预览</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in list&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item.id&quot;</span>&gt;</span></span><br><span class="language-xml">  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">item.title.rendered</span> &#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
-
 
 <h1 id="什麼是axios"><a href="#什麼是axios" class="headerlink" title="什麼是axios"></a>什麼是axios</h1><p>簡單來說，Axios 是一個基於 Promise 的 HTTP 客戶端，專門用來在瀏覽器（Frontend）和 Node.js（Backend）環境中發送網路請求。</p>
 <p>如果你曾經被原生 JavaScript 那囉唆的 XMLHttpRequest 搞得頭大，或者覺得 fetch 的某些功能（如自動轉換 JSON）還不夠便利，那 Axios 就像是你的「網路請求懶人包」。</p>
