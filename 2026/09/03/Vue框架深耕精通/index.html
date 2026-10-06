@@ -27,7 +27,7 @@
 <meta property="og:description" content="Vue框架深耕精通">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-03T07:07:38.000Z">
-<meta property="article:modified_time" content="2026-10-01T13:57:50.976Z">
+<meta property="article:modified_time" content="2026-10-06T15:26:57.639Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="Vue框架深耕精通">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.2k 字
+          9.9k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          52 分钟
+          83 分钟
         
       </span>
     
@@ -381,12 +381,475 @@
             
               <div class="markdown-body">
                 
-                <details>
+                <p>官方文档: [<a href="https://cn.vuejs.org]">https://cn.vuejs.org]</a></p>
+<details>
 <summary>API</summary>
 
+<h1 id="响应式-API（Reactivity）"><a href="#响应式-API（Reactivity）" class="headerlink" title="响应式 API（Reactivity）"></a>响应式 API（Reactivity）</h1><table>
+<thead>
+<tr>
+<th>API</th>
+<th>作用</th>
+<th>要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ref</td>
+<td>基本类型响应式</td>
+<td>也可以放对象；访问需要 <code>.value</code>；对象内部会自动转为reactive</td>
+</tr>
+<tr>
+<td>reactive</td>
+<td>对象&#x2F;数组响应式</td>
+<td>仅支持引用类型；直接访问属性，不需要<code>.value</code>；不能解构，解构丢失响应</td>
+</tr>
+<tr>
+<td>computed</td>
+<td>计算属性</td>
+<td>依赖自动缓存；依赖变化才重新计算；可传get&#x2F;set实现读写</td>
+</tr>
+<tr>
+<td>watch</td>
+<td>侦听器</td>
+<td>显式指定监听目标；默认惰性（初始不执行）；可获取新旧值</td>
+</tr>
+<tr>
+<td>watchEffect</td>
+<td>自动追踪依赖侦听</td>
+<td>不用手动写监听源；立即执行；自动收集内部用到的响应式依赖</td>
+</tr>
+<tr>
+<td>readonly</td>
+<td>只读代理</td>
+<td>返回原数据只读代理；修改直接警告；浅层只读，内部对象仍可改</td>
+</tr>
+<tr>
+<td>shallowRef</td>
+<td>浅层ref</td>
+<td>只对 <code>.value</code> 本身做响应；value如果是对象，对象内部不响应</td>
+</tr>
+<tr>
+<td>shallowReactive</td>
+<td>浅层响应式</td>
+<td>只有第一层属性响应，深层嵌套对象不会被代理</td>
+</tr>
+<tr>
+<td>toRef</td>
+<td>把对象单个属性转为ref</td>
+<td>保持和原对象关联；解构单独属性保留响应性</td>
+</tr>
+<tr>
+<td>toRefs</td>
+<td>对象全部属性批量转ref</td>
+<td>用于reactive对象解构，保证解构后属性依然响应；只转第一层</td>
+</tr>
+<tr>
+<td>effectScope</td>
+<td>副作用作用域</td>
+<td>批量收集内部watch、watchEffect等副作用；可一次性stop清除</td>
+</tr>
+<tr>
+<td>markRaw</td>
+<td>标记对象永不响应</td>
+<td>对象永远不会被proxy代理；ref&#x2F;reactive碰到它直接原样保留</td>
+</tr>
+</tbody></table>
+<h1 id="生命周期钩子"><a href="#生命周期钩子" class="headerlink" title="生命周期钩子"></a>生命周期钩子</h1><table>
+<thead>
+<tr>
+<th>组合式API</th>
+<th>选项式API</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>onBeforeMount</td>
+<td>beforeMount</td>
+<td>挂载之前，DOM还没创建</td>
+</tr>
+<tr>
+<td>onMounted</td>
+<td>mounted</td>
+<td>挂载完成，DOM已生成，可操作DOM</td>
+</tr>
+<tr>
+<td>onBeforeUpdate</td>
+<td>beforeUpdate</td>
+<td>数据更新前，DOM还没重新渲染</td>
+</tr>
+<tr>
+<td>onUpdated</td>
+<td>updated</td>
+<td>数据更新后，DOM更新完成</td>
+</tr>
+<tr>
+<td>onBeforeUnmount</td>
+<td>beforeUnmount</td>
+<td>组件销毁前，实例还可用</td>
+</tr>
+<tr>
+<td>onUnmounted</td>
+<td>unmounted</td>
+<td>组件销毁完成，清理定时器&#x2F;事件监听</td>
+</tr>
+<tr>
+<td>onActivated</td>
+<td>activated</td>
+<td>keep-alive缓存组件<strong>激活时</strong>触发</td>
+</tr>
+<tr>
+<td>onDeactivated</td>
+<td>deactivated</td>
+<td>keep-alive缓存组件<strong>失活时</strong>触发</td>
+</tr>
+<tr>
+<td>onErrorCaptured</td>
+<td>errorCaptured</td>
+<td>捕获后代组件抛出的错误</td>
+</tr>
+</tbody></table>
+<h1 id="组件-渲染-API"><a href="#组件-渲染-API" class="headerlink" title="组件 &#x2F; 渲染 API"></a>组件 &#x2F; 渲染 API</h1><table>
+<thead>
+<tr>
+<th>API</th>
+<th>作用</th>
+<th>要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>h</td>
+<td>创建虚拟VNode</td>
+<td>渲染函数用；参数：标签,属性,子节点；template编译后底层就是h</td>
+</tr>
+<tr>
+<td>defineComponent</td>
+<td>定义组件</td>
+<td>主要给TS提供类型推导；运行时几乎无效果，选项式&#x2F;setup都能用</td>
+</tr>
+<tr>
+<td>defineAsyncComponent</td>
+<td>异步组件</td>
+<td>组件懒加载；加载完成才渲染，可配置加载&#x2F;错误占位</td>
+</tr>
+<tr>
+<td>defineCustomElement</td>
+<td>把Vue组件转为Web Component</td>
+<td>原生自定义元素，脱离Vue框架也能在页面使用</td>
+</tr>
+<tr>
+<td>resolveComponent</td>
+<td>按字符串名称解析组件</td>
+<td>渲染函数&#x2F;h里，根据组件名拿到组件定义，需注册过</td>
+</tr>
+<tr>
+<td>nextTick</td>
+<td>等待DOM更新完成</td>
+<td>DOM更新是异步；在回调里拿到最新真实DOM</td>
+</tr>
+<tr>
+<td>mergeProps</td>
+<td>合并多个props对象</td>
+<td>自动处理class&#x2F;style合并，覆盖优先级从左到右</td>
+</tr>
+<tr>
+<td>useSlots</td>
+<td>获取插槽</td>
+<td>script setup中使用，拿到slots对象，slots.default()渲染默认插槽</td>
+</tr>
+<tr>
+<td>useAttrs</td>
+<td>获取attrs</td>
+<td>script setup中，获取透传属性（非props、非事件）</td>
+</tr>
+</tbody></table>
+<h1 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h1><table>
+<thead>
+<tr>
+<th>API</th>
+<th>作用</th>
+<th>要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>provide</td>
+<td>向上层组件提供依赖</td>
+<td>父&#x2F;祖先组件注入数据、方法；key-value，跨多层传递</td>
+</tr>
+<tr>
+<td>inject</td>
+<td>后代组件注入获取依赖</td>
+<td>从祖先组件读取provide提供的值；可设置默认值</td>
+</tr>
+</tbody></table>
+<h1 id="内置组件"><a href="#内置组件" class="headerlink" title="内置组件"></a>内置组件</h1><table>
+<thead>
+<tr>
+<th>内置组件</th>
+<th>作用</th>
+<th>要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>KeepAlive</td>
+<td>缓存组件实例</td>
+<td>组件被销毁时不释放实例；切走触发onDeactivated，切回触发onActivated；不执行onMounted重复挂载</td>
+</tr>
+<tr>
+<td>Transition</td>
+<td>单个元素&#x2F;组件过渡动画</td>
+<td>进入、离开添加class；只渲染单个根节点</td>
+</tr>
+<tr>
+<td>TransitionGroup</td>
+<td>列表多节点过渡</td>
+<td>用于v-for列表；每一项都能做过渡；必须指定key</td>
+</tr>
+<tr>
+<td>Teleport</td>
+<td>把DOM渲染到页面别的位置</td>
+<td>脱离当前组件DOM层级，常见弹框放到body；逻辑还属于当前组件实例</td>
+</tr>
+<tr>
+<td>Suspense</td>
+<td>异步内容加载占位</td>
+<td>等待异步组件&#x2F;async setup；加载中显示fallback，加载完成替换；捕获顶层异步</td>
+</tr>
+<tr>
+<td>component</td>
+<td>动态组件</td>
+<td>:is 切换组件；配合KeepAlive缓存切换的组件实例</td>
+</tr>
+</tbody></table>
+<h1 id="编译器宏（-专用）"><a href="#编译器宏（-专用）" class="headerlink" title="编译器宏（&lt;script setup&gt; 专用）"></a>编译器宏（<code>&lt;script setup&gt;</code> 专用）</h1><table>
+<thead>
+<tr>
+<th>宏</th>
+<th>作用</th>
+<th>要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>defineProps</td>
+<td>定义组件props</td>
+<td>script setup专属宏；声明接收的属性；返回props对象</td>
+</tr>
+<tr>
+<td>defineEmits</td>
+<td>定义事件</td>
+<td>声明可触发的事件；返回emit函数，用于触发事件通知父组件</td>
+</tr>
+<tr>
+<td>defineExpose</td>
+<td>暴露属性&#x2F;方法给父组件</td>
+<td>默认script setup组件实例对外是关闭的，需要手动暴露，父通过$ref访问</td>
+</tr>
+<tr>
+<td>defineSlots</td>
+<td>插槽类型定义</td>
+<td>TS环境，用于约束插槽入参类型，运行时代码无效果</td>
+</tr>
+<tr>
+<td>defineOptions</td>
+<td>直接写组件选项</td>
+<td>script setup里直接写name、inheritAttrs等，不用额外<code>&lt;script&gt;</code>块</td>
+</tr>
+<tr>
+<td>defineModel</td>
+<td>双向绑定props</td>
+<td>Vue3.4+新增；简化v-model，内部封装props + emit</td>
+</tr>
+<tr>
+<td>withDefaults</td>
+<td>props默认值</td>
+<td>配合defineProps，给props设置默认值，TS类型保留</td>
+</tr>
+</tbody></table>
+<h1 id="应用实例-API"><a href="#应用实例-API" class="headerlink" title="应用实例 API"></a>应用实例 API</h1><table>
+<thead>
+<tr>
+<th>API</th>
+<th>作用</th>
+<th>要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>createApp</td>
+<td>创建Vue应用实例</td>
+<td>接收根组件；一个页面可多个独立app实例</td>
+</tr>
+<tr>
+<td>app.use</td>
+<td>安装插件</td>
+<td>插件需要暴露install函数；如vue-router、pinia</td>
+</tr>
+<tr>
+<td>app.component</td>
+<td>注册全局组件</td>
+<td>全局任意组件可直接使用，无需局部导入</td>
+</tr>
+<tr>
+<td>app.directive</td>
+<td>注册全局自定义指令</td>
+<td>全局生效，用于DOM底层操作</td>
+</tr>
+<tr>
+<td>app.provide</td>
+<td>全局注入依赖</td>
+<td>整个应用内所有后代组件都可inject获取</td>
+</tr>
+<tr>
+<td>app.mount</td>
+<td>挂载应用</td>
+<td>传入选择器&#x2F;DOM节点；执行后渲染页面，返回根组件实例</td>
+</tr>
+</tbody></table>
 </details>
 
-<p>官方文档: [<a target="_blank" rel="noopener" href="https://cn.vuejs.org/]">https://cn.vuejs.org/]</a></p>
+<details>
+<summary>指令</summary>
+
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+<th>要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>v-if</td>
+<td>条件渲染</td>
+<td>条件为false时<strong>销毁&#x2F;移除DOM</strong>；切换开销大，初始为false更合适；不能和v-for同写一个标签</td>
+</tr>
+<tr>
+<td>v-else &#x2F; v-else-if</td>
+<td>配合v-if</td>
+<td>必须紧跟v-if或v-else-if，中间不能插别的元素</td>
+</tr>
+<tr>
+<td>v-show</td>
+<td>条件显示</td>
+<td>只是CSS切换<code>display:none</code>，DOM一直存在；切换频繁优先使用；不支持<code>&lt;template&gt;</code></td>
+</tr>
+<tr>
+<td>v-for</td>
+<td>列表渲染</td>
+<td>循环生成节点；必须绑定key；优先级高于v-if，尽量不要同元素共用</td>
+</tr>
+<tr>
+<td>v-bind（简写:）</td>
+<td>绑定HTML属性</td>
+<td>动态赋值；可绑定class&#x2F;style；<code>v-bind=&quot;$attrs&quot;</code>批量透传属性</td>
+</tr>
+<tr>
+<td>v-on（简写@）</td>
+<td>绑定事件</td>
+<td>绑定原生&#x2F;自定义事件；支持修饰符<code>.stop</code> <code>.prevent</code> <code>.once</code></td>
+</tr>
+<tr>
+<td>v-model</td>
+<td>双向绑定</td>
+<td>语法糖；本质是 :modelValue + @update:modelValue；组件支持多v-model（Vue3）</td>
+</tr>
+<tr>
+<td>v-slot（简写#）</td>
+<td>插槽</td>
+<td>定义&#x2F;接收插槽；默认插槽、具名插槽、作用域插槽</td>
+</tr>
+<tr>
+<td>v-html</td>
+<td>渲染HTML</td>
+<td>解析html字符串渲染；<strong>存在XSS安全风险</strong>，不要渲染用户输入</td>
+</tr>
+<tr>
+<td>v-text</td>
+<td>渲染文本</td>
+<td>替换元素内部全部文本，等同于插值<code>&#123;&#123;&#125;&#125;</code>，无html解析</td>
+</tr>
+<tr>
+<td>v-once</td>
+<td>只渲染一次</td>
+<td>首次渲染后缓存，后续数据更新不再重渲染</td>
+</tr>
+<tr>
+<td>v-memo</td>
+<td>缓存子树</td>
+<td>Vue3；传入依赖数组，依赖不变，跳过该子树diff；优化复杂长列表</td>
+</tr>
+<tr>
+<td>v-pre</td>
+<td>跳过编译</td>
+<td>内部内容不做Vue模板编译，原样展示<code>&#123;&#123;&#125;&#125;</code></td>
+</tr>
+<tr>
+<td>v-cloak</td>
+<td>隐藏未编译模板</td>
+<td>配合css<code>[v-cloak]&#123;display:none&#125;</code>，解决页面闪烁（vue2遗留，Vite基本不用）</td>
+</tr>
+</tbody></table>
+<p>自定义指令</p>
+<p>导出一个对象，对象上挂载<code>mounted / updated / unmounted</code> 这些函数</p>
+<p>Vue内部会在对应生命周期自动调用这些函数，传入 <code>el、binding、vnode、prevVNode</code>参数。&#96;</p>
+<p>vue3帮我操作dom 想浏览器的api一样</p>
+</details>
+
+<details>
+<summary>修饰符</summary>
+
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>修饰符</th>
+<th>作用</th>
+<th>要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>v-on &#x2F; @</td>
+<td>.stop</td>
+<td>阻止事件冒泡（event.stopPropagation）</td>
+<td>事件不会向父元素传递</td>
+</tr>
+<tr>
+<td>v-on &#x2F; @</td>
+<td>.prevent</td>
+<td>阻止浏览器默认行为（event.preventDefault）</td>
+<td>阻止a跳转、form提交</td>
+</tr>
+<tr>
+<td>v-on &#x2F; @</td>
+<td>.once</td>
+<td>事件只执行1次，之后不再触发</td>
+<td>一次性点击</td>
+</tr>
+<tr>
+<td>v-model</td>
+<td>.lazy</td>
+<td>失焦后才同步数据</td>
+<td>默认input输入实时更新，lazy改成change事件</td>
+</tr>
+<tr>
+<td>v-model</td>
+<td>.number</td>
+<td>自动把输入内容转为数字类型</td>
+<td>无法转数字则保留原始字符串</td>
+</tr>
+<tr>
+<td>v-model</td>
+<td>.trim</td>
+<td>自动去除首尾空格</td>
+<td>输入前后空白自动剪掉</td>
+</tr>
+<tr>
+<td>v-bind</td>
+<td>.prop</td>
+<td>把值作为DOM的property绑定，不是attribute</td>
+<td>比如绑定input.checked，而不是HTML属性</td>
+</tr>
+</tbody></table>
+</details>
+
 <p>基于函数范式底层思想哲学  &#96;&#96;</p>
 <p>框架类型: 渐进式 声明式 响应式 组件化 基于<code>MVVM</code>思想的实现</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs txt">WeakMap (targetMap)<br> └── key: target (被代理的原始对象 obj)<br>      └── value: Map (depsMap)<br>           └── key: key (对象的属性名, 如 &#x27;name&#x27;)<br>                └── value: Set (dep)<br>                     └── 包含该属性的所有 side effect 函数 (ReactiveEffect)<br></code></pre></td></tr></table></figure>
@@ -412,8 +875,8 @@
 <p><strong>Vue2：<code>Object.defineProperty</code></strong><br>遍历对象<strong>每一个属性</strong>，给属性添加 getter&#x2F;setter 劫持。<br>缺点：只能监听初始化就存在的属性；新增、删除属性、数组下标修改无法监听，需要<code>$set</code>。<br>内部模型：<code>Dep</code> 存放 watcher。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs js">基本语法:<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(obj, propertyName, descriptor)<br><br><span class="hljs-comment">//伪劫持代码块</span><br><br><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(<span class="hljs-params">obd,<span class="hljs-string">&quot;propertyName&quot;</span></span>)&#123;<br>    <span class="hljs-comment">//接收</span><br>    <span class="hljs-title function_">get</span>(<span class="hljs-params"></span>)&#123;&#125;<br> <br>    <span class="hljs-comment">//派发</span><br>    <span class="hljs-title function_">set</span>(<span class="hljs-params"></span>)&#123;&#125;<br>&#125;<br><br><span class="hljs-comment">// 原始数据</span><br><span class="hljs-keyword">const</span> data = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;张三&quot;</span> &#125;<br><span class="hljs-keyword">let</span> _value = data.<span class="hljs-property">name</span><br><span class="hljs-comment">// 劫持这个name属性</span><br><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(data, <span class="hljs-string">&#x27;name&#x27;</span>, &#123;<br>  <span class="hljs-title function_">get</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// ✅ 读取数据的时候触发get → track 依赖收集</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;读取name，收集依赖&#x27;</span>)<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">_value</span><br>  &#125;,<br>  <span class="hljs-title function_">set</span>(<span class="hljs-params">newVal</span>) &#123;<br>    <span class="hljs-comment">// ✅ 修改数据的时候触发set → trigger 派发更新</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;修改name，通知视图更新&#x27;</span>)<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_value</span> = newVal<br>  &#125;<br>&#125;)<br><br>data.<span class="hljs-property">name</span> <span class="hljs-comment">// 触发get</span><br>data.<span class="hljs-property">name</span> = <span class="hljs-string">&quot;李四&quot;</span> <span class="hljs-comment">// 触发set</span><br><br></code></pre></td></tr></table></figure>
 
-<p>已存在的属性<code>{ name: &quot;张三&quot; }</code></p>
-<p>不存在的属性<code>{age: 18}</code> 要触发set就要上<code>$set</code></p>
+<p>已存在的属性<code>&#123; name: &quot;张三&quot; &#125;</code></p>
+<p>不存在的属性<code>&#123;age: 18&#125;</code> 要触发set就要上<code>$set</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-comment">// 模拟$set给新增属性加上劫持</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">my$set</span>(<span class="hljs-params">obj,key,value</span>)&#123;<br>  <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(obj,key,&#123;<br>    <span class="hljs-title function_">get</span>(<span class="hljs-params"></span>)&#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`读取<span class="hljs-subst">$&#123;key&#125;</span>`</span>)<br>      <span class="hljs-keyword">return</span> value<br>    &#125;,<br>    <span class="hljs-title function_">set</span>(<span class="hljs-params">newVal</span>)&#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`修改<span class="hljs-subst">$&#123;key&#125;</span>`</span>,newVal)<br>      value = newVal<br>    &#125;<br>  &#125;)<br>  obj[key] = value<br>&#125;<br><br><span class="hljs-title function_">my$set</span>(data,<span class="hljs-string">&#x27;age&#x27;</span>,<span class="hljs-number">22</span>)<br>data.<span class="hljs-property">age</span> = <span class="hljs-number">30</span> <span class="hljs-comment">// ✅触发set，打印日志</span><br><br></code></pre></td></tr></table></figure>
 
 <p><strong>Vue3：<code>Proxy + Reflect</code></strong><br>直接代理<strong>整个对象</strong>，拦截对象所有读写、增删操作。</p>
@@ -444,7 +907,6 @@
 <p>set() —–&gt;trigger()</p>
 </details>
 
-<h1 id="Vue-自定义指令"><a href="#Vue-自定义指令" class="headerlink" title="Vue 自定义指令"></a>Vue 自定义指令</h1><p>导出一个对象，对象上挂载<code>mounted / updated / unmounted</code> 这些函数，Vue内部会在对应生命周期自动调用这些函数，传入 <code>el、binding、vnode、prevVNode</code>参数。&#96;</p>
 <details>
 <summary>computed 完整知识架构、底层模型、哲学</summary>
 
@@ -496,6 +958,9 @@
 <td>状态变化之后，协调外部世界</td>
 </tr>
 </tbody></table>
+<blockquote>
+<p>无论多少次访问  都会立即返回先前的计算结果，而不用重复执行 getter 函数</p>
+</blockquote>
 </details>
 
 <details>
@@ -536,6 +1001,8 @@ set()
 <p>只有删除</p>
 <p>乱序：最长递增子序列（LIS）</p>
 </details>
+
+
 
                 
               </div>

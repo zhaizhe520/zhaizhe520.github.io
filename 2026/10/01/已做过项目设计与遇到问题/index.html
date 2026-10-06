@@ -27,7 +27,7 @@
 <meta property="og:description" content="已做过项目设计与遇到问题">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-10-01T13:57:43.000Z">
-<meta property="article:modified_time" content="2026-10-02T01:05:21.697Z">
+<meta property="article:modified_time" content="2026-10-02T16:23:46.785Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="已做过项目设计与遇到问题">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          1.8k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          13 分钟
+          16 分钟
         
       </span>
     
@@ -382,7 +382,7 @@
               <div class="markdown-body">
                 
                 <h1 id="基于PixiJS完成的交互性⽹站-重构过-wordpress-express双后端"><a href="#基于PixiJS完成的交互性⽹站-重构过-wordpress-express双后端" class="headerlink" title="基于PixiJS完成的交互性⽹站 重构过 (wordpress|express双后端)"></a>基于PixiJS完成的交互性⽹站 重构过 (wordpress|express双后端)</h1><blockquote>
-<p>前端 | 版本不兼容 +Vite 编译 +canvas 画布+Vue 指令</p>
+<p>前端 | 版本不兼容 +Vite 编译 +canvas 画布+Vue 指令 + 组件库</p>
 </blockquote>
 <p><code>pixi.js@7 可能与 pixi-live2d-display 不兼容，版本冲突会出现 read(0) 索引 0 的问题</code></p>
 <p>我遇到一个Bug：</p>
@@ -402,6 +402,9 @@
 <p>我把气泡文本、打字机、表情触发都封装成 Vue 指令和组合式函数，而不是在组件里堆逻辑。</p>
 <p>核心是解耦：指令负责 DOM 事件绑定，组合式函数负责状态，Live2D 模型通过 window 暴露给指令调用。</p>
 <p>这让我理解Vue 指令的生命周期，以及跨模块通信的取舍（全局挂载 vs 事件总线 vs 状态管理）。</p>
+<p><code>骨架屏</code></p>
+<p>父组件传给子骨架组件：<code>loading</code> 布尔值控制显示 &#x2F; 隐藏</p>
+<p> card 标签 —-&gt; slot 插槽</p>
 <blockquote>
 <p>后端 | 上线部署 跨域 + 中间件 + 端口 + 数据库</p>
 </blockquote>
@@ -425,10 +428,19 @@
 <p>这里有个取舍：连接数太小，请求排队；太大，数据库压力大。10 是我压测后定的。这让我理解连接池的容量规划和数据库的连接限制。”</p>
 <p><code>llm流式传输  fetch流式传输接口 只写了chatbot没有接入工具不算agent吧</code></p>
 <p>大模型api 写环境变量里  </p>
+<p><code>上线服务器之后在（网关层）解决 CORS</code></p>
+<p>nginx反向代理</p>
+<p><code>认证 session cookie</code></p>
+<p>没上jwt token</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-attribute">cookie</span><span class="hljs-punctuation">: </span>&#123;<br>   httpOnly: true,      // 禁止 JS 读取，防 XSS<br>   secure: false,       // 生产环境 https 时设 true<br>   maxAge: 1000 * 60 * 60 * 24, // 1 天<br>   sameSite: &#x27;lax&#x27;,     // 防 CSRF<br> &#125;,<br></code></pre></td></tr></table></figure>
+
 <blockquote>
 <p>性能优化</p>
 </blockquote>
-<h1 id="nust"><a href="#nust" class="headerlink" title="nust"></a>nust</h1><p><code>存到localstorege浏览器纯储 没有放到onmonted生命周期挂载之后再写入，导致出现问题</code></p>
+<p><code>连接池</code></p>
+<p>&#96;&#96;</p>
+<h1 id="nust"><a href="#nust" class="headerlink" title="nust"></a>nust</h1><p><code>import.meta.client 做了客户端检查</code></p>
+<p>存到localstorege浏览器纯储 没有放到onmonted生命周期挂载之后再写入，导致出现问题</p>
 <p><code>3设计 领域层,胶水层，ui层</code></p>
 
                 

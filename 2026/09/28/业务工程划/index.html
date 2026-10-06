@@ -27,7 +27,7 @@
 <meta property="og:description" content="业务工程划">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-28T14:22:10.000Z">
-<meta property="article:modified_time" content="2026-10-02T01:03:37.934Z">
+<meta property="article:modified_time" content="2026-10-06T15:24:05.361Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="业务工程划">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          238 字
+          1.2k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          2 分钟
+          11 分钟
         
       </span>
     
@@ -382,6 +382,17 @@
               <div class="markdown-body">
                 
                 <p>单一职责原则 (SRP)</p>
+<p>那些是数据规则，哪些是页面渲染</p>
+<p>状态是单一数据源</p>
+<p>规则用纯函数</p>
+<p>副作用放外层</p>
+<p>页面只读状态</p>
+<p>core:「原始数据 &#x2F; 业务规则—-&gt;</p>
+<p>composables组合式逻辑连接  做成响应式变量，包装好操作函数，处理浏览器存储，<strong>适配 Vue 的响应式体系</strong></p>
+<p>—-&gt; vue组件「页面组件 template」渲染层</p>
+<p>不这样写 业务规则和 Vue 响应式混在一起 适合快熟成型</p>
+<p>单向数据流</p>
+<p>用户操作 → 视图层捕获事件 → composables胶水层接收 → 调用core领域层执行业务计算 → 计算结果返回胶水层更新响应式 → 视图自动重新渲染</p>
 <h1 id="DDD"><a href="#DDD" class="headerlink" title="DDD"></a>DDD</h1><h2 id="领域层"><a href="#领域层" class="headerlink" title="领域层"></a>领域层</h2><p>业务对象、业务规则</p>
 <ol>
 <li><strong>接口层 &#x2F; 应用层</strong>：接收请求、事务编排、调用领域层、调用仓储，<strong>不写业务规则</strong></li>
@@ -395,9 +406,25 @@
 </li>
 <li><strong>基础设施层</strong>：仓储 Repository 实现、数据库、消息队列、外部 API</li>
 </ol>
-<h1 id="胶水层"><a href="#胶水层" class="headerlink" title="胶水层"></a>胶水层</h1><h1 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h1><h1 id="状态机"><a href="#状态机" class="headerlink" title="状态机"></a>状态机</h1><h1 id="状态仓库纯储持久化"><a href="#状态仓库纯储持久化" class="headerlink" title="状态仓库纯储持久化"></a>状态仓库纯储持久化</h1><p>pinia 插件</p>
-<p>vuex 插件</p>
-<h1 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h1>
+<h1 id="胶水层"><a href="#胶水层" class="headerlink" title="胶水层"></a>胶水层</h1><h1 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h1><h1 id="状态机"><a href="#状态机" class="headerlink" title="状态机"></a>状态机</h1><h1 id="状态仓库纯储持久化"><a href="#状态仓库纯储持久化" class="headerlink" title="状态仓库纯储持久化"></a>状态仓库纯储持久化</h1><p>pinia 插件  pinia-plugin-persistedstate</p>
+<p>vuex 插件 vuex-persistedstate</p>
+<h1 id="package-json里有什么"><a href="#package-json里有什么" class="headerlink" title="package.json里有什么"></a>package.json里有什么</h1><p>基础信息 — 我是谁<br>name、version、description、author、license、private、repository</p>
+<p>入口与模块<br>main、module、browser、types、exports、type、bin</p>
+<p>脚本<br>scripts（start &#x2F; dev &#x2F; build &#x2F; test &#x2F; lint）</p>
+<p>依赖<br>dependencies、devDependencies、peerDependencies、optionalDependencies</p>
+<p>环境约束<br>engines、os、cpu、packageManager</p>
+<p>发布与工程化<br>files、workspaces、publishConfig、sideEffects、browserslist</p>
+<h1 id="HTTP-状态码是-200-206"><a href="#HTTP-状态码是-200-206" class="headerlink" title="HTTP 状态码是 200&#x2F;206"></a>HTTP 状态码是 200&#x2F;206</h1><p>服务器软件限制</p>
+<p>32位 2GB 整数溢出限制（2GB Buffer Limit）</p>
+<p>服务器会强制关闭当前的 TCP &#x2F; TLS 连接。</p>
+<p>HTTPS Header 重定</p>
+<p>if_id_</p>
+<p>aria2</p>
+<p>缓存2g</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs txt">[前端页面/浏览器] <br>       │ <br>       │ 1. 发送 HTTP 请求 (例如: GET /api/user/1)<br>       ▼<br>[后端服务器] (如 Node.js / Express, Java, Python 等)<br>       │ <br>       │ 2. 校验身份与权限 (比如检查 Header 里的 Token/Cookie)<br>       │ 3. 执行业务逻辑，拼接 SQL 语句<br>       ▼<br>[数据库] (如 MySQL, MariaDB, MongoDB)<br>       │ <br>       │ 4. 数据库执行 SQL 并返回查询结果<br>       ▼<br>[后端服务器]<br>       │ <br>       │ 5. 将结果清洗/脱敏，封装成 JSON 响应<br>       ▼<br>[前端页面/浏览器] (接收到 JSON 响应并渲染页面)<br></code></pre></td></tr></table></figure>
+
+<h1 id="语义高亮"><a href="#语义高亮" class="headerlink" title="语义高亮"></a>语义高亮</h1><p>颜色</p>
+<h1 id="最"><a href="#最" class="headerlink" title="最"></a>最</h1>
                 
               </div>
             

@@ -27,7 +27,7 @@
 <meta property="og:description" content="Node后端">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-10-01T14:57:12.000Z">
-<meta property="article:modified_time" content="2026-10-01T15:27:55.826Z">
+<meta property="article:modified_time" content="2026-10-02T15:44:02.841Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="Node后端">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          105 字
+          1.4k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          1 分钟
+          12 分钟
         
       </span>
     
@@ -381,22 +381,92 @@
             
               <div class="markdown-body">
                 
-                <p>同源策略</p>
-<p>CORS</p>
-<p>预检请求</p>
-<p>Cookie</p>
+                <h1 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h1><p>（Same-Origin Policy，简称 SOP）</p>
+<p>协议（Protocol）</p>
+<p>域名&#x2F;主机（Host）</p>
+<p>端口（Port）</p>
+<h1 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h1><blockquote>
+<p>请求: 请求行（第一行）+ 请求头（Headers，多行键值对）+ 空行 +请求体（Body，可选）</p>
+</blockquote>
+<p><code>请求行（第一行）: 方法+ URL+ HTTP版本</code> post&#x2F;url&#x2F;api&#x2F;https1.1</p>
+<p><code>请求头（Headers，多行键值对）</code></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs txt">常见：<br><br>- Host：目标主机域名<br>- User-Agent：客户端浏览器 / 设备信息<br>- Content-Type：请求体数据格式<br>- Cookie：浏览器自动携带 cookie<br>- Referer：来源页面<br>- Accept：能接收什么响应数据<br></code></pre></td></tr></table></figure>
+
+<p><code>空行</code> 分隔请求头 和 请求体</p>
+<p><code>请求体</code> POST&#x2F;PUT 携带提交的数据</p>
+<blockquote>
+<p>简单请求</p>
+</blockquote>
+<p>请求方法：GET、POST 或 HEAD。</p>
+<p>请求头：仅包含安全头部，如 Accept、Accept-Language、Content-Language、Content-Type 等。</p>
+<p>Content-Type 仅限：text&#x2F;plain、multipart&#x2F;form-data、application&#x2F;x-www-form-urlencoded。</p>
+<blockquote>
+<p>预检请求（Preflight Request）</p>
+</blockquote>
+<p>浏览器会自动先发起一次 OPTIONS 方法的请求   —–&gt; 否接受该跨域请求</p>
+<p>服务器返回 200&#x2F;204 且允许该请求，浏览器才会发送真实数据请求</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-attribute">Access-Control-Allow-Origin</span><span class="hljs-punctuation">: </span>http://localhost:5173<br><span class="hljs-attribute">Access-Control-Allow-Methods</span><span class="hljs-punctuation">: </span>GET, POST, PUT, DELETE, OPTIONS<br><span class="hljs-attribute">Access-Control-Allow-Headers</span><span class="hljs-punctuation">: </span>Content-Type, Authorization<br><span class="hljs-attribute">Access-Control-Max-Age</span><span class="hljs-punctuation">: </span>86400  # 预检结果缓存时间（秒），避免频繁发 OPTIONS 请求<br></code></pre></td></tr></table></figure>
+
+<p>HTTP 本身是<strong>无状态协议</strong></p>
+<h1 id="认证"><a href="#认证" class="headerlink" title="认证"></a>认证</h1><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Session</th>
+<th>JWT Token</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>前端是否手动设头</td>
+<td>❌ 不用，浏览器自动带 Cookie</td>
+<td>✅ 要设 Authorization</td>
+</tr>
+<tr>
+<td>服务端是否存状态</td>
+<td>✅ 存（内存&#x2F;Redis）</td>
+<td>❌ 不存</td>
+</tr>
+<tr>
+<td>跨域</td>
+<td>麻烦，要 credentials + 精确 origin</td>
+<td>简单，普通头即可</td>
+</tr>
+<tr>
+<td>主动失效</td>
+<td>容易（删 session）</td>
+<td>难（要等过期或维护黑名单）</td>
+</tr>
+<tr>
+<td>移动端友好</td>
+<td>一般</td>
+<td>好</td>
+</tr>
+<tr>
+<td>扩展性（多台服务器）</td>
+<td>要共享 session 存储</td>
+<td>天然支持</td>
+</tr>
+</tbody></table>
+<p>cookie</p>
+<p>token JWT 和 session 怎么选？</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-attribute">cookie</span><span class="hljs-punctuation">: </span>&#123;<br>    httpOnly: true,      // 禁止 JS 读取，防 XSS<br>    secure: false,       // 生产环境 https 时设 true<br>    maxAge: 1000 *60* 60 * 24, // 1 天<br>    sameSite: &#x27;lax&#x27;,     // 防 CSRF<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<p>防 XSS</p>
+<p>防 CSRF</p>
 <p>代理</p>
-<p>Express 中间件</p>
+<h1 id="Express-中间件"><a href="#Express-中间件" class="headerlink" title="Express 中间件"></a>Express 中间件</h1><p>cors</p>
 <p>中间件的执行顺序</p>
 <p>洋葱模型</p>
 <p>MySQL vs MariaDB</p>
 <p>索引</p>
-<p>连接池</p>
-<p>软删除</p>
+<h1 id="连接池-字段"><a href="#连接池-字段" class="headerlink" title="连接池 字段"></a>连接池 字段</h1><p>复用连接，避免每次查询都重新经历 TCP 握手和 MySQL 认证的开销</p>
+<p>connectionLimit: 10 —— 连接池的最大连接数</p>
+<p>enableKeepAlive: true —— TCP 保活开关</p>
+<p>keepAliveInitialDelay: 0 —— 保活探测的启动延迟</p>
+<p>waitForConnections（默认 true）</p>
 <p>SQL 注入防范</p>
 <p>事务</p>
 <p>bcrypt 自带 salt，防彩虹表</p>
-<p>JWT 和 session 怎么选？</p>
 
                 
               </div>
