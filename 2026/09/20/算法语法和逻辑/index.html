@@ -27,7 +27,7 @@
 <meta property="og:description" content="算法">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-20T09:39:18.000Z">
-<meta property="article:modified_time" content="2026-10-01T02:27:33.614Z">
+<meta property="article:modified_time" content="2026-10-19T15:11:04.492Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="leetCode 算法题">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6k 字
+          6.2k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          50 分钟
+          52 分钟
         
       </span>
     
@@ -381,7 +381,10 @@
             
               <div class="markdown-body">
                 
-                <details>
+                <blockquote>
+<p>数组用循环，树用递归</p>
+</blockquote>
+<details>
 <summary>Hash（哈希）</summary>
 
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs txt"><br>               ┌── Set  (集) ──────────► 唯一值的集合 (去重/交并补)<br>               │    └─ WeakSet ─────────► 弱引用对象，自动 GC<br>哈希表结构 ────┤<br>               │    ┌─ Map (映射) ──────► 键值对键任意类型 (数据存储/频次统计)<br>               └── Map <br>                    └─ WeakMap ────────► 键必须是对象，防内存泄漏 (Vue 3 响应式原理)<br></code></pre></td></tr></table></figure>
@@ -428,10 +431,6 @@
 <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><p>多状态动态过程</p>
 <p>[4, 2, 7, 1, 3]</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//每一轮</span><br><span class="hljs-keyword">let</span> arr =[<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">A</span> (<span class="hljs-params">arr</span>)&#123;<br>    <span class="hljs-keyword">const</span> a = arr.<span class="hljs-property">length</span><br>    <span class="hljs-keyword">for</span>(i= <span class="hljs-number">0</span>;i&lt;a-<span class="hljs-number">1</span>;i++)&#123;<br>        <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>;j&lt;a-<span class="hljs-number">1</span>-i)&#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr)<br>            <span class="hljs-keyword">if</span>(arr[j]&gt;arr[j+<span class="hljs-number">1</span>])&#123;<br>                <span class="hljs-keyword">const</span> b = arr[j]<br>                arr[j] = arr[j+<span class="hljs-number">1</span>]<br>                arr[j+<span class="hljs-number">1</span>] = b<br>                 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr)<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> arr;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
-
-
-
 
 <h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1></details>
 
@@ -505,7 +504,18 @@
 
 </details>
 
+<details>
+<summary>二叉树</summary>
 
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs txt">    A<br>   / \<br>  B   C<br> / \<br>D   E<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">&#123;<br>    <span class="hljs-attr">val</span>: value;        <span class="hljs-comment">// 这个节点存的值</span><br>    <span class="hljs-attr">left</span>: 左子节点或<span class="hljs-literal">null</span>,   <span class="hljs-comment">// 指向左孩子的引用</span><br>    <span class="hljs-attr">right</span>: 右子节点或<span class="hljs-literal">null</span>   <span class="hljs-comment">// 指向右孩子的引用</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>可迭代?</p>
+<p>for in  | for of </p>
+<p>键 值 属性 属性值 map set 递归 ？</p>
+<p>二叉树本身就是用递归定义的</p>
+<p>二叉树刷题体系 &#x3D; 四种遍历骨架 + 递归四问（语义&#x2F;终止&#x2F;单层&#x2F;顺序）+ 自顶向下与自底向上 + BST中序与上下界 + 路径回溯 + 层序BFS + 边界处理。</p>
+</details>
 
                 
               </div>
