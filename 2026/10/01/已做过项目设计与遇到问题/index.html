@@ -27,7 +27,7 @@
 <meta property="og:description" content="已做过项目设计与遇到问题">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-10-01T13:57:43.000Z">
-<meta property="article:modified_time" content="2026-10-02T16:23:46.785Z">
+<meta property="article:modified_time" content="2026-10-22T08:18:49.527Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="已做过项目设计与遇到问题">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          2k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          16 分钟
+          18 分钟
         
       </span>
     
@@ -442,6 +442,11 @@
 <h1 id="nust"><a href="#nust" class="headerlink" title="nust"></a>nust</h1><p><code>import.meta.client 做了客户端检查</code></p>
 <p>存到localstorege浏览器纯储 没有放到onmonted生命周期挂载之后再写入，导致出现问题</p>
 <p><code>3设计 领域层,胶水层，ui层</code></p>
+<p>存入indexedb 里面出现的问题  原生的api 看不懂 上来了</p>
+<p>Vue 3 的 ref&#x2F;reactive 把对象包成 Proxy（带了一堆内部的依赖追踪属性），</p>
+<p>而 IndexedDB 写数据用 structured clone 算法，遇到 Proxy 会直接抛 DataCloneError。</p>
+<p>JSON.parse(JSON.stringify(value)) 会把 Proxy 剥掉、深拷贝成一个纯普通对象，就能正常存了。</p>
+<p><code>打乱算法</code></p>
 
                 
               </div>
