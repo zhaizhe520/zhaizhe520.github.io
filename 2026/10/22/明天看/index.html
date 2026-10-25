@@ -27,7 +27,7 @@
 <meta property="og:description" content="总结">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-10-22T15:16:29.000Z">
-<meta property="article:modified_time" content="2026-10-24T13:36:30.026Z">
+<meta property="article:modified_time" content="2026-10-25T15:04:31.122Z">
 <meta property="article:author" content="Mashiro">
 <meta property="article:tag" content="总结">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          10k 字
+          14k 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          87 分钟
+          120 分钟
         
       </span>
     
@@ -1524,6 +1524,675 @@
 
 </details>
 
+
+<details>
+<summary>2026/10/25</summary>
+> ⚠️ 待确认/问题提示：`-f 递归`疑似笔误（递归通常是 `-r`/`-R`，`-f` 常表示 force 强制）；`cho`疑似`echo`；`clean`疑似`clear`；`きそ 規則 基礎`中「規則」应读`きそく`，`きそ`多对应「基礎」；`@host`可能指`user@host`；`そらごと`需按语境取“空话/假话”；`夕べ/夕方`、`鑑賞/観賞`需区分。
+
+<h1 id="今日学习整理：TTS-Linux-日语"><a href="#今日学习整理：TTS-Linux-日语" class="headerlink" title="今日学习整理：TTS &#x2F; Linux &#x2F; 日语"></a>今日学习整理：TTS &#x2F; Linux &#x2F; 日语</h1><h2 id="0-TTS-备注"><a href="#0-TTS-备注" class="headerlink" title="0. TTS 备注"></a>0. TTS 备注</h2><p>浏览器内置 <strong>Web Speech API</strong> 自带 TTS 引擎，可直接调用系统&#x2F;浏览器语音合成发音。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 浏览器内置 Web Speech API 自带 TTS 引擎</span><br><span class="hljs-keyword">const</span> text = <span class="hljs-string">&#x27;こんにちは、世界。&#x27;</span>;<br><span class="hljs-keyword">const</span> utter = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SpeechSynthesisUtterance</span>(text);<br>utter.<span class="hljs-property">lang</span> = <span class="hljs-string">&#x27;ja-JP&#x27;</span>;<br>speechSynthesis.<span class="hljs-title function_">speak</span>(utter);<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="1-Linux-常用命令与权限"><a href="#1-Linux-常用命令与权限" class="headerlink" title="1. Linux 常用命令与权限"></a>1. Linux 常用命令与权限</h2><h3 id="1-1-命令速查表"><a href="#1-1-命令速查表" class="headerlink" title="1.1 命令速查表"></a>1.1 命令速查表</h3><table>
+<thead>
+<tr>
+<th>命令&#x2F;符号</th>
+<th>作用</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pwd</code></td>
+<td>显示当前目录</td>
+<td><code>pwd</code></td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td>列出目录内容</td>
+<td><code>ls</code></td>
+</tr>
+<tr>
+<td><code>ls -la</code></td>
+<td>详细列出，含隐藏文件</td>
+<td><code>ls -la</code></td>
+</tr>
+<tr>
+<td><code>ls -a</code></td>
+<td>显示隐藏文件</td>
+<td><code>ls -a</code></td>
+</tr>
+<tr>
+<td><code>mkdir</code></td>
+<td>创建目录</td>
+<td><code>mkdir demo</code></td>
+</tr>
+<tr>
+<td><code>cd</code></td>
+<td>切换目录</td>
+<td><code>cd demo</code></td>
+</tr>
+<tr>
+<td><code>touch</code></td>
+<td>创建空文件&#x2F;更新时间戳</td>
+<td><code>touch a.txt</code></td>
+</tr>
+<tr>
+<td><code>mv</code></td>
+<td>移动&#x2F;重命名</td>
+<td><code>mv a.txt b.txt</code></td>
+</tr>
+<tr>
+<td><code>rm</code></td>
+<td>删除</td>
+<td><code>rm a.txt</code></td>
+</tr>
+<tr>
+<td><code>rm -r</code></td>
+<td>递归删除目录</td>
+<td><code>rm -r demo</code></td>
+</tr>
+<tr>
+<td><code>rm -f</code></td>
+<td>强制删除，不提示</td>
+<td><code>rm -f a.txt</code></td>
+</tr>
+<tr>
+<td><code>cp</code></td>
+<td>复制</td>
+<td><code>cp a.txt b.txt</code></td>
+</tr>
+<tr>
+<td><code>curl</code></td>
+<td>传输&#x2F;请求 URL</td>
+<td><code>curl https://example.com</code></td>
+</tr>
+<tr>
+<td><code>wget</code></td>
+<td>下载文件</td>
+<td><code>wget https://example.com/a.zip</code></td>
+</tr>
+<tr>
+<td><code>sudo</code></td>
+<td>以管理员权限执行</td>
+<td><code>sudo apt update</code></td>
+</tr>
+<tr>
+<td><code>ssh user@host</code></td>
+<td>远程登录</td>
+<td><code>ssh user@host</code></td>
+</tr>
+<tr>
+<td><code>echo</code></td>
+<td>输出文本（原文 <code>cho</code> 疑似笔误）</td>
+<td><code>echo hello</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>覆盖重定向</td>
+<td><code>echo hello &gt; a.txt</code></td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td>追加重定向</td>
+<td><code>echo world &gt;&gt; a.txt</code></td>
+</tr>
+<tr>
+<td><code>chmod</code></td>
+<td>修改权限</td>
+<td><code>chmod 600 a.txt</code></td>
+</tr>
+<tr>
+<td><code>which</code></td>
+<td>查找命令路径</td>
+<td><code>which python</code></td>
+</tr>
+<tr>
+<td><code>ping</code></td>
+<td>测试网络连通</td>
+<td><code>ping example.com</code></td>
+</tr>
+<tr>
+<td><code>ps</code></td>
+<td>查看进程</td>
+<td><code>ps aux</code></td>
+</tr>
+<tr>
+<td><code>history</code></td>
+<td>查看命令历史</td>
+<td><code>history</code></td>
+</tr>
+<tr>
+<td><code>clear</code></td>
+<td>清屏（原文 <code>clean</code> 疑似笔误）</td>
+<td><code>clear</code></td>
+</tr>
+<tr>
+<td><code>cat</code></td>
+<td>查看文件全文</td>
+<td><code>cat a.txt</code></td>
+</tr>
+<tr>
+<td><code>less</code></td>
+<td>分页查看</td>
+<td><code>less a.txt</code></td>
+</tr>
+<tr>
+<td><code>grep</code></td>
+<td>文本搜索</td>
+<td><code>grep hello a.txt</code></td>
+</tr>
+<tr>
+<td><code>scp</code></td>
+<td>远程复制</td>
+<td><code>scp a.txt user@host:/tmp/</code></td>
+</tr>
+<tr>
+<td><code>kill</code></td>
+<td>终止进程</td>
+<td><code>kill PID</code></td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td>在当前 shell 执行脚本</td>
+<td><code>source ~/.bashrc</code></td>
+</tr>
+<tr>
+<td>管道符</td>
+<td>前一命令输出交给后一命令</td>
+<td>见下方 text 演示</td>
+</tr>
+</tbody></table>
+<h3 id="1-2-权限规则"><a href="#1-2-权限规则" class="headerlink" title="1.2 权限规则"></a>1.2 权限规则</h3><p>权限位：<code>r=4</code>，<code>w=2</code>，<code>x=1</code>。</p>
+<table>
+<thead>
+<tr>
+<th>数字</th>
+<th>权限表示</th>
+<th>含义</th>
+<th>常见场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>600</code></td>
+<td><code>rw-------</code></td>
+<td>仅所有者读写</td>
+<td>密钥、私密文件常用</td>
+</tr>
+<tr>
+<td><code>700</code></td>
+<td><code>rwx------</code></td>
+<td>仅所有者读写执行</td>
+<td>私有目录&#x2F;脚本</td>
+</tr>
+<tr>
+<td><code>755</code></td>
+<td><code>rwxr-xr-x</code></td>
+<td>所有者读写执行，其他人读执行</td>
+<td>公开目录&#x2F;可执行文件</td>
+</tr>
+</tbody></table>
+<h3 id="1-3-text-演示"><a href="#1-3-text-演示" class="headerlink" title="1.3 text 演示"></a>1.3 text 演示</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs text">pwd<br>ls -la<br>cd /tmp<br>mkdir demo<br>touch demo/a.txt<br>echo &quot;hello&quot; &gt; demo/a.txt<br>echo &quot;world&quot; &gt;&gt; demo/a.txt<br>cat demo/a.txt<br>ps aux | grep nginx<br>chmod 600 demo/a.txt<br>ls -l demo/a.txt<br></code></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li><code>&gt;</code> 会覆盖原内容；<code>&gt;&gt;</code> 会追加内容。</li>
+<li><code>rm -r</code> 才是递归删除；<code>rm -f</code> 是强制删除。</li>
+<li><code>600/700/755</code> 是数字权限表示法。</li>
+</ul>
+<hr>
+<h2 id="2-日语语法"><a href="#2-日语语法" class="headerlink" title="2. 日语语法"></a>2. 日语语法</h2><h3 id="2-1-V-ておく-V-てしまう-〜ないでおく"><a href="#2-1-V-ておく-V-てしまう-〜ないでおく" class="headerlink" title="2.1 V-ておく &#x2F; V-てしまう &#x2F; 〜ないでおく"></a>2.1 V-ておく &#x2F; V-てしまう &#x2F; 〜ないでおく</h3><table>
+<thead>
+<tr>
+<th>句型</th>
+<th>核心意思</th>
+<th>例句</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>V-ておく</code></td>
+<td>事先做好，为将来准备</td>
+<td>旅行の前に、ホテルを予約しておく。</td>
+<td>旅行前事先预订好酒店。</td>
+</tr>
+<tr>
+<td><code>V-てしまう</code></td>
+<td>做完；不小心做了；遗憾地发生了</td>
+<td>ホテルを予約してしまった。</td>
+<td>已经把酒店订了。&#x2F; 不小心订了。</td>
+</tr>
+<tr>
+<td><code>V-てしまう</code></td>
+<td>做完；不小心做了</td>
+<td>ケーキを全部食べてしまった。</td>
+<td>把蛋糕全吃完了。</td>
+</tr>
+<tr>
+<td><code>〜ないでおく</code></td>
+<td>有意不做</td>
+<td>遅刻しちゃうから、朝ご飯は食べないでおこう。</td>
+<td>要迟到了，早饭就不吃了吧。</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-〜たきり-〜てから-〜て以来-对比"><a href="#2-2-〜たきり-〜てから-〜て以来-对比" class="headerlink" title="2.2 〜たきり &#x2F; 〜てから &#x2F; 〜て以来 对比"></a>2.2 〜たきり &#x2F; 〜てから &#x2F; 〜て以来 对比</h3><table>
+<thead>
+<tr>
+<th>表达</th>
+<th>核心语感</th>
+<th>关键区别</th>
+<th>例句</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>〜たきり</code></td>
+<td>做了 A 之后，B（本应发生）再也没发生</td>
+<td>聚焦“没有下文”，后半多接否定，常带遗憾</td>
+<td>彼には去年会ったきり、連絡を取っていない。</td>
+<td>去年见过他之后，就再没联系过。</td>
+</tr>
+<tr>
+<td><code>〜てから</code></td>
+<td>A 发生之后，B 发生</td>
+<td>只表示单纯先后顺序</td>
+<td>食事をしてから、出かける。</td>
+<td>吃完饭后再出门。</td>
+</tr>
+<tr>
+<td><code>〜て以来</code></td>
+<td>自从 A 以后，一直……</td>
+<td>描述从 A 到现在持续的状态</td>
+<td>日本に来て以来、毎日日本語を勉強している。</td>
+<td>来日本以后，每天都在学日语。</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="3-日语词汇与造句"><a href="#3-日语词汇与造句" class="headerlink" title="3. 日语词汇与造句"></a>3. 日语词汇与造句</h2><h3 id="3-1-普通词汇造句表"><a href="#3-1-普通词汇造句表" class="headerlink" title="3.1 普通词汇造句表"></a>3.1 普通词汇造句表</h3><table>
+<thead>
+<tr>
+<th>单词</th>
+<th>读音</th>
+<th>中文意思</th>
+<th>例句</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>そらごと</td>
+<td>そらごと</td>
+<td>空话、假话、虚言</td>
+<td>彼の約束はそらごとに終わった。</td>
+<td>他的承诺最终成了空话。</td>
+</tr>
+<tr>
+<td>厚かましい</td>
+<td>あつかましい</td>
+<td>厚脸皮、无耻</td>
+<td>厚かましいお願いですが、もう一度教えていただけますか。</td>
+<td>不好意思厚着脸皮请求，能再说明一次吗？</td>
+</tr>
+<tr>
+<td>図々しい</td>
+<td>ずうずうしい</td>
+<td>厚颜无耻、不知羞耻</td>
+<td>図々しい態度を取るのはやめなさい。</td>
+<td>别摆出厚颜无耻的态度。</td>
+</tr>
+<tr>
+<td>鬱陶しい</td>
+<td>うっとうしい</td>
+<td>郁闷、烦人、阴沉</td>
+<td>梅雨で毎日雨が降り、鬱陶しい。</td>
+<td>梅雨季每天下雨，很烦闷。</td>
+</tr>
+<tr>
+<td>そそっかしい</td>
+<td>そそっかしい</td>
+<td>冒失、粗心</td>
+<td>彼はそそっかしいので、よく鍵を忘れる。</td>
+<td>他冒冒失失，经常忘钥匙。</td>
+</tr>
+<tr>
+<td>躊躇い</td>
+<td>ためらい</td>
+<td>犹豫、迟疑</td>
+<td>少し躊躇いを見せてから、彼はドアを開けた。</td>
+<td>他稍显犹豫后打开了门。</td>
+</tr>
+<tr>
+<td>科目</td>
+<td>かもく</td>
+<td>科目</td>
+<td>数学は私の好きな科目です。</td>
+<td>数学是我喜欢的科目。</td>
+</tr>
+<tr>
+<td>訪れる</td>
+<td>おとずれる</td>
+<td>访问；到来</td>
+<td>春が訪れ、花が咲き始めた。</td>
+<td>春天到来，花开始开了。</td>
+</tr>
+<tr>
+<td>大まか</td>
+<td>おおまか</td>
+<td>粗略、大致</td>
+<td>大まかな計画だけ先に立てよう。</td>
+<td>先只定一个大致计划吧。</td>
+</tr>
+<tr>
+<td>多大</td>
+<td>ただい</td>
+<td>巨大、很大</td>
+<td>この工事は住民に多大な迷惑をかけた。</td>
+<td>这项工程给居民带来了很大麻烦。</td>
+</tr>
+<tr>
+<td>溶け込む</td>
+<td>とけこむ</td>
+<td>融入</td>
+<td>彼はすぐに新しい学校に溶け込んだ。</td>
+<td>他很快融入了新学校。</td>
+</tr>
+<tr>
+<td>ふれあい</td>
+<td>ふれあい</td>
+<td>接触、交流</td>
+<td>地域の人とのふれあいを大切にしている。</td>
+<td>重视与当地人的交流。</td>
+</tr>
+<tr>
+<td>触れ合う</td>
+<td>ふれあう</td>
+<td>互相接触、交流</td>
+<td>子どもは動物と触れ合うのが好きだ。</td>
+<td>孩子喜欢和动物接触。</td>
+</tr>
+<tr>
+<td>当てはめる</td>
+<td>あてはめる</td>
+<td>套用、适用</td>
+<td>このルールをすべての人に当てはめるのは難しい。</td>
+<td>把这条规则套用到所有人身上很难。</td>
+</tr>
+<tr>
+<td>身につける</td>
+<td>みにつける</td>
+<td>掌握、养成</td>
+<td>毎日の練習で基本を身につけた。</td>
+<td>通过每天练习掌握了基础。</td>
+</tr>
+<tr>
+<td>基礎</td>
+<td>きそ</td>
+<td>基础</td>
+<td>基礎をしっかり固める。</td>
+<td>扎实打好基础。</td>
+</tr>
+<tr>
+<td>規則</td>
+<td>きそく</td>
+<td>规则</td>
+<td>学校の規則を守る。</td>
+<td>遵守学校规则。</td>
+</tr>
+<tr>
+<td>おおよそ</td>
+<td>おおよそ</td>
+<td>大致、大约</td>
+<td>おおよその費用は10万円です。</td>
+<td>大致费用是10万日元。</td>
+</tr>
+<tr>
+<td>行儀</td>
+<td>ぎょうぎ</td>
+<td>举止、礼仪、规矩</td>
+<td>行儀よく座ってください。</td>
+<td>请规规矩矩地坐好。</td>
+</tr>
+<tr>
+<td>見積</td>
+<td>みつもり</td>
+<td>估价、报价</td>
+<td>修理の見積を取ってもらった。</td>
+<td>让人做了修理报价。</td>
+</tr>
+<tr>
+<td>収納</td>
+<td>しゅうのう</td>
+<td>收纳</td>
+<td>収納を整理して部屋を広く使う。</td>
+<td>整理收纳，让房间用起来更宽敞。</td>
+</tr>
+<tr>
+<td>及ぶ</td>
+<td>およぶ</td>
+<td>达到、涉及、比得上</td>
+<td>台風の被害は広い範囲に及んだ。</td>
+<td>台风灾害波及很广范围。</td>
+</tr>
+<tr>
+<td>被害者</td>
+<td>ひがいしゃ</td>
+<td>受害者</td>
+<td>被害者が警察に通報した。</td>
+<td>受害者报警了。</td>
+</tr>
+<tr>
+<td>遭う</td>
+<td>あう</td>
+<td>遭遇（多指不愉快的事）</td>
+<td>外出中に大雨に遭った。</td>
+<td>外出时遭遇了大雨。</td>
+</tr>
+<tr>
+<td>事故に遭う</td>
+<td>じこにあう</td>
+<td>遭遇事故</td>
+<td>彼は先月交通事故に遭った。</td>
+<td>他上个月遭遇了交通事故。</td>
+</tr>
+<tr>
+<td>なんか</td>
+<td>なんか</td>
+<td>副助词，表示自谦&#x2F;轻视自己</td>
+<td>私はなんかまだまだですね。</td>
+<td>像我这样的还差得远呢。</td>
+</tr>
+</tbody></table>
+<h3 id="3-2-学习类动词对比"><a href="#3-2-学习类动词对比" class="headerlink" title="3.2 学习类动词对比"></a>3.2 学习类动词对比</h3><table>
+<thead>
+<tr>
+<th>单词</th>
+<th>读音</th>
+<th>核心侧重</th>
+<th>关键特征</th>
+<th>例句</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>学ぶ</td>
+<td>まなぶ</td>
+<td>学问、知识、经验的获得</td>
+<td>最通用、正式，可指从师、自学或从经验中学习</td>
+<td>経験から多くを学ぶ。</td>
+<td>从经验中学到很多。</td>
+</tr>
+<tr>
+<td>勉強する</td>
+<td>べんきょうする</td>
+<td>刻苦钻研、用功</td>
+<td>强调为掌握知识技能付出的主观努力</td>
+<td>毎日日本語を勉強する。</td>
+<td>每天学习日语。</td>
+</tr>
+<tr>
+<td>習う</td>
+<td>ならう</td>
+<td>从师学习、反复练习</td>
+<td>核心是“受教”，在他人指导下反复练习</td>
+<td>ピアノを習う。</td>
+<td>学钢琴。</td>
+</tr>
+<tr>
+<td>学習する</td>
+<td>がくしゅうする</td>
+<td>系统性、有计划的学习</td>
+<td>语感最正式，强调系统训练或按计划学习</td>
+<td>数学を学習する。</td>
+<td>学习数学。</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-拟态词对比"><a href="#3-3-拟态词对比" class="headerlink" title="3.3 拟态词对比"></a>3.3 拟态词对比</h3><table>
+<thead>
+<tr>
+<th>单词</th>
+<th>读音</th>
+<th>核心语感</th>
+<th>例句</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>はきはき</td>
+<td>はきはき</td>
+<td>干脆、爽快、清楚</td>
+<td>彼女はいつもはきはきと返事をする。</td>
+<td>她总是干脆清楚地回答。</td>
+</tr>
+<tr>
+<td>てきぱき</td>
+<td>てきぱき</td>
+<td>麻利、干练</td>
+<td>彼はてきぱきと仕事を片付ける。</td>
+<td>他麻利地处理工作。</td>
+</tr>
+<tr>
+<td>すっきり</td>
+<td>すっきり</td>
+<td>舒畅、清爽、整洁</td>
+<td>部屋を片付けたら気分がすっきりした。</td>
+<td>收拾房间后心情舒畅了。</td>
+</tr>
+<tr>
+<td>さっぱり</td>
+<td>さっぱり</td>
+<td>清爽、干净；也可表示“完全（不）”</td>
+<td>シャワーを浴びてさっぱりした。</td>
+<td>洗完澡很清爽。</td>
+</tr>
+</tbody></table>
+<h3 id="3-4-鑑賞-観賞"><a href="#3-4-鑑賞-観賞" class="headerlink" title="3.4 鑑賞 &#x2F; 観賞"></a>3.4 鑑賞 &#x2F; 観賞</h3><table>
+<thead>
+<tr>
+<th>单词</th>
+<th>读音</th>
+<th>对象</th>
+<th>例句</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>鑑賞</td>
+<td>かんしょう</td>
+<td>艺术、作品等鉴赏</td>
+<td>美術館で絵画を鑑賞する。</td>
+<td>在美术馆鉴赏绘画。</td>
+</tr>
+<tr>
+<td>観賞</td>
+<td>かんしょう</td>
+<td>动植物、自然、景色等观赏</td>
+<td>家族で桜を観賞する。</td>
+<td>和家人一起观赏樱花。</td>
+</tr>
+</tbody></table>
+<h3 id="3-5-味わう-楽しむ"><a href="#3-5-味わう-楽しむ" class="headerlink" title="3.5 味わう &#x2F; 楽しむ"></a>3.5 味わう &#x2F; 楽しむ</h3><table>
+<thead>
+<tr>
+<th>单词</th>
+<th>读音</th>
+<th>核心意思</th>
+<th>例句</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>味わう</td>
+<td>あじわう</td>
+<td>品味、体验</td>
+<td>故郷の料理をゆっくり味わう。</td>
+<td>慢慢品味家乡菜。</td>
+</tr>
+<tr>
+<td>楽しむ</td>
+<td>たのしむ</td>
+<td>享受、以……为乐</td>
+<td>週末に音楽を楽しむ。</td>
+<td>周末享受音乐。</td>
+</tr>
+</tbody></table>
+<h3 id="3-6-威張る-生意気-自慢"><a href="#3-6-威張る-生意気-自慢" class="headerlink" title="3.6 威張る &#x2F; 生意気 &#x2F; 自慢"></a>3.6 威張る &#x2F; 生意気 &#x2F; 自慢</h3><table>
+<thead>
+<tr>
+<th>单词</th>
+<th>读音</th>
+<th>核心意思</th>
+<th>例句</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>威張る</td>
+<td>いばる</td>
+<td>逞威风、傲慢</td>
+<td>課長はいつも威張っている。</td>
+<td>科长总是很傲慢。</td>
+</tr>
+<tr>
+<td>生意気</td>
+<td>なまいき</td>
+<td>狂妄、自大</td>
+<td>新人なのに生意気なことを言う。</td>
+<td>明明是新人却说狂妄的话。</td>
+</tr>
+<tr>
+<td>自慢</td>
+<td>じまん</td>
+<td>自夸、骄傲</td>
+<td>彼は自分の車を自慢する。</td>
+<td>他炫耀自己的车。</td>
+</tr>
+</tbody></table>
+<h3 id="3-7-夕べ-夕方"><a href="#3-7-夕べ-夕方" class="headerlink" title="3.7 夕べ &#x2F; 夕方"></a>3.7 夕べ &#x2F; 夕方</h3><table>
+<thead>
+<tr>
+<th>单词</th>
+<th>读音</th>
+<th>时间范围</th>
+<th>例句</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>夕べ</td>
+<td>ゆうべ</td>
+<td>昨晚；也可指傍晚，需看语境</td>
+<td>夕べは早く寝た。</td>
+<td>昨晚很早就睡了。</td>
+</tr>
+<tr>
+<td>夕方</td>
+<td>ゆうがた</td>
+<td>傍晚</td>
+<td>夕方に公園を散歩する。</td>
+<td>傍晚在公园散步。</td>
+</tr>
+</tbody></table>
+<h3 id="3-8-なんか"><a href="#3-8-なんか" class="headerlink" title="3.8 なんか"></a>3.8 なんか</h3><p><code>なんか</code> 在这里是副助词，表示轻视自己、自谦，相当于中文的“像我这种”“我这样的”。常用来降低自己的位置，显得谦虚。</p>
+<p>例句：私はなんかまだまだですね。<br>中文：像我这样的还差得远呢。</p>
+</details>
                 
               </div>
             
