@@ -19,19 +19,22 @@
   <meta name="author" content="Mashiro">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title">
-<meta property="og:url" content="http://example.com/2026/10/29/PixiJS/index.html">
+    <meta name="description" content="PixiJs与There.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PixiJs与There.js">
+<meta property="og:url" content="http://example.com/2026/11/03/PixiJs%E4%B8%8EThere.js/index.html">
 <meta property="og:site_name">
+<meta property="og:description" content="PixiJs与There.js">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-10-29T14:10:33.986Z">
-<meta property="article:modified_time" content="2026-10-29T15:44:52.073Z">
+<meta property="article:published_time" content="2026-11-03T01:27:46.000Z">
+<meta property="article:modified_time" content="2026-11-03T02:21:05.267Z">
 <meta property="article:author" content="Mashiro">
+<meta property="article:tag" content="PixiJs与There.js">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title></title>
+  <title>PixiJs与There.js - </title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -300,7 +303,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="PixiJs与There.js"></span>
           
         </div>
 
@@ -311,8 +314,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-10-29 22:10" pubdate>
-          2026年10月29日 晚上
+        <time datetime="2026-11-03 09:27" pubdate>
+          2026年11月3日 上午
         </time>
       </span>
     
@@ -323,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          915 字
         
       </span>
     
@@ -334,7 +337,7 @@
         
         
         
-          1 分钟
+          8 分钟
         
       </span>
     
@@ -373,12 +376,57 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header"></h1>
+            <h1 id="seo-header">PixiJs与There.js</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <table>
+<thead>
+<tr>
+<th>维度</th>
+<th>PixiJS</th>
+<th>Three.js</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>核心定位</td>
+<td>高性能 2D 渲染库</td>
+<td>完整的 3D 引擎</td>
+</tr>
+<tr>
+<td>最佳场景</td>
+<td>2D 游戏、复杂 UI、H5 营销特效、数据可视化</td>
+<td>3D 可视化、产品展示、轻量级 3D 游戏、VR&#x2F;XR</td>
+</tr>
+<tr>
+<td>抽象层级</td>
+<td>相对底层，聚焦于“渲染”本身</td>
+<td>较高层，封装了完整的 3D 场景概念（相机、光照、材质等）</td>
+</tr>
+<tr>
+<td>性能特征</td>
+<td>在 2D 实现中性能顶尖</td>
+<td>在 3D 实现中性能远超同类</td>
+</tr>
+</tbody></table>
+<h2 id="PixiJS-核心组件层"><a href="#PixiJS-核心组件层" class="headerlink" title="PixiJS 核心组件层"></a>PixiJS 核心组件层</h2><p>Renderer（渲染器） ：系统的核心，负责将场景图绘制到屏幕。它会自动在 WebGPU 和 WebGL 之间选择，无需手动干预。</p>
+<p>Container（容器） ：场景图（Scene Graph）的节点。所有可显示对象（精灵、图形、文本）都继承自 Container，通过父子关系构成渲染树。</p>
+<p>Ticker（滴答器） ：提供基于时钟的周期性回调，是驱动游戏更新逻辑和渲染循环的引擎。可以同时存在多个 Ticker。</p>
+<p>Assets（资源系统） ：异步加载和管理图片、音频、字体、精灵表等资源。</p>
+<p>Application（应用） ：一个便捷封装，自动帮你组装好 Renderer 和 Ticker，适合快速原型和简单项目。</p>
+<h2 id="场景与渲染控制层"><a href="#场景与渲染控制层" class="headerlink" title="场景与渲染控制层"></a>场景与渲染控制层</h2><p>Scene Graph（场景图） ：理解父子变换、渲染顺序和剔除（Culling）机制。</p>
+<p>Render Loop（渲染循环） ：掌握场景图更新与帧渲染之间的时序关系。</p>
+<p>Render Groups（渲染组） ：将场景元素分组，以优化 GPU 批处理，提升性能。</p>
+<p>Render Layers（渲染层） ：独立于逻辑层级来控制渲染顺序。</p>
+<h2 id="能力扩展层"><a href="#能力扩展层" class="headerlink" title="能力扩展层"></a>能力扩展层</h2><p>PixiJS v8 的核心理念是一切皆扩展（Extension） ，这使得它保持轻量且高度可定制。你不需要深入扩展系统本身，但应了解其带来的能力：</p>
+<p>交互与可访问性：指针事件（点击、悬停）、键盘导航和屏幕阅读器支持。</p>
+<p>滤镜（Filters） ：包括自定义着色器，用于对可渲染对象施加视觉效果。</p>
+<p>网格与高级图形：内置的 Mesh 类型，用于更灵活的图形渲染。</p>
+<h2 id="性能与工程化"><a href="#性能与工程化" class="headerlink" title="性能与工程化"></a>性能与工程化</h2><p>GPU 资源管理：理解纹理等 GPU 资源的垃圾回收机制，避免内存泄漏。</p>
+<p>性能优化技巧：通用的最佳实践与针对性技术，如利用 Render Groups 和 Culling。</p>
+<p>TypeScript 支持：PixiJS 对 TS 有良好的支持，适合工程化项目。</p>
+
                 
               </div>
             
@@ -386,6 +434,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/PixiJs%E4%B8%8EThere-js/" class="print-no-link">#PixiJs与There.js</a>
+      
+    </div>
   
 </div>
 
@@ -395,8 +450,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
-      <div>http://example.com/2026/10/29/PixiJS/</div>
+      <div>PixiJs与There.js</div>
+      <div>http://example.com/2026/11/03/PixiJs与There.js/</div>
     </div>
     <div class="license-meta">
       
@@ -408,7 +463,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年10月29日</div>
+          <div>2026年11月3日</div>
         </div>
       
       
